@@ -1,0 +1,37 @@
+:root {
+    --columns: 12;
+    --margin:6.878306878%;
+    --gutter: 1.587301587%;
+    --lineheight: 28px;
+
+    --color: rgba(236, 103, 103, 0.1);
+    --repeating-width: calc(100% / var(--columns));
+    --column-width: calc((100% / var(--columns)) - var(--gutter));
+}
+
+html::after {
+    position: absolute;
+    content: "";
+    width: calc(100% - 2*var(--margin));
+    margin-left: auto; margin-right: auto;
+    opacity: .75;
+    top: 0; left: 0; right: 0; bottom:0;
+    z-index: 999;
+
+    background-image:
+        repeating-linear-gradient(
+            to right,
+            var(--color),
+            var(--color) var(--column-width),
+            transparent var(--column-width),
+            transparent var(--repeating-width)
+        ),
+        repeating-linear-gradient(
+            to bottom,
+            var(--color),
+            var(--color) var(--lineheight),
+            transparent var(--lineheight),
+            transparent calc(var(--lineheight)*2)
+        );
+    background-size: calc(100% + var(--gutter)) 100%;
+}
