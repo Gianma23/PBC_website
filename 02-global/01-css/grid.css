@@ -1,12 +1,23 @@
 :root {
-    --columns: 12;
-    --margin:6.878306878%;
-    --gutter: 1.587301587%;
-    --lineheight: 28px;
+    --columns: 6;
+    --margin:8.533333333%;
+    --gutter: 6.4%;
+    --lineheight: 24px;
 
     --color: rgba(236, 103, 103, 0.1);
     --repeating-width: calc(100% / var(--columns));
     --column-width: calc((100% / var(--columns)) - var(--gutter));
+}
+
+@media (min-width: 55em) {
+    :root {
+        --columns: 12;
+        --margin:6.878306878%;
+        --gutter: 1.587301587%;
+        --lineheight: 28px;
+
+        --color: rgba(103, 236, 205, 0.1);
+    }
 }
 
 html::after {
