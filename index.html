@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="description" content="lorem ipsum">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="02-global/01-css/style-reset.css">
     <link rel="stylesheet" href="01-pages/00-index/00-index.css">
     <link rel="stylesheet" href="02-global/01-css/grid.css">
@@ -22,7 +27,7 @@
                     <li><a href="#">Contatti</a></li>
                 </ul>
             </nav>
-            <button class="button">Accedi</button>
+            <button type="button" class="button">Accedi</button>
             <a href="#"><img src="images/icone/shopping_cart.png" alt="Carrello"></a>
         </div>
     </header>
@@ -31,7 +36,7 @@
             <div class="container">
                 <h1>LA BIRRA ARTIGIANALE <strong>CHE CERCAVI</strong></h1>
                 <p>Produciamo una vasta gamma di birre per qualsiasi gusto e per qualsiasi situazione.</p>
-                <button class="button">VAI ALLO SHOP</button>
+                <button type="button" class="button">VAI ALLO SHOP</button>
             </div>
         </section>
 
@@ -39,7 +44,7 @@
             <div class="container">
                 <h2>Le Birre</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi consequuntur cumque eaque eum facere in nostrum numquam odit ratione, suscipit?</p>
-                <button class="button">SCOPRI LE BIRRE</button>
+                <button type="button" class="button">SCOPRI LE BIRRE</button>
                 <img src="" alt="Birra Riappala 2.0">
             </div>
         </section>
@@ -48,7 +53,7 @@
             <div class="container">
                 <h2>Il Birrificio</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, voluptatibus?</p>
-                <button class="button">VISITA IL BIRRIFICIO</button>
+                <button type="button" class="button">VISITA IL BIRRIFICIO</button>
                 <img src="01-pages/00-index/images/birrificio-599x400.png" alt="Fermentatori del birrificio">
             </div>
         </section>
@@ -69,10 +74,31 @@
         <section class="rivenditori">
             <h2>Sei un rivenditore?</h2>
             <p>Hai un locale o una distribuzione e sei interessato alle nostre birre?</p>
+            <form name="form_rivenditori" action="">
+                <ul>
+                    <li>
+                        <label for="nome e cognome">Nome e Cognome:</label><br>
+                        <input type="text" id="nome e cognome" name="nome e cognome"></li>
+                    <li>
+                        <label for="email">Email:</label><br>
+                        <input type="email" id="email" name="email">
+                    </li>
+                    <li>
+                        <label for="messaggio">Messaggio:</label><br>
+                        <textarea id="messaggio" name="messaggio"></textarea>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="privacy policy" name="privacy policy">
+                        <label for="privacy policy">Accetto le condizioni del sium</label></li>
+                    <li>
+                        <button type="button" class="button">INVIA EMAIL</button>
+                    </li>
+                </ul>
+            </form>
         </section>
 
         <section class="newsletter">
-
+            
         </section>
     </main>
     <footer>

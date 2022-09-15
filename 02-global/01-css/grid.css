@@ -2,7 +2,7 @@
     --columns: 6;
     --margin:8.533333333%;
     --gutter: 6.4%;
-    --lineheight: 24px;
+    --lineheight: 155.55555556%;
 
     --color: rgba(236, 103, 103, 0.1);
     --repeating-width: calc(100% / var(--columns));
@@ -20,10 +20,11 @@
     }
 }
 
-html::after {
+html::before {
     position: absolute;
     content: "";
     width: calc(100% - 2*var(--margin));
+    min-height: 200%;
     margin-left: auto; margin-right: auto;
     opacity: .75;
     top: 0; left: 0; right: 0; bottom:0;
