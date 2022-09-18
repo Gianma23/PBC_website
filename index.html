@@ -9,41 +9,54 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="02-global/01-css/style-reset.css">
-    <link rel="stylesheet" href="01-pages/00-index/00-index.css">
-    <link rel="stylesheet" href="02-global/01-css/grid.css">
+    <link rel="stylesheet" href="global/01-css/style-reset.css">
+
+    <link rel="stylesheet" href="pages/index/index.css">
+
     <title>PBC</title>
 </head>
 <body>
     <header>
         <div class="container">
-            <a href="#"><img src="images/loghi/loghi_pbc/PBC_LOGO.jpg" alt="Piccolo Birrifico Clandestino"></a>
-            <nav class="primary-navigation">
-                <ul role="list">
-                    <li><a href="#">Shop</a></li>
-                    <li><a href="#">Le Birre</a></li>
-                    <li><a href="#">Il Birrificio</a></li>
-                    <li><a href="#">La Taproom</a></li>
-                    <li><a href="#">Contatti</a></li>
-                </ul>
-            </nav>
-            <button type="button" class="button">Accedi</button>
-            <a href="#"><img src="images/icone/shopping_cart.png" alt="Carrello"></a>
+            <div class="nav-wrapper">
+                <a href="#" class="header-logo"><img src="global/02-images/loghi/loghi_pbc/PBC_LOGO.jpg" alt="Piccolo Birrifico Clandestino"></a>
+                <button class="nav-hidden-menu" aria-controls="primary-navigation">
+                    <img class="icon-menu" src="global/02-images/icons/menu.svg" alt="">
+                    <img class="icon-close" src="global/02-images/icons/menu.svg" alt="">
+                    <span class="visually-hidden">Menu</span>
+                </button>
+                <nav class="primary-navigation"  id="primary-navigation">
+                    <ul class="nav-list">
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="birre.html">Le Birre</a></li>
+                        <li><a href="birrificio.html">Il Birrificio</a></li>
+                        <li><a href="taproom.html">La Taproom</a></li>
+                        <li><a href="contatti.html">Contatti</a></li>
+                    </ul>
+                </nav>
+                <div class="nav-utility">
+                    <button type="button" class="button">Accedi</button>
+                    <a href="#"><img src="global/02-images/icons/shopping_cart.png" alt="Carrello"></a>
+                </div>
+            </div>
         </div>
     </header>
     <main>
         <section class="hero">
             <div class="container">
-                <h1>LA BIRRA ARTIGIANALE <strong>CHE CERCAVI</strong></h1>
-                <p>Produciamo una vasta gamma di birre per qualsiasi gusto e per qualsiasi situazione.</p>
+                <h1 class="fs-900">LA BIRRA ARTIGIANALE <br><strong>CHE CERCAVI</strong></h1>
+                <p class="fs-600">Produciamo una vasta gamma di birre per <strong class="fw-bold">qualsiasi gusto</strong> e per <strong class="fw-bold">qualsiasi situazione</strong>.</p>
                 <button type="button" class="button">VAI ALLO SHOP</button>
             </div>
         </section>
 
         <section class="birre">
             <div class="container">
-                <h2>Le Birre</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi consequuntur cumque eaque eum facere in nostrum numquam odit ratione, suscipit?</p>
+                <h2 class="fs-primary-heading fw-bold">La nostra birra</h2>
+                <p>Birre <strong>espressive e di carattere</strong> che vogliono unire la piacevolezza e la facilità di beva alla
+                    <strong>continua ricerca ed innovazione</strong>, legate a doppio filo sia alla realtà territoriale labronica
+                    che alle realtà esterne, che hanno permesso negli anni di collaborare anche con altre realtà
+                    brassicole e ottenere premi e riconoscimenti a livello <strong>nazionale e internazionale</strong>.</p>
                 <button type="button" class="button">SCOPRI LE BIRRE</button>
                 <img src="" alt="Birra Riappala 2.0">
             </div>
@@ -51,50 +64,52 @@
 
         <section class="birrificio">
             <div class="container">
-                <h2>Il Birrificio</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, voluptatibus?</p>
+                <h2 class="fs-primary-heading fw-bold">Il birrificio</h2>
+                <p>Nella nuova sede dove ci siamo da poco trasferiti possiamo vantare un impianto produttivo di
+                    10 hL di doppia cotta, una cantina di 190 hL ed un laboratorio di Controllo Qualità interno,
+                    al fine di elevare il livello della produzione ed ottimizzare le risorse. </p>
+                <img src="pages/index/images/birrificio-599x400.png" alt="Fermentatori del birrificio">
                 <button type="button" class="button">VISITA IL BIRRIFICIO</button>
-                <img src="01-pages/00-index/images/birrificio-599x400.png" alt="Fermentatori del birrificio">
             </div>
         </section>
 
         <section class="taproom">
-            <div class="container">
-                <h2>Provale ora nella nostra Taproom...</h2>
-                <img src="#" alt="Esterno della Taproom in via Cimarosa 37, Livorno">
-            </div>
+            <h2 class="fs-secondary-heading fw-bold">Provale ora nella nostra Taproom...</h2>
+            <img src="global/02-images/taproom/taproom-outside.jpg" alt="Esterno della Taproom in via Cimarosa 37, Livorno">
         </section>
 
         <section class="shop">
             <div class="container">
-
+                <h2 class="fs-secondary-heading fw-bold">...o dove vuoi!</h2>
             </div>
         </section>
 
         <section class="rivenditori">
-            <h2>Sei un rivenditore?</h2>
-            <p>Hai un locale o una distribuzione e sei interessato alle nostre birre?</p>
-            <form name="form_rivenditori" action="">
-                <ul>
-                    <li>
-                        <label for="nome e cognome">Nome e Cognome:</label><br>
-                        <input type="text" id="nome e cognome" name="nome e cognome"></li>
-                    <li>
-                        <label for="email">Email:</label><br>
-                        <input type="email" id="email" name="email">
-                    </li>
-                    <li>
-                        <label for="messaggio">Messaggio:</label><br>
-                        <textarea id="messaggio" name="messaggio"></textarea>
-                    </li>
-                    <li>
-                        <input type="checkbox" id="privacy policy" name="privacy policy">
-                        <label for="privacy policy">Accetto le condizioni del sium</label></li>
-                    <li>
-                        <button type="button" class="button">INVIA EMAIL</button>
-                    </li>
-                </ul>
-            </form>
+            <div class="container">
+                <h2 class="fs-secondary-heading fw-bold">Sei un rivenditore?</h2>
+                <p class="fs-500">Hai un locale o una distribuzione e sei interessato alle nostre birre?</p>
+                <form name="form_rivenditori" action="">
+                    <ul>
+                        <li>
+                            <label for="nome e cognome">Nome e Cognome:</label><br>
+                            <input type="text" id="nome e cognome" name="nome e cognome"></li>
+                        <li>
+                            <label for="email">Email:</label><br>
+                            <input type="email" id="email" name="email">
+                        </li>
+                        <li>
+                            <label for="messaggio">Messaggio:</label><br>
+                            <textarea id="messaggio" name="messaggio"></textarea>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="privacy policy" name="privacy policy">
+                            <label for="privacy policy">Accetto le condizioni del sium</label></li>
+                        <li>
+                            <button type="button" class="button">INVIA EMAIL</button>
+                        </li>
+                    </ul>
+                </form>
+            </div>
         </section>
 
         <section class="newsletter">
@@ -102,7 +117,51 @@
         </section>
     </main>
     <footer>
+        <a href="#" aria-label="home"><img src="#" alt="Piccolo Birrificio Clandestino"></a>
 
+        <p>&copy;2020 Aura SRL</p>
+
+        <ul class="social-list">
+            <li>
+                <a href="#" aria-label="facebook"><img class="social-icon" src="global/02-images/icons/facebook.svg" alt=""></a>
+            </li>
+            <li><a href="#" aria-label="instagram"><img class="social-icon" src="global/02-images/icons/instagram.svg" alt=""></a>
+        </ul>
+
+        <div class="primary-footer-nav">
+            <nav class="footer-nav">
+                <ul>
+                    <li>Su di noi
+                        <ul>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </li>
+                    <li>Aiuto Cliente
+                        <ul>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </li>
+                    <li>Account
+                        <ul>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </li>
+                    <li>Contatti
+                        <ul>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
     </footer>
 </body>
 </html>
