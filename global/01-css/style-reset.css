@@ -301,18 +301,19 @@ header {
     padding: 0.5em;
     font-weight: var(--fw-semibold);
 }
+
 .nav__list__item a:hover,
-.nav__list__item a:active{
+.nav__list__item a:active {
     color: var(--clr-primary-400);
     font-weight: var(--fw-bold);
     transition: 0.15s ease-out;
 }
 .nav__list__item a:hover::before,
-.nav__list__item a:active::before{
+.nav__list__item a:active::before {
     content: '';
     position: absolute;
     left: 0;
-    bottom: -0.5em;
+    bottom: -0.6em;
     border-bottom: solid 3px var(--clr-primary-400);
     animation: border_anim 0.4s ease-out forwards;
 }
@@ -324,6 +325,12 @@ header {
         width: 100%;
     }
 }
+.active a{
+    color: var(--clr-primary-400);
+    font-weight: var(--fw-bold);
+    border-bottom: solid 3px var(--clr-primary-400);
+}
+
 
 .nav__right {
     margin-right: 30px;

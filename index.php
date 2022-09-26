@@ -24,41 +24,11 @@
     <title>Home - Piccolo Birrificio Clandestino</title>
 </head>
 <body>
-    <header>
-            <div class="nav-wrapper">
-                <a class="homepage-link" href="index.html"><img class="header-logo" src="global/02-images/loghi/loghi_pbc/PBC_LOGO.jpg" alt="Piccolo Birrifico Clandestino"></a>
 
-                <nav class="nav" id="nav">
+    <?php
+        include "global/html/header.php";
+    ?>
 
-                    <ul class="nav__list" id="main-navigation" tabindex="-1" aria-label="main-navigation" hidden>
-                        <li class="nav__list__item"><a href="shop.html">Shop</a></li>
-                        <li class="nav__list__item"><a href="birre.html">Le Birre</a></li>
-                        <li class="nav__list__item"><a href="birrificio.html">Il Birrificio</a></li>
-                        <li class="nav__list__item"><a href="taproom.html">La Taproom</a></li>
-                        <li class="nav__list__item"><a href="contatti.html">Contatti</a></li>
-                    </ul>
-
-                    <a href="#nav" class="nav__toggle" role="button" aria-expanded="false" aria-controls="main-navigation">
-                        <svg class="icon-menu" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 24" width="32" height="24">
-                            <title>Toggle Menu</title>
-                                <rect width="32" height="8"></rect>
-                                <rect y="16" width="32" height="8"></rect>
-                        </svg>
-                    </a>
-
-                    <div class="nav__overlay">
-                        <svg xmlns="http://www.w3.org/2000/svg" id="visual" viewBox="0 0 960 540" width="960" height="540">
-                            <path d="M0 328L26.7 334.8C53.3 341.7 106.7 355.3 160 336.5C213.3 317.7 266.7 266.3 320 234.5C373.3 202.7 426.7 190.3 480 211.8C533.3 233.3 586.7 288.7 640 294.2C693.3 299.7 746.7 255.3 800 241.5C853.3 227.7 906.7 244.3 933.3 252.7L960 261L960 541L933.3 541C906.7 541 853.3 541 800 541C746.7 541 693.3 541 640 541C586.7 541 533.3 541 480 541C426.7 541 373.3 541 320 541C266.7 541 213.3 541 160 541C106.7 541 53.3 541 26.7 541L0 541Z" fill="#0066FF" stroke-linecap="round" stroke-linejoin="miter"/>
-                        </svg>
-                    </div>
-                </nav>
-
-                <div class="nav__right">
-                    <button class="button button--login" type="button">Accedi</button>
-                    <a href="#"><img class="shopping-cart" src="global/02-images/icons/shopping_cart.png" alt="Carrello"></a>
-                </div>
-            </div>
-    </header>
     <main>
         <section class="hero">
             <div class="container">
@@ -88,8 +58,8 @@
                 <div class="tile-section__content">
                     <h2 class="fs-primary-heading fw-bold">Il birrificio</h2>
                     <p>Nella nuova sede dove ci siamo da poco trasferiti possiamo vantare un impianto produttivo di
-                        10 hL di doppia cotta, una cantina di 190 hL ed un laboratorio di Controllo Qualità interno,
-                        al fine di elevare il livello della produzione ed ottimizzare le risorse. </p>
+                        10 hL di doppia cotta, una cantina di 190 hL e un laboratorio di Controllo Qualità interno,
+                        al fine di elevare il livello della produzione e ottimizzare le risorse. </p>
                     <button type="button" class="button">VISITA IL BIRRIFICIO</button>
                 </div>
             </div>
@@ -136,57 +106,12 @@
         </section>
 
         <section class="newsletter">
-            
+
         </section>
     </main>
-    <footer>
-        <div class="container">
-            <a href="#" aria-label="home"><img class="footer-logo" src="global/02-images/loghi/loghi_pbc/PBC_LOGO.jpg" alt="Piccolo Birrificio Clandestino"></a>
 
-            <p>&copy;2020 Aura SRL</p>
-
-            <ul class="social-list">
-                <li>
-                    <a href="#" aria-label="facebook"><img class="social-icon" src="global/02-images/icons/facebook.svg" alt=""></a>
-                </li>
-                <li><a href="#" aria-label="instagram"><img class="social-icon" src="global/02-images/icons/instagram.svg" alt=""></a>
-            </ul>
-
-            <div class="primary-footer-nav">
-                <nav class="footer-nav">
-                    <ul>
-                        <li>Su di noi
-                            <ul>
-                                <li></li>
-                                <li></li>
-                                <li></li>
-                            </ul>
-                        </li>
-                        <li>Aiuto Cliente
-                            <ul>
-                                <li></li>
-                                <li></li>
-                                <li></li>
-                            </ul>
-                        </li>
-                        <li>Account
-                            <ul>
-                                <li></li>
-                                <li></li>
-                                <li></li>
-                            </ul>
-                        </li>
-                        <li>Contatti
-                            <ul>
-                                <li></li>
-                                <li></li>
-                                <li></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </footer>
+    <?php
+    include "global/html/footer.php";
+    ?>
 </body>
 </html>
