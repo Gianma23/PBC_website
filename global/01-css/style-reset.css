@@ -109,6 +109,7 @@ html:focus-within {
 
 html {
     height: 100%;
+    position: relative;
 }
 
 body {
@@ -160,8 +161,16 @@ a:not([class]) {
 .fs-900 {font-size: var(--fs-900)}
 .fs-1000 {font-size: var(--fs-1000)}
 
-.fs-primary-heading {font-size: var(--fs-primary-heading)}
-.fs-secondary-heading {font-size: var(--fs-secondary-heading)}
+.primary-heading {
+    font-size: var(--fs-primary-heading);
+    font-weight: var(--fw-bold);
+    line-height: var(--lineheight-3);
+}
+.secondary-heading {
+    font-size: var(--fs-secondary-heading);
+    font-weight: var(--fw-bold);
+    line-height: var(--lineheight-2);
+}
 
 .visually-hidden {
     position: absolute;
@@ -177,7 +186,6 @@ a:not([class]) {
 .container {
     width: min(var(--max-width), 100% - var(--margin)*2);
     margin: 0 auto;
-    position: relative;
 }
 .even-column {
     display: grid;
@@ -191,7 +199,7 @@ body {
     text-align: center;
 }
 main {
-    background-image: url("/global/02-images/background/background-tiles-light.png");
+    background-image: url("../../global/02-images/background/background-tiles-light.png");
     background-repeat: repeat;
 }
 @media (min-width: 55em) {
@@ -200,7 +208,6 @@ main {
 strong {
     font-weight: var(--fw-bold);
 }
-
 
 /* Buttons */
 .button {
@@ -325,13 +332,19 @@ header {
         width: 100%;
     }
 }
+
+/* Link of current page */
 .active a{
     color: var(--clr-primary-400);
     font-weight: var(--fw-bold);
     border-bottom: solid 3px var(--clr-primary-400);
 }
+.active a:hover::before,
+.active a:active::before {
+    animation: none;
+}
 
-
+/* Navigation on the Right */
 .nav__right {
     margin-right: 30px;
     gap: 1.5em;
@@ -432,6 +445,9 @@ header {
 
 }
 
+.newsletter {
+    background-color: var(--clr-primary-300);
+}
 footer {
     background-color: var(--clr-neutral-800);
 }

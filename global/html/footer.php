@@ -1,3 +1,22 @@
+    <section class="newsletter">
+        <div class="container">
+            <h3 class="secondary-heading">Resta aggiornato</h3>
+            <p class="fs-500">Iscriviti alla nostra Newsletter per ricevere
+                promozioni, articoli, consigli e molto altro!</p>
+            <form action="">
+                <ul>
+                    <li>
+                        <label for="email">Email:</label><br>
+                        <input type="email" id="email" name="email">
+                    </li>
+                    <li>
+                        <button type="button" class="button button--secondary">ISCRIVITI</button>
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </section>
+</main>
 <footer>
     <div class="container">
         <a href="#" aria-label="home"><img class="footer-logo" src="global/02-images/loghi/loghi_pbc/PBC_LOGO.jpg" alt="Piccolo Birrificio Clandestino"></a>

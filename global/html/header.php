@@ -5,10 +5,10 @@
         <nav class="nav" id="nav">
 
             <ul class="nav__list" id="main-navigation" tabindex="-1" aria-label="main-navigation" hidden>
-                <li class="nav__list__item"><a href="shop.php">Shop</a></li>
-                <li class="nav__list__item"><a href="birre.php">Le Birre</a></li>
-                <li class="nav__list__item"><a href="birrificio.php">Il Birrificio</a></li>
-                <li class="nav__list__item"><a href="taproom.php">La Taproom</a></li>
+                <li class="nav__list__item <?php if(basename($_SERVER['PHP_SELF']) == 'shop.php') { echo "active"; } ?>"><a href="shop.php">Shop</a></li>
+                <li class="nav__list__item <?php if(basename($_SERVER['PHP_SELF']) == 'birre.php') { echo "active"; } ?>"><a href="birre.php">Le Birre</a></li>
+                <li class="nav__list__item <?php if(basename($_SERVER['PHP_SELF']) == 'birrificio.php') { echo "active"; } ?>"><a href="birrificio.php">Il Birrificio</a></li>
+                <li class="nav__list__item <?php if(basename($_SERVER['PHP_SELF']) == 'taproom.php') { echo "active"; } ?>"><a href="taproom.php">La Taproom</a></li>
                 <li class="nav__list__item <?php if(basename($_SERVER['PHP_SELF']) == 'contatti.php') { echo "active"; } ?>"><a href="contatti.php">Contatti</a></li>
             </ul>
 
