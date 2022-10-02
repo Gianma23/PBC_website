@@ -15,4 +15,4 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="global/01-css/style-reset.css">
-<link rel="stylesheet" href="global/01-css/grid.css">
+<link rel="stylesheet" href="global/01-css/gsrid.css">

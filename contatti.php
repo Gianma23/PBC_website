@@ -109,8 +109,8 @@
             </div>
         </div>
     </main>
-    <footer>
-
-    </footer>
+    <?php
+        include "global/html/footer.php";
+    ?>
 </body>
 </html>

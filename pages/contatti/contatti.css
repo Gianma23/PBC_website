@@ -67,6 +67,7 @@ address {
 .container-form {
     padding: 0 0 2em calc(var(--gutter)*2);
     position: relative;
+    z-index: -99;
 }
 .container-form--clienti {
     background-color: var(--clr-primary-400);
@@ -77,6 +78,7 @@ address {
     background-color: var(--clr-neutral-800);
     box-shadow: 0 0 0 100vmax var(--clr-neutral-800);
     clip-path: inset(0 -50vmax -100vmax 0);
+
 }
 form {
     margin-top: var(--lineheight);
