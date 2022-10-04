@@ -1,117 +1,125 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="description" content="lorem ipsum">
-    <!-- favicon list made with RealFaviconGenerator.net -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/global/02-images/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/global/02-images/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/global/02-images/favicon/favicon-16x16.png">
-    <link rel="manifest" href="/global/02-images/favicon/manifest.json">
-    <link rel="mask-icon" href="/global/02-images/favicon/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-config" content="/global/02-images/favicon/browserconfig.xml">
-    <meta name="theme-color" content="#ffffff">
+    <?php include "global/html/head.php"; ?>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="global/01-css/style-reset.css">
-    <link rel="stylesheet" href="global/01-css/grid.css">
-    <link rel="stylesheet" href="pages/index/birrificio.css">
-
-    <title>Home - Piccolo Birrificio Clandestino</title>
+    <title>Birrificio - Piccolo Birrificio Clandestino</title>
 </head>
 <body>
 
-    <?php
-        include "global/html/header.php";
-    ?>
+    <?php include "global/html/header.php"; ?>
 
     <main>
         <section class="hero">
             <div class="container">
-                <h1 class="hero__title">LA BIRRA ARTIGIANALE <br><strong>CHE CERCAVI</strong></h1>
-                <p class="fs-600">Produciamo una vasta gamma di birre per <strong class="fw-bold">qualsiasi gusto</strong> e per <strong class="fw-bold">qualsiasi situazione</strong>.</p>
-                <button type="button" class="button">VAI ALLO SHOP</button>
-            </div>
-        </section>
-
-        <section class="birre">
-            <div class="container tile-section">
-                <div class="tile-section__content">
-                    <h2 class="fs-primary-heading fw-bold">La nostra birra</h2>
-                    <p>Birre <strong>espressive e di carattere</strong> che vogliono unire la piacevolezza e la facilità di beva alla
-                        <strong>continua ricerca ed innovazione</strong>, legate a doppio filo sia alla realtà territoriale labronica
-                        che alle realtà esterne, che hanno permesso negli anni di collaborare anche con altre realtà
-                        brassicole e ottenere premi e riconoscimenti a livello <strong>nazionale e internazionale</strong>.</p>
-                    <button type="button" class="button">SCOPRI LE BIRRE</button>
+                <div class="heading-subheading">
+                    <h1 class="hero__title fw-bold">Il Birrificio</h1>
+                    <h2 class="subheading">Quarta sede in 10 anni</h2>
                 </div>
-                <img src="" alt="Birra Riappala 2.0">
+
+                <ul class="novita-list">
+                    <li class="novita-list__item"><strong>190 hL</strong> di cantina</li>
+                    <li class="novita-list__item"><strong>10 hL</strong> di doppia cotta</li>
+                    <li class="novita-list__item"><strong>2000 hL</strong> prodotti nel <strong>2019</strong></li>
+                    <li class="novita-list__item"><strong>Laboratorio</strong> di controllo qualità</li>
+                </ul>
+
+                <ul class="image-show">
+                    <li class="image-show__item"><img src="" alt=""></li>
+                    <li class="image-show__item"><img src="" alt=""></li>
+                    <li class="image-show__item"><img src="" alt=""></li>
+                    <li class="image-show__item"><img src="" alt=""></li>
+                    <li class="image-show__item"><img src="" alt=""></li>
+                </ul>
+
+                <button type="button" class="button">VISITA IL BIRRIFICIO</button>
+                <p>Nella nostra nuova sede produciamo birre di carattere ed espressive,
+                    unendo la realtà labronica con altre realtà esterne. Produciamo sia una linea di
+                    birre continuative, per appagare tutto l’anno la sete dei nostri clienti, sia linee
+                    a edizione limitata, come le ‘one shot’, le stagionali e le birre nate da collaborazioni.</p>
             </div>
         </section>
 
-        <section class="birrificio">
+        <section class="visite">
             <div class="container tile-section">
-                <img src="pages/index/images/birrificio-599x400.png" alt="Fermentatori del birrificio">
-                <div class="tile-section__content">
-                    <h2 class="fs-primary-heading fw-bold">Il birrificio</h2>
-                    <p>Nella nuova sede dove ci siamo da poco trasferiti possiamo vantare un impianto produttivo di
-                        10 hL di doppia cotta, una cantina di 190 hL e un laboratorio di Controllo Qualità interno,
-                        al fine di elevare il livello della produzione e ottimizzare le risorse. </p>
-                    <button type="button" class="button">VISITA IL BIRRIFICIO</button>
-                </div>
+                <h2 class="primary-heading">Vieni a trovarci</h2>
+
+                <article class="tile-section__item tile-section__item--deg-visita">
+                    <div class="tile-section__item__content">
+                        <h3>Degustazione e Visita</h3>
+                        <p><strong class="prezzo">Prezzo: 40&euro;</strong><br>
+                            Degustazione di 4 birre da 0.28 cL l’una, in abbinamento al nostro tagliere di formaggi
+                            e salumi selezionati – o in alternativa solo salumi/formaggi – in più una visita guidata
+                            completa del birrificio con spiegazione del processo produttivo. <strong>Durata: circa 45 minuti.</strong></p>
+                        <button type="button" class="button button--shop">AGGIUNGI</button>
+                    </div>
+                    <img class="tile-section__item__img" src="global/02-images/birrificio/corso-768x513.jpg" alt="Due persone che spiegano ad un corso di degustazione">
+                </article>
+
+                <article class="tile-section__item tile-section__item--degusta">
+                    <div class="tile-section__item__content">
+                        <h3>Degustazione</h3>
+                        <p><strong class="prezzo">Prezzo: 20&euro;</strong><br>
+                            Degustazione di 4 birre da 0.28 cL l’una, in abbinamento al nostro tagliere di
+                            formaggi e salumi selezionati (in alternativa solo salumi oppure formaggi).</p>
+                        <button type="button" class="button button--shop">AGGIUNGI</button>
+                    </div>
+                    <img class="tile-section__item__img" src="global/02-images/birrificio/botti-mastro-600x401.png" alt="Botti contenenti la birra mastro ciliegia">
+                </article>
+
             </div>
         </section>
 
-        <section class="taproom">
-            <h2 class="fs-secondary-heading fw-bold">Provale ora nella nostra Taproom...</h2>
-            <img src="global/02-images/taproom/taproom-outside.jpg" alt="Esterno della Taproom in via Cimarosa 37, Livorno">
-        </section>
-
-        <section class="shop">
-            <div class="container">
-                <h2 class="fs-secondary-heading fw-bold">...o dove vuoi!</h2>
+        <section class="premi">
+            <div class="container tile-section">
+                <h2 class="primary-heading">I nostri premi</h2>
+                <ul class="premi-list">
+                    <li class="premi-list__item">
+                        <p>Fusto Slow Food Guida alle birre d'Italia 2019<br>
+                            <span class="parenthesis">(elevata qualità su tutta la produzione, soprattutto con le birre di grande beva)</span></p>
+                    </li>
+                    <li class="premi-list__item">
+                        <p>Bottiglia Slow Food Guida alle birre d’Italia 2017<br>
+                            <span class="parenthesis">(alta qualità media della produzione in bottiglia)</span></p>
+                    </li>
+                    <li class="premi-list__item">
+                        <p>Bottiglia Slow Food Guida alle birre d’Italia 2015<br>
+                            <span class="parenthesis">(alta qualità media della produzione in bottiglia)</span></p>
+                    </li>
+                </ul>
             </div>
         </section>
 
-        <section class="rivenditori">
-            <div class="container">
-                <h2 class="fs-secondary-heading fw-bold">Sei un rivenditore?</h2>
-                <p class="fs-500">Hai un locale o una distribuzione e sei interessato alle nostre birre?</p>
-                <form name="form-rivenditori" action="">
-                    <ul class="form-rivenditori">
-                        <li class="form-rivenditori__nome-cognome">
-                            <label for="nome-cognome">Nome e Cognome:</label><br>
-                            <input type="text" id="nome-cognome" name="nome cognome">
-                        </li>
-                        <li class="form-rivenditori__email">
-                            <label for="email">Email:</label><br>
-                            <input type="email" id="email" name="email">
-                        </li>
-                        <li class="form-rivenditori__messaggio">
-                            <label for="messaggio">Messaggio:</label><br>
-                            <textarea id="messaggio" name="messaggio" ></textarea>
-                        </li>
-                        <li class="form-rivenditori__privacy-policy">
-                            <input type="checkbox" id="privacy-policy" name="privacy policy">
-                            <label for="privacy-policy">Accetto le condizioni del sium</label></li>
-                        <li class="form-rivenditori__button">
-                            <button type="button" class="button">INVIA EMAIL</button>
-                        </li>
-                    </ul>
-                </form>
+        <section class="collab-progetti">
+            <div class="container tile-section">
+                <h2 class="primary-heading">Collaborazioni e progetti</h2>
+
+                <article class="tile-section__item tile-section__item--scuole">
+                    <div class="tile-section__scuole__content">
+                        <h3>Scuole ed Università</h3>
+                        <p><strong class="prezzo">Prezzo: 40&euro;</strong><br>
+                            Degustazione di 4 birre da 0.28 cL l’una, in abbinamento al nostro tagliere di formaggi
+                            e salumi selezionati – o in alternativa solo salumi/formaggi – in più una visita guidata
+                            completa del birrificio con spiegazione del processo produttivo. <strong>Durata: circa 45 minuti.</strong></p>
+                        <button type="button" class="button button--shop">AGGIUNGI</button>
+                    </div>
+                    <img class="tile-section__deg-visita__img" src="" alt="Due persone che spiegano ad un corso di degustazione">
+                </article>
+
+                <article class="tile-section__item tile-section__item--degusta">
+                    <div class="tile-section__degusta__content">
+                        <h3>Degustazione</h3>
+                        <p><strong class="prezzo">Prezzo: 20&euro;</strong><br>
+                            Degustazione di 4 birre da 0.28 cL l’una, in abbinamento al nostro tagliere di
+                            formaggi e salumi selezionati (in alternativa solo salumi oppure formaggi).</p>
+                        <button type="button" class="button button--shop">AGGIUNGI</button>
+                    </div>
+                    <img class="tile-section__degusta__img" src="" alt="Processo di imbottigliamento">
+                </article>
+
             </div>
         </section>
 
-        <section class="newsletter">
-
-        </section>
-    </main>
-
-    <?php
-    include "global/html/footer.php";
-    ?>
+    <?php include "global/html/footer.php"; ?>
 </body>
 </html>

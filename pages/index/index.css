@@ -1,28 +1,17 @@
-.hero {
-    background-color: var(--clr-neutral-800);
-    background-image: url("../../global/02-images/background/background-tiles-dark.png");
-    background-repeat: repeat;
-    color: var(--clr-neutral-100);
-    min-height: calc(100vh - var(--lineheight-4));
-    display: flex;
-    flex-direction: column;
-}
-
 .hero__title{
     font-size: var(--fs-900);
     line-height: var(--lineheight-2);
-    margin-top: 8vh;
+    padding-top: var(--lineheight-3);
 }
 .hero p{
-    margin: 4vh 0 0;
+    font-size: var(--fs-600);
+    margin: var(--lineheight-2) 0 0;
     line-height: var(--lineheight-2);
 }
 .hero .button {
-    margin-top: 10vh;
+    margin-top: var(--lineheight-3);
     margin-bottom: var(--lineheight);
 }
-
-
 /* UNDER THE FOLD*/
 .tile-section {
     display: grid;
@@ -104,17 +93,13 @@
 
 /* Large Screen */
 @media screen and (min-width: 55em) {
-    .hero {
-        height: calc(100vh - var(--lineheight-3));
-    }
-    .hero__title{
+    .hero__title {
         font-size: var(--fs-1000);
         line-height: 112px;
     }
-    .hero p{
+    .hero p {
         width: var(--column-width-7);
     }
-
     /* UNDER THE FOLD*/
     .tile-section,
     .taproom {

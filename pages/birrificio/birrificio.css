@@ -1,0 +1,128 @@
+.hero .container {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    row-gap: var(--lineheight);
+}
+.hero__title {
+    font-size: var(--fs-900);
+    margin-top: var(--lineheight-2);
+}
+.subheading {
+    font-size: var(--fs-800);
+    line-height: var(--lineheight-2);
+    color: var(--clr-primary-400);
+}
+.novita-list__item {
+    font-size: var(--fs-600);
+    line-height: var(--lineheight-2);
+}
+.novita-list__item strong {
+    font-weight: var(--fw-bold);
+}
+.hero .button {
+    margin-bottom: var(--lineheight);
+}
+
+@media screen and (min-width: 55em) {
+    .hero .container {
+        display: grid;
+        grid-template-rows: auto auto auto;
+        grid-template-columns: var(--column-width-7) auto;
+
+        justify-items: start;
+    }
+    .image-show {
+        grid-column: 2 / 3;
+        grid-row: 1 / 5;
+    }
+    .hero p {
+
+    }
+}
+
+/* UNDER THE FOLD */
+/* Visite e Degustazioni */
+.tile-section {
+    margin-top: var(--lineheight-3);
+}
+.tile-section h2 {
+    text-align: center;
+    line-height: var(--lineheight-3);
+}
+.tile-section h3 {
+    font-weight: bold;
+    font-size: var(--fs-700);
+    line-height: var(--lineheight-2);
+}
+.tile-section__item {
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: var(--gutter);
+    align-items: center;
+
+    margin-top: var(--lineheight-2);
+}
+.tile-section__item__content p {
+    margin-top: var(--lineheight);
+}
+.tile-section__item__content button{
+    margin-top: var(--lineheight);
+    height: var(--lineheight-2);
+}
+.prezzo {
+    font-weight: var(--fw-semibold);
+    font-size: var(--fs-600);
+    line-height: var(--lineheight);
+}
+.tile-section__item__img {
+    width: 100%;
+}
+
+/* Premi */
+.premi-list {
+    text-align: center;
+    font-weight: bold;
+    font-size: var(--fs-500);
+    margin-top: var(--lineheight);
+
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--lineheight-2);
+    column-gap: var(--gutter);
+}
+.parenthesis {
+    font-weight: var(--fw-regular);
+    font-size: var(--fs-400);
+}
+
+@media screen and (min-width: 55em) {
+    /* Visite e Degustazioni */
+    .tile-section__item {
+        grid-template-columns: 1fr 1fr;
+    }
+    .tile-section__item--degusta img {
+        grid-row: 1 / 2;
+    }
+
+    /* Visite e Degustazioni */
+    .premi-list {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    .premi-list__item:nth-child(1) {
+        flex-basis: 100%;
+    }
+}
+
+/* Stretch paragraphs */
+@media screen and (min-width: 92em){
+    .hero p{
+        width: var(--column-width-5);
+    }
+    .tile-section__item__content p {
+        width: calc(var(--column-width-5)*2);
+    }
+}

@@ -1,18 +1,13 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <?php
-       include "global/html/head.php";
-    ?>
-    <link rel="stylesheet" href="pages/contatti/contatti.css">
+    <?php include "global/html/head.php"; ?>
 
     <title>Contatti - Piccolo Birrificio Clandestino</title>
 </head>
 <body>
 
-    <?php
-        include "global/html/header.php";
-    ?>
+    <?php include "global/html/header.php"; ?>
 
     <main>
         <div class="container">
@@ -109,8 +104,6 @@
             </div>
         </div>
     </main>
-    <?php
-        include "global/html/footer.php";
-    ?>
+    <?php include "global/html/footer.php"; ?>
 </body>
 </html>

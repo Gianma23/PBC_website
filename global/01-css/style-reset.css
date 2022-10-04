@@ -15,7 +15,7 @@
     --columns: 6;
     --margin: 8.533333333%;
     --gutter: 7.717041801%;
-    --max-width: 2000px;
+    --max-width: 1800px;
 
     --column-width: 10.28938907%;
     --column-width-2: calc(var(--column-width)*2 + var(--gutter));
@@ -82,7 +82,7 @@
         --fs-1000: 5.610448889rem;
 
         /* Sizes for margins, paddings... */
-        --lineheight: 1.55555556rem; /*28px for 18px font*/
+        --lineheight: 1.555555556rem; /*28px for 18px font*/
     }
 }
 
@@ -208,7 +208,23 @@ main {
 strong {
     font-weight: var(--fw-bold);
 }
+h1 {
+    line-height: var(--lineheight-3);
+}
 
+/* Hero Section */
+.hero {
+    background-color: var(--clr-neutral-800);
+    background-image: url("../../global/02-images/background/background-tiles-dark.png");
+    background-repeat: repeat;
+    color: var(--clr-neutral-100);
+    min-height: calc(100vh - var(--lineheight-4));
+}
+@media screen and (min-width: 55em) {
+    .hero {
+        min-height: calc(100vh - var(--lineheight-3));
+    }
+}
 /* Buttons */
 .button {
     cursor: pointer;
@@ -216,7 +232,7 @@ strong {
     border: 0;
     border-radius: 6px;
     padding: 0 24px;
-    min-width: calc(var(--column-width)*2 + var(--gutter));
+    min-width: var(--column-width-2);
     height: 4em;
     font-size: var(--fs-button);
     font-weight: var(--fw-bold);
@@ -256,7 +272,8 @@ textarea {
     background-color: var(--clr-neutral-100);
 }
 input {
-    height: 2rem;
+    height: 2.5rem;
+    margin-bottom: var(--lineheight);
 }
 textarea {
     resize: none;
@@ -302,14 +319,26 @@ header {
     position : relative;
 }
 .nav__list__item a{
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+
     color: inherit;
-    text-decoration: inherit;
-    cursor: pointer;
-
-    padding: 0.5em;
+    text-decoration: none;
     font-weight: var(--fw-semibold);
+    cursor: pointer;
+    padding: 0.5em;
 }
+.nav__list__item a::after {
 
+    content: attr(data-text);
+    height: 0;
+    visibility: hidden;
+    overflow: hidden;
+    pointer-events: none;
+    font-weight: var(--fw-bold);
+
+}
 .nav__list__item a:hover,
 .nav__list__item a:active {
     color: var(--clr-primary-400);
@@ -321,7 +350,7 @@ header {
     content: '';
     position: absolute;
     left: 0;
-    bottom: -0.6em;
+    bottom: -1.5px;
     border-bottom: solid 3px var(--clr-primary-400);
     animation: border_anim 0.4s ease-out forwards;
 }
@@ -416,7 +445,7 @@ header {
         transition: transform .5s cubic-bezier(0.755, 0.050, 0.855, 0.060);
         will-change: transform;
     }
-    .av__overlay::after {
+    .nav__overlay::after {
         content:"";
         display:block;
         position:absolute;
@@ -446,7 +475,11 @@ header {
 
 }
 
+/* NEWSLETTER */
 .newsletter {
+    text-align: center;
+    position: relative;
+    z-index: 10;
     background-color: var(--clr-primary-300);
     margin-top: var(--lineheight-4);
 }
@@ -460,7 +493,9 @@ header {
 .newsletter form {
     grid-column: 1 / 2;
     grid-row: 3 / 4;
-
+}
+.email {
+    width: var(--column-width-4);
 }
 @media screen and (min-width: 55em) {
     .newsletter .container {
@@ -471,9 +506,15 @@ header {
         grid-row: 1 / 3;
         grid-column: 2 / 3;
     }
+    .email {
+        width: calc(var(--column-width-4)*2.05);
+    }
 }
+
 /* FOOTER */
 footer {
+    position: relative;
+    z-index: 10;
     background-color: var(--clr-neutral-800);
     padding-top: var(--lineheight);
 }
@@ -490,7 +531,7 @@ footer .container {
 .footer__left {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
     gap: var(--gutter);
 
     font-size: var(--fs-300);
@@ -500,7 +541,7 @@ footer .container {
     flex-grow: 1;
 }
 .footer-logo {
-    width: calc(var(--column-width-2) / 0.235);
+    width: 100%;
     height: auto;
 }
 .social-list {
@@ -510,7 +551,7 @@ footer .container {
     gap: 21px;
 }
 .social-icon {
-    width: 32px;
+    width: 40px;
 }
 
 /* footer nav */
@@ -544,8 +585,12 @@ footer .container {
     }
     .footer__left {
         flex-direction: column;
+        justify-content: start;
     }
-
+    .footer__left > *{
+        flex-basis: 0;
+        flex-grow: 0;
+    }
     .footer-nav {
         justify-content: flex-start;
     }

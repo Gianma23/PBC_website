@@ -1,24 +1,19 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <?php
-        include "global/html/head.php";
-    ?>
-    <link rel="stylesheet" href="pages/index/index.css">
+    <?php include "global/html/head.php"; ?>
 
     <title>Home - Piccolo Birrificio Clandestino</title>
 </head>
 <body>
 
-    <?php
-        include "global/html/header.php";
-    ?>
+    <?php include "global/html/header.php"; ?>
 
     <main>
         <section class="hero">
             <div class="container">
                 <h1 class="hero__title">LA BIRRA ARTIGIANALE <br><strong>CHE CERCAVI</strong></h1>
-                <p class="fs-600">Produciamo una vasta gamma di birre per <strong class="fw-bold">qualsiasi gusto</strong> e per <strong class="fw-bold">qualsiasi situazione</strong>.</p>
+                <p>Produciamo una vasta gamma di birre per <strong class="fw-bold">qualsiasi gusto</strong> e per <strong class="fw-bold">qualsiasi situazione</strong>.</p>
                 <button type="button" class="button">VAI ALLO SHOP</button>
             </div>
         </section>
@@ -26,7 +21,7 @@
         <section class="birre">
             <div class="container tile-section">
                 <div class="tile-section__birre">
-                    <h2 class="primary-heading fw-bold">La nostra birra</h2>
+                    <h2 class="primary-heading">La nostra birra</h2>
                     <p>Birre <strong>espressive e di carattere</strong> che vogliono unire la piacevolezza e la facilità di beva alla
                         <strong>continua ricerca ed innovazione</strong>, legate a doppio filo sia alla realtà territoriale labronica
                         che alle realtà esterne, che hanno permesso negli anni di collaborare anche con altre realtà
@@ -94,8 +89,6 @@
             </div>
         </section>
 
-    <?php
-    include "global/html/footer.php";
-    ?>
+    <?php include "global/html/footer.php"; ?>
 </body>
 </html>

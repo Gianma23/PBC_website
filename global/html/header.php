@@ -5,11 +5,11 @@
         <nav class="nav" id="nav">
 
             <ul class="nav__list" id="main-navigation" tabindex="-1" aria-label="main-navigation" hidden>
-                <li class="nav__list__item <?php if(basename($_SERVER['PHP_SELF']) == 'shop.php') { echo "active"; } ?>"><a href="shop.php">Shop</a></li>
-                <li class="nav__list__item <?php if(basename($_SERVER['PHP_SELF']) == 'birre.php') { echo "active"; } ?>"><a href="birre.php">Le Birre</a></li>
-                <li class="nav__list__item <?php if(basename($_SERVER['PHP_SELF']) == 'birrificio.php') { echo "active"; } ?>"><a href="birrificio.php">Il Birrificio</a></li>
-                <li class="nav__list__item <?php if(basename($_SERVER['PHP_SELF']) == 'taproom.php') { echo "active"; } ?>"><a href="taproom.php">La Taproom</a></li>
-                <li class="nav__list__item <?php if(basename($_SERVER['PHP_SELF']) == 'contatti.php') { echo "active"; } ?>"><a href="contatti.php">Contatti</a></li>
+                <li class="nav__list__item <?php if(basename($_SERVER['PHP_SELF']) == 'shop.php') { echo "active"; } ?>"><a data-text="Shop" href="shop.php">Shop</a></li>
+                <li class="nav__list__item <?php if(basename($_SERVER['PHP_SELF']) == 'birre.php') { echo "active"; } ?>"><a data-text="Le Birre" href="birre.php">Le Birre</a></li>
+                <li class="nav__list__item <?php if(basename($_SERVER['PHP_SELF']) == 'birrificio.php') { echo "active"; } ?>"><a data-text="Il Birrificio" href="birrificio.php">Il Birrificio</a></li>
+                <li class="nav__list__item <?php if(basename($_SERVER['PHP_SELF']) == 'taproom.php') { echo "active"; } ?>"><a data-text="La Taproom" href="taproom.php">La Taproom</a></li>
+                <li class="nav__list__item <?php if(basename($_SERVER['PHP_SELF']) == 'contatti.php') { echo "active"; } ?>"><a data-text="Contatti" href="contatti.php">Contatti</a></li>
             </ul>
 
             <a href="#nav" class="nav__toggle" role="button" aria-expanded="false" aria-controls="main-navigation">

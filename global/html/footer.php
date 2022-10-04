@@ -7,7 +7,7 @@
                 <ul>
                     <li>
                         <label for="email">Email:</label><br>
-                        <input type="email" id="email" name="email">
+                        <input class="email" type="email" id="email" name="email">
                     </li>
                     <li>
                         <button type="button" class="button button--secondary">ISCRIVITI</button>
@@ -22,7 +22,7 @@
         <div class="footer__left">
             <div class="copyright">
                 <a href="#" aria-label="home"><img class="footer-logo" src="global/02-images/loghi/loghi_pbc/PBC_LOGO.jpg" alt="Piccolo Birrificio Clandestino"></a>
-                <p>&copy;2020 Aura SRL</p>
+                <p>&copy;2022 Aura SRL</p>
             </div>
             <ul class="social-list">
                 <li>
@@ -68,7 +68,7 @@
             </ul>
         </nav>
         <div class="legal">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt, similique.</p>
+            <p>P.I./C.F. 01665150494 - R.E.A. UD-206662 - Capitale Sociale € 90.000 i.v.</p>
         </div>
     </div>
 </footer>

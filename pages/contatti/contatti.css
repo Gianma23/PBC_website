@@ -67,7 +67,7 @@ address {
 .container-form {
     padding: 0 0 2em calc(var(--gutter)*2);
     position: relative;
-    z-index: -99;
+    z-index: 0;
 }
 .container-form--clienti {
     background-color: var(--clr-primary-400);
