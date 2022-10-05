@@ -78,7 +78,7 @@
                             <label for="messaggio">Messaggio:</label><br>
                             <textarea id="messaggio" name="messaggio" ></textarea>
                         </li>
-                        <li class="form-rivenditori__privacy-policy">
+                        <li class="form-rivenditori__privacy-policy checkbox-container">
                             <input type="checkbox" id="privacy-policy" name="privacy policy">
                             <label for="privacy-policy">Accetto le condizioni del sium</label></li>
                         <li class="form-rivenditori__button">
@@ -88,7 +88,7 @@
                 </form>
             </div>
         </section>
-
+    </main>
     <?php include "global/html/footer.php"; ?>
 </body>
 </html>

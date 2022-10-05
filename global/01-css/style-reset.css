@@ -237,6 +237,7 @@ h1 {
     font-size: var(--fs-button);
     font-weight: var(--fw-bold);
     background-color: var(--clr-primary-400);
+    transition: background-color linear 0.2s;
 }
 .button:hover {
     background-color: var(--clr-primary-200);
@@ -262,6 +263,9 @@ h1 {
 }
 
 /* Forms */
+form li {
+    margin-top: var(--lineheight);
+}
 label {
     font-weight: var(--fw-semibold);
 }
@@ -271,12 +275,16 @@ textarea {
     border-radius: 6px;
     background-color: var(--clr-neutral-100);
 }
-input {
+input:not([type=checkbox]) {
     height: 2.5rem;
-    margin-bottom: var(--lineheight);
 }
 textarea {
     resize: none;
+}
+.checkbox-container {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
 }
 input[type=checkbox] + label{
     font-size: var(--fs-300);
@@ -345,22 +353,23 @@ header {
     font-weight: var(--fw-bold);
     transition: 0.15s ease-out;
 }
-.nav__list__item a:hover::before,
-.nav__list__item a:active::before {
+.nav__list__item a::before {
+    width: 0;
     content: '';
     position: absolute;
     left: 0;
     bottom: -1.5px;
     border-bottom: solid 3px var(--clr-primary-400);
-    animation: border_anim 0.4s ease-out forwards;
+    transition: width ease-out 0.4s;
 }
-@keyframes border_anim {
-    0% {
-        width: 0;
-    }
-    100% {
-        width: 100%;
-    }
+.nav__list__item a:hover::before,
+.nav__list__item a:active::before {
+    width: 100%;
+}
+.nav__list__item a:not(:hover)::before{
+    left: auto;
+    right: 0;
+    transition: width 0.4s ease-in-out;
 }
 
 /* Link of current page */
@@ -475,11 +484,16 @@ header {
 
 }
 
-/* NEWSLETTER */
-.newsletter {
-    text-align: center;
+
+/* FOOTER */
+footer {
     position: relative;
     z-index: 10;
+}
+
+/* Newsletter */
+.newsletter {
+    text-align: center;
     background-color: var(--clr-primary-300);
     margin-top: var(--lineheight-4);
 }
@@ -511,14 +525,11 @@ header {
     }
 }
 
-/* FOOTER */
-footer {
-    position: relative;
-    z-index: 10;
+.footer {
     background-color: var(--clr-neutral-800);
     padding-top: var(--lineheight);
 }
-footer .container {
+.footer .container {
     color: var(--clr-neutral-100);
     display: grid;
     grid-template-columns: 1fr;

@@ -80,9 +80,6 @@ address {
     clip-path: inset(0 -50vmax -100vmax 0);
 
 }
-form {
-    margin-top: var(--lineheight);
-}
 .container-form h2 {
     margin: 0;
     padding-top: var(--lineheight-2);

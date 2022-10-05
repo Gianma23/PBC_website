@@ -119,7 +119,7 @@
 
             </div>
         </section>
-
+    </main>
     <?php include "global/html/footer.php"; ?>
 </body>
 </html>
