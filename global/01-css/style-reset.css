@@ -227,6 +227,8 @@ h1 {
 }
 /* Buttons */
 .button {
+    position: relative;
+    overflow: hidden;
     cursor: pointer;
     text-decoration: none;
     border: 0;
@@ -236,31 +238,87 @@ h1 {
     height: 4em;
     font-size: var(--fs-button);
     font-weight: var(--fw-bold);
-    background-color: var(--clr-primary-400);
-    transition: background-color linear 0.2s;
+    background-color: transparent;
+    transition: linear 0.2s;
+    z-index: 15;
 }
-.button:hover {
-    background-color: var(--clr-primary-200);
-    box-shadow: 0 1.125em 1em -0.5em var(--clr-shadow);
+.button::before {
+    content: "";
+    background-color: var(--clr-primary-400);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    z-index: -2;
+}
+.button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150%;
+    aspect-ratio: 1;
+    background-color: var(--clr-neutral-800);
+    border-radius: 50%;
+    transform: translate(-15%, -35%) scale(0.1);
+    opacity: 0;
+    z-index: -1;
+    transition: transform 0.3s, opacity 0.3s, background-color 0.3s;
+}
+.button:hover,
+.button:focus {
+    color: var(--clr-neutral-100);
+}
+.button:hover::after,
+.button:focus::after{
+    opacity: 1;
+    transform-origin: 50% 50%;
+    transform: translate(-15%, -35%) scale(1);
+}
+.button:active {
+    transform: translateY(4px);
+}
+
+.button--hero::after {
+    background-color: var(--clr-neutral-100);
+}
+.button--hero:hover,
+.button--hero:focus {
+    color: var(--clr-neutral-800);
 }
 
 .button--secondary {
-    background-color: var(--clr-neutral-800);
     color: var(--clr-neutral-100);
+}
+.button--secondary:hover,
+.button--secondary:focus {
+    color: var(--clr-neutral-800);
+}
+.button--secondary::before {
+    background-color: var(--clr-neutral-800);
+}
+.button--secondary::after {
+    background-color: var(--clr-neutral-100);
 }
 
 .button--login {
-    background-color: var(--clr-neutral-100);
-    border: 2px solid var(--clr-neutral-800);
     display: none;
+    outline: 2px solid var(--clr-neutral-800);
+}
+.button--login::before {
+    background-color: transparent;
+}
+.button--login::after {
+    background-color: var(--clr-primary-400);
 }
 .button--login:hover {
-    background-color: var(--clr-primary-400);
-    box-shadow: 0 1.125em 1em -0.5em var(--clr-neutral-800);
+    outline: none;
 }
 @media (min-width: 55em) {
     .button--login {display: block}
 }
+
 
 /* Forms */
 form li {
@@ -380,7 +438,7 @@ header {
 }
 .active a:hover::before,
 .active a:active::before {
-    animation: none;
+    width: 0;
 }
 
 /* Navigation on the Right */

@@ -14,7 +14,7 @@
             <div class="container">
                 <h1 class="hero__title">LA BIRRA ARTIGIANALE <br><strong>CHE CERCAVI</strong></h1>
                 <p>Produciamo una vasta gamma di birre per <strong class="fw-bold">qualsiasi gusto</strong> e per <strong class="fw-bold">qualsiasi situazione</strong>.</p>
-                <button type="button" class="button">VAI ALLO SHOP</button>
+                <button type="button" class="button button--hero">VAI ALLO SHOP</button>
             </div>
         </section>
 
