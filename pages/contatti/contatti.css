@@ -11,6 +11,10 @@ h1 {
     margin-top: var(--lineheight-2);
     line-height: var(--lineheight-2);
 }
+.container {
+    margin: 0 auto;
+}
+
 .contatti__item {
     margin-top: var(--lineheight-2);
     display: flex;
@@ -43,7 +47,6 @@ address {
 .map {
     height: 400px;
     width: calc(var(--column-width-5)*2 + var(--gutter)/2);
-    outline: 1px solid red;
 }
 @media screen and (min-width: 65em) {
     body {

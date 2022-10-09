@@ -19,8 +19,8 @@
         </section>
 
         <section class="birre">
-            <div class="container tile-section">
-                <div class="tile-section__birre">
+            <div class="container tile-section tile-section--left">
+                <div class="tile-section__content">
                     <h2 class="primary-heading">La nostra birra</h2>
                     <p>Birre <strong>espressive e di carattere</strong> che vogliono unire la piacevolezza e la facilità di beva alla
                         <strong>continua ricerca ed innovazione</strong>, legate a doppio filo sia alla realtà territoriale labronica
@@ -28,28 +28,28 @@
                         brassicole e ottenere premi e riconoscimenti a livello <strong>nazionale e internazionale</strong>.</p>
                     <button type="button" class="button">SCOPRI LE BIRRE</button>
                 </div>
-                <div class="tile-section__birre__img-container">
+                <div class="tile-section__img-container">
                     <img src="" alt="Birra Riappala 2.0">
                 </div>
             </div>
         </section>
 
         <section class="birrificio">
-            <div class="container tile-section">
-                <div class="tile-section__birrificio__img-container">
-                    <img src="pages/index/images/birrificio-599x400.png" alt="Fermentatori del birrificio">
-                </div>
-                <div class="tile-section__birrificio">
+            <div class="container tile-section tile-section--right">
+                <div class="tile-section__content">
                     <h2 class="primary-heading">Il birrificio</h2>
                     <p>Nella nuova sede dove ci siamo da poco trasferiti possiamo vantare un impianto produttivo di
                         10 hL di doppia cotta, una cantina di 190 hL e un laboratorio di Controllo Qualità interno,
                         al fine di elevare il livello della produzione e ottimizzare le risorse. </p>
                     <button type="button" class="button">VISITA IL BIRRIFICIO</button>
                 </div>
+                <div class="tile-section__img-container">
+                    <img src="pages/index/images/birrificio-599x400.png" alt="Fermentatori del birrificio">
+                </div>
             </div>
         </section>
 
-        <section class="taproom">
+        <section class="taproom tile-section--center">
             <h2 class="secondary-heading">Provale ora nella nostra Taproom...</h2>
             <img src="global/02-images/taproom/taproom-outside.jpg" alt="Esterno della Taproom in via Cimarosa 37, Livorno">
         </section>
