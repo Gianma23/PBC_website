@@ -17,3 +17,4 @@
 <link rel="stylesheet" href="global/01-css/style-reset.css">
 <link rel="stylesheet" href="global/01-css/grid.css">
 <link rel="stylesheet" href="pages/<?php echo basename($_SERVER['PHP_SELF'], ".php") ?>/<?php echo basename($_SERVER['PHP_SELF'], ".php") ?>.css">
+<script src="global/03-script/main.js"></script>

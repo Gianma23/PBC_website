@@ -62,14 +62,11 @@
                                     <label for="email-cliente">Email:</label><br>
                                     <input type="email" id="email-cliente" name="email">
                                 </li>
-                                <li>
+                                <li class="form__messaggio">
                                     <label for="messaggio-cliente">Messaggio:</label><br>
                                     <textarea id="messaggio-cliente" name="messaggio"></textarea>
                                 </li>
-                                <li>
-                                    <input type="checkbox" id="privacy-policy-cliente" name="privacy policy">
-                                    <label for="privacy-policy-cliente">Accetto le condizioni del sium</label></li>
-                                <li>
+                                <li class="">
                                     <button type="button" class="button button--secondary">INVIA EMAIL</button>
                                 </li>
                             </ul>
@@ -79,22 +76,20 @@
                         <h2>Sei un rivenditore?</h2>
                         <p>Hai un locale o una distribuzione e sei interessato alle nostre birre?</p>
                         <form name="form-rivenditori" action="">
-                            <ul>
-                                <li>
-                                    <label for="nome-cognome-rivenditore">Nome e Cognome:</label><br>
-                                    <input type="text" id="nome-cognome-rivenditore" name="nome e cognome"></li>
-                                <li>
-                                    <label for="email-rivenditore">Email:</label><br>
-                                    <input type="email" id="email-rivenditore" name="email">
+                            <ul class="form-rivenditori">
+                                <li class="form__nome-cognome">
+                                    <label for="nome-cognome">Nome e Cognome:</label><br>
+                                    <input type="text" id="nome-cognome" name="nome cognome">
                                 </li>
-                                <li>
-                                    <label for="messaggio-rivenditore">Messaggio:</label><br>
-                                    <textarea id="messaggio-rivenditore" name="messaggio"></textarea>
+                                <li class="form__email">
+                                    <label for="email">Email:</label><br>
+                                    <input type="email" id="email" name="email">
                                 </li>
-                                <li>
-                                    <input type="checkbox" id="privacy-policy-rivenditore" name="privacy policy">
-                                    <label for="privacy-policy-rivenditore">Accetto le condizioni del sium</label></li>
-                                <li>
+                                <li class="form__messaggio">
+                                    <label for="messaggio">Messaggio:</label><br>
+                                    <textarea id="messaggio" name="messaggio" ></textarea>
+                                </li>
+                                <li class="form__button">
                                     <button type="button" class="button">INVIA EMAIL</button>
                                 </li>
                             </ul>

@@ -45,7 +45,7 @@
                 <h2 class="primary-heading">Vieni a trovarci</h2>
                 <div class="section-container">
 
-                    <section class="degusta-visita">
+                    <article class="degusta-visita">
                         <div class="tile-section tile-section--left">
                             <div class="tile-section__content">
                                 <h3>Degustazione e Visita</h3>
@@ -59,9 +59,9 @@
                                 <img src="global/02-images/birrificio/corso-768x513.jpg" alt="Due persone che spiegano ad un corso di degustazione">
                             </div>
                         </div>
-                    </section>
+                    </article>
 
-                    <section class="degusta">
+                    <article class="degusta">
                         <div class="tile-section tile-section--right">
                             <div class="tile-section__content">
                                 <h3>Degustazione</h3>
@@ -74,7 +74,7 @@
                                 <img src="global/02-images/birrificio/botti-mastro-600x401.png" alt="Botti contenenti la birra mastro ciliegia">
                             </div>
                         </div>
-                    </section>
+                    </article>
 
                 </div>
             </div>

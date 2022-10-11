@@ -49,39 +49,51 @@
             </div>
         </section>
 
-        <section class="taproom tile-section--center">
+        <section class="taproom">
             <h2 class="secondary-heading">Provale ora nella nostra Taproom...</h2>
-            <img src="global/02-images/taproom/taproom-outside.jpg" alt="Esterno della Taproom in via Cimarosa 37, Livorno">
+            <img class="taproom__img" src="global/02-images/taproom/taproom-outside.jpg" alt="Esterno della Taproom in via Cimarosa 37, Livorno">
         </section>
 
         <section class="shop">
             <div class="container">
                 <h2 class="secondary-heading">...o dove vuoi!</h2>
+                <div class="card-container">
+                    <article class="card">
+
+                    </article>
+                    <article class="card">
+
+                    </article>
+                    <article class="card">
+
+                    </article>
+                </div>
             </div>
         </section>
 
         <section class="rivenditori">
             <div class="container">
-                <h2 class="fs-secondary-heading fw-bold">Sei un rivenditore?</h2>
+                <h2 class="secondary-heading">Sei un rivenditore?</h2>
                 <p class="fs-500">Hai un locale o una distribuzione e sei interessato alle nostre birre?</p>
                 <form name="form-rivenditori" action="">
                     <ul class="form-rivenditori">
-                        <li class="form-rivenditori__nome-cognome">
+                        <li class="form__nome-cognome">
                             <label for="nome-cognome">Nome e Cognome:</label><br>
                             <input type="text" id="nome-cognome" name="nome cognome">
                         </li>
-                        <li class="form-rivenditori__email">
+                        <li class="form__email">
                             <label for="email">Email:</label><br>
                             <input type="email" id="email" name="email">
                         </li>
-                        <li class="form-rivenditori__messaggio">
+                        <li class="form__messaggio">
                             <label for="messaggio">Messaggio:</label><br>
                             <textarea id="messaggio" name="messaggio" ></textarea>
                         </li>
-                        <li class="form-rivenditori__privacy-policy checkbox-container">
+                        <li class="form__privacy-policy checkbox-container">
                             <input type="checkbox" id="privacy-policy" name="privacy policy">
-                            <label for="privacy-policy">Accetto le condizioni del sium</label></li>
-                        <li class="form-rivenditori__button">
+                            <label for="privacy-policy">Accetto le condizioni del sium</label>
+                        </li>
+                        <li class="form__button">
                             <button type="button" class="button">INVIA EMAIL</button>
                         </li>
                     </ul>
