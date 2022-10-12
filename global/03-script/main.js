@@ -1,6 +1,3 @@
-('.menu-toggle').click(function() {
-
-    ('.site-nav').toggleClass('site-nav--open', 500);
-    (this).toggleClass('open');
-
-})
+function lockScroll() {
+    document.body.classList.toggle('lock-scroll')
+}

@@ -1,7 +1,7 @@
 body {
     text-align: center;
 }
-h2 {
+.main h2 {
     font-weight: var(--fw-semibold);
     font-size: var(--fs-800);
     line-height: var(--lineheight-2);

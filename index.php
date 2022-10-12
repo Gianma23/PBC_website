@@ -14,7 +14,7 @@
             <div class="container">
                 <h1 class="hero__title">LA BIRRA ARTIGIANALE <br><strong>CHE CERCAVI</strong></h1>
                 <p>Produciamo una vasta gamma di birre per <strong class="fw-bold">qualsiasi gusto</strong> e per <strong class="fw-bold">qualsiasi situazione</strong>.</p>
-                <button type="button" class="button button--hero">VAI ALLO SHOP</button>
+                <a href="shop.php" class="button button--hero" role="button">VAI ALLO SHOP</a>
             </div>
         </section>
 
@@ -26,7 +26,7 @@
                         <strong>continua ricerca ed innovazione</strong>, legate a doppio filo sia alla realtà territoriale labronica
                         che alle realtà esterne, che hanno permesso negli anni di collaborare anche con altre realtà
                         brassicole e ottenere premi e riconoscimenti a livello <strong>nazionale e internazionale</strong>.</p>
-                    <button type="button" class="button">SCOPRI LE BIRRE</button>
+                    <a href="birre.php" class="button" role="button">SCOPRI LE BIRRE</a>
                 </div>
                 <div class="tile-section__img-container">
                     <img src="" alt="Birra Riappala 2.0">
@@ -41,7 +41,7 @@
                     <p>Nella nuova sede dove ci siamo da poco trasferiti possiamo vantare un impianto produttivo di
                         10 hL di doppia cotta, una cantina di 190 hL e un laboratorio di Controllo Qualità interno,
                         al fine di elevare il livello della produzione e ottimizzare le risorse. </p>
-                    <button type="button" class="button">VISITA IL BIRRIFICIO</button>
+                    <a href="birrificio.php" class="button" role="button">VISITA IL BIRRIFICIO</a>
                 </div>
                 <div class="tile-section__img-container">
                     <img src="pages/index/images/birrificio-599x400.png" alt="Fermentatori del birrificio">
@@ -94,7 +94,7 @@
                             <label for="privacy-policy">Accetto le condizioni del sium</label>
                         </li>
                         <li class="form__button">
-                            <button type="button" class="button">INVIA EMAIL</button>
+                            <button type="submit" class="button">INVIA EMAIL</button>
                         </li>
                     </ul>
                 </form>
