@@ -21,27 +21,21 @@ header {
 .nav__list {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: start;
     align-items: center;
 
     position: absolute;
     width: 100%;
     height: 100vh;
-    top: 0;
+    top: var(--lineheight-3);
     left: 0;
 
     visibility: hidden;;
-    gap: 1.5em;
+    gap: 3em;
     z-index: 5;
 }
 .nav__list__item {
-    opacity: 0;
-    transition: all 0.3s cubic-bezier(0, 0.995, 0.99, 1) 0.3s;
-}
-@media (min-width: 75em) {
-    .nav__list {
-        gap: 3.5em;
-    }
+
 }
 
 /* Hamburger Icon */
@@ -62,9 +56,9 @@ header {
     height: 8px;
     width: 40px;
     transform-origin: 0 50%;
-    transition: all 0.3s cubic-bezier(0, 0.995, 0.99, 1) 0.3s;
+    transition: all 0.3s cubic-bezier(0, 1, 1, 1);
 }
-.nav__toggle-label span:nth-child(2) {
+.nav__toggle-label span:last-child {
     margin-top: 12px;
 }
 
@@ -89,7 +83,7 @@ header {
     right: -142vmax;
     transform: scale(0);
     transform-origin: 50% 50%;
-    transition: transform 0.5s ease-out;
+    transition: transform 0.6s ease-in-out;
     will-change: transform;
 }
 
@@ -98,9 +92,28 @@ header {
 .nav__toggle:checked ~ .nav__list {
     visibility: visible;
 }
-.nav__toggle:checked ~ .nav__list > .nav__list__item {
+.nav__toggle:checked ~ .nav__list .nav__list__item {
     opacity: 1;
+    transform: translateX(0);
+    transition: transform 0.8s cubic-bezier(0, 1, 1, 1) 0.5s,
+                opacity 1s cubic-bezier(0, 1, 1, 1) 0.5s;
 }
+.nav__toggle:checked ~ .nav__list .nav__list__item:nth-child(2) {
+    transition-delay: 0.55s;
+}
+.nav__toggle:checked ~ .nav__list .nav__list__item:nth-child(3) {
+    transition-delay: 0.6s;
+}
+.nav__toggle:checked ~ .nav__list .nav__list__item:nth-child(4) {
+     transition-delay: 0.65s;
+}
+.nav__toggle:checked ~ .nav__list .nav__list__item:nth-child(4) {
+    transition-delay: 0.7s;
+}
+.nav__toggle:checked ~ .nav__list .nav__list__item:nth-child(5) {
+    transition-delay: 0.75s;
+}
+
 .nav__toggle:checked ~ .nav__toggle-label span:nth-child(1) {
     transform: rotate(45deg) translateY(-6px);
 }
@@ -116,6 +129,9 @@ header {
 
 .nav__list__item {
     position: relative;
+    transform: translateX(-2em);
+    opacity: 0;
+    transition-duration: 0.2s;
 }
 .nav__list__item a{
     display: inline-flex;
@@ -131,7 +147,6 @@ header {
 }
 .nav__list__item a:hover,
 .nav__list__item a:active {
-
     font-weight: var(--fw-bold);
     transition: 0.15s ease-out;
 }
@@ -167,9 +182,9 @@ header {
 /* CURRENT PAGE UNDERLINE */
 
 .active a{
-    color: var(--clr-primary-400);
+    color: var(--clr-neutral-800);
     font-weight: var(--fw-bold);
-    border-bottom: solid 3px var(--clr-primary-400);
+    border: solid 5px var(--clr-neutral-100);
 }
 .active a:hover::before,
 .active a:active::before {
@@ -187,7 +202,8 @@ header {
     top: var(--lineheight);
     right: var(--margin);
 }
-.nav__right a {
+
+.shopping-cart-link {
     width: 35px;
     height: 35px;
 }
@@ -202,7 +218,9 @@ header {
     .nav__list {
         display: flex;
         flex-direction: row;
+        gap: 1.5rem;
         position: relative;
+        top: 0;
         height: auto;
         visibility: visible;
     }
@@ -216,8 +234,7 @@ header {
     .nav__right {
         position: relative;
         top: 0;
-        right: 0;
-        margin-right: 30px;
+        right: 30px;
     }
 
     /* NAV LINKS */
@@ -242,9 +259,22 @@ header {
         pointer-events: none;
         font-weight: var(--fw-bold);
     }
-
     .nav__list__item a::before {
         border-bottom: solid 3px var(--clr-primary-400);
+    }
+
+    /* CURRENT PAGE UNDERLINE */
+
+    .active a{
+        color: var(--clr-primary-400);
+        font-weight: var(--fw-bold);
+        border: none;
+        border-bottom: 3px solid var(--clr-primary-400);
+    }
+}
+@media (min-width: 75em) {
+    .nav__list {
+        gap: 3.5em;
     }
 }
 
@@ -266,15 +296,13 @@ footer {
     display: grid;
     grid-template-columns: 1fr;
     grid-auto-flow: column;
-    gap: var(--lineheight);
+    column-gap: var(--gutter);
+    row-gap: var(--lineheight);
     padding: var(--lineheight) 0;
 }
 .newsletter form {
     grid-column: 1 / 2;
     grid-row: 3 / 4;
-}
-.email {
-    width: var(--column-width-4);
 }
 
 @media screen and (min-width: 55em) {
@@ -288,6 +316,9 @@ footer {
     }
     .email {
         width: calc(var(--column-width-4)*2.05);
+    }
+    .newsletter .button {
+        width: inherit;
     }
 }
 

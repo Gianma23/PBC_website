@@ -181,7 +181,49 @@
 .collab-progetti {
     text-align: center;
 }
+.collab-progetti section {
+    margin-top: var(--lineheight);
+}
+.scuole-uni__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: var(--lineheight);
+    flex-wrap: wrap;
+}
+.scuole-uni__content figure {
+    flex-basis: 20%;
+    min-width: 400px;
+}
+.scuole-uni__content img {
+    width: 100%;
+    margin: 0 auto var(--lineheight);
+}
+figcaption {
+    font-weight: var(--fw-semibold);
+}
 
+.murali p {
+    font-size: var(--fs-500);
+    font-weight: var(--fw-semibold);
+    margin-top: var(--lineheight);
+}
+
+.murali__section {
+    margin: var(--lineheight-4) 0;
+}
+.murali__section img:first-child {
+    margin: 0 auto;
+    width: 50%;
+}
+@media screen and (min-width: 55em) {
+    .murali__section {
+        display: grid;
+        grid-auto-flow: row;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+    }
+}
 /* ============= STRETCH PARAGRAPHS ============= */
 
 @media screen and (min-width: 92em){

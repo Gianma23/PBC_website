@@ -9,6 +9,7 @@
     --clr-shadow: #cca541;
 
     --clr-neutral-800: #1E1E1E;
+    --clr-neutral-500: #EFEFEF;
     --clr-neutral-200: #FFFDF9;
     --clr-neutral-100: #FFFFFF;
 
@@ -158,6 +159,8 @@
     .container {
         margin: var(--lineheight-3) auto 0;
     }
+}
+@media screen and (min-width: 60em) {
     .even-column {
         display: grid;
         grid-auto-flow: column;
@@ -166,6 +169,7 @@
 }
 
 /* ============= GLOBAL STYLING ============= */
+
 html {
     overflow: auto;
 }
@@ -206,8 +210,10 @@ h1 {
 /* SECTIONS */
 
 .tile-section {
-    display: grid;
-    grid-auto-flow: row;
+
+}
+.tile-section__content {
+    margin-bottom: var(--lineheight);
 }
 .tile-section__img-container {
     height: clamp(400px,50vh,600px);
@@ -236,6 +242,7 @@ h1 {
 
 @media screen and (min-width: 55em) {
     .tile-section {
+        display: grid;
         grid-auto-flow: column;
         grid-template-columns: var(--column-width-6) auto;
         column-gap: var(--gutter);
@@ -279,7 +286,6 @@ h1 {
 .button {
     display: inline-block;
     text-align: center;
-    vertical-align: middle;
 
     position: relative;
     overflow: hidden;
@@ -360,6 +366,7 @@ h1 {
 
 .button--login {
     display: none;
+    padding: 0.8rem 24px;
     outline: 2px solid var(--clr-neutral-800);
 }
 .button--login::before {
@@ -372,7 +379,7 @@ h1 {
     outline: none;
 }
 @media (min-width: 65em) {
-    .button--login {display: block}
+    .button--login {display: inline-block}
 }
 
 /* FORMS */

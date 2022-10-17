@@ -27,8 +27,8 @@
         </nav>
 
         <div class="nav__right">
-            <a href="#" class="button button--login" type="button">Accedi</a>
-            <a href="#"><img class="shopping-cart" src="global/02-images/icons/shopping_cart.png" alt="Carrello"></a>
+            <a href="login.php" class="button button--login" type="button">Accedi</a>
+            <a href="#" class="shopping-cart-link"><img class="shopping-cart" src="global/02-images/icons/shopping_cart.png" alt="Carrello"></a>
         </div>
     </div>
 </header>

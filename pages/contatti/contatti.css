@@ -1,11 +1,10 @@
 body {
     text-align: center;
 }
-.main h2 {
+main h2 {
     font-weight: var(--fw-semibold);
     font-size: var(--fs-800);
     line-height: var(--lineheight-2);
-    display: inline-block;
 }
 h1 {
     margin-top: var(--lineheight-2);
@@ -14,6 +13,8 @@ h1 {
 .container {
     margin: 0 auto;
 }
+
+/* ============= LEFT COLUMN ============= */
 
 .contatti__item {
     margin-top: var(--lineheight-2);
@@ -48,20 +49,7 @@ address {
     width: calc(var(--column-width-5)*2 + var(--gutter)/2);
 }
 
-@media screen and (min-width: 65em) {
-    body {
-        text-align: left;
-    }
-    .contatti__item {
-        justify-content: flex-start;
-    }
-    .contatti__item img {
-        width: auto;
-        order: 0;
-    }
-}
-
-/* FORMS COLUMN */
+/* ============= RIGHT COLUMN ============= */
 
 .container-form {
     padding: 0 0 var(--lineheight);
@@ -84,7 +72,20 @@ address {
 .container-form p {
     margin-top: var(--lineheight);
 }
-@media screen and (min-width: 55em) {
+
+/* ============= LARGE SCREEN ============= */
+@media screen and (min-width: 60em) {
+    body {
+        text-align: left;
+    }
+    .contatti__item {
+        justify-content: flex-start;
+    }
+    .contatti__item img {
+        width: auto;
+        order: 0;
+    }
+
     .container-form {
         padding: 0 0 var(--lineheight) calc(var(--gutter)*2);
     }
@@ -94,11 +95,7 @@ address {
     .container-form--rivenditori {
         clip-path: inset(0 -50vmax -100vmax 0);
     }
-    .container-form button {
-        width: auto;
-    }
 }
-
 @media screen and (min-width: 70em) {
     .forms form {
         width: calc(var(--column-width-4)*2);

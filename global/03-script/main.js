@@ -1,3 +1,5 @@
 function lockScroll() {
     document.body.classList.toggle('lock-scroll')
 }
+window.checkout = {
+    "shoppingCartUrl":"https:\/\/greenaqua.hu\/en\/checkout\/cart\/","checkoutUrl":"https:\/\/greenaqua.hu\/en\/checkout\/","updateItemQtyUrl":"https:\/\/greenaqua.hu\/en\/checkout\/sidebar\/updateItemQty\/","removeItemUrl":"https:\/\/greenaqua.hu\/en\/checkout\/sidebar\/removeItem\/","imageTemplate":"Magento_Catalog\/product\/image_with_borders","baseUrl":"https:\/\/greenaqua.hu\/en\/","minicartMaxItemsVisible":3,"websiteId":"1","maxItemsToDisplay":10,"storeId":"3","storeGroupId":"1","customerLoginUrl":"https:\/\/greenaqua.hu\/en\/customer\/account\/login\/","isRedirectRequired":false,"autocomplete":"off","captcha":{"user_login":{"isCaseSensitive":false,"imageHeight":50,"imageSrc":"","refreshUrl":"https:\/\/greenaqua.hu\/en\/captcha\/refresh\/","isRequired":false,"timestamp":1666009345}}}

@@ -79,7 +79,7 @@
                     <ul class="form-rivenditori">
                         <li class="form__nome-cognome">
                             <label for="nome-cognome">Nome e Cognome:</label><br>
-                            <input type="text" id="nome-cognome" name="nome cognome">
+                            <input type="text" id="nome-cognome" name="nome-cognome">
                         </li>
                         <li class="form__email">
                             <label for="email">Email:</label><br>
@@ -90,7 +90,7 @@
                             <textarea id="messaggio" name="messaggio" ></textarea>
                         </li>
                         <li class="form__privacy-policy checkbox-container">
-                            <input type="checkbox" id="privacy-policy" name="privacy policy">
+                            <input type="checkbox" id="privacy-policy" name="privacy-policy">
                             <label for="privacy-policy">Accetto le condizioni del sium</label>
                         </li>
                         <li class="form__button">

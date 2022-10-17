@@ -106,14 +106,43 @@
 
                 <section class="scuole-uni">
                     <h3 class="secondary-heading">Scuole ed Università</h3>
-
-                    <img class="tile-section__deg-visita__img" src="" alt="Due persone che spiegano ad un corso di degustazione">
+                    <div class="scuole-uni__content">
+                        <figure>
+                            <img src="global/02-images/loghi/loghi_generici/logo-eat-fondazione.png" alt="Istituto tecnico superiore, i.t.s. EAT, eccellenza agroalimentare toscana">
+                            <figcaption>Istituto Superiore di Formazione EAT (Firenze)</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="global/02-images/loghi/loghi_generici/marchio_unipi_pant541.png" alt="Istituto tecnico superiore, i.t.s. EAT, eccellenza agroalimentare toscana">
+                            <figcaption>Dipartimento Scienze Politiche <br>
+                                        Dipartimento Chimica <br>
+                                        Dipartimento Scienze Agrarie, Alimentari e Agro-ambientali</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="global/02-images/loghi/loghi_generici/Accadeimia_piccolo.png" alt="Istituto tecnico superiore, i.t.s. EAT, eccellenza agroalimentare toscana">
+                            <figcaption>Scuola di Formazione Dieffe (Padova)</figcaption>
+                        </figure>
+                    </div>
                 </section>
 
                 <section class="murali">
                     <h3 class="secondary-heading">Progetto Murali</h3>
-                    <p class="fs-500 fw-semibold">Una birra con etichetta “speciale” in edizione limitata per ogni murales che dà colore alla nostra città!</p>
-                    <img class="tile-section__degusta__img" src="" alt="Processo di imbottigliamento">
+                    <p>Una birra con etichetta “speciale” in edizione limitata per ogni murales che dà colore alla nostra città!</p>
+
+                    <div class="murali__section">
+                        <img src="global/02-images/murali/etichetta-modi-708x886.jpg" alt="Processo di imbottigliamento">
+                        <img src="global/02-images/murali/24-1200x800.jpg" alt="Processo di imbottigliamento">
+                    </div>
+
+                    <div class="murali__section">
+                        <img src="global/02-images/murali/etichetta-modi-708x886.jpg" alt="Processo di imbottigliamento">
+                        <img src="global/02-images/murali/24-1200x800.jpg" alt="Processo di imbottigliamento">
+                    </div>
+
+                    <div class="murali__section">
+                        <img src="global/02-images/murali/etichetta-modi-708x886.jpg" alt="Processo di imbottigliamento">
+                        <img src="global/02-images/murali/24-1200x800.jpg" alt="Processo di imbottigliamento">
+                    </div>
+
                 </section>
 
             </div>
