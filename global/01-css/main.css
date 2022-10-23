@@ -1,4 +1,6 @@
-/* ========== STYLE ========== */
+/* ========================================== */
+/* =====              STYLE             ===== */
+/* ========================================== */
 
 :root {
     /* Colors Styling*/
@@ -90,7 +92,9 @@
     }
 }
 
-/* ============= UTILITY CLASSES ============= */
+/* ========================================== */
+/* =====         UTILITY CLASSES        ===== */
+/* ========================================== */
 
 .text-primary-300 {color: var(--clr-primary-300)}
 .text-neutral-100 {color: var(--clr-neutral-100)}
@@ -149,7 +153,6 @@
 }
 .lock-scroll {
     position: fixed;
-    touch-action: none;
 }
 
 @media screen and (min-width: 55em) {
@@ -168,7 +171,9 @@
     }
 }
 
-/* ============= GLOBAL STYLING ============= */
+/* ========================================== */
+/* =====         GLOBAL STYLING         ===== */
+/* ========================================== */
 
 html {
     overflow: auto;
@@ -192,7 +197,7 @@ h1 {
     line-height: var(--lineheight-3);
 }
 
-/* HERO SECTION */
+/* ============= HERO SECTION ============= */
 
 .hero {
     position: relative;
@@ -201,13 +206,14 @@ h1 {
     background-repeat: repeat;
     color: var(--clr-neutral-100);
     min-height: calc(100vh - var(--lineheight-3));
+    margin-top: var(--lineheight-3);
 }
 .hero .container {
     margin: 0 auto;
 }
 
 
-/* SECTIONS */
+/* ============= SECTIONS ============= */
 
 .tile-section {
 
@@ -281,7 +287,7 @@ h1 {
 
 }
 
-/* BUTTONS */
+/* ============= BUTTONS ============= */
 
 .button {
     display: inline-block;
@@ -382,7 +388,8 @@ h1 {
     .button--login {display: inline-block}
 }
 
-/* FORMS */
+/* ============= FORMS ============= */
+
 form {
     text-align: left;
 }
@@ -424,6 +431,19 @@ input[type=checkbox] + label{
     font-size: var(--fs-300);
     font-weight: var(--fw-medium);
 }
+
+/* ERROR VALIDATION */
+input:valid,
+textarea:valid {
+    border-color: greenyellow;
+}
+.invalid {
+    border-color: red;
+}
+.invalid::after {
+    color: red;
+}
+
 
 
 

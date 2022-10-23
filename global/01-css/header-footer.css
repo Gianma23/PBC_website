@@ -2,10 +2,10 @@
 
 header {
     background-color: var(--clr-neutral-100);
-    position: -webkit-sticky;
-    position: sticky;
+    position: fixed;
+    width: 100%;
     top: 0;
-    z-index: 999;
+    z-index: 100;
     outline: 2px solid var(--clr-neutral-800);
 }
 .header-logo {
@@ -123,6 +123,7 @@ header {
 
 .nav__toggle:checked ~ .nav__bg::after {
     transform: scale(1);
+    z-index: 1;
 }
 
 /* NAV LINKS */
@@ -192,6 +193,7 @@ header {
 }
 
 /* NAV RIGHT */
+
 .nav__right {
     display: flex;
     justify-content: space-between;
@@ -203,9 +205,47 @@ header {
     right: var(--margin);
 }
 
+.shopping-cart-slide {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: var(--clr-neutral-100); /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s;
+    z-index: 100;
+}
+/* The sidebar links */
+.shopping-cart-slide a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+/* When you mouse over the navigation links, change their color */
+.shopping-cart-slide a:hover {
+    color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.shopping-cart-slide .closebtn {
+    position: absolute;
+    top: var(--lineheight);
+    right: var(--margin);
+    font-size: 60px;
+}
 .shopping-cart-link {
+    background-color: transparent;
+    border: none;
     width: 35px;
     height: 35px;
+}
+.shopping-cart {
+    cursor: pointer;
 }
 
 @media screen and (min-width: 65em) {

@@ -1,4 +1,3 @@
-
 <footer>
     <section class="newsletter">
         <div class="container">
@@ -7,12 +6,12 @@
                 consigli e novità sui prodotti! </p>
             <form action="">
                 <ul>
-                    <li>
-                        <label for="email">Email:</label><br>
-                        <input class="email" type="email" id="email" name="email">
+                    <li class="form__email">
+                        <label for="news-email">Email:</label><br>
+                        <input class="email" type="email" id="news-email" name="email" placeholder="esempio@gmail.com" required>
                     </li>
                     <li>
-                        <button type="button" class="button button--secondary">ISCRIVITI</button>
+                        <button type="submit" class="button button--secondary">ISCRIVITI</button>
                     </li>
                 </ul>
             </form>
@@ -74,3 +73,4 @@
         </div>
     </div>
 </footer>
+<script src="global/03-script/main.js"></script>

@@ -28,7 +28,15 @@
 
         <div class="nav__right">
             <a href="login.php" class="button button--login" type="button">Accedi</a>
-            <a href="#" class="shopping-cart-link"><img class="shopping-cart" src="global/02-images/icons/shopping_cart.png" alt="Carrello"></a>
+            <a href="#" onclick="openNav()" class="shopping-cart-link"><img class="shopping-cart" src="global/02-images/icons/shopping_cart.png" alt="Carrello"></a>
         </div>
     </div>
 </header>
+
+<div id="shopping-cart-slide" class="shopping-cart-slide">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Clients</a>
+    <a href="#">Contact</a>
+</div>

@@ -75,23 +75,19 @@
             <div class="container">
                 <h2 class="secondary-heading">Sei un rivenditore?</h2>
                 <p class="fs-500">Hai un locale o una distribuzione e sei interessato alle nostre birre?</p>
-                <form name="form-rivenditori" action="">
+                <form name="form-rivenditori" action="" method="post">
                     <ul class="form-rivenditori">
                         <li class="form__nome-cognome">
                             <label for="nome-cognome">Nome e Cognome:</label><br>
-                            <input type="text" id="nome-cognome" name="nome-cognome">
+                            <input type="text" id="nome-cognome" name="nome-cognome" required>
                         </li>
                         <li class="form__email">
                             <label for="email">Email:</label><br>
-                            <input type="email" id="email" name="email">
+                            <input type="email" id="email" name="email" required>
                         </li>
                         <li class="form__messaggio">
                             <label for="messaggio">Messaggio:</label><br>
-                            <textarea id="messaggio" name="messaggio" ></textarea>
-                        </li>
-                        <li class="form__privacy-policy checkbox-container">
-                            <input type="checkbox" id="privacy-policy" name="privacy-policy">
-                            <label for="privacy-policy">Accetto le condizioni del sium</label>
+                            <textarea id="messaggio" name="messaggio" required></textarea>
                         </li>
                         <li class="form__button">
                             <button type="submit" class="button">INVIA EMAIL</button>
