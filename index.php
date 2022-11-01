@@ -79,15 +79,18 @@
                     <ul class="form-rivenditori">
                         <li class="form__nome-cognome">
                             <label for="nome-cognome">Nome e Cognome:</label><br>
-                            <input type="text" id="nome-cognome" name="nome-cognome" required>
+                            <input type="text" id="nome-cognome" name="nome-cognome" placeholder="mario rossi" required>
+                            <small class="error"></small>
                         </li>
                         <li class="form__email">
                             <label for="email">Email:</label><br>
-                            <input type="email" id="email" name="email" required>
+                            <input type="email" id="email" name="email" placeholder="esempio@email.com" required>
+                            <small class="error"></small>
                         </li>
                         <li class="form__messaggio">
                             <label for="messaggio">Messaggio:</label><br>
                             <textarea id="messaggio" name="messaggio" required></textarea>
+                            <small class="error"></small>
                         </li>
                         <li class="form__button">
                             <button type="submit" class="button">INVIA EMAIL</button>

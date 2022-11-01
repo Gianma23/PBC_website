@@ -15,7 +15,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="global/01-css/reset.css">
+<link rel="stylesheet" href="global/01-css/style.css">
 <link rel="stylesheet" href="global/01-css/main.css">
-<link rel="stylesheet" href="global/01-css/header-footer.css">
+<link rel="stylesheet" href="global/01-css/header.css">
+<link rel="stylesheet" href="global/01-css/footer.css">
 <link rel="stylesheet" href="global/01-css/grid.css">
 <link rel="stylesheet" href="pages/<?php echo basename($_SERVER['PHP_SELF'], ".php") ?>/<?php echo basename($_SERVER['PHP_SELF'], ".php") ?>.css">

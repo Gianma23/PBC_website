@@ -8,7 +8,8 @@
                 <ul>
                     <li class="form__email">
                         <label for="news-email">Email:</label><br>
-                        <input class="email" type="email" id="news-email" name="email" placeholder="esempio@gmail.com" required>
+                        <input type="email" id="news-email" name="email" placeholder="esempio@gmail.com" required><br>
+                        <small class="error"></small>
                     </li>
                     <li>
                         <button type="submit" class="button button--secondary">ISCRIVITI</button>
@@ -74,3 +75,4 @@
     </div>
 </footer>
 <script src="global/03-script/main.js"></script>
+<script src="global/03-script/form-validation.js"></script>

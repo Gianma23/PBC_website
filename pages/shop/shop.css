@@ -1,0 +1,14 @@
+.secondary-nav {
+    background-color: var(--clr-neutral-500);
+    position: -webkit-sticky;
+    position: sticky;
+}
+.secondary-nav .container {
+    display: grid;
+    grid-template-columns: var(--column-width-6) repeat(2, var(--column-width-3));
+    column-gap: var(--gutter);
+    align-items: center;
+}
+.secondary-nav small {
+    text-align: center;
+}

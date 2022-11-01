@@ -57,17 +57,21 @@
                             <ul>
                                 <li>
                                     <label for="nome-cognome-cliente">Nome e Cognome:</label><br>
-                                    <input type="text" id="nome-cognome-cliente" name="nome e cognome"></li>
+                                    <input type="text" id="nome-cognome-cliente" name="nome-cognome">
+                                    <small class="error"></small>
+                                </li>
                                 <li>
                                     <label for="email-cliente">Email:</label><br>
                                     <input type="email" id="email-cliente" name="email">
+                                    <small class="error"></small>
                                 </li>
                                 <li class="form__messaggio">
                                     <label for="messaggio-cliente">Messaggio:</label><br>
                                     <textarea id="messaggio-cliente" name="messaggio"></textarea>
+                                    <small class="error"></small>
                                 </li>
                                 <li class="">
-                                    <button type="button" class="button button--secondary">INVIA EMAIL</button>
+                                    <button type="submit" class="button button--secondary">INVIA EMAIL</button>
                                 </li>
                             </ul>
                         </form>
@@ -78,19 +82,22 @@
                         <form name="form-rivenditori" action="">
                             <ul class="form-rivenditori">
                                 <li class="form__nome-cognome">
-                                    <label for="nome-cognome">Nome e Cognome:</label><br>
-                                    <input type="text" id="nome-cognome" name="nome cognome">
+                                    <label for="nome-cognome-riv">Nome e Cognome:</label><br>
+                                    <input type="text" id="nome-cognome-riv" name="nome-cognome">
+                                    <small class="error"></small>
                                 </li>
                                 <li class="form__email">
-                                    <label for="email">Email:</label><br>
-                                    <input type="email" id="email" name="email">
+                                    <label for="email-riv">Email:</label><br>
+                                    <input type="email" id="email-riv" name="email">
+                                    <small class="error"></small>
                                 </li>
                                 <li class="form__messaggio">
-                                    <label for="messaggio">Messaggio:</label><br>
-                                    <textarea id="messaggio" name="messaggio" ></textarea>
+                                    <label for="messaggio-riv">Messaggio:</label><br>
+                                    <textarea id="messaggio-riv" name="messaggio"></textarea>
+                                    <small class="error"></small>
                                 </li>
                                 <li class="form__button">
-                                    <button type="button" class="button">INVIA EMAIL</button>
+                                    <button type="submit" class="button">INVIA EMAIL</button>
                                 </li>
                             </ul>
                         </form>

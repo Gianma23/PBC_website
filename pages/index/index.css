@@ -34,9 +34,6 @@
     text-align: center;
 }
 
-
-
-
 /* Large Screen */
 @media screen and (min-width: 55em) {
     .hero__title {
