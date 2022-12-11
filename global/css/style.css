@@ -129,6 +129,7 @@
     font-weight: var(--fw-bold);
     line-height: var(--lineheight-2);
 }
+
 .secondary-heading {
     font-size: var(--fs-secondary-heading);
     font-weight: var(--fw-bold);
@@ -146,16 +147,19 @@
     white-space: nowrap;
     border: 0;
 }
+
 .container {
     width: min(var(--max-width), 100% - var(--margin)*2);
     margin: var(--lineheight-2) auto 0;
 }
+
 .center {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
 .lock-scroll {
     position: fixed;
 }
@@ -168,6 +172,7 @@
         margin: var(--lineheight-3) auto 0;
     }
 }
+
 @media screen and (min-width: 60em) {
     .even-column {
         display: grid;

@@ -5,25 +5,32 @@
 html {
     overflow: auto;
 }
+
 body {
+    line-height: var(--lineheight);
     font-family: var(--ff-body);
     color: var(--clr-neutral-800);
     text-align: center;
 }
+
 main {
-    background-image: url("../../global/02-images/background/background-tiles-light.png");
+    background-image: url("../images/background/background-tiles-light.png");
     background-repeat: repeat;
     margin-top: var(--lineheight-3);
 }
+
 small {
     font-size: var(--fs-300);
 }
+
 @media (min-width: 55em) {
     body {text-align: left}
 }
+
 strong {
     font-weight: var(--fw-bold);
 }
+
 h1 {
     line-height: var(--lineheight-3);
 }
@@ -33,24 +40,22 @@ h1 {
 .hero {
     position: relative;
     background-color: var(--clr-neutral-800);
-    background-image: url("../../global/02-images/background/background-tiles-dark.png");
+    background-image: url("../images/background/background-tiles-dark.png");
     background-repeat: repeat;
     color: var(--clr-neutral-100);
     min-height: calc(100vh - var(--lineheight-3));
 }
+
 .hero .container {
     margin: 0 auto;
 }
 
-
 /* ============= SECTIONS ============= */
 
-.tile-section {
-
-}
 .tile-section__content {
     margin-bottom: var(--lineheight);
 }
+
 .tile-section__img-container {
     height: clamp(400px,50vh,600px);
     max-height: 650px;
@@ -62,9 +67,11 @@ h1 {
     height: inherit;
     object-fit: cover;
 }
+
 .tile-section--right img {
     left: 0;
 }
+
 .tile-section--left img{
     right: 0;
 }
@@ -72,6 +79,7 @@ h1 {
 .tile-section p {
     margin: var(--lineheight) 0;
 }
+
 .tile-section button {
     margin: var(--lineheight) 0;
 }
@@ -110,6 +118,7 @@ h1 {
         border-radius: 20px 0 0 20px;
     }
 }
+
 @media screen and (min-width: 92em){
     .tile-section p {
         width: calc(var(--column-width-5)/0.5);
@@ -140,6 +149,30 @@ h1 {
     z-index: 15;
 }
 
+.fab-button {
+    position: fixed;
+    bottom: 2em;
+    right: var(--margin);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 5em;
+    height: 5em;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: var(--clr-primary-400);
+    box-shadow: 2px 2px 5px 0 var(--clr-neutral-700);
+    z-index: 999;
+}
+
+.fab-button a {
+    color: inherit;
+    text-decoration: none;
+    font-size: var(--fs-500);
+    font-weight: var(--fw-semibold);
+}
+
 .button::before {
     content: "";
     background-color: var(--clr-primary-400);
@@ -150,6 +183,7 @@ h1 {
     height: 100px;
     z-index: -2;
 }
+
 .button::after {
     content: "";
     position: absolute;
@@ -164,16 +198,19 @@ h1 {
     z-index: -1;
     transition: transform 0.3s, opacity 0.3s, background-color 0.3s;
 }
+
 .button:hover,
 .button:active {
     color: var(--clr-neutral-100);
 }
+
 .button:hover::after,
 .button:active::after{
     opacity: 1;
     transform-origin: 50% 50%;
     transform: translate(-15%, -35%) scale(1);
 }
+
 .button:active {
     transform: translateY(4px);
 }
@@ -181,6 +218,7 @@ h1 {
 .button--hero::after {
     background-color: var(--clr-neutral-100);
 }
+
 .button--hero:hover,
 .button--hero:active {
     color: var(--clr-neutral-800);
@@ -189,13 +227,16 @@ h1 {
 .button--secondary {
     color: var(--clr-neutral-100);
 }
+
 .button--secondary:hover,
 .button--secondary:active {
     color: var(--clr-neutral-800);
 }
+
 .button--secondary::before {
     background-color: var(--clr-neutral-800);
 }
+
 .button--secondary::after {
     background-color: var(--clr-neutral-100);
 }
@@ -205,15 +246,19 @@ h1 {
     padding: 0.8rem 24px;
     outline: 2px solid var(--clr-neutral-800);
 }
+
 .button--login::before {
     background-color: transparent;
 }
+
 .button--login::after {
     background-color: var(--clr-primary-400);
 }
+
 .button--login:hover {
     outline: none;
 }
+
 @media (min-width: 60em) {
     .button--login {display: inline-block}
 }
@@ -224,16 +269,20 @@ form {
     text-align: left;
     font-size: var(--fs-300);
 }
+
 form .button {
     width: 100%;
 }
+
 form li:not(li .button){
     margin-top: 1em;
 }
+
 label {
     font-size: var(--fs-400);
     font-weight: var(--fw-semibold);
 }
+
 input,
 textarea {
     font-weight: var(--fw-regular);
@@ -242,6 +291,7 @@ textarea {
     background-color: var(--clr-neutral-100);
     width: 100%;
 }
+
 input:not([type=checkbox]) {
     height: 2.5rem;
 }
@@ -262,34 +312,31 @@ input:-webkit-autofill:focus {
     align-items: center;
     gap: 16px;
 }
+
 input[type=checkbox] {
     width: 20px;
     height: 100%;
 }
+
 input[type=checkbox] + label{
     font-size: var(--fs-300);
     font-weight: var(--fw-medium);
 }
 
-/* ERROR VALIDATION */
+/* ============= ERROR VALIDATION ============= */
 
 .valid input,
 .valid textarea{
     border-color: var(--clr-success);
     background-color: var(--clr-bg-success);
 }
+
 .invalid input,
 .invalid textarea{
     border-color: var(--clr-warning);
     background-color: var(--clr-bg-warning);
 }
+
 .error {
     color: var(--clr-warning);
 }
-
-
-
-
-
-
-

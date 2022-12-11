@@ -74,5 +74,5 @@
         </div>
     </div>
 </footer>
-<script src="global/03-script/main.js"></script>
-<script src="global/03-script/form-validation.js"></script>
+<script src="global/javascript/main.js"></script>
+<script src="global/javascript/form-validation.js"></script>

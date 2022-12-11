@@ -15,6 +15,7 @@ cartButton.removeAttribute("href")
 cartLink.replaceWith(cartButton)
 
 /* ========================================== */
+
 const lockScroll = () =>{
     const body = document.body;
 
@@ -33,11 +34,11 @@ window.addEventListener('scroll', () => {
     document.documentElement.style.setProperty('--scroll-y', `${window.scrollY}px`);
 });
 
-
+/*==========================================================*/
 
 let mediaquery = window.matchMedia("(min-width: 55em)")
 /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
-function openNav() {
+function openCart() {
     let width = "calc(var(--column-width-4) + var(--margin)"
     if(mediaquery.matches) {
         width = "calc(var(--column-width-3) + var(--margin)";
@@ -46,6 +47,6 @@ function openNav() {
 }
 
 /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
-function closeNav() {
+function closeCart() {
     document.getElementById("shopping-cart-slide").style.width = "0";
 }

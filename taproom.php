@@ -13,7 +13,7 @@
     <section class="hero">
         <div class="container">
             <div class="wrapper">
-                <h1 class="hero__title"><img src="global/02-images/loghi/loghi_pbc/taproom_scritta_bianca.png" alt="Cimarosa 37, Taproom Livorno"></h1>
+                <h1 class="hero__title"><img src="global/images/loghi/loghi_pbc/taproom_scritta_bianca.png" alt="Cimarosa 37, Taproom Livorno"></h1>
                 <p class="fs-600 fw-bold">Aperto tutti i giorni dalle 18 alle 1:30</p>
                 <div class="button-container">
                     <button type="button" class="button button--hero">VEDI IL MENU</button>
@@ -34,7 +34,7 @@
                     firmate PBC e/o di birrifici ospiti .</p>
             </div>
             <div class="tile-section__img-container">
-                <img src="global/02-images/taproom/taproom-inside.png" alt="Fermentatori del birrificio">
+                <img src="global/images/taproom/taproom-inside.png" alt="Fermentatori del birrificio">
             </div>
         </div>
     </section>
@@ -43,11 +43,11 @@
         <div class="container center">
             <h2 class="secondary-heading">I nostri fornitori</h2>
             <ul class="fornitori-list">
-                <li class="fornitori-list__item"><img src="global/02-images/loghi/loghi_generici/dolcevita.png" alt="Pasticceria Dolcevita"></li>
-                <li class="fornitori-list__item"><img src="global/02-images/loghi/loghi_generici/La-rinasita.png" alt="la rinascita panificio livorno"></li>
-                <li class="fornitori-list__item"><img src="global/02-images/loghi/loghi_generici/ADC_logo.png" alt="L'angolo della carne, produzione propria di pronto cuici e insaccati"></li>
-                <li class="fornitori-list__item"><img src="global/02-images/loghi/loghi_generici/LOGO_doit.png" alt="du it, distilleria urbana italia"></li>
-                <li class="fornitori-list__item"><img src="global/02-images/loghi/loghi_generici/quadrato4.jpg" alt="quadrato 4"></li>
+                <li class="fornitori-list__item"><img src="global/images/loghi/loghi_generici/dolcevita.png" alt="Pasticceria Dolcevita"></li>
+                <li class="fornitori-list__item"><img src="global/images/loghi/loghi_generici/La-rinasita.png" alt="la rinascita panificio livorno"></li>
+                <li class="fornitori-list__item"><img src="global/images/loghi/loghi_generici/ADC_logo.png" alt="L'angolo della carne, produzione propria di pronto cuici e insaccati"></li>
+                <li class="fornitori-list__item"><img src="global/images/loghi/loghi_generici/LOGO_doit.png" alt="du it, distilleria urbana italia"></li>
+                <li class="fornitori-list__item"><img src="global/images/loghi/loghi_generici/quadrato4.jpg" alt="quadrato 4"></li>
             </ul>
         </div>
     </section>
@@ -57,10 +57,10 @@
             <h2 class="secondary-heading">Seguici sui social</h2>
             <ul class="social-list">
                 <li>
-                    <a href="#" aria-label="facebook"><img class="social-icon" src="global/02-images/icons/facebook.svg" alt=""></a>
+                    <a href="#" aria-label="facebook"><img class="social-icon" src="global/images/icons/facebook.svg" alt=""></a>
                 </li>
                 <li>
-                    <a href="#" aria-label="instagram"><img class="social-icon" src="global/02-images/icons/instagram.svg" alt=""></a>
+                    <a href="#" aria-label="instagram"><img class="social-icon" src="global/images/icons/instagram.svg" alt=""></a>
                 </li>
             </ul>
         </div>

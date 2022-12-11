@@ -25,11 +25,11 @@
                 </ul>
 
                 <ul class="image-show">
-                    <li class="image-show__item"><img src="global/02-images/birrificio/fermentatori-1200x801.png" alt="sala luminosa con fermentatori su tutte le pareti"></li>
-                    <li class="image-show__item"><img src="global/02-images/birrificio/analisi-600x401.png" alt="ragazzo che analizza con delle provette la birra"></li>
-                    <li class="image-show__item"><img src="global/02-images/birrificio/analisi-2-600x401.png" alt="ragazza in laboratorio che analizza la birra"></li>
-                    <li class="image-show__item"><img src="global/02-images/birrificio/imbottigliamento-2-600x401.png" alt="ragazzo che usa la macchina di imbottigliamento"></li>
-                    <li class="image-show__item"><img src="global/02-images/birrificio/etichette-600x401.png" alt="etichette per le birre impilate"></li>
+                    <li class="image-show__item"><img src="global/images/birrificio/fermentatori-1200x801.png" alt="sala luminosa con fermentatori su tutte le pareti"></li>
+                    <li class="image-show__item"><img src="global/images/birrificio/analisi-600x401.png" alt="ragazzo che analizza con delle provette la birra"></li>
+                    <li class="image-show__item"><img src="global/images/birrificio/analisi-2-600x401.png" alt="ragazza in laboratorio che analizza la birra"></li>
+                    <li class="image-show__item"><img src="global/images/birrificio/imbottigliamento-2-600x401.png" alt="ragazzo che usa la macchina di imbottigliamento"></li>
+                    <li class="image-show__item"><img src="global/images/birrificio/etichette-600x401.png" alt="etichette per le birre impilate"></li>
                 </ul>
 
                 <button type="button" class="button button--hero">VISITA IL BIRRIFICIO</button>
@@ -56,7 +56,7 @@
                                 <button type="button" class="button button--shop">AGGIUNGI</button>
                             </div>
                             <div class="tile-section__img-container">
-                                <img src="global/02-images/birrificio/corso-768x513.jpg" alt="Due persone che spiegano ad un corso di degustazione">
+                                <img src="global/images/birrificio/corso-768x513.jpg" alt="Due persone che spiegano ad un corso di degustazione">
                             </div>
                         </div>
                     </article>
@@ -71,7 +71,7 @@
                                 <button type="button" class="button button--shop">AGGIUNGI</button>
                             </div>
                             <div class="tile-section__img-container">
-                                <img src="global/02-images/birrificio/botti-mastro-600x401.png" alt="Botti contenenti la birra mastro ciliegia">
+                                <img src="global/images/birrificio/botti-mastro-600x401.png" alt="Botti contenenti la birra mastro ciliegia">
                             </div>
                         </div>
                     </article>
@@ -108,17 +108,17 @@
                     <h3 class="secondary-heading">Scuole ed Università</h3>
                     <div class="scuole-uni__content">
                         <figure>
-                            <img src="global/02-images/loghi/loghi_generici/logo-eat-fondazione.png" alt="Istituto tecnico superiore, i.t.s. EAT, eccellenza agroalimentare toscana">
+                            <img src="global/images/loghi/loghi_generici/logo-eat-fondazione.png" alt="Istituto tecnico superiore, i.t.s. EAT, eccellenza agroalimentare toscana">
                             <figcaption>Istituto Superiore di Formazione EAT (Firenze)</figcaption>
                         </figure>
                         <figure>
-                            <img src="global/02-images/loghi/loghi_generici/marchio_unipi_pant541.png" alt="Istituto tecnico superiore, i.t.s. EAT, eccellenza agroalimentare toscana">
+                            <img src="global/images/loghi/loghi_generici/marchio_unipi_pant541.png" alt="Istituto tecnico superiore, i.t.s. EAT, eccellenza agroalimentare toscana">
                             <figcaption>Dipartimento Scienze Politiche <br>
                                         Dipartimento Chimica <br>
                                         Dipartimento Scienze Agrarie, Alimentari e Agro-ambientali</figcaption>
                         </figure>
                         <figure>
-                            <img src="global/02-images/loghi/loghi_generici/Accadeimia_piccolo.png" alt="Istituto tecnico superiore, i.t.s. EAT, eccellenza agroalimentare toscana">
+                            <img src="global/images/loghi/loghi_generici/Accadeimia_piccolo.png" alt="Istituto tecnico superiore, i.t.s. EAT, eccellenza agroalimentare toscana">
                             <figcaption>Scuola di Formazione Dieffe (Padova)</figcaption>
                         </figure>
                     </div>
@@ -129,18 +129,18 @@
                     <p>Una birra con etichetta “speciale” in edizione limitata per ogni murales che dà colore alla nostra città!</p>
 
                     <div class="murali__section">
-                        <img src="global/02-images/murali/etichetta-modi-708x886.jpg" alt="Processo di imbottigliamento">
-                        <img src="global/02-images/murali/24-1200x800.jpg" alt="Processo di imbottigliamento">
+                        <img src="global/images/murali/etichetta-modi-708x886.jpg" alt="Processo di imbottigliamento">
+                        <img src="global/images/murali/24-1200x800.jpg" alt="Processo di imbottigliamento">
                     </div>
 
                     <div class="murali__section">
-                        <img src="global/02-images/murali/etichetta-modi-708x886.jpg" alt="Processo di imbottigliamento">
-                        <img src="global/02-images/murali/24-1200x800.jpg" alt="Processo di imbottigliamento">
+                        <img src="global/images/murali/etichetta-modi-708x886.jpg" alt="Processo di imbottigliamento">
+                        <img src="global/images/murali/24-1200x800.jpg" alt="Processo di imbottigliamento">
                     </div>
 
                     <div class="murali__section">
-                        <img src="global/02-images/murali/etichetta-modi-708x886.jpg" alt="Processo di imbottigliamento">
-                        <img src="global/02-images/murali/24-1200x800.jpg" alt="Processo di imbottigliamento">
+                        <img src="global/images/murali/etichetta-modi-708x886.jpg" alt="Processo di imbottigliamento">
+                        <img src="global/images/murali/24-1200x800.jpg" alt="Processo di imbottigliamento">
                     </div>
 
                 </section>

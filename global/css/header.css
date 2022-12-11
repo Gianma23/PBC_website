@@ -1,4 +1,6 @@
-/* ====================== HEADER ====================== */
+/* ========================================== */
+/* =====             HEADER             ===== */
+/* ========================================== */
 
 header {
     background-color: var(--clr-neutral-100);
@@ -8,15 +10,17 @@ header {
     z-index: 100;
     outline: 2px solid var(--clr-neutral-800);
 }
+
 .header-logo {
     display: flex;
     justify-content: center;
 }
+
 .header-logo img {
     height: var(--lineheight-3);
 }
 
-/* HIDDEN NAV */
+/* ============= HIDDEN NAV ============= */
 
 .nav__list {
     display: flex;
@@ -24,23 +28,22 @@ header {
     justify-content: center;
     align-items: center;
 
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100vh;
-    top: var(--lineheight-3);
+    top: 0;
     left: 0;
 
-    visibility: hidden;;
+    visibility: hidden;
     gap: 3em;
     z-index: 5;
+    background-color: var(--clr-primary-400);
+    clip-path: circle(25px at 0 0);
+    transition: 0.3s ease-in-out;
 }
 
+/* HAMBURGER ICON */
 
-/* Hamburger Icon */
-
-.nav__toggle {
-    display: none;
-}
 .nav__toggle-label {
     position: absolute;
     left: var(--margin);
@@ -48,6 +51,11 @@ header {
     cursor: pointer;
     z-index: 10;
 }
+
+.nav__toggle:focus ~ .nav__toggle-label  {
+    outline: 2px solid var(--clr-neutral-800);
+}
+
 .nav__toggle-label span {
     display: block;
     background: var(--clr-neutral-800);
@@ -56,58 +64,65 @@ header {
     transform-origin: 0 50%;
     transition: all 0.3s cubic-bezier(0, 1, 1, 1);
 }
+
 .nav__toggle-label span:last-child {
     margin-top: 12px;
 }
 
-/* Hidden Nav Background */
-.nav__bg {
-    position: absolute;
-    top: var(--lineheight);
-    left: var(--margin);
-    width: 1px;
-    height: 1px;
-}
-.nav__bg::after {
-    content: "";
-    display: block;
-    position: absolute;
-    border-radius: 50%;
-    background-color: var(--clr-primary-400);
-
-    width: 280vmax;
-    height: 280vmax;
-    top: -142vmax;
-    right: -142vmax;
-    transform: scale(0);
-    transform-origin: 50% 50%;
-    transition: transform 0.6s ease-in-out;
-    will-change: transform;
+@media screen and (min-width: 60em) {
+    .nav-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .nav__list {
+        display: flex;
+        flex-direction: row;
+        gap: 1.5rem;
+        position: relative;
+        top: 0;
+        height: auto;
+        visibility: visible;
+        background-color: transparent;
+        clip-path: none;
+    }
+    .nav__toggle-label {
+        display: none;
+    }
 }
 
-/* HIDDEN NAV OPENED */
+@media (min-width: 75em) {
+    .nav__list {
+        gap: 3.5em;
+    }
+}
+
+/* ============= HIDDEN NAV OPENED ============= */
 
 .nav__toggle:checked ~ .nav__list {
     visibility: visible;
+    clip-path: circle(75%);
 }
+
 .nav__toggle:checked ~ .nav__list .nav__list__item {
     opacity: 1;
     transform: translateX(0);
     transition: transform 0.8s cubic-bezier(0, 1, 1, 1) 0.5s,
                 opacity 1s cubic-bezier(0, 1, 1, 1) 0.5s;
 }
+
 .nav__toggle:checked ~ .nav__list .nav__list__item:nth-child(2) {
     transition-delay: 0.55s;
 }
+
 .nav__toggle:checked ~ .nav__list .nav__list__item:nth-child(3) {
     transition-delay: 0.6s;
 }
+
 .nav__toggle:checked ~ .nav__list .nav__list__item:nth-child(4) {
-     transition-delay: 0.65s;
+    transition-delay: 0.65s;
 }
-.nav__toggle:checked ~ .nav__list .nav__list__item:nth-child(4) {
-    transition-delay: 0.7s;
-}
+
 .nav__toggle:checked ~ .nav__list .nav__list__item:nth-child(5) {
     transition-delay: 0.75s;
 }
@@ -115,22 +130,19 @@ header {
 .nav__toggle:checked ~ .nav__toggle-label span:nth-child(1) {
     transform: rotate(45deg) translateY(-6px);
 }
+
 .nav__toggle:checked ~ .nav__toggle-label span:nth-child(2) {
     transform: rotate(-45deg) translateY(6px);
 }
 
-.nav__toggle:checked ~ .nav__bg::after {
-    transform: scale(1);
-    z-index: 1;
-}
-
-/* NAV LINKS */
+/* ============= NAV ITEMS ============= */
 
 .nav__list__item {
     position: relative;
     opacity: 0;
     transition-duration: 0.2s;
 }
+
 .nav__list__item a{
     display: inline-flex;
     flex-direction: column;
@@ -140,14 +152,15 @@ header {
     text-decoration: none;
     font-size: var(--fs-800);
     font-weight: var(--fw-semibold);
-    cursor: pointer;
     padding: 0.5em;
 }
+
 .nav__list__item a:hover,
 .nav__list__item a:active {
     font-weight: var(--fw-bold);
     transition: 0.15s ease-out;
 }
+
 /* evita che il layout shifti a causa del bold */
 .nav__list__item a::after {
     content: attr(data-text);
@@ -167,10 +180,12 @@ header {
     border-bottom: solid 5px var(--clr-neutral-100);
     transition: width ease-out 0.4s;
 }
+
 .nav__list__item a:hover::before,
 .nav__list__item a:active::before {
     width: 100%;
 }
+
 .nav__list__item a:not(:hover)::before {
     left: auto;
     right: 0;
@@ -184,100 +199,16 @@ header {
     font-weight: var(--fw-bold);
     border: solid 5px var(--clr-neutral-100);
 }
+
 .active a:hover::before,
 .active a:active::before {
     width: 0;
 }
 
-/* NAV RIGHT */
-
-.nav__right {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1.5em;
-
-    position: absolute;
-    top: var(--lineheight);
-    right: var(--margin);
-}
-
-.shopping-cart-slide {
-    height: 100%; /* 100% Full-height */
-    width: 0; /* 0 width - change this with JavaScript */
-    position: fixed;
-    top: 0;
-    right: 0;
-    background-color: var(--clr-neutral-100); /* Black*/
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 60px; /* Place content 60px from the top */
-    transition: 0.5s;
-    z-index: 100;
-}
-/* The sidebar links */
-.shopping-cart-slide a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-}
-/* When you mouse over the navigation links, change their color */
-.shopping-cart-slide a:hover {
-    color: #f1f1f1;
-}
-
-/* Position and style the close button (top right corner) */
-.shopping-cart-slide .closebtn {
-    position: absolute;
-    top: var(--lineheight);
-    right: var(--margin);
-    font-size: 60px;
-}
-.shopping-cart-link {
-    background-color: transparent;
-    border: none;
-    width: 35px;
-    height: 35px;
-}
-.shopping-cart {
-    cursor: pointer;
-}
-
 @media screen and (min-width: 60em) {
-    .nav-wrapper {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .nav__list {
-        display: flex;
-        flex-direction: row;
-        gap: 1.5rem;
-        position: relative;
-        top: 0;
-        height: auto;
-        visibility: visible;
-    }
     .nav__list__item {
+        position: relative;
         opacity: 1;
-    }
-    .nav__toggle,
-    .nav__toggle-label {
-        display: none;
-    }
-    .nav__right {
-        position: relative;
-        top: 0;
-        right: 30px;
-    }
-
-    /* NAV LINKS */
-
-    .nav__list__item {
-        position: relative;
     }
     .nav__list__item a{
         font-size: var(--fs-400);
@@ -299,9 +230,6 @@ header {
     .nav__list__item a::before {
         border-bottom: solid 3px var(--clr-primary-400);
     }
-
-    /* CURRENT PAGE UNDERLINE */
-
     .active a{
         color: var(--clr-primary-400);
         font-weight: var(--fw-bold);
@@ -309,8 +237,70 @@ header {
         border-bottom: 3px solid var(--clr-primary-400);
     }
 }
-@media (min-width: 75em) {
-    .nav__list {
-        gap: 3.5em;
+
+/* ============= NAV RIGHT ============= */
+
+.nav__right {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5em;
+
+    position: absolute;
+    top: var(--lineheight);
+    right: var(--margin);
+}
+/*TODO: change this */
+.shopping-cart-slide {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: var(--clr-neutral-100); /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s;
+    z-index: 100;
+}
+
+/* The sidebar links */
+.shopping-cart-slide a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+/* When you mouse over the navigation links, change their color */
+.shopping-cart-slide a:hover {
+    color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.shopping-cart-slide .closebtn {
+    position: absolute;
+    top: var(--lineheight);
+    right: var(--margin);
+    font-size: 60px;
+}
+
+.shopping-cart-link {
+    background-color: transparent;
+    border: none;
+    width: 35px;
+    height: 35px;
+}
+
+.shopping-cart {
+    cursor: pointer;
+}
+
+@media screen and (min-width: 60em) {
+    .nav__right {
+        position: relative;
+        top: 0;
+        right: 30px;
     }
 }

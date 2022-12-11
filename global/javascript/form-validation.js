@@ -7,15 +7,30 @@ const formList = document.querySelectorAll("form");
 
 /* Listener for input in every form in the page */
 formList.forEach(form => {
-    form.addEventListener("input", event => {
 
-        const emailEl = form.querySelector('[name = email]');
-        const nameSurnameEl = form.querySelector('[name = nome-cognome]');
-        const messageEl = form.querySelector('[name = messaggio]');
-        const passwordEl = form.querySelector('[name = password]');
-        const confirmPasswordEl = form.querySelector('[name = pass-conf]');
+    const emailEl = form.querySelector('[name = email]');
+    const nameSurnameEl = form.querySelector('[name = nome-cognome]');
+    const messageEl = form.querySelector('[name = messaggio]');
+    const passwordEl = form.querySelector('[name = password]');
+    const confirmPasswordEl = form.querySelector('[name = pass-conf]');
 
-        switch (event.target.name) {
+    form.addEventListener('submit', e => {
+
+        const isEmailVal = validateEmail(emailEl);
+        const isNameSurnameVal = validateNameSurname(nameSurnameEl);
+        const isMessageVal = validateMessage(messageEl);
+        const isPasswordVal = validatePassword(passwordEl);
+        const isConfirmPasswordVal = validateConfirmPassword(passwordEl, confirmPasswordEl);
+
+        const isFormValid = isEmailVal && isNameSurnameVal && isMessageVal && isPasswordVal && isConfirmPasswordVal;
+        if(!isFormValid) {
+            e.preventDefault();
+        }
+    });
+
+    form.addEventListener("blur", e => {
+
+        switch (e.target.name) {
             case 'nome-cognome':
                 validateNameSurname(nameSurnameEl);
                 break;
@@ -32,23 +47,13 @@ formList.forEach(form => {
                 validateConfirmPassword(passwordEl, confirmPasswordEl);
                 break;
         }
-    });
-});
-
-formList.forEach(form => {
-    form.addEventListener('submit', e => {
-
-        e.preventDefault()
-
-        let isFormValid =  validateEmail();
-        if(!isFormValid) {
-
-        }
-    });
+    }, true); // se metto false non va (boh)
 });
 
 /* Validation functions for every input */
 const validateNameSurname = nameSurnameEl => {
+    if(nameSurnameEl == null)
+        return true;
 
     let valid = false;
     const nameSurname = nameSurnameEl.value;
@@ -65,6 +70,8 @@ const validateNameSurname = nameSurnameEl => {
 }
 
 const validateEmail = emailEl => {
+    if(emailEl == null)
+        return true;
 
     let valid = false;
     const email = emailEl.value.trim();
@@ -81,6 +88,8 @@ const validateEmail = emailEl => {
 }
 
 const validateMessage = messageEl => {
+    if(messageEl == null)
+        return true;
 
     let valid = false;
     const message = messageEl.value.trim();
@@ -97,6 +106,8 @@ const validateMessage = messageEl => {
 }
 
 const validatePassword = passwordEl => {
+    if(passwordEl == null)
+        return true;
 
     let valid = false;
     const password = passwordEl.value.trim();
@@ -113,6 +124,8 @@ const validatePassword = passwordEl => {
 }
 
 const validateConfirmPassword = (passwordEl, confirmPasswordEl) => {
+    if(passwordEl == null || confirmPasswordEl == null)
+        return true;
 
     let valid = false;
     const password = passwordEl.value.trim();

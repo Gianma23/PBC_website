@@ -44,14 +44,14 @@
                     <a href="birrificio.php" class="button" role="button">VISITA IL BIRRIFICIO</a>
                 </div>
                 <div class="tile-section__img-container">
-                    <img src="pages/index/images/birrificio-599x400.png" alt="Fermentatori del birrificio">
+                    <img src="global/images/birrificio/impianto-599x400.png" alt="Fermentatori del birrificio">
                 </div>
             </div>
         </section>
 
         <section class="taproom">
             <h2 class="secondary-heading">Provale ora nella nostra Taproom...</h2>
-            <img class="taproom__img" src="global/02-images/taproom/taproom-outside.jpg" alt="Esterno della Taproom in via Cimarosa 37, Livorno">
+            <img class="taproom__img" src="global/images/taproom/taproom-outside.jpg" alt="Esterno della Taproom in via Cimarosa 37, Livorno">
         </section>
 
         <section class="shop">
@@ -75,7 +75,7 @@
             <div class="container">
                 <h2 class="secondary-heading">Sei un rivenditore?</h2>
                 <p class="fs-500">Hai un locale o una distribuzione e sei interessato alle nostre birre?</p>
-                <form name="form-rivenditori" action="" method="post">
+                <form name="form-rivenditori" action="" method="post" novalidate>
                     <ul class="form-rivenditori">
                         <li class="form__nome-cognome">
                             <label for="nome-cognome">Nome e Cognome:</label><br>

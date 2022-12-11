@@ -1,20 +1,24 @@
-/* ====================== FOOTER ====================== */
+/* ========================================== */
+/* =====             FOOTER             ===== */
+/* ========================================== */
 
 footer {
     position: relative;
     z-index: 10;
 }
 
-/* NEWSLETTER */
+/* ============= NEWSLETTER ============= */
 
 .newsletter {
     text-align: center;
     background-color: var(--clr-primary-300);
     margin-top: var(--lineheight-4);
 }
+
 .newsletter .container {
     padding: var(--lineheight) 0;
 }
+
 .newsletter form {
     grid-column: 1 / 2;
     grid-row: 3 / 4;
@@ -41,12 +45,13 @@ footer {
     }
 }
 
-/* REAL FOOTER */
+/* ============= FOOTER ============= */
 
 .footer {
     background-color: var(--clr-neutral-800);
     padding-top: var(--lineheight);
 }
+
 .footer .container {
     color: var(--clr-neutral-100);
     display: grid;
@@ -57,7 +62,7 @@ footer {
     margin: 0 auto;
 }
 
-/* left footer */
+/* LEFT FOOTER */
 
 .footer__left {
     display: flex;
@@ -67,25 +72,29 @@ footer {
 
     font-size: var(--fs-300);
 }
+
 .footer__left > *{
     flex-basis: 0;
     flex-grow: 1;
 }
+
 .footer-logo {
     width: 100%;
     height: auto;
 }
+
 .social-list {
     justify-content: space-evenly;
     align-items: center;
     display: flex;
     gap: 21px;
 }
+
 .social-icon {
     width: 40px;
 }
 
-/* footer nav */
+/* FOOTER NAV */
 
 .footer-nav {
     display: flex;
@@ -93,23 +102,24 @@ footer {
     flex-wrap: wrap;
     justify-content: center;
 }
+
 .footer-nav__list {
     font-weight: var(--fw-bold);
     margin-bottom: var(--lineheight-2);
     flex-basis: 225px;
     flex-grow: 1;
 }
+
 .footer-nav__list__item {
     margin-top: var(--lineheight);
     font-weight: var(--fw-regular);
     font-size: var(--fs-300);
 }
+
 .footer-nav__list__item a {
     color: inherit;
     text-decoration: inherit;
 }
-
-
 
 @media screen and (min-width: 55em) {
     .footer .container {
@@ -119,7 +129,7 @@ footer {
         flex-direction: column;
         justify-content: start;
     }
-    .footer__left > *{
+    .footer__left > * {
         flex-basis: 0;
         flex-grow: 0;
     }

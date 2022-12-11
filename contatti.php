@@ -17,7 +17,7 @@
                     <ul>
                         <li class="contatti__item">
                             <h2>E-mail</h2>
-                            <img src="global/02-images/icons/email.svg" alt="">
+                            <img src="global/images/icons/email.svg" alt="">
                             <address class="fw-medium fs-500">
                                 <ul>
                                     <li class="emails__item">
@@ -33,19 +33,19 @@
                         </li>
                         <li class="contatti__item">
                             <h2>Telefono</h2>
-                            <img src="global/02-images/icons/phone.svg" alt="">
+                            <img src="global/images/icons/phone.svg" alt="">
                             <p class="recapiti">+0586 854439</p>
                         </li>
                         <li class="contatti__item">
                             <h2>Orario</h2>
-                            <img src="global/02-images/icons/clock.svg" alt="">
+                            <img src="global/images/icons/clock.svg" alt="">
                             <p class="recapiti">Dal lunedì al venerdì dalle 9.00 alle 17.30</p>
                         </li>
                         <li class="contatti__item">
                             <h2>Dove siamo</h2>
-                            <img src="global/02-images/icons/dove_siamo.svg" alt="">
+                            <img src="global/images/icons/dove_siamo.svg" alt="">
                             <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2892.0692301506583!2d10.333298951611132!3d43.542598767490134!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12d5ebedea14991d%3A0x5143657c42abe11e!2sPiccolo%20Birrificio%20Clandestino!5e0!3m2!1sit!2sit!4v1664006135201!5m2!1sit!2sit"
-                                    style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </li>
                     </ul>
                 </section>
