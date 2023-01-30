@@ -12,3 +12,24 @@
 .secondary-nav small {
     text-align: center;
 }
+
+.cards-container {
+    display: flex;
+    justify-content: center;
+    gap: var(--gutter);
+    width: 100%;
+}
+.shop-card {
+    width: var(--column-width-2);
+    margin-top: var(--lineheight);
+    border: 2px solid var(--clr-neutral-800);
+    border-radius: 10px;
+    padding: 10px 20px;
+    text-align: center;
+}
+.disponibile {
+    color: var(--clr-success);
+}
+.esaurito {
+    color: var(--clr-warning);
+}

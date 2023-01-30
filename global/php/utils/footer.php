@@ -76,3 +76,8 @@
 </footer>
 <script src="global/javascript/main.js"></script>
 <script src="global/javascript/form-validation.js"></script>
+<?php
+$jsUrl = "pages/".basename($_SERVER['PHP_SELF'], ".php")."/".basename($_SERVER['PHP_SELF'], ".php").".js";
+if(file_exists($jsUrl))
+    echo "<script src=\"$jsUrl\">";
+?>

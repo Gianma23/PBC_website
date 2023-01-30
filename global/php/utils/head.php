@@ -20,5 +20,10 @@
 <link rel="stylesheet" href="global/css/main.css">
 <link rel="stylesheet" href="global/css/header.css">
 <link rel="stylesheet" href="global/css/footer.css">
-<link rel="stylesheet" href="global/css/sgrid.css">
-<link rel="stylesheet" href="pages/<?php echo basename($_SERVER['PHP_SELF'], ".php") ?>/<?php echo basename($_SERVER['PHP_SELF'], ".php") ?>.css">
+<link rel="stylesheet" href="global/css/grid.css">
+<?php
+    $cssUrl = "pages/".basename($_SERVER['PHP_SELF'], ".php")."/".basename($_SERVER['PHP_SELF'], ".php").".css";
+    if(file_exists($cssUrl))
+        echo "<link rel=\"stylesheet\" href=\"$cssUrl\">";
+?>
+

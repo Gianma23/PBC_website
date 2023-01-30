@@ -7,7 +7,7 @@
         <nav class="nav" id="nav">
             <h2 hidden>Main Menu</h2>
 
-            <input type="checkbox" class="nav__toggle visually-hidden" id="nav__toggle" aria-controls="primary-nav" onclick="lockScroll()">
+            <input type="checkbox" class="nav__toggle visually-hidden" id="nav__toggle" aria-controls="primary-nav">
             <label for="nav__toggle" class="nav__toggle-label">
                 <span></span>
                 <span></span>
@@ -27,20 +27,25 @@
                     <a data-text="Contatti" href="contatti.php">Contatti</a>
                 </li>
             </ul>
-
-
-
         </nav>
 
         <div class="nav__right">
-            <a href="login.php" class="button button--login" type="button">Accedi</a>
+            <?php
+                session_start();
+                if(isset($_SESSION["account"]) && $_SESSION["account"] == "user")
+                    echo "<a href=\"user-dashboard.php\" class=\"button button--tertiary\" type=\"button\">Account</a>";
+                else if(isset($_SESSION["account"]) && $_SESSION["account"] == "admin")
+                    echo "<a href=\"admin-dashboard.php\" class=\"button button--tertiary\" type=\"button\">Account</a>";
+                else
+                    echo "<a href=\"login.php\" class=\"button button--tertiary\" type=\"button\">Accedi</a>";
+            ?>
             <button onclick="openCart()" class="shopping-cart-link" aria-controls="shopping-cart-slide">
                 <img class="shopping-cart" src="global/images/icons/shopping_cart.png" alt="Carrello">
             </button>
         </div>
 
         <div id="shopping-cart-slide" class="shopping-cart-slide" tabindex="-1">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeCart()">&times;</a>
+            <a href="javascript:void(0)" class="closebtn" id="close-cart">&times</a>
             <a href="#">About</a>
             <a href="#">Services</a>
             <a href="#">Clients</a>

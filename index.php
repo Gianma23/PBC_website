@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <?php include "global/html/head.php"; ?>
+    <?php include "global/php/utils/head.php"; ?>
 
     <title>Home - Piccolo Birrificio Clandestino</title>
 </head>
 <body>
 
-    <?php include "global/html/header.php"; ?>
+    <?php include "global/php/utils/header.php"; ?>
 
     <main>
         <section class="hero">
@@ -100,6 +100,6 @@
             </div>
         </section>
     </main>
-    <?php include "global/html/footer.php"; ?>
+    <?php include "global/php/utils/footer.php"; ?>
 </body>
 </html>

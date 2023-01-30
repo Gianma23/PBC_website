@@ -21,6 +21,7 @@ main {
 
 small {
     font-size: var(--fs-300);
+    font-weight: var(--fw-medium);
 }
 
 @media (min-width: 55em) {
@@ -125,6 +126,10 @@ h1 {
     }
 
 }
+
+/* ============= CARDS ============= */
+
+
 
 /* ============= BUTTONS ============= */
 
@@ -241,26 +246,64 @@ h1 {
     background-color: var(--clr-neutral-100);
 }
 
-.button--login {
+.button--remove {
+    padding: 5px;
+    font-size: var(--fs-400);
+    outline: 2px solid var(--clr-neutral-800);
+    color: var(--clr-warning);
+}
+
+.button--remove::before {
+    background-color: transparent;
+}
+
+.button--remove::after {
+    background-color: var(--clr-warning);;
+}
+
+.button--remove:hover {
+    outline: none;
+}
+
+.button--edit {
+    padding: 5px;
+    font-size: var(--fs-400);
+    outline: 2px solid var(--clr-neutral-800);
+    color: var(--clr-neutral-800);
+}
+
+.button--edit::before {
+    background-color: transparent;
+}
+
+.button--edit::after {
+    background-color: var(--clr-primary-400);;
+}
+
+.button--edit:hover {
+    outline: none;
+}
+
+.button--tertiary {
     display: none;
     padding: 0.8rem 24px;
     outline: 2px solid var(--clr-neutral-800);
 }
 
-.button--login::before {
+.button--tertiary::before {
     background-color: transparent;
 }
 
-.button--login::after {
+.button--tertiary::after {
     background-color: var(--clr-primary-400);
 }
 
-.button--login:hover {
+.button--tertiary:hover {
     outline: none;
 }
 
 @media (min-width: 60em) {
-    .button--login {display: inline-block}
+    .button--tertiary {display: inline-block}
 }
 
 /* ============= FORMS ============= */

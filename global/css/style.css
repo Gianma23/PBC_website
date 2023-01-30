@@ -68,6 +68,7 @@
     --lineheight-2: calc(var(--lineheight)*2);
     --lineheight-3: calc(var(--lineheight)*3);
     --lineheight-4: calc(var(--lineheight)*4);
+    --lineheight-5: calc(var(--lineheight)*5);
     --lineheight-6: calc(var(--lineheight)*6);
     --lineheight-7: calc(var(--lineheight)*7);
 }

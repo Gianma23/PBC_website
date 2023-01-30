@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <?php include "global/html/head.php"; ?>
+    <?php include "global/php/utils/head.php"; ?>
 
     <title>Home - Piccolo Birrificio Clandestino</title>
 </head>
 <body>
 
-    <?php include "global/html/header.php"; ?>
+    <?php include "global/php/utils/header.php"; ?>
     <?php include "pages/login/authentication.php"; ?>
 
     <main>
         <div class="container center">
             <h1 class="primary-heading">Account</h1>
             <div class="cards-container">
-                <article class="card card--sign-in">
+                <article class="card">
                     <h2>Già registrato?</h2>
                     <div class="form-container">
                         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
@@ -39,7 +39,7 @@
                     </div>
                 </article>
 
-                <article class="card card--sign-up">
+                <article class="card">
                     <h2>Sei nuovo?</h2>
                     <div class="form-container">
                         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
@@ -76,7 +76,7 @@
         </div>
     </main>
 
-    <?php include "global/html/footer.php"; ?>
+    <?php include "global/php/utils/footer.php"; ?>
 
 </body>
 </html>

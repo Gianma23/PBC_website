@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <?php include "global/html/head.php"; ?>
-
+    <?php include "global/php/utils/head.php"; ?>
+    <link rel="stylesheet" href="pages/dashboard/dashboard.css">
     <title>Dashboard - Piccolo Birrificio Clandestino</title>
 </head>
 <body>
 
-    <?php include "global/html/header.php"; ?>
-    <?php include "pages/login/authentication.php"; ?>
+    <?php include "global/php/utils/header.php"; ?>
 
     <main>
         <div class="container center">
@@ -42,7 +41,7 @@
         </div>
     </main>
 
-    <?php include "global/html/footer.php"; ?>
+    <?php include "global/php/utils/footer.php"; ?>
 
 </body>
 </html>

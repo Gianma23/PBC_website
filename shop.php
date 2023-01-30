@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <?php include "global/html/head.php"; ?>
+    <?php include "global/php/utils/head.php"; ?>
 
     <title>Home - Piccolo Birrificio Clandestino</title>
 </head>
 <body>
 
-    <?php include "global/html/header.php"; ?>
+    <?php include "global/php/utils/header.php"; ?>
 
     <main>
         <div class="secondary-nav" role="navigation" aria-label="shop">
             <div class="container">
-
-
 
                 <ul class="nav__list" tabindex="-1">
                     <li class="nav__list__item <?php if(basename($_SERVER['PHP_SELF']) == 'birrificio.php') { echo "active"; } ?>">
@@ -37,9 +35,23 @@
             </div>
         </div>
 
+        <section>
+            <div class="container center">
+                <h2 class="secondary-heading">Le più vendute</h2>
+                <div class="cards-container">
+                    <?php include "global/php/utils/piu-vendute.php"; ?>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="container center">
+                <h2 class="secondary-heading">Ultimi arrivi</h2>
+                <?php include "global/php/utils/ultimi-arrivi.php" ?>
+            </div>
+        </section>
     </main>
 
-    <?php include "global/html/footer.php"; ?>
+    <?php include "global/php/utils/footer.php"; ?>
 
 </body>
 </html>

@@ -16,7 +16,8 @@ cartLink.replaceWith(cartButton)
 
 /* ========================================== */
 
-const lockScroll = () =>{
+const navToggle = document.getElementById('nav__toggle');
+navToggle.onclick = function() {
     const body = document.body;
 
     if (document.getElementById('nav__toggle').checked) {
@@ -34,7 +35,7 @@ window.addEventListener('scroll', () => {
     document.documentElement.style.setProperty('--scroll-y', `${window.scrollY}px`);
 });
 
-/*==========================================================*/
+/*===================== Cart ====================*/
 
 let mediaquery = window.matchMedia("(min-width: 55em)")
 /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
@@ -46,7 +47,7 @@ function openCart() {
     document.getElementById("shopping-cart-slide").style.width = width;
 }
 
-/* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
-function closeCart() {
+const closeCart = document.getElementById('close-cart');
+closeCart.onclick = function() {
     document.getElementById("shopping-cart-slide").style.width = "0";
 }
