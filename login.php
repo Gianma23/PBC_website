@@ -8,6 +8,7 @@
 <body>
 
     <?php include "global/html/header.php"; ?>
+    <?php include "pages/login/authentication.php"; ?>
 
     <main>
         <div class="container center">
@@ -16,7 +17,8 @@
                 <article class="card card--sign-in">
                     <h2>Già registrato?</h2>
                     <div class="form-container">
-                        <form action="">
+                        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
+                            <input type='hidden' name='action' value='login'>
                             <ul class="form-sign-in">
                                 <li class="form__email">
                                     <label for="email">Email:</label><br>
@@ -29,9 +31,9 @@
                                     <small class="error"></small>
                                 </li>
                                 <li class="form__button">
+                                    <?php echo $errorLogin; ?>
                                     <button type="submit" class="button">ACCEDI</button>
                                 </li>
-                                <li><a href="#" class="remember-pass">Password dimenticata?</a></li>
                             </ul>
                         </form>
                     </div>
@@ -40,7 +42,8 @@
                 <article class="card card--sign-up">
                     <h2>Sei nuovo?</h2>
                     <div class="form-container">
-                        <form action="">
+                        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
+                            <input type='hidden' name='action' value='register'>
                             <ul class="form-sign-up">
                                 <li class="form__email">
                                     <label for="sign-up-email">Email:</label><br>
@@ -53,15 +56,16 @@
                                     <small class="error"></small>
                                 </li>
                                 <li class="form__pass-conferma">
-                                    <label for="sign-up-pass-conf">Conferma password:</label><br>
+                                    <label for="pass-conf">Conferma password:</label><br>
                                     <input type="password" id="pass-conf" name="pass-conf">
                                     <small class="error"></small>
                                 </li>
                                 <li class="form__privacy-policy checkbox-container">
                                     <input type="checkbox" id="privacy-policy" name="privacy-policy">
-                                    <label for="privacy-policy">Accetto le condizioni del sium</label>
+                                    <label for="privacy-policy">Accetto le condizioni sulla privacy</label>
                                 </li>
                                 <li class="form__button">
+                                    <?php echo $errorRegister; ?>
                                     <button type="submit" class="button">REGISTRATI</button>
                                 </li>
                             </ul>
