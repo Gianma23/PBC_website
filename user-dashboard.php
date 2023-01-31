@@ -7,41 +7,25 @@
 </head>
 <body>
 
-    <?php include "global/php/utils/header.php"; ?>
+<?php include "global/php/utils/header.php"; ?>
 
-    <main>
-        <div class="container center">
-            <h1 class="primary-heading">Account</h1>
-            <div class="cards-container">
-                <article class="card card--sign-in">
-                    <h2>Già registrato?</h2>
-                    <div class="form-container">
-                        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
-                            <input type='hidden' name='action' value='login'>
-                            <ul class="form-sign-in">
-                                <li class="form__email">
-                                    <label for="email">Email:</label><br>
-                                    <input type="email" id="email" placeholder="esempio@email.com" name="email">
-                                    <small class="error"></small>
-                                </li>
-                                <li class="form__pass">
-                                    <label for="password">Password:</label><br>
-                                    <input type="password" id="password" name="password">
-                                    <small class="error"></small>
-                                </li>
-                                <li class="form__button">
-                                    <?php echo $errorLogin; ?>
-                                    <button type="submit" class="button">ACCEDI</button>
-                                </li>
-                            </ul>
-                        </form>
-                    </div>
-                </article>
-            </div>
+<main>
+    <div class="container">
+        <h1 class="primary-heading">Dashboard Account</h1>
+        <div class="cards-container">
+            <a href="user-ordini.php" class="card">
+                <h2>Ordini</h2>
+                <p>Controlla e gestisci lo stato di tutti gli ordini presenti.</p>
+            </a>
+            <a href="user-dettagli.php" class="card">
+                <h2>Dettagli account</h2>
+                <p>Visualizza e modifica le informazioni del tuo account.</p>
+            </a>
         </div>
-    </main>
+    </div>
+</main>
 
-    <?php include "global/php/utils/footer.php"; ?>
+<?php include "global/php/utils/footer.php"; ?>
 
 </body>
 </html>

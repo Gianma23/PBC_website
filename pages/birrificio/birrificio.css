@@ -1,28 +1,38 @@
+/* ======================================= */
+/* =====            HERO             ===== */
+/* ======================================= */
+
 .hero .container {
     display: grid;
     grid-template-columns: 1fr;
     justify-items: center;
     row-gap: var(--lineheight);
 }
+
 .hero__title {
     font-size: var(--fs-900);
     margin-top: var(--lineheight-2);
 }
+
 .subheading {
     font-size: var(--fs-800);
     line-height: var(--lineheight-2);
     color: var(--clr-primary-400);
 }
+
 .novita-list__item {
     font-size: var(--fs-600);
     line-height: var(--lineheight-2);
 }
+
 .novita-list__item strong {
     font-weight: var(--fw-bold);
 }
+
 .hero .button {
     margin-bottom: var(--lineheight);
 }
+
 .image-show__item img {
     margin: 0 auto;
 }
@@ -35,14 +45,17 @@
 
         justify-items: start;
     }
+
     .hero p{
         width: calc(var(--column-width-5)/0.583);
     }
+
     .image-show {
         grid-column: 2 / 3;
         grid-row: 1 / 5;
     }
 }
+
 @media screen and (min-width: 70em) {
 
     .image-show__item img{
@@ -53,17 +66,20 @@
         border-radius: 6px;
         transition: 0.4s ease-out;
     }
+
     .heading-subheading,
     .novita-list,
     .hero p{
         z-index: 50;
     }
+
     .image-show__item:nth-child(1) img{
         bottom: 30%;
         left: 50%;
         transform: scale(0.9);
         z-index: 10;
     }
+
     .image-show__item:nth-child(2) img{
         bottom: 7%;
         left: 43%;
@@ -71,6 +87,7 @@
         rotate: 10deg;
         z-index: 15;
     }
+
     .image-show__item:nth-child(3) img{
         bottom: 5%;
         left: 58%;
@@ -78,6 +95,7 @@
         rotate: -5deg;
         z-index: 20;
     }
+
     .image-show__item:nth-child(4) img{
         bottom: 50%;
         left: 59%;
@@ -85,6 +103,7 @@
         rotate: 5deg;
         z-index: 3;
     }
+
     .image-show__item:nth-child(5) img{
         bottom: 50%;
         left: 37%;
@@ -100,53 +119,35 @@
     }
 }
 
-/* ============= UNDER THE FOLD ============= */
+/* ======================================= */
+/* =====      UNDER THE FOLD         ===== */
+/* ======================================= */
 
-/* VISITE E DEGUSTAZIONI */
+/* ============= VISITE E DEGUSTAZIONI ============= */
 
-.section-container {
-    display: flex;
-    flex-direction: column;
-    row-gap: var(--lineheight-2);
+#visite h2 {
     margin-top: var(--lineheight);
 }
-.tile-section h3 {
+
+.tile-section__content h3 {
     font-weight: bold;
     font-size: var(--fs-700);
     line-height: var(--lineheight-2);
 }
-.tile-section__item {
-    display: grid;
-    grid-template-columns: 1fr;
-    column-gap: var(--gutter);
-    align-items: center;
 
-    margin-top: var(--lineheight-2);
-}
-.tile-section__content button{
-    height: var(--lineheight-2);
-}
 .prezzo {
     font-weight: var(--fw-semibold);
     font-size: var(--fs-600);
     line-height: var(--lineheight);
 }
-.tile-section img {
+
+.tile-section__img-container img {
     position: relative;
     width: 100%;
     border-radius: 6px;
 }
 
-@media screen and (min-width: 55em) {
-    .tile-section {
-        grid-template-columns: 1fr 1fr;
-    }
-    .tile-section__item--degusta img {
-        grid-row: 1 / 2;
-    }
-}
-
-/* PREMI */
+/* ============= PREMI ============= */
 
 .premi-list {
     text-align: center;
@@ -159,6 +160,7 @@
     row-gap: var(--lineheight-2);
     column-gap: var(--gutter);
 }
+
 .parenthesis {
     font-weight: var(--fw-regular);
     font-size: var(--fs-400);
@@ -171,19 +173,22 @@
         flex-wrap: wrap;
         justify-content: space-around;
     }
+
     .premi-list__item:nth-child(1) {
         flex-basis: 100%;
     }
 }
 
-/* COLLABORAZIONI E PROGETTI */
+/* ============= COLLAB. PROGETTI ============= */
 
 .collab-progetti {
     text-align: center;
 }
+
 .collab-progetti section {
     margin-top: var(--lineheight);
 }
+
 .scuole-uni__content {
     display: flex;
     align-items: center;
@@ -191,14 +196,17 @@
     gap: var(--lineheight);
     flex-wrap: wrap;
 }
+
 .scuole-uni__content figure {
     flex-basis: 20%;
     min-width: 400px;
 }
+
 .scuole-uni__content img {
     width: 100%;
     margin: 0 auto var(--lineheight);
 }
+
 figcaption {
     font-weight: var(--fw-semibold);
 }
@@ -212,10 +220,12 @@ figcaption {
 .murali__section {
     margin: var(--lineheight-4) 0;
 }
+
 .murali__section img:first-child {
     margin: 0 auto;
     width: 50%;
 }
+
 @media screen and (min-width: 55em) {
     .murali__section {
         display: grid;
@@ -224,12 +234,14 @@ figcaption {
         align-items: center;
     }
 }
+
 /* ============= STRETCH PARAGRAPHS ============= */
 
 @media screen and (min-width: 92em){
     .hero p{
         width: calc(var(--column-width-5)/0.583);
     }
+
     .tile-section__item__content p {
         width: calc(var(--column-width-5)*2);
     }

@@ -2,15 +2,21 @@
 
 class ProductClass {
 
-    private $nome;
-    private $prezzo;
-    private $quantita;
-    private $imgPath;
-    private $disponibile;
+    protected $nome;
+    protected $prezzo;
+    protected $descrizione;
+    protected $categoria;
+    protected $tagline;
+    protected $quantita;
+    protected $imgPath;
+    protected $disponibile;
 
     function __construct($record) {
         $this->nome = $record['name'];
         $this->prezzo = $record['price'];
+        $this->descrizione = $record['descr'];
+        $this->categoria = $record['category'];
+        $this->tagline = $record['tagline'];
         $this->quantita = $record['quantity'];
         $this->imgPath = $record['img_path'];
         $this->disponibile = $record['quantity'] > 0;
@@ -21,11 +27,15 @@ class ProductClass {
         if(!$this->disponibile)
             $disponibileText = "esaurito";
         echo
-        "<div class=\"shop-card\">
+        "<div class=\"product-card\">
+            <img src='$this->imgPath' alt='immagine prodotto'>
             <h3 class=\"fw-medium fs-600\">$this->nome</h3>
             <p class=\"fw-medium fs-500\">$this->prezzo&euro;</p>
             <small class=\"$disponibileText\">$disponibileText</small>
-            <button class=\"button shop-button\">AGGIUNGI</button>
+            <button class=\"button button--shop\">
+                <span class=\"button-image\"></span>
+                AGGIUNGI
+            </button>
         </div>";
     }
 

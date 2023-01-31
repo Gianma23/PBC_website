@@ -1,8 +1,14 @@
 .cards-container {
-    width: 100%;
+    justify-content: center;
 }
+
+.container h1 {
+    margin-top: var(--lineheight-4);
+}
+
 .card {
-    width: var(--column-width-2);
+    width: 100%;
+    display: block;
     margin-top: var(--lineheight);
     border: 2px solid var(--clr-neutral-800);
     border-radius: 10px;
@@ -18,15 +24,7 @@
 }
 
 @media screen and (min-width: 55em) {
-    .cards-container {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        justify-content: center;
-        justify-items: center;
-        align-self: stretch;
-        gap: var(--gutter);
-    }
     .card {
-        width: 100%;
+        width: var(--column-width-4);
     }
 }

@@ -1,17 +1,22 @@
-.form-container {
-    background-color: var(--clr-neutral-500);
-    border: 3px solid var(--clr-neutral-800);
-    border-radius: 10px;
-    margin-top: var(--lineheight);
-}
 .card h2 {
     font-size: var(--fs-700);
     font-weight: var(--fw-semibold);
     text-align: center;
     margin-top: var(--lineheight-2);
 }
-form {
-    padding: 2em 3.18em;
+
+.form-fieldset {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.form-fieldset .form-elem {
+    width: 48%;
+}
+
+#info-birra .form-elem {
+    width: 100%;
 }
 
 @media screen and (min-width: 55em) {
@@ -19,10 +24,17 @@ form {
         margin: 0 auto;
         width: var(--column-width-8);
     }
+
+    #info-birra .form-elem {
+        width: 48%;
+    }
 }
 
 @media screen and (min-width: 80em) {
     .card {
         width: var(--column-width-6);
+    }
+    .form-fieldset .form-elem {
+        width: 30%;
     }
 }

@@ -1,132 +1,84 @@
 <?php
 include_once "global/php/utils/DBUtils.php";
 
-const ADMIN_NAME = "admin@email.com";
-const ADMIN_PASSWORD = "12345Aa!";
+$errorAggiungi = "";
 
-$errorLogin = "";
-$errorRegister = "";
+if ($_SERVER["REQUEST_METHOD"] == "POST" && $_SESSION["account"] == "admin") {
 
-// Se è già loggato redirect sulla dashboard
-if(isset($_SESSION["account"])) {
-    redirectToDashboard($_SESSION["account"]);
-    return;
-}
+    if(isset($_POST["nome"]) && isset($_POST["desc"]) && isset($_POST["prezzo"]) &&
+        isset($_POST["quantita"]) && isset($_POST["categoria"]) && isset($_POST["stile"]) && isset($_POST["tagline"])
+        && $_FILES["image"]["error"] == UPLOAD_ERR_OK) {
 
-// Altrimenti faccio il login o la registrazione
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if(isset($_POST["action"]) && $_POST["action"] == "login") {
-        login();
-    }
-    else if(isset($_POST["action"]) && $_POST["action"] == "register") {
-        register();
-    }
-}
+        $nome = $_POST["nome"];
+        $desc = $_POST["desc"];
+        $prezzo = $_POST["prezzo"];
+        $quantita = $_POST["quantita"];
+        $stile = $_POST["stile"];
+        $tagline = $_POST["tagline"];
+        $categoria = $_POST["categoria"];
 
-function login() {
+        $target_dir = "global/images/birre/";
+        $target_file = $target_dir.basename($_FILES["image"]["name"]);
 
-    global $errorLogin;
-    $email = $password = "";
-    if(isset($_POST["email"]) && isset($_POST["password"])) {
-        if(validateInputs()) {
-            $email = $_POST["email"];
-            $password = $_POST["password"];
+        if(file_exists($target_file)) {
+            $errorAggiungi =  "<small class=\"error\">Immagine già presente.</small>";
+            return;
         }
-    }
 
-    // controllo se è un admin
-    if(isAdmin($email, $password)) {
-        $_SESSION["account"] = "admin";
-        redirectToDashboard($_SESSION["account"]);
-        return;
-    }
+        if(validateInputs($nome, $desc, $prezzo, $quantita, $categoria, $stile, $tagline)) {
 
-    try {
-        $pdo = new PDO(CONNECTION, USER, PASSWORD);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        $sql = "SELECT * FROM account WHERE email=?;";
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindValue(1, $email);
-        $stmt->execute();
-
-        $account = $stmt->fetch();
-        if(isset($account) && !empty($account)) {
-            if(password_verify($password, $account["password"])) {
-                redirectToDashboard();
-                $_SESSION["logged"] = true;
+            if(!move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+                $errorAggiungi =  "<small class=\"error\">Errore nel caricamento dell'immagine.</small>";
+                return;
             }
-            else
-                $errorLogin =  "<small class=\"error\">Password errata.</small>";
-        }
-        else
-            $errorLogin =  "<small class=\"error\">Nessun account esistente con questa email!</small>";
 
-        $pdo = null;
-    }
-    catch (PDOException $e) {
-        $errorLogin =  "<small class=\"error\">Siamo spiacenti, il servizio non è raggiungibile.</small>";
-        $pdo = null;
+            // inserisco il prodotto
+            try {
+                $pdo = new PDO(CONNECTION, USER, PASSWORD);
+                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                $sql = "INSERT INTO product (name, descr, quantity, tagline, price, category, img_path) VALUES (?,?,?,?,?,?,?)";
+                $stmt = $pdo->prepare($sql);
+                $stmt->bindValue(1, $nome);
+                $stmt->bindValue(2, $desc);
+                $stmt->bindValue(3, $quantita);
+                $stmt->bindValue(4, $tagline);
+                $stmt->bindValue(5, $prezzo);
+                $stmt->bindValue(6, $categoria);
+                $stmt->bindValue(7, $target_file);
+                $stmt->execute();
+
+                // se è una birra inserisco anche quella
+                if($categoria == "birra" && isset($_POST["aroma"]) && isset($_POST["gusto"])) {
+                    $sql = "INSERT INTO beer (product_id, style, aroma, flavor) VALUES (?,?,?,?)";
+                    $stmt = $pdo->prepare($sql);
+                    $stmt->bindValue(1, $nome);
+                    $stmt->bindValue(2, $stile);
+                    $stmt->bindValue(3, $_POST["aroma"]);
+                    $stmt->bindValue(4, $_POST["gusto"]);
+                    $stmt->execute();
+                }
+                redirectToProduct();
+                $pdo = null;
+            }
+            catch (PDOException $e) {
+                $errorAggiungi =  "<small class=\"error\">Siamo spiacenti, il servizio non è raggiungibile.</small>";
+                $pdo = null;
+            }
+        }
     }
 }
 
-function register() {
-
-    global $errorRegister;
-    $email = $password = "";
-    if(isset($_POST["email"]) && isset($_POST["password"])) {
-        if(validateInputs()) {
-            $email = $_POST["email"];
-            $password = $_POST["password"];
-        }
-    }
-
-    try {
-        $pdo = new PDO(CONNECTION, USER, PASSWORD);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        $sql = "SELECT * FROM account WHERE email=?";
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindValue(1, $email);
-        $stmt->execute();
-
-        $account = $stmt->fetch();
-        if(isset($account) && !empty($account)) {
-            $errorRegister =  "<small class=\"error\">Email già registrata!</small>";
-        }
-        else {
-            $sql = "INSERT INTO account (email, password) VALUES (?,?);";
-            $stmt = $pdo->prepare($sql);
-            $stmt->bindValue(1, $email);
-            $stmt->bindValue(2, password_hash($password, PASSWORD_BCRYPT));
-            $stmt->execute();
-
-            $_SESSION["account"] = "user";
-            redirectToDashboard($_SESSION["account"]);
-        }
-        $pdo = null;
-    }
-    catch (PDOException $e) {
-        $errorRegister =  "<small class=\"error\">Siamo spiacenti, il servizio non è raggiungibile.</small>";
-        $pdo = null;
-    }
+function validateInputs($nome, $desc, $prezzo, $quantita, $categoria, $stile, $tagline) : bool {
+    return strlen($nome) < 20 &&
+            is_numeric($quantita) && $quantita >= 0 && $quantita == round($quantita) &&
+            is_numeric($prezzo) && $prezzo >= 0 &&
+            in_array($categoria, ["birra", "merchandising", "altro"]) &&
+            strlen($desc) < 300 && strlen($stile) < 30 && strlen($tagline) < 50;
 }
 
-function validateInputs() {
-    return preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/", trim($_POST["password"])) &&
-           preg_match("/^[\w\-.]+@([\w\-]+\.)+[\w\-]{2,4}$/", trim($_POST["email"]));
-}
-
-function isAdmin($email, $password) {
-    return $email == ADMIN_NAME && $password == ADMIN_PASSWORD;
-}
-
-function redirectToDashboard($account) {
+function redirectToProduct() : void {
     $host = $_SERVER["HTTP_HOST"];
     $current_directory = rtrim(dirname($_SERVER["PHP_SELF"]), "/");
-
-    if($account == "user")
-        header("Location: http://$host/$current_directory/user-dashboard.php");
-    else if($account == "admin")
-        header("Location: http://$host/$current_directory/admin-dashboard.php");
+    header("Location: http://$host/$current_directory/admin-prodotti.php");
 }

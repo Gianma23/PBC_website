@@ -53,8 +53,8 @@ function login() {
         $account = $stmt->fetch();
         if(isset($account) && !empty($account)) {
             if(password_verify($password, $account["password"])) {
-                redirectToDashboard();
-                $_SESSION["logged"] = true;
+                $_SESSION["account"] = "user";
+                redirectToDashboard($_SESSION["account"]);
             }
             else
                 $errorLogin =  "<small class=\"error\">Password errata.</small>";

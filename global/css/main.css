@@ -36,7 +36,9 @@ h1 {
     line-height: var(--lineheight-3);
 }
 
-/* ============= HERO SECTION ============= */
+/* ========================================== */
+/* =====         HERO SECTION           ===== */
+/* ========================================== */
 
 .hero {
     position: relative;
@@ -51,18 +53,23 @@ h1 {
     margin: 0 auto;
 }
 
-/* ============= SECTIONS ============= */
+/* ========================================== */
+/* =====            SECTIONS            ===== */
+/* ========================================== */
 
 .tile-section__content {
     margin-bottom: var(--lineheight);
 }
 
-.tile-section__img-container {
-    height: clamp(400px,50vh,600px);
-    max-height: 650px;
+.tile-section p {
+    margin: var(--lineheight) 0;
 }
 
-.tile-section img {
+.tile-section__img-container {
+    height: clamp(400px,50vh,650px);
+}
+
+.tile-section__img-container img {
     position: absolute;
     width: 100%;
     height: inherit;
@@ -77,43 +84,31 @@ h1 {
     right: 0;
 }
 
-.tile-section p {
-    margin: var(--lineheight) 0;
-}
-
-.tile-section button {
-    margin: var(--lineheight) 0;
-}
-
 @media screen and (min-width: 55em) {
     .tile-section {
         display: grid;
         grid-auto-flow: column;
-        grid-template-columns: var(--column-width-6) auto;
+        grid-template-columns: 1fr 1fr;
         column-gap: var(--gutter);
     }
-    .tile-section--right .tile-section__content {
-        grid-column: 2 / 3;
+
+    .tile-section p {
+        margin: var(--lineheight-2) 0;
     }
 
     .tile-section--left {
         grid-template-columns: auto var(--column-width-6);
     }
-    .tile-section--right .tile-section__content {
-        width: 100%;
 
+    .tile-section--right .tile-section__content {
+        grid-column: 2 / 3;
     }
-    .tile-section p {
-        margin: var(--lineheight-2) 0;
-        width: 100%;
-    }
-    .tile-section button {
-        margin: 0;
-    }
+
     .tile-section--right img {
         width: calc(var(--column-width-6) * 0.86243386 + var(--margin));
         border-radius: 0 20px 20px 0;
     }
+
     .tile-section--left img {
         width: calc(var(--column-width-6) * 0.86243386  + var(--margin));
         border-radius: 20px 0 0 20px;
@@ -127,11 +122,65 @@ h1 {
 
 }
 
-/* ============= CARDS ============= */
+/* ========================================== */
+/* =====             CARDS              ===== */
+/* ========================================== */
 
+/* ============= PRODUCT CARD ============= */
 
+.cards-container {
+    width: 100%;
+}
 
-/* ============= BUTTONS ============= */
+.product-card {
+    margin-top: var(--lineheight);
+    border: 2px solid var(--clr-neutral-800);
+    border-radius: 10px;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.product-card h3 {
+    margin-bottom: var(--lineheight);
+}
+
+.product-card img {
+    height: var(--lineheight-6);
+    margin: 0 auto;
+}
+
+@media screen and (min-width: 40em) {
+    .cards-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--gutter);
+    }
+    .product-card {
+        width: calc(var(--column-width-3) - 2px);
+    }
+}
+
+@media screen and (min-width: 55em) {
+    .product-card {
+        width: calc(var(--column-width-4) - 2px);
+    }
+}
+
+@media screen and (min-width: 70em) {
+    .product-card {
+        width: calc(var(--column-width-3) - 2px);
+    }
+}
+
+@media screen and (min-width: 105em) {
+    .product-card {
+        width: calc(var(--column-width-2) - 1px);
+    }
+}
+
+/* ========================================== */
+/* =====            BUTTONS             ===== */
+/* ========================================== */
 
 .button {
     display: inline-block;
@@ -152,30 +201,6 @@ h1 {
 
     transition: linear 0.2s;
     z-index: 15;
-}
-
-.fab-button {
-    position: fixed;
-    bottom: 2em;
-    right: var(--margin);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 5em;
-    height: 5em;
-    border-radius: 50%;
-    cursor: pointer;
-    background-color: var(--clr-primary-400);
-    box-shadow: 2px 2px 5px 0 var(--clr-neutral-700);
-    z-index: 999;
-}
-
-.fab-button a {
-    color: inherit;
-    text-decoration: none;
-    font-size: var(--fs-500);
-    font-weight: var(--fw-semibold);
 }
 
 .button::before {
@@ -220,6 +245,34 @@ h1 {
     transform: translateY(4px);
 }
 
+/* ============= FLOATING ACTION BUTTON ============= */
+
+.fab-button {
+    position: fixed;
+    bottom: 2em;
+    right: var(--margin);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 5em;
+    height: 5em;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: var(--clr-primary-400);
+    box-shadow: 2px 2px 5px 0 var(--clr-neutral-700);
+    z-index: 999;
+}
+
+.fab-button a {
+    color: inherit;
+    text-decoration: none;
+    font-size: var(--fs-500);
+    font-weight: var(--fw-semibold);
+}
+
+/* ============= BUTTON HERO ============= */
+
 .button--hero::after {
     background-color: var(--clr-neutral-100);
 }
@@ -228,6 +281,8 @@ h1 {
 .button--hero:active {
     color: var(--clr-neutral-800);
 }
+
+/* ============= BUTTON SECONDARY ============= */
 
 .button--secondary {
     color: var(--clr-neutral-100);
@@ -245,44 +300,7 @@ h1 {
 .button--secondary::after {
     background-color: var(--clr-neutral-100);
 }
-
-.button--remove {
-    padding: 5px;
-    font-size: var(--fs-400);
-    outline: 2px solid var(--clr-neutral-800);
-    color: var(--clr-warning);
-}
-
-.button--remove::before {
-    background-color: transparent;
-}
-
-.button--remove::after {
-    background-color: var(--clr-warning);;
-}
-
-.button--remove:hover {
-    outline: none;
-}
-
-.button--edit {
-    padding: 5px;
-    font-size: var(--fs-400);
-    outline: 2px solid var(--clr-neutral-800);
-    color: var(--clr-neutral-800);
-}
-
-.button--edit::before {
-    background-color: transparent;
-}
-
-.button--edit::after {
-    background-color: var(--clr-primary-400);;
-}
-
-.button--edit:hover {
-    outline: none;
-}
+/* ============= BUTTON TERTIARY ============= */
 
 .button--tertiary {
     display: none;
@@ -306,7 +324,67 @@ h1 {
     .button--tertiary {display: inline-block}
 }
 
-/* ============= FORMS ============= */
+/* ============= BUTTON REMOVE ============= */
+
+.button--remove {
+    padding: 5px;
+    font-size: var(--fs-400);
+    outline: 2px solid var(--clr-neutral-800);
+    color: var(--clr-warning);
+}
+
+.button--remove::before {
+    background-color: transparent;
+}
+
+.button--remove::after {
+    background-color: var(--clr-warning);;
+}
+
+.button--remove:hover {
+    outline: none;
+}
+
+/* ============= BUTTON EDIT ============= */
+
+.button--edit {
+    padding: 5px;
+    font-size: var(--fs-400);
+    outline: 2px solid var(--clr-neutral-800);
+    color: var(--clr-neutral-800);
+}
+
+.button--edit::before {
+    background-color: transparent;
+}
+
+.button--edit::after {
+    background-color: var(--clr-primary-400);;
+}
+
+.button--edit:hover {
+    outline: none;
+}
+
+/* ============= BUTTON SHOP ============= */
+
+.button--shop {
+    height: var(--lineheight-2);
+    padding: 0 24px;
+}
+
+.button--shop .button-image {
+    display: inline-block;
+    vertical-align: sub;
+    background-image: url("../images/icons/shopping_cart.png");
+    background-size: contain;
+    width: 24px;
+    height: 24px;
+}
+
+/* ========================================== */
+/* =====              FORMS             ===== */
+/* ========================================== */
 
 form {
     text-align: left;
@@ -317,7 +395,7 @@ form .button {
     width: 100%;
 }
 
-form li:not(li .button){
+form .form-elem:not(.form-elem .button){
     margin-top: 1em;
 }
 
@@ -327,7 +405,8 @@ label {
 }
 
 input,
-textarea {
+textarea,
+select {
     font-weight: var(--fw-regular);
     border: 2px solid var(--clr-neutral-800);
     border-radius: 6px;
@@ -345,15 +424,9 @@ input:-webkit-autofill:focus {
     transition: background-color 9999s ease-in-out;
 }
 
-.form__messaggio textarea {
+textarea {
     height: var(--lineheight-7);
     resize: none;
-}
-
-.form__privacy-policy {
-    display: flex;
-    align-items: center;
-    gap: 16px;
 }
 
 input[type=checkbox] {
@@ -366,7 +439,32 @@ input[type=checkbox] + label{
     font-weight: var(--fw-medium);
 }
 
-/* ============= ERROR VALIDATION ============= */
+.form__privacy-policy {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* ============= FORM IN A CARD ============= */
+
+.form--card {
+    background-color: var(--clr-neutral-500);
+    border: 3px solid var(--clr-neutral-800);
+    border-radius: 10px;
+    margin-top: var(--lineheight);
+}
+
+.form--card form {
+    padding: 0 3.18em 2em;
+}
+
+.form--card button {
+    margin-top: var(--lineheight);
+}
+
+/* ========================================== */
+/* =====       ERROR VALIDATION         ===== */
+/* ========================================== */
 
 .valid input,
 .valid textarea{

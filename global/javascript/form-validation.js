@@ -144,7 +144,7 @@ const validateConfirmPassword = (passwordEl, confirmPasswordEl) => {
 
 /* Helping boolean function */
 const isNameSurnameValid = nameSurname => {
-    const re = /([a-z]+)(\s+)+[a-z]+/i;
+    const re = /([a-z]+)(\s+)+[a-z]+/;
     return re.test(nameSurname);
 };
 

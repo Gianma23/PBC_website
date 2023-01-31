@@ -12,7 +12,8 @@
     <main>
         <div class="container">
             <div class="even-column">
-                <section class="contatti">
+                
+                <section>
                     <h1 class="primary-heading fw-bold">Contatti</h1>
                     <ul>
                         <li class="contatti__item">
@@ -49,57 +50,54 @@
                         </li>
                     </ul>
                 </section>
+
                 <section class="forms">
                     <div class="container-form container-form--clienti left-bleed">
                         <h2>Serve una mano?</h2>
                         <p>Hai domande o dubbi? Hai problemi con la spedizione o ti serve qualche chiarimento? Scrivici per qualsiasi cosa!</p>
                         <form name="form-clienti" action="">
-                            <ul>
-                                <li>
-                                    <label for="nome-cognome-cliente">Nome e Cognome:</label><br>
-                                    <input type="text" id="nome-cognome-cliente" name="nome-cognome">
-                                    <small class="error"></small>
-                                </li>
-                                <li>
-                                    <label for="email-cliente">Email:</label><br>
-                                    <input type="email" id="email-cliente" name="email">
-                                    <small class="error"></small>
-                                </li>
-                                <li class="form__messaggio">
-                                    <label for="messaggio-cliente">Messaggio:</label><br>
-                                    <textarea id="messaggio-cliente" name="messaggio"></textarea>
-                                    <small class="error"></small>
-                                </li>
-                                <li class="">
-                                    <button type="submit" class="button button--secondary">INVIA EMAIL</button>
-                                </li>
-                            </ul>
+                            <p class="form-elem">
+                                <label for="nome-cognome-cliente">Nome e Cognome:</label><br>
+                                <input type="text" id="nome-cognome-cliente" name="nome-cognome">
+                                <small class="error"></small>
+                            </p>
+                            <p class="form-elem">
+                                <label for="email-cliente">Email:</label><br>
+                                <input type="email" id="email-cliente" name="email">
+                                <small class="error"></small>
+                            </p>
+                            <p class="form-elem">
+                                <label for="messaggio-cliente">Messaggio:</label><br>
+                                <textarea id="messaggio-cliente" name="messaggio"></textarea>
+                                <small class="error"></small>
+                            </p>
+                            <p class="form-elem">
+                                <button type="submit" class="button button--secondary">INVIA EMAIL</button>
+                            </p>
                         </form>
                     </div>
                     <div class="container-form container-form--rivenditori text-neutral-100 left-bleed">
                         <h2>Sei un rivenditore?</h2>
                         <p>Hai un locale o una distribuzione e sei interessato alle nostre birre?</p>
                         <form name="form-rivenditori" action="">
-                            <ul class="form-rivenditori">
-                                <li class="form__nome-cognome">
-                                    <label for="nome-cognome-riv">Nome e Cognome:</label><br>
-                                    <input type="text" id="nome-cognome-riv" name="nome-cognome">
-                                    <small class="error"></small>
-                                </li>
-                                <li class="form__email">
-                                    <label for="email-riv">Email:</label><br>
-                                    <input type="email" id="email-riv" name="email">
-                                    <small class="error"></small>
-                                </li>
-                                <li class="form__messaggio">
-                                    <label for="messaggio-riv">Messaggio:</label><br>
-                                    <textarea id="messaggio-riv" name="messaggio"></textarea>
-                                    <small class="error"></small>
-                                </li>
-                                <li class="form__button">
-                                    <button type="submit" class="button">INVIA EMAIL</button>
-                                </li>
-                            </ul>
+                            <p class="form-elem">
+                                <label for="nome-cognome-riv">Nome e Cognome:</label><br>
+                                <input type="text" id="nome-cognome-riv" name="nome-cognome">
+                                <small class="error"></small>
+                            </p>
+                            <p class="form-elem">
+                                <label for="email-riv">Email:</label><br>
+                                <input type="email" id="email-riv" name="email">
+                                <small class="error"></small>
+                            </p>
+                            <p class="form-elem">
+                                <label for="messaggio-riv">Messaggio:</label><br>
+                                <textarea id="messaggio-riv" name="messaggio"></textarea>
+                                <small class="error"></small>
+                            </p>
+                            <p class="form-elem">
+                                <button type="submit" class="button">INVIA EMAIL</button>
+                            </p>
                         </form>
                     </div>
                 </section>

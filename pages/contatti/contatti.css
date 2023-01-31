@@ -1,20 +1,25 @@
 body {
     text-align: center;
 }
+
 main h2 {
     font-weight: var(--fw-semibold);
     font-size: var(--fs-800);
     line-height: var(--lineheight-2);
 }
+
 h1 {
     margin-top: var(--lineheight-2);
     line-height: var(--lineheight-2);
 }
+
 .container {
     margin: 0 auto;
 }
 
-/* ============= LEFT COLUMN ============= */
+/* ========================================== */
+/* =====       COLONNA SINISTRA         ===== */
+/* ========================================== */
 
 .contatti__item {
     margin-top: var(--lineheight-2);
@@ -24,63 +29,76 @@ h1 {
     justify-content: center;
     gap: calc(var(--gutter)*2);
 }
+
 .contatti__item img {
     width: 100%;
     height: var(--lineheight-3);
     order: -1;
 }
+
 .recapiti,
 address {
     flex-basis: 100%;
     font-size: var(--fs-500);
     font-weight: var(--fw-medium);
 }
+
 .emails__item,
 .recapiti,
 .map {
     margin-top: var(--lineheight);
 }
+
 .emails__item a{
     font-weight: var(--fw-regular);
     font-size: var(--fs-400);
 }
+
 .map {
     height: 400px;
     width: calc(var(--column-width-5)*2 + var(--gutter)/2);
 }
 
-/* ============= RIGHT COLUMN ============= */
+/* ========================================== */
+/* =====        COLONNA DESTRA          ===== */
+/* ========================================== */
 
 .container-form {
     padding: 0 0 var(--lineheight);
 }
+
 .container-form--clienti {
     background-color: var(--clr-primary-400);
     box-shadow: 0 0 0 100vmax var(--clr-primary-400);
     clip-path: inset(0 -50vmax 0);
 }
+
 .container-form--rivenditori {
     background-color: var(--clr-neutral-800);
     box-shadow: 0 0 0 100vmax var(--clr-neutral-800);
     clip-path: inset(0 -50vmax -100vmax);
 }
+
 .container-form h2 {
     margin: 0;
     padding-top: var(--lineheight-2);
-
 }
+
 .container-form p {
     margin-top: var(--lineheight);
 }
 
 /* ============= LARGE SCREEN ============= */
+
 @media screen and (min-width: 60em) {
     body {
         text-align: left;
     }
+
     .contatti__item {
         justify-content: flex-start;
     }
+
     .contatti__item img {
         width: auto;
         order: 0;
@@ -89,13 +107,16 @@ address {
     .container-form {
         padding: 0 0 var(--lineheight) calc(var(--gutter)*2);
     }
+
     .container-form--clienti {
         clip-path: inset(0 -50vmax 0 0);
     }
+
     .container-form--rivenditori {
         clip-path: inset(0 -50vmax -100vmax 0);
     }
 }
+
 @media screen and (min-width: 70em) {
     .forms form {
         width: calc(var(--column-width-4)*2);

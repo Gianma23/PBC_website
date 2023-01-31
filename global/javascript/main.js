@@ -51,3 +51,32 @@ const closeCart = document.getElementById('close-cart');
 closeCart.onclick = function() {
     document.getElementById("shopping-cart-slide").style.width = "0";
 }
+
+/* ========================================== */
+/* =====          BUTTON SHOP           ===== */
+/* ========================================== */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

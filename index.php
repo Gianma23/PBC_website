@@ -18,7 +18,7 @@
             </div>
         </section>
 
-        <section class="birre">
+        <section>
             <div class="container tile-section tile-section--left">
                 <div class="tile-section__content">
                     <h2 class="primary-heading">La nostra birra</h2>
@@ -34,7 +34,7 @@
             </div>
         </section>
 
-        <section class="birrificio">
+        <section>
             <div class="container tile-section tile-section--right">
                 <div class="tile-section__content">
                     <h2 class="primary-heading">Il birrificio</h2>
@@ -75,27 +75,26 @@
             <div class="container">
                 <h2 class="secondary-heading">Sei un rivenditore?</h2>
                 <p class="fs-500">Hai un locale o una distribuzione e sei interessato alle nostre birre?</p>
-                <form name="form-rivenditori" action="" method="post" novalidate>
-                    <ul class="form-rivenditori">
-                        <li class="form__nome-cognome">
-                            <label for="nome-cognome">Nome e Cognome:</label><br>
-                            <input type="text" id="nome-cognome" name="nome-cognome" placeholder="mario rossi" required>
-                            <small class="error"></small>
-                        </li>
-                        <li class="form__email">
-                            <label for="email">Email:</label><br>
-                            <input type="email" id="email" name="email" placeholder="esempio@email.com" required>
-                            <small class="error"></small>
-                        </li>
-                        <li class="form__messaggio">
-                            <label for="messaggio">Messaggio:</label><br>
-                            <textarea id="messaggio" name="messaggio" required></textarea>
-                            <small class="error"></small>
-                        </li>
-                        <li class="form__button">
-                            <button type="submit" class="button">INVIA EMAIL</button>
-                        </li>
-                    </ul>
+
+                <form class="form-rivenditori" action="" method="post" novalidate>
+                    <p class="form-elem">
+                        <label for="nome-cognome">Nome e Cognome:</label><br>
+                        <input type="text" id="nome-cognome" name="nome-cognome" placeholder="mario rossi">
+                        <small class="error"></small>
+                    </p>
+                    <p class="form-elem">
+                        <label for="email">Email:</label><br>
+                        <input type="email" id="email" name="email" placeholder="esempio@email.com">
+                        <small class="error"></small>
+                    </p>
+                    <p class="form-elem form__messaggio">
+                        <label for="messaggio">Messaggio:</label><br>
+                        <textarea id="messaggio" name="messaggio"></textarea>
+                        <small class="error"></small>
+                    </p>
+                    <p class="form-elem">
+                        <button type="submit" class="button">INVIA EMAIL</button>
+                    </p>
                 </form>
             </div>
         </section>

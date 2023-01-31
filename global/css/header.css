@@ -76,7 +76,6 @@ header {
         align-items: center;
     }
     .nav__list {
-        display: flex;
         flex-direction: row;
         gap: 1.5rem;
         position: relative;
@@ -207,7 +206,6 @@ header {
 
 @media screen and (min-width: 60em) {
     .nav__list__item {
-        position: relative;
         opacity: 1;
     }
     .nav__list__item a{

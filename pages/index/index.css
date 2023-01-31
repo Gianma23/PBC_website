@@ -16,13 +16,16 @@
 /* ========================================== */
 /* =====        UNDER THE FOLD          ===== */
 /* ========================================== */
+
 .taproom {
     text-align: center;
     overflow: hidden;
 }
+
 .taproom h2 {
     margin: var(--lineheight-3) 0 var(--lineheight);
 }
+
 .taproom__img {
     width: 100%;
     object-fit: cover;
@@ -41,6 +44,7 @@
         line-height: 112px;
         padding-top: var(--lineheight-3);
     }
+
     .hero p {
         width: var(--column-width-7);
     }
@@ -56,25 +60,25 @@
         width: var(--column-width-10);
         margin: 0 auto;
     }
+
     .form__messaggio {
         grid-column: 2 / 3;
         grid-row: 1 / -1;
     }
-    .form__messaggio textarea{
+
+    .form-elem textarea{
         height: calc(100% - var(--lineheight));
     }
 }
+
 @media screen and (min-width: 90em) {
     .form-rivenditori {
         width: var(--column-width-8);
     }
 }
 
-/* Stretch paragraphs */
 @media screen and (min-width: 92em){
     .hero p{
         width: var(--column-width-5);
     }
-    /* UNDER THE FOLD*/
-
 }
