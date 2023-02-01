@@ -81,5 +81,5 @@
 <?php
 $jsUrl = "pages/".basename($_SERVER['PHP_SELF'], ".php")."/".basename($_SERVER['PHP_SELF'], ".php").".js";
 if(file_exists($jsUrl))
-    echo "<script src=\"$jsUrl\">";
+    echo "<script src=\"$jsUrl\"></script>";
 ?>

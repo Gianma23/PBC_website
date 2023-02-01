@@ -1,15 +1,12 @@
 <?php
 include_once "global/php/utils/DBUtils.php";
 
-const ADMIN_NAME = "admin@email.com";
-const ADMIN_PASSWORD = "12345Aa!";
-
 $errorLogin = "";
 $errorRegister = "";
 
 // Se è già loggato redirect sulla dashboard
-if(isset($_SESSION["account"])) {
-    redirectToDashboard($_SESSION["account"]);
+if(isset($_SESSION["role"])) {
+    redirectToDashboard($_SESSION["role"]);
     return;
 }
 
@@ -26,89 +23,80 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 function login() {
 
     global $errorLogin;
-    $email = $password = "";
-    if(isset($_POST["email"]) && isset($_POST["password"])) {
-        if(validateInputs()) {
-            $email = $_POST["email"];
-            $password = $_POST["password"];
-        }
-    }
+    if(isset($_POST["email"]) && isset($_POST["password"]) && validateInputs()) {
 
-    // controllo se è un admin
-    if(isAdmin($email, $password)) {
-        $_SESSION["account"] = "admin";
-        redirectToDashboard($_SESSION["account"]);
-        return;
-    }
+        $email = $_POST["email"];
+        $password = $_POST["password"];
 
-    try {
-        $pdo = new PDO(CONNECTION, USER, PASSWORD);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        try {
+            $pdo = new PDO(CONNECTION, USER, PASSWORD);
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $sql = "SELECT * FROM account WHERE email=?;";
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindValue(1, $email);
-        $stmt->execute();
+            $sql = "SELECT * FROM account WHERE email=?;";
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindValue(1, $email);
+            $stmt->execute();
 
-        $account = $stmt->fetch();
-        if(isset($account) && !empty($account)) {
-            if(password_verify($password, $account["password"])) {
-                $_SESSION["account"] = "user";
-                redirectToDashboard($_SESSION["account"]);
+            $account = $stmt->fetch();
+            if(isset($account) && !empty($account)) {
+                if(password_verify($password, $account["password"])) {
+                    $_SESSION["role"] = $account["role"];
+                    $_SESSION["account_id"] = $account["email"];
+                    redirectToDashboard($account["role"]);
+                }
+                else
+                    $errorLogin =  "<small class=\"error\">Password errata.</small>";
             }
             else
-                $errorLogin =  "<small class=\"error\">Password errata.</small>";
-        }
-        else
-            $errorLogin =  "<small class=\"error\">Nessun account esistente con questa email!</small>";
+                $errorLogin =  "<small class=\"error\">Nessun account esistente con questa email!</small>";
 
-        $pdo = null;
-    }
-    catch (PDOException $e) {
-        $errorLogin =  "<small class=\"error\">Siamo spiacenti, il servizio non è raggiungibile.</small>";
-        $pdo = null;
+            $pdo = null;
+        }
+        catch (PDOException $e) {
+            $errorLogin =  "<small class=\"error\">Siamo spiacenti, il servizio non è raggiungibile.</small>";
+            $pdo = null;
+        }
     }
 }
 
 function register() {
 
     global $errorRegister;
-    $email = $password = "";
-    if(isset($_POST["email"]) && isset($_POST["password"])) {
-        if(validateInputs()) {
-            $email = $_POST["email"];
-            $password = $_POST["password"];
-        }
-    }
+    if(isset($_POST["email"]) && isset($_POST["password"]) && validateInputs()) {
 
-    try {
-        $pdo = new PDO(CONNECTION, USER, PASSWORD);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $email = $_POST["email"];
+        $password = $_POST["password"];
 
-        $sql = "SELECT * FROM account WHERE email=?";
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindValue(1, $email);
-        $stmt->execute();
+        try {
+            $pdo = new PDO(CONNECTION, USER, PASSWORD);
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $account = $stmt->fetch();
-        if(isset($account) && !empty($account)) {
-            $errorRegister =  "<small class=\"error\">Email già registrata!</small>";
-        }
-        else {
-            $sql = "INSERT INTO account (email, password) VALUES (?,?);";
+            $sql = "SELECT * FROM account WHERE email=?;";
             $stmt = $pdo->prepare($sql);
             $stmt->bindValue(1, $email);
-            $stmt->bindValue(2, password_hash($password, PASSWORD_BCRYPT));
             $stmt->execute();
 
-            $_SESSION["account"] = "user";
-            redirectToDashboard($_SESSION["account"]);
+            $account = $stmt->fetch();
+            if(isset($account) && !empty($account)) {
+                $errorRegister =  "<small class=\"error\">Email già registrata!</small>";
+            }
+            else {
+                $sql = "INSERT INTO account (email, password) VALUES (?,?);";
+                $stmt = $pdo->prepare($sql);
+                $stmt->bindValue(1, $email);
+                $stmt->bindValue(2, password_hash($password, PASSWORD_BCRYPT));
+                $stmt->execute();
+
+                $_SESSION["role"] = "user";
+                $_SESSION["account_id"] = $account["email"];
+                redirectToDashboard($_SESSION["role"]);
+            }
+            $pdo = null;
         }
-        $pdo = null;
-    }
-    catch (PDOException $e) {
-        $errorRegister =  "<small class=\"error\">Siamo spiacenti, il servizio non è raggiungibile.</small>";
-        $pdo = null;
+        catch (PDOException $e) {
+            $errorRegister = "<small class=\"error\">Siamo spiacenti, il servizio non è raggiungibile.</small>";
+            $pdo = null;
+        }
     }
 }
 
@@ -117,11 +105,8 @@ function validateInputs() {
            preg_match("/^[\w\-.]+@([\w\-]+\.)+[\w\-]{2,4}$/", trim($_POST["email"]));
 }
 
-function isAdmin($email, $password) {
-    return $email == ADMIN_NAME && $password == ADMIN_PASSWORD;
-}
 
-function redirectToDashboard($account) {
+function redirectToDashboard($account): void {
     $host = $_SERVER["HTTP_HOST"];
     $current_directory = rtrim(dirname($_SERVER["PHP_SELF"]), "/");
 

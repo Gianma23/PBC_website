@@ -56,6 +56,15 @@ closeCart.onclick = function() {
 /* =====          BUTTON SHOP           ===== */
 /* ========================================== */
 
+const addButtons = document.querySelectorAll('.button--shop');
+
+addButtons.forEach((button) => button.onclick = (e) => {
+
+    fetch('global/php/carrello/carrello-aggiungi.php?product_id=' + e.currentTarget.id)
+    .then((data)=> data.text())
+    .then(text => console.log(text));
+
+});
 
 
 

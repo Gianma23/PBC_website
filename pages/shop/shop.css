@@ -1,11 +1,9 @@
 .secondary-nav {
     background-color: var(--clr-primary-200);
-    position: -webkit-sticky;
-    position: sticky;
 }
 
-.secondary-nav small {
-    text-align: center;
+.container {
+    min-height: var(--lineheight-2);
 }
 
 .sec-nav__list {
@@ -48,7 +46,7 @@
 @media screen and (min-width: 70em) {
     .secondary-nav .container {
         display: grid;
-        grid-template-columns: var(--column-width-6) repeat(2, var(--column-width-3));
+        grid-template-columns: var(--column-width-6) var(--column-width-6);
         column-gap: var(--gutter);
         align-items: center;
     }

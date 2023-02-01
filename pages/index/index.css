@@ -7,6 +7,7 @@
     font-size: var(--fs-600);
     margin: var(--lineheight-2) 0 0;
     line-height: var(--lineheight-2);
+    z-index: 1;
 }
 .hero .button {
     margin-top: var(--lineheight-3);
@@ -16,6 +17,13 @@
 /* ========================================== */
 /* =====        UNDER THE FOLD          ===== */
 /* ========================================== */
+
+.tile-section--left img {
+    width: auto;
+    transform: rotate(10deg) scale(1.2);
+    object-fit: contain;
+    left: var(--column-width-2);
+}
 
 .taproom {
     text-align: center;
@@ -50,6 +58,10 @@
     }
 
     /* UNDER THE FOLD*/
+
+    .tile-section--left img {
+        left: var(--column-width-7);
+    }
 
     .form-rivenditori {
         display: grid;

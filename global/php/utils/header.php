@@ -32,9 +32,9 @@
         <div class="nav__right">
             <?php
                 session_start();
-                if(isset($_SESSION["account"]) && $_SESSION["account"] == "user")
+                if(isset($_SESSION["role"]) && $_SESSION["role"] == "user")
                     echo "<a href=\"user-dashboard.php\" class=\"button button--tertiary\" type=\"button\">Account</a>";
-                else if(isset($_SESSION["account"]) && $_SESSION["account"] == "admin")
+                else if(isset($_SESSION["role"]) && $_SESSION["role"] == "admin")
                     echo "<a href=\"admin-dashboard.php\" class=\"button button--tertiary\" type=\"button\">Account</a>";
                 else
                     echo "<a href=\"login.php\" class=\"button button--tertiary\" type=\"button\">Accedi</a>";
@@ -44,13 +44,22 @@
             </button>
         </div>
 
-        <div id="shopping-cart-slide" class="shopping-cart-slide" tabindex="-1">
-            <a href="javascript:void(0)" class="closebtn" id="close-cart">&times</a>
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Clients</a>
-            <a href="#">Contact</a>
-        </div>
+        <!-- Carrello shopping -->
+        <aside id="shopping-cart-slide" class="shopping-cart-slide" tabindex="-1">
+            <a href="javascript:void(0)" class="closebtn" id="close-cart">&times;</a>
+            <h2 class="fs-600 fw-bold">Carrello</h2>
+            <p>Totale provvisorio:</p>
+            <ul class="prodotti-list">
+               <li class="prodotto">
+
+               </li>
+            </ul>
+
+            <?php include "global/php/carrello/carrello-carica.php"; ?>
+
+            <a href="carrello.php" class="button" role="button">SCOPRI LE BIRRE</a>
+            <a href="spedizione.php" class="button button--secondary" role="button">SCOPRI LE BIRRE</a>
+        </aside>
     </div>
 </header>
 

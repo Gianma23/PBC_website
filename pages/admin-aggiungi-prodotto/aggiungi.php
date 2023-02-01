@@ -13,7 +13,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_SESSION["account"] == "admin") {
         $desc = $_POST["desc"];
         $prezzo = $_POST["prezzo"];
         $quantita = $_POST["quantita"];
-        $stile = $_POST["stile"];
         $tagline = $_POST["tagline"];
         $categoria = $_POST["categoria"];
 
@@ -25,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_SESSION["account"] == "admin") {
             return;
         }
 
-        if(validateInputs($nome, $desc, $prezzo, $quantita, $categoria, $stile, $tagline)) {
+        if(validateInputs($nome, $desc, $prezzo, $quantita, $categoria, $tagline)) {
 
             if(!move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
                 $errorAggiungi =  "<small class=\"error\">Errore nel caricamento dell'immagine.</small>";
@@ -49,11 +48,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_SESSION["account"] == "admin") {
                 $stmt->execute();
 
                 // se è una birra inserisco anche quella
-                if($categoria == "birra" && isset($_POST["aroma"]) && isset($_POST["gusto"])) {
+                if($categoria == "birra" && isset($_POST["aroma"]) && isset($_POST["gusto"]) && isset($_POST["stile"])) {
                     $sql = "INSERT INTO beer (product_id, style, aroma, flavor) VALUES (?,?,?,?)";
                     $stmt = $pdo->prepare($sql);
                     $stmt->bindValue(1, $nome);
-                    $stmt->bindValue(2, $stile);
+                    $stmt->bindValue(2, $_POST["stile"]);
                     $stmt->bindValue(3, $_POST["aroma"]);
                     $stmt->bindValue(4, $_POST["gusto"]);
                     $stmt->execute();
@@ -69,12 +68,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_SESSION["account"] == "admin") {
     }
 }
 
-function validateInputs($nome, $desc, $prezzo, $quantita, $categoria, $stile, $tagline) : bool {
+function validateInputs($nome, $desc, $prezzo, $quantita, $categoria, $tagline) : bool {
     return strlen($nome) < 20 &&
             is_numeric($quantita) && $quantita >= 0 && $quantita == round($quantita) &&
             is_numeric($prezzo) && $prezzo >= 0 &&
             in_array($categoria, ["birra", "merchandising", "altro"]) &&
-            strlen($desc) < 300 && strlen($stile) < 30 && strlen($tagline) < 50;
+            strlen($desc) < 500 && strlen($tagline) < 100;
 }
 
 function redirectToProduct() : void {

@@ -15,7 +15,5 @@
             <input type="search" id="search-bar" placeholder="Cerca nello shop">
         </div>
 
-        <small>SPEDIZIONE GRATUITA PER ORDINI SUPERIORI A 89€ E PER IL COMUNE DI LIVORNO</small>
-
     </div>
 </div>

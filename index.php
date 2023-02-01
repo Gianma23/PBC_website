@@ -29,7 +29,7 @@
                     <a href="birre.php" class="button" role="button">SCOPRI LE BIRRE</a>
                 </div>
                 <div class="tile-section__img-container">
-                    <img src="" alt="Birra Riappala 2.0">
+                    <img src="pages/index/Riappala.png" id="hero-image" alt="Birra Riappala 2.0">
                 </div>
             </div>
         </section>
