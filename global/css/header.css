@@ -251,29 +251,37 @@ header {
 /*TODO: change this */
 .shopping-cart-slide {
     height: 100%; /* 100% Full-height */
-    width: 0; /* 0 width - change this with JavaScript */
+    width: calc(var(--column-width-4) + var(--margin));
+    max-width: 550px;
+    min-width: 390px;
     position: fixed;
     top: 0;
-    right: 0;
+    right: -2000px;
     background-color: var(--clr-neutral-100); /* Black*/
     overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 60px; /* Place content 60px from the top */
-    transition: 0.5s;
+    padding: 2em;
+    transition: all 0.5s;
     z-index: 100;
 }
 
-/* The sidebar links */
-.shopping-cart-slide a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
+.shopping-cart-slide h2 {
+    margin-bottom: var(--lineheight);
 }
-/* When you mouse over the navigation links, change their color */
-.shopping-cart-slide a:hover {
-    color: #f1f1f1;
+
+.shopping-cart-slide.open {
+    right: 0;
+}
+
+.pulsanti-carrello {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pulsanti-carrello .button {
+    margin: var(--lineheight);
+    text-align: center;
+    min-width: 250px;
 }
 
 /* Position and style the close button (top right corner) */
@@ -282,6 +290,8 @@ header {
     top: var(--lineheight);
     right: var(--margin);
     font-size: 60px;
+    text-decoration: none;
+    color: inherit;
 }
 
 .shopping-cart-link {
@@ -296,9 +306,61 @@ header {
 }
 
 @media screen and (min-width: 60em) {
+    .shopping-cart-slide {
+        width: calc(var(--column-width-3) + var(--margin));
+        padding: 2em 5em 2em 3em;
+    }
+
     .nav__right {
         position: relative;
         top: 0;
         right: 30px;
     }
 }
+
+/* Carrello Laterale */
+
+.totale {
+    font-size: var(--fs-500);
+    font-weight: var(--fw-bold);
+    margin: var(--lineheight) 0;
+    text-align: right;
+}
+
+.prodotti-list::before,
+.prodotti-list::after {
+    display: block;
+    width: 80%;
+    height: 5px;
+    background-color: black;
+    margin: 0 auto;
+    content: '';
+}
+
+.prodotto {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    height: var(--lineheight-4);
+    margin-bottom: var(--lineheight);
+}
+
+.prodotto:first-child {
+    margin-top: var(--lineheight);
+}
+
+.prodotto *:first-child {
+    height: 100%;
+}
+
+.nome-prodotto {
+    font-size: var(--fs-500);
+    font-weight: var(--fw-medium);
+}
+
+.prezzo-prodotto {
+    font-weight: var(--fw-medium);
+    margin-left: auto;
+}
+
+

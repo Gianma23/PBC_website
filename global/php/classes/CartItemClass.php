@@ -1,18 +1,14 @@
 <?php
 include_once __DIR__."/ProductClass.php";
 
-class BeerClass extends ProductClass implements JsonSerializable {
+class CartItemClass extends ProductClass implements JsonSerializable {
 
-    private $aroma;
-    private $gusto;
-    private $stile;
+    private $pezzi;
 
-    function __construct($record) {
+    function __construct($record, $pezzi) {
         parent::__construct($record);
 
-        $this->stile = $record['style'];
-        $this->aroma = $record['aroma'];
-        $this->gusto = $record['flavor'];
+        $this->pezzi = $pezzi;
     }
 
     public function jsonSerialize() : array {
@@ -23,8 +19,6 @@ class BeerClass extends ProductClass implements JsonSerializable {
                 "tagline"=> $this->tagline,
                 "imgPath"=> $this->imgPath,
                 "disponibile"=> $this->disponibile,
-                "aroma"=> $this->aroma,
-                "stile"=> $this->stile,
-                "gusto"=> $this ->gusto];
+                "pezzi"=> $this->pezzi];
     }
 }

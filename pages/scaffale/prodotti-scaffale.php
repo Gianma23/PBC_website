@@ -1,6 +1,5 @@
 <?php
 include_once "../../global/php/utils/DBUtils.php";
-include_once "../../global/php/classes/ProductClass.php";
 include_once "../../global/php/classes/BeerClass.php";
 
 
@@ -13,7 +12,6 @@ if($_SERVER["REQUEST_METHOD"] == "GET")
         cercaPerNome();
 
 function cercaBirre() : void {
-    global $jsonProdotti;
     $arrayProdotti = [];
 
     try {
@@ -48,7 +46,6 @@ function cercaBirre() : void {
 }
 
 function cercaProdotti() : void {
-    global $jsonProdotti;
     $arrayProdotti = [];
 
     try {
@@ -65,7 +62,7 @@ function cercaProdotti() : void {
             $prodotto = new ProductClass($row);
             $arrayProdotti[] = $prodotto;
         }
-        $jsonProdotti = json_encode($arrayProdotti);
+        echo json_encode($arrayProdotti);
         $pdo = null;
     }
     catch (PDOException $e) {

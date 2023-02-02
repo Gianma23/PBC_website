@@ -10,6 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["product_id"])) {
     try {
         $pdo = new PDO(CONNECTION, USER, PASSWORD);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $pdo->beginTransaction();
 
         $sql = "SELECT * FROM product WHERE name=?;";
         $stmt = $pdo->prepare($sql);
@@ -24,17 +25,11 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["product_id"])) {
             // guardo se esiste già un carrello, altrimenti lo creo
             $cart_id = findCarrello($pdo);
 
-            // aggiorno/aggiungo il prodotto nel carrello
-            $sql = "SELECT * 
-                    FROM cart_item
-                    WHERE cart_id=? AND product_id = ?;";
-            $stmt = $pdo->prepare($sql);
-            $stmt->bindValue(1, $cart_id);
-            $stmt->bindValue(2, $product_id);
-            $stmt->execute();
+            // cerco il prodotto nel carrello
+            $stmt = cercaProdottoInCarrello($pdo, $cart_id, $product_id);
 
             // se esiste già il prodotto aumento la quantità
-            if($product = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            if($stmt->fetch(PDO::FETCH_ASSOC)) {
                 $sql = "UPDATE cart_item
                         SET quantity = quantity + 1
                         WHERE cart_id=? AND product_id = ?;";
@@ -47,16 +42,17 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["product_id"])) {
             $stmt = $pdo->prepare($sql);
             $stmt->bindValue(1, $cart_id);
             $stmt->bindValue(2, $product_id);
-            $stmt->execute();
+            $result = $stmt->execute();
 
             // AGGIORNO SESSION[cart]
-            while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                updateSessionCart($row);
-            }
+            updateSessionCart($product_id);
+
+            $pdo->commit();
             $pdo = null;
         }
     }
     catch (PDOException $e) {
+        $pdo->rollBack();
         $pdo = null;
     }
 }
@@ -105,13 +101,11 @@ function findCarrello($pdo) {
         return createNewCart($pdo);
     }
     // altrimenti creo un nuovo carrello per il guest
+    setcookie("cart_id", session_id(), time()+86400, '/'); // carrello dura 1g per i guest
     return createNewCart($pdo);
 }
 
-function createNewCart($pdo, $account = null) {
-
-    setcookie("cart_id", session_id());
-
+function createNewCart($pdo, $account = null) : string {
     $sql = "INSERT INTO cart (id, account_id)
             VALUES (?,?)";
     $stmt = $pdo->prepare($sql);
@@ -119,4 +113,15 @@ function createNewCart($pdo, $account = null) {
     $stmt->bindValue(2, $account);
     $stmt->execute();
     return session_id();
+}
+
+function cercaProdottoInCarrello($pdo, $cart_id, $product_id) {
+    $sql = "SELECT * 
+            FROM cart_item
+            WHERE cart_id=? AND product_id = ?;";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue(1, $cart_id);
+    $stmt->bindValue(2, $product_id);
+    $stmt->execute();
+    return $stmt;
 }

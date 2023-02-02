@@ -1,6 +1,6 @@
 <?php
 
-class ProductClass {
+class ProductClass implements JsonSerializable {
 
     protected $nome;
     protected $prezzo;
@@ -51,5 +51,15 @@ class ProductClass {
                 <button class=\"button button--remove elimina\">Elimina</button>
             </div>
         </div>";
+    }
+
+    public function jsonSerialize() : array {
+        return ["nome"=> $this->nome,
+                "prezzo"=> $this->prezzo,
+                "descrizione"=> $this->descrizione,
+                "categoria"=> $this->categoria,
+                "tagline"=> $this->tagline,
+                "imgPath"=> $this->imgPath,
+                "disponibile"=> $this->disponibile];
     }
 }

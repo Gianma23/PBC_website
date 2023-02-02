@@ -33,13 +33,13 @@
             <?php
                 session_start();
                 if(isset($_SESSION["role"]) && $_SESSION["role"] == "user")
-                    echo "<a href=\"user-dashboard.php\" class=\"button button--tertiary\" type=\"button\">Account</a>";
+                    echo "<a href=\"user-dashboard.php\" class=\"button button--tertiary\" role=\"button\">Account</a>";
                 else if(isset($_SESSION["role"]) && $_SESSION["role"] == "admin")
-                    echo "<a href=\"admin-dashboard.php\" class=\"button button--tertiary\" type=\"button\">Account</a>";
+                    echo "<a href=\"admin-dashboard.php\" class=\"button button--tertiary\" role=\"button\">Account</a>";
                 else
-                    echo "<a href=\"login.php\" class=\"button button--tertiary\" type=\"button\">Accedi</a>";
+                    echo "<a href=\"login.php\" class=\"button button--tertiary\" role=\"button\">Accedi</a>";
             ?>
-            <button onclick="openCart()" class="shopping-cart-link" aria-controls="shopping-cart-slide">
+            <button id="cart-button" class="shopping-cart-link">
                 <img class="shopping-cart" src="global/images/icons/shopping_cart.png" alt="Carrello">
             </button>
         </div>
@@ -48,17 +48,14 @@
         <aside id="shopping-cart-slide" class="shopping-cart-slide" tabindex="-1">
             <a href="javascript:void(0)" class="closebtn" id="close-cart">&times;</a>
             <h2 class="fs-600 fw-bold">Carrello</h2>
-            <p>Totale provvisorio:</p>
-            <ul class="prodotti-list">
-               <li class="prodotto">
+            <ul class="prodotti-list" id="prodotti-list">
 
-               </li>
             </ul>
-
-            <?php include "global/php/carrello/carrello-carica.php"; ?>
-
-            <a href="carrello.php" class="button" role="button">SCOPRI LE BIRRE</a>
-            <a href="spedizione.php" class="button button--secondary" role="button">SCOPRI LE BIRRE</a>
+            <p class="totale" id="totale"></p>
+            <div class="pulsanti-carrello">
+                <a href="carrello.php" class="button" role="button">VISUALIZZA CARRELLO</a>
+                <a href="spedizione.php" class="button button--secondary" role="button">PROCEDI ALL'ORDINE</a>
+            </div>
         </aside>
     </div>
 </header>

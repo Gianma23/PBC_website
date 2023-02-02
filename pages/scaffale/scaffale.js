@@ -30,21 +30,21 @@ let birraAttiva;
 let indice = 0;
 
 fetch('pages/scaffale/prodotti-scaffale.php' + window.location.search)
-    .then((res) => res.json())
-    .then((data) => {
+.then((res) => res.json())
+.then((data) => {
 
-        for(const birraString of data) {
-            const birra = JSON.parse(birraString);
-            arrayBirre.push(new Birra(birra.nome, birra.prezzo, birra.descrizione, birra.categoria, birra.tagline,
-                                     birra.imgPath, birra.stile, birra.aroma, birra.gusto));
-        }
+    for(const birraString of data) {
+        const birra = JSON.parse(birraString);
+        arrayBirre.push(new Birra(birra.nome, birra.prezzo, birra.descrizione, birra.categoria, birra.tagline,
+                                 birra.imgPath, birra.stile, birra.aroma, birra.gusto));
+    }
 
-        if(arrayBirre.length > 1)
-            indice = Math.trunc(arrayBirre.length / 2);
+    if(arrayBirre.length > 1)
+        indice = Math.trunc(arrayBirre.length / 2);
 
-        creaPagina();
-        return true;
-    });
+    creaPagina();
+    return true;
+});
 
 
 function creaPagina() {
@@ -164,13 +164,6 @@ function getTranslateX(elem) {
     const style = window.getComputedStyle(elem);
     const matrix = new WebKitCSSMatrix(style.transform);
     return matrix.m41;
-}
-
-
-function getScale(elem) {
-    const style = window.getComputedStyle(elem);
-    const matrix = new WebKitCSSMatrix(style.transform);
-    return matrix.m11;
 }
 
 

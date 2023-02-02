@@ -4,6 +4,8 @@ include_once "global/php/utils/DBUtils.php";
 $errorLogin = "";
 $errorRegister = "";
 
+
+
 // Se è già loggato redirect sulla dashboard
 if(isset($_SESSION["role"])) {
     redirectToDashboard($_SESSION["role"]);
@@ -40,6 +42,7 @@ function login() {
             $account = $stmt->fetch();
             if(isset($account) && !empty($account)) {
                 if(password_verify($password, $account["password"])) {
+                    session_regenerate_id();
                     $_SESSION["role"] = $account["role"];
                     $_SESSION["account_id"] = $account["email"];
                     redirectToDashboard($account["role"]);
@@ -87,9 +90,10 @@ function register() {
                 $stmt->bindValue(2, password_hash($password, PASSWORD_BCRYPT));
                 $stmt->execute();
 
+                redirectToDashboard("user");
+                session_regenerate_id();
                 $_SESSION["role"] = "user";
                 $_SESSION["account_id"] = $account["email"];
-                redirectToDashboard($_SESSION["role"]);
             }
             $pdo = null;
         }

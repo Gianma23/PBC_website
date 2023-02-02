@@ -3,7 +3,7 @@ include_once "global/php/utils/DBUtils.php";
 
 $errorAggiungi = "";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && $_SESSION["account"] == "admin") {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && $_SESSION["role"] == "admin") {
 
     if(isset($_POST["nome"]) && isset($_POST["desc"]) && isset($_POST["prezzo"]) &&
         isset($_POST["quantita"]) && isset($_POST["categoria"]) && isset($_POST["stile"]) && isset($_POST["tagline"])
@@ -61,6 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_SESSION["account"] == "admin") {
                 $pdo = null;
             }
             catch (PDOException $e) {
+                echo $e->getMessage();
                 $errorAggiungi =  "<small class=\"error\">Siamo spiacenti, il servizio non è raggiungibile.</small>";
                 $pdo = null;
             }
