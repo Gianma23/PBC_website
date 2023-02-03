@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <?php include "app/php/utils/head.php"; ?>
+    <?php include __DIR__ . "/include/head.php"; ?>
 
     <title>Home - Piccolo Birrificio Clandestino</title>
 </head>
 <body>
 
-    <?php include "app/php/utils/header.php"; ?>
+    <?php include __DIR__ . "/include/header.php"; ?>
     <?php include "pages/login/authentication.php"; ?>
 
     <main>
@@ -72,7 +72,7 @@
         </div>
     </main>
 
-    <?php include "app/php/utils/footer.php"; ?>
+    <?php include __DIR__ . "/include/footer.php"; ?>
 
 </body>
 </html>

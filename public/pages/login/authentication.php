@@ -1,5 +1,4 @@
 <?php
-include_once "app/php/utils/DBUtils.php";
 
 $errorLogin = "";
 $errorRegister = "";

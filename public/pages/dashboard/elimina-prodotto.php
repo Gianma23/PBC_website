@@ -1,5 +1,4 @@
 <?php
-include_once "../../app/php/utils/DBUtils.php";
 
 session_start();
 if($_SESSION["account"] != "admin")

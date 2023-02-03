@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <?php include "app/php/utils/head.php"; ?>
+    <?php include __DIR__ . "/include/head.php"; ?>
     <link rel="stylesheet" href="../../public/pages/dashboard/admin-prodotti.css">
     <title>Dashboard - Piccolo Birrificio Clandestino</title>
 </head>
 <body>
 
-    <?php include "app/php/utils/header.php"; ?>
+    <?php include __DIR__ . "/include/header.php"; ?>
     <?php include "pages/admin-aggiungi-prodotto/aggiungi.php"; ?>
 
     <main>
@@ -87,7 +87,7 @@
         </div>
     </main>
 
-    <?php include "app/php/utils/footer.php"; ?>
+    <?php include __DIR__ . "/include/footer.php"; ?>
     <script src="../../public/pages/dashboard/admin-prodotti.js"></script>
 </body>
 </html>

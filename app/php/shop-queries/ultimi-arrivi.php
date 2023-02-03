@@ -1,5 +1,4 @@
 <?php
-include_once "app/php/utils/DBUtils.php";
 
 try {
     $pdo = new PDO(CONNECTION, USER, PASSWORD);
