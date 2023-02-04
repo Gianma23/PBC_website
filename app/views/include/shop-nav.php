@@ -3,10 +3,10 @@
 
         <ul class="sec-nav__list" tabindex="-1">
             <li class="nav__list__item <?php if(basename($_SERVER['PHP_SELF']) == 'birrificio.php') { echo "active"; } ?>">
-                <a data-text="Birre" href="scaffale.php?categoria=birra&stile=ipa">Birre</a>
+                <a data-text="Birre" href="<?= URL_ROOT?>/scaffale/birra">Birre</a>
             </li>
             <li class="nav__list__item <?php if(basename($_SERVER['PHP_SELF']) == 'taproom.php') { echo "active"; } ?>">
-                <a data-text="Merchandising" href="shop-merchandising.php">Merchandising</a>
+                <a data-text="Merchandising" href="<?= URL_ROOT?>/scaffale/merchandising">Merchandising</a>
             </li>
         </ul>
 

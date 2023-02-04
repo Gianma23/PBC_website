@@ -1,6 +1,6 @@
 .hero {
     background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-                url("../../images/taproom/taproom-outside.jpg"),
+                url("../images/taproom/taproom-outside.jpg"),
                 center;
     background-size: cover;
     display: flex;

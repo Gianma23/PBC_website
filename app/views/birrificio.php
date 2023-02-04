@@ -25,11 +25,11 @@
                 </ul>
 
                 <ul class="image-show">
-                    <li class="image-show__item"><img src="../../public/images/birrificio/fermentatori-1200x801.png" alt="sala luminosa con fermentatori su tutte le pareti"></li>
-                    <li class="image-show__item"><img src="../../public/images/birrificio/analisi-600x401.png" alt="ragazzo che analizza con delle provette la birra"></li>
-                    <li class="image-show__item"><img src="../../public/images/birrificio/analisi-2-600x401.png" alt="ragazza in laboratorio che analizza la birra"></li>
-                    <li class="image-show__item"><img src="../../public/images/birrificio/imbottigliamento-2-600x401.png" alt="ragazzo che usa la macchina di imbottigliamento"></li>
-                    <li class="image-show__item"><img src="../../public/images/birrificio/etichette-600x401.png" alt="etichette per le birre impilate"></li>
+                    <li class="image-show__item"><img src="<?= WEB_PATH?>/images/birrificio/fermentatori-1200x801.png" alt="sala luminosa con fermentatori su tutte le pareti"></li>
+                    <li class="image-show__item"><img src="<?= WEB_PATH?>/images/birrificio/analisi-600x401.png" alt="ragazzo che analizza con delle provette la birra"></li>
+                    <li class="image-show__item"><img src="<?= WEB_PATH?>/images/birrificio/analisi-2-600x401.png" alt="ragazza in laboratorio che analizza la birra"></li>
+                    <li class="image-show__item"><img src="<?= WEB_PATH?>/images/birrificio/imbottigliamento-2-600x401.png" alt="ragazzo che usa la macchina di imbottigliamento"></li>
+                    <li class="image-show__item"><img src="<?= WEB_PATH?>/images/birrificio/etichette-600x401.png" alt="etichette per le birre impilate"></li>
                 </ul>
 
                 <a href="#visite" class="button button--hero">VISITA IL BIRRIFICIO</a>
@@ -58,7 +58,7 @@
                                 </button>
                             </div>
                             <div class="tile-section__img-container">
-                                <img src="../../public/images/birrificio/corso-768x513.jpg" alt="Due persone che spiegano ad un corso di degustazione">
+                                <img src="<?= WEB_PATH?>/images/birrificio/corso-768x513.jpg" alt="Due persone che spiegano ad un corso di degustazione">
                             </div>
                         </div>
                     </article>
@@ -76,7 +76,7 @@
                                 </button>
                             </div>
                             <div class="tile-section__img-container">
-                                <img src="../../public/images/birrificio/botti-mastro-600x401.png" alt="Botti contenenti la birra mastro ciliegia">
+                                <img src="<?= WEB_PATH?>/images/birrificio/botti-mastro-600x401.png" alt="Botti contenenti la birra mastro ciliegia">
                             </div>
                         </div>
                     </article>
@@ -112,17 +112,17 @@
                     <h3 class="secondary-heading">Scuole ed Università</h3>
                     <div class="scuole-uni__content">
                         <figure>
-                            <img src="../../public/images/loghi/loghi_generici/logo-eat-fondazione.png" alt="Istituto tecnico superiore, i.t.s. EAT, eccellenza agroalimentare toscana">
+                            <img src="<?= WEB_PATH?>/images/loghi/loghi_generici/logo-eat-fondazione.png" alt="Istituto tecnico superiore, i.t.s. EAT, eccellenza agroalimentare toscana">
                             <figcaption>Istituto Superiore di Formazione EAT (Firenze)</figcaption>
                         </figure>
                         <figure>
-                            <img src="../../public/images/loghi/loghi_generici/marchio_unipi_pant541.png" alt="Università di Pisa">
+                            <img src="<?= WEB_PATH?>/images/loghi/loghi_generici/marchio_unipi_pant541.png" alt="Università di Pisa">
                             <figcaption>Dipartimento Scienze Politiche <br>
                                         Dipartimento Chimica <br>
                                         Dipartimento Scienze Agrarie, Alimentari e Agro-ambientali</figcaption>
                         </figure>
                         <figure>
-                            <img src="../../public/images/loghi/loghi_generici/Accadeimia_piccolo.png" alt="Accademia delle professioni">
+                            <img src="<?= WEB_PATH?>/images/loghi/loghi_generici/Accadeimia_piccolo.png" alt="Accademia delle professioni">
                             <figcaption>Scuola di Formazione Dieffe (Padova)</figcaption>
                         </figure>
                     </div>
@@ -133,18 +133,18 @@
                     <p>Una birra con etichetta “speciale” in edizione limitata per ogni murales che dà colore alla nostra città!</p>
 
                     <div class="murali__section">
-                        <img src="../../public/images/murali/etichetta-modi-708x886.jpg" alt="etichetta birra villa serena Blond ale">
-                        <img src="../../public/images/murali/24-1200x800.jpg" alt="Murale relativo alla birra villa serena">
+                        <img src="<?= WEB_PATH?>/images/murali/etichetta-modi-708x886.jpg" alt="etichetta birra villa serena Blond ale">
+                        <img src="<?= WEB_PATH?>/images/murali/24-1200x800.jpg" alt="Murale relativo alla birra villa serena">
                     </div>
 
                     <div class="murali__section">
-                        <img src="../../public/images/murali/etichetta-awanagana-600x738.png" alt="etichetta birra Awanagana">
-                        <img src="../../public/images/murali/11-1191x800.jpg" alt="Murale relativo alla birra Awanagana">
+                        <img src="<?= WEB_PATH?>/images/murali/etichetta-awanagana-600x738.png" alt="etichetta birra Awanagana">
+                        <img src="<?= WEB_PATH?>/images/murali/11-1191x800.jpg" alt="Murale relativo alla birra Awanagana">
                     </div>
 
                     <div class="murali__section">
-                        <img src="../../public/images/murali/PBC_Trepponti_190x80_01_MONEYLESS_1a_flat-e1602780460513.jpg" alt="etichetta birra trepponti">
-                        <img src="../../public/images/murali/moneylesswall-1200x800.jpg" alt="Murale relativo alla birra trepponti">
+                        <img src="<?= WEB_PATH?>/images/murali/PBC_Trepponti_190x80_01_MONEYLESS_1a_flat-e1602780460513.jpg" alt="etichetta birra trepponti">
+                        <img src="<?= WEB_PATH?>/images/murali/moneylesswall-1200x800.jpg" alt="Murale relativo alla birra trepponti">
                     </div>
 
                 </section>

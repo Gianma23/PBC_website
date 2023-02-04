@@ -1,6 +1,7 @@
 <?php
 
-try {
+try
+{
     $pdo = new PDO(CONNECTION, USER, PASSWORD);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 

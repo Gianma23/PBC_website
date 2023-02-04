@@ -1,8 +1,9 @@
 <?php
 
-// App Root
+
 define('ROOT_PATH', dirname(__FILE__,3));
-// URL Root
+const WEB_PATH = '/PBC_website/public';
+const URL_ROOT = 'http://localhost/PBC_website';
 
 // Database
 const CONNECTION = "mysql:host=localhost;dbname=pweb_615710";

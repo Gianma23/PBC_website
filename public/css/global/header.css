@@ -330,8 +330,8 @@ header {
 .prodotti-list::before,
 .prodotti-list::after {
     display: block;
-    width: 80%;
-    height: 5px;
+    width: 85%;
+    height: 3px;
     background-color: black;
     margin: 0 auto;
     content: '';
@@ -351,6 +351,13 @@ header {
 
 .prodotto *:first-child {
     height: 100%;
+}
+
+.remove-prodotto {
+    margin-left: auto;
+    font-size: 40px;
+    border: none;
+    background-color: transparent;
 }
 
 .nome-prodotto {

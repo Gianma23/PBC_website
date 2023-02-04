@@ -22,14 +22,15 @@ const nomeBirra = document.getElementById('nome-birra');
 const stileBirra = document.getElementById('stile-birra');
 const taglineBirra = document.getElementById('tagline-birra');
 const descBirra = document.getElementById('descrizione-birra');
-const compraButton = document.getElementById('compra');
 const sliderBirre = document.getElementById('slider');
+
+const prodottoId = document.getElementsByClassName('prodotto-id')[0];
 
 const arrayBirre = [];
 let birraAttiva;
 let indice = 0;
 
-fetch('pages/scaffale/prodotti-scaffale.php' + window.location.search)
+fetch('search/birra')
 .then((res) => res.json())
 .then((data) => {
 
@@ -84,7 +85,7 @@ function riempiInfoProdotto() {
     stileBirra.textContent = arrayBirre[indice].stile;
     taglineBirra.textContent = arrayBirre[indice].tagline;
     descBirra.textContent = arrayBirre[indice].descrizione;
-    compraButton.id = arrayBirre[indice].nome;
+    prodottoId.value = arrayBirre[indice].nome;
 }
 
 function toggleInfoBirra() {

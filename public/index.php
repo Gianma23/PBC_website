@@ -9,7 +9,6 @@ session_start();
 
 $router = new Router();
 require_once(__DIR__ . '/../core/config/routes.php');
-
 $router->redirect(getUri());
 
 

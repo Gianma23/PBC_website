@@ -16,7 +16,7 @@
             <div class="container center">
                 <h2 class="secondary-heading">Le più vendute</h2>
                 <div class="cards-container">
-                    <?php include "app/php/shop-queries/piu-vendute.php"; ?>
+                    <?php include __DIR__ . "/utils/piu-vendute.php"; ?>
                 </div>
             </div>
         </section>

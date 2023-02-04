@@ -14,7 +14,7 @@ body {
 }
 
 main {
-    background-image: url("../images/background/background-tiles-light.png");
+    background-image: url("../../images/background/background-tiles-light.png");
     background-repeat: repeat;
     margin-top: var(--lineheight-3);
 }
@@ -43,7 +43,7 @@ h1 {
 .hero {
     position: relative;
     background-color: var(--clr-neutral-800);
-    background-image: url("../images/background/background-tiles-dark.png");
+    background-image: url("../../images/background/background-tiles-dark.png");
     background-repeat: repeat;
     color: var(--clr-neutral-100);
     min-height: calc(100vh - var(--lineheight-3));
@@ -245,6 +245,22 @@ h1 {
     transform: translateY(4px);
 }
 
+/* ============= DISABLED BUTTON ============= */
+
+.button:disabled {
+    cursor: not-allowed;
+    color: inherit;
+}
+
+.button:disabled::before {
+    background-color: darkgray;
+}
+
+.button:disabled::after{
+    background-color: darkgray;
+    transform: none;
+}
+
 /* ============= FLOATING ACTION BUTTON ============= */
 
 .fab-button {
@@ -376,7 +392,7 @@ h1 {
 .button--shop .button-image {
     display: inline-block;
     vertical-align: sub;
-    background-image: url("../images/icons/shopping_cart.png");
+    background-image: url("../../images/icons/shopping_cart.png");
     background-size: contain;
     width: 24px;
     height: 24px;

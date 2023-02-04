@@ -14,7 +14,7 @@
         <div class="container">
             <h1 class="hero__title">LA BIRRA ARTIGIANALE <br><strong>CHE CERCAVI</strong></h1>
             <p>Produciamo una vasta gamma di birre per <strong class="fw-bold">qualsiasi gusto</strong> e per <strong class="fw-bold">qualsiasi situazione</strong>.</p>
-            <a href="views/shop.php" class="button button--hero" role="button">VAI ALLO SHOP</a>
+            <a href="/shop" class="button button--hero" role="button">VAI ALLO SHOP</a>
         </div>
     </section>
 
@@ -26,10 +26,10 @@
                     <strong>continua ricerca ed innovazione</strong>, legate a doppio filo sia alla realtà territoriale labronica
                     che alle realtà esterne, che hanno permesso negli anni di collaborare anche con altre realtà
                     brassicole e ottenere premi e riconoscimenti a livello <strong>nazionale e internazionale</strong>.</p>
-                <a href="views/birre.php" class="button" role="button">SCOPRI LE BIRRE</a>
+                <a href="shop" class="button" role="button">SCOPRI LE BIRRE</a>
             </div>
             <div class="tile-section__img-container">
-                <img src="pages/index/Riappala.png" id="hero-image" alt="Birra Riappala 2.0">
+                <img src="pages/home/Riappala.png" id="hero-image" alt="Birra Riappala 2.0">
             </div>
         </div>
     </section>
@@ -41,17 +41,17 @@
                 <p>Nella nuova sede dove ci siamo da poco trasferiti possiamo vantare un impianto produttivo di
                     10 hL di doppia cotta, una cantina di 190 hL e un laboratorio di Controllo Qualità interno,
                     al fine di elevare il livello della produzione e ottimizzare le risorse. </p>
-                <a href="views/birrificio.php" class="button" role="button">VISITA IL BIRRIFICIO</a>
+                <a href="birrificio" class="button" role="button">VISITA IL BIRRIFICIO</a>
             </div>
             <div class="tile-section__img-container">
-                <img src="global/images/birrificio/impianto-599x400.png" alt="Fermentatori del birrificio">
+                <img src="<?= WEB_PATH?>/images/birrificio/impianto-599x400.png" alt="Fermentatori del birrificio">
             </div>
         </div>
     </section>
 
     <section class="taproom">
         <h2 class="secondary-heading">Provale ora nella nostra Taproom...</h2>
-        <img class="taproom__img" src="global/images/taproom/taproom-outside.jpg" alt="Esterno della Taproom in via Cimarosa 37, Livorno">
+        <img class="taproom__img" src="<?= WEB_PATH?>/images/taproom/taproom-outside.jpg" alt="Esterno della Taproom in via Cimarosa 37, Livorno">
     </section>
 
     <section class="shop">

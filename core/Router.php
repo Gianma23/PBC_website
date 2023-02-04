@@ -1,10 +1,13 @@
 <?php
 namespace Ecommerce;
-require_once(ROOT_PATH . '/app/controllers/PageController.php');
 use Controllers;
 
-class Router {
+require_once(ROOT_PATH . '/app/controllers/PageController.php');
+require_once(ROOT_PATH . '/app/controllers/CartController.php');
+require_once(ROOT_PATH . '/app/controllers/ShopController.php');
 
+class Router
+{
     private $routes = [];
     private $parameters = [];
 
@@ -40,16 +43,17 @@ class Router {
         foreach ($this->routes as $route => $params) {
 
             if (preg_match($route, $uri, $matches)) {
+
                 foreach ($matches as $key => $match) {
 
                     if (is_string($key)) {
                         if ($key === 'controller') {
                             $match = ucwords($match);
                         }
-
                         $params[$key] = $match;
                     }
                 }
+
                 $this->parameters = $params;
             }
         }
@@ -76,7 +80,7 @@ class Router {
             }
         }
         else {
-            header('location: ' . ROOT_PATH);
+            header('location: ' . ROOT_PATH . '/');
         }
         call_user_func_array([$controller, $action], [$this->parameters]);
     }

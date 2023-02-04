@@ -28,6 +28,14 @@ body {
     margin-top: var(--lineheight);
 }
 
+.left form {
+    text-align: center;
+}
+
+.left .button--shop {
+    width: inherit;
+}
+
 .slide-wrapper {
     position: relative;
 }
@@ -104,13 +112,14 @@ body {
         grid-column: 1 / 3;
     }
 
-    .right {
+    .left {
         position: relative;
     }
 
-    .right .button--shop {
+    .left .button--shop {
         position: absolute;
         bottom: 0;
+        right: var(--column-width-2);
     }
 
     #slide-arrow-prev {

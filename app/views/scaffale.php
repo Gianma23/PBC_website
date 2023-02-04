@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
     <?php include __DIR__ . "/include/head.php"; ?>
-    <link rel="stylesheet" href="../../public/pages/shop/shop.css">
+    <link rel="stylesheet" href="<?= WEB_PATH?>/css/shop.css">
     <title>Home - Piccolo Birrificio Clandestino</title>
 </head>
 <body>
@@ -18,14 +18,17 @@
                     <h1 class="secondary-heading" id="nome-birra">Nome birra</h1>
                     <p id="stile-birra">Stile</p>
                     <p id="tagline-birra">Tagline</p>
+                    <form>
+                        <input type="hidden" class="prodotto-id" value="">
+                        <button type="button" class="button button--shop button--hero">
+                            <span class="button-image"></span>
+                            AGGIUNGI
+                        </button>
+                    </form>
                 </div>
 
                 <div class="right">
                     <p id="descrizione-birra">descrizione</p>
-                    <button class="button button--shop button--hero" id="compra">
-                        <span class="button-image"></span>
-                        AGGIUNGI
-                    </button>
                 </div>
 
                 <div class="slide-wrapper">

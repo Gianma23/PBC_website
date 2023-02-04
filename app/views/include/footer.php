@@ -22,15 +22,15 @@
         <div class="container">
             <div class="footer__left">
                 <div class="copyright">
-                    <a href="index.php" aria-label="home"><img class="footer-logo" src="global/images/loghi/loghi_pbc/PBC_LOGO.jpg" alt="Piccolo Birrificio Clandestino"></a>
+                    <a href="home" aria-label="home"><img class="footer-logo" src="<?= WEB_PATH?>/images/loghi/loghi_pbc/PBC_LOGO.jpg" alt="Piccolo Birrificio Clandestino"></a>
                     <small>&copy;2023 Gianmaria Saggini</small>
                 </div>
                 <ul class="social-list">
                     <li>
-                        <a href="#" aria-label="facebook"><img class="social-icon" src="global/images/icons/facebook.svg" alt=""></a>
+                        <a href="#" aria-label="facebook"><img class="social-icon" src="<?= WEB_PATH?>/images/icons/facebook.svg" alt=""></a>
                     </li>
                     <li>
-                        <a href="#" aria-label="instagram"><img class="social-icon" src="global/images/icons/instagram.svg" alt=""></a>
+                        <a href="#" aria-label="instagram"><img class="social-icon" src="<?= WEB_PATH?>/images/icons/instagram.svg" alt=""></a>
                     </li>
                 </ul>
             </div>
@@ -75,11 +75,13 @@
     </div>
 </footer>
 
-<!-- Javascript
-<script src="include/javascript/main.js"></script>
-<script src="include/javascript/form-validation.js"></script>-->
+<!-- Javascript-->
+<script src="<?= WEB_PATH?>/javascript/global/main.js"></script>
+<script src="<?= WEB_PATH?>/javascript/global/form-validation.js"></script>
+<script src="<?= WEB_PATH?>/javascript/global/carrello.js"></script>
 <?php
-$jsUrl = "pages/".basename($_SERVER['PHP_SELF'], ".php")."/".basename($_SERVER['PHP_SELF'], ".php").".js";
-if(file_exists($jsUrl))
-    echo "<script src=\"$jsUrl\"></script>";
+    $path =  explode( '/', parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH))[2];
+    $jsUrl = "javascript/" . $path .".js";
+    if(file_exists($jsUrl))
+        echo '<script src="' . WEB_PATH . '/' . $jsUrl .'"></script>';
 ?>

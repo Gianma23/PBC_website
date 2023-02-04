@@ -1,5 +1,8 @@
 <?php
-include_once "app/php/classes/ProductClass.php";
+
+use Models\Product;
+
+include_once "app/php/classes/Product.php";
 
 try {
     $pdo = new PDO(CONNECTION, USER, PASSWORD);
@@ -9,7 +12,7 @@ try {
     $result = $pdo->query($sql);
 
     while($row = $result->fetch()) {
-        $birra = new ProductClass($row);
+        $birra = new Product($row);
         $birra->createProductCard();
     }
     $pdo = null;
