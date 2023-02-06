@@ -23,7 +23,9 @@
         <section>
             <div class="container center">
                 <h2 class="secondary-heading">Ultimi arrivi</h2>
-                <?php include "app/php/shop-queries/ultimi-arrivi.php" ?>
+                <div class="cards-container">
+                    <?php include __DIR__ . "/utils/ultimi-arrivi.php"; ?>
+                </div>
             </div>
         </section>
     </main>

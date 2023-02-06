@@ -1,0 +1,91 @@
+/* Tabella Carrello */
+
+.prodotti-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    background-color: var(--clr-neutral-100);
+}
+
+.prodotti-table thead {
+    background-color: var(--clr-neutral-500);
+    font-weight: var(--fw-medium);
+}
+
+.prodotti-table th,
+.prodotti-table td{
+    padding: 1em;
+    overflow: hidden;
+}
+
+.prodotti-table th:first-child {
+    width: 45%;
+}
+
+.prodotti-table th:last-child {
+    width: 80px;
+}
+
+.prodotti-table td:first-child {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+}
+
+.prodotti-table td:not(:first-child) {
+
+}
+
+.prodotti-table tbody tr {
+    border-bottom: 2px solid var(--clr-neutral-500);
+}
+
+.prodotti-table .img-prodotto {
+    height: var(--lineheight-4);
+}
+
+.prodotti-table img {
+    height: 100%;
+}
+
+/* Card Riepilogo */
+
+.riepilogo {
+    width: 100%;
+    border: 3px solid black;
+    border-radius: 8px;
+    background-color: var(--clr-neutral-100);
+}
+
+.riepilogo h2 {
+    font-size: var(--fs-600);
+    font-weight: var(--fw-bold);
+    line-height: var(--lineheight-2);
+    padding-left: 16px;
+    border-bottom: 2px solid black;
+}
+
+.stima {
+    padding: var(--lineheight) 3em var(--lineheight) 16px;
+    border-bottom: 2px solid black;
+}
+
+.riga {
+    display: flex;
+    font-size: var(--fs-500);
+    font-weight: var(--fw-medium);
+    margin-bottom: var(--lineheight);
+}
+
+.riga span {
+   margin-left: auto;
+}
+
+@media screen and (min-width: 85em) {
+    .column-container {
+        display: grid;
+        grid-auto-flow: column;
+        gap: var(--gutter);
+        grid-auto-columns: var(--column-width-7) auto;
+    }
+}

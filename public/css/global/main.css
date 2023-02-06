@@ -319,7 +319,6 @@ h1 {
 /* ============= BUTTON TERTIARY ============= */
 
 .button--tertiary {
-    display: none;
     padding: 0.8rem 24px;
     outline: 2px solid var(--clr-neutral-800);
 }
@@ -334,10 +333,6 @@ h1 {
 
 .button--tertiary:hover {
     outline: none;
-}
-
-@media (min-width: 60em) {
-    .button--tertiary {display: inline-block}
 }
 
 /* ============= BUTTON REMOVE ============= */

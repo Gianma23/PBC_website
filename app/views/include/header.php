@@ -32,12 +32,16 @@
         <div class="nav__right">
             <?php
                 if(isset($_SESSION["role"]) && $_SESSION["role"] == "user")
-                    echo "<a href=\"user-dashboard\" class=\"button button--tertiary\" role=\"button\">Account</a>";
+                    echo "<a href=\"" . URL_ROOT . "/user-dashboard\" class=\"button button--tertiary\" role=\"button\">
+                            <span>Account</span></a>";
                 else if(isset($_SESSION["role"]) && $_SESSION["role"] == "admin")
-                    echo "<a href=\"admin-dashboard\" class=\"button button--tertiary\" role=\"button\">Account</a>";
+                    echo "<a href=\"" . URL_ROOT . "/admin-dashboard\" class=\"button button--tertiary\" role=\"button\">
+                          <span>Account</span></a>";
                 else
-                    echo "<a href=\"<?= URL_ROOT?>/login\" class=\"button button--tertiary\" role=\"button\">Accedi</a>";
+                    echo "<a href=\"" . URL_ROOT . "/login\" class=\"button button--tertiary\" role=\"button\">
+                          <span>Accedi</span></a>";
             ?>
+
             <button id="cart-button" class="shopping-cart-link">
                 <img class="shopping-cart" src="<?= WEB_PATH?>/images/icons/shopping_cart.png" alt="Carrello">
             </button>
@@ -45,7 +49,7 @@
 
         <!-- Carrello shopping -->
         <aside id="shopping-cart-slide" class="shopping-cart-slide" tabindex="-1">
-            <a href="javascript:void(0)" class="closebtn" id="close-cart">&times;</a>
+            <button class="closebtn" id="close-cart">&times;</button>
             <h2 class="fs-600 fw-bold">Carrello</h2>
 
             <ul class="prodotti-list" id="prodotti-list">

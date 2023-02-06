@@ -5,6 +5,7 @@ use Controllers;
 require_once(ROOT_PATH . '/app/controllers/PageController.php');
 require_once(ROOT_PATH . '/app/controllers/CartController.php');
 require_once(ROOT_PATH . '/app/controllers/ShopController.php');
+require_once(ROOT_PATH . '/app/controllers/ORderController.php');
 
 class Router
 {

@@ -10,7 +10,6 @@ $router->addRoute('shop', ['controller' => 'PageController', 'action' => 'shop']
 $router->addRoute('doc', ['controller' => 'PageController', 'action' => 'documentation']);
 $router->addRoute('login', ['controller' => 'PageController', 'action' => 'login']);
 
-
 // Shop Controller
 $router->addRoute('scaffale/{categoria:\w+}', ['controller' => 'ShopController', 'action' => 'scaffale']);
 $router->addRoute('scaffale/search/{categoria:\w+}', ['controller' => 'ShopController', 'action' => 'search']);
@@ -22,4 +21,9 @@ $router->addRoute('carrello/aggiungi/{product:.+}', ['controller' => 'CartContro
 $router->addRoute('scaffale/carrello/aggiungi/{product:.+}', ['controller' => 'CartController', 'action' => 'addProduct']);
 $router->addRoute('carrello/rimuovi/{product:.+}', ['controller' => 'CartController', 'action' => 'removeProduct']);
 $router->addRoute('scaffale/carrello/rimuovi/{product:.+}', ['controller' => 'CartController', 'action' => 'removeProduct']);
+
+// Order Controller
+$router->addRoute('carrello', ['controller' => 'OrderController', 'action' => 'carrello']);
+$router->addRoute('spedizione', ['controller' => 'OrderController', 'action' => 'spedizione']);
+$router->addRoute('checkout', ['controller' => 'OrderController', 'action' => 'checkout']);
 

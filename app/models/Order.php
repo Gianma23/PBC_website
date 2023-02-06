@@ -2,7 +2,7 @@
 namespace Models;
 use JsonSerializable;
 
-class Product implements JsonSerializable
+class Order implements JsonSerializable
 {
 
     protected $nome;
@@ -88,19 +88,6 @@ class Product implements JsonSerializable
 
     public function setImgPath($imgPath) {
         $this->imgPath =$imgPath;
-    }
-
-    /* CRUD OPERATIONS */
-
-    public static function findByName($pdo, $name)
-    {
-        $sql = "SELECT * 
-                FROM product 
-                WHERE name=?;";
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindValue(1, $name);
-        $stmt->execute();
-        return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
 
     function createProductCard()

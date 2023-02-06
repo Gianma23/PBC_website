@@ -2,17 +2,23 @@
 namespace Controllers;
 require_once(ROOT_PATH . '/core/Render.php');
 include_once(ROOT_PATH . "/app/models/CartItem.php");
+include_once(ROOT_PATH . "/app/models/Cart.php");
+include_once(ROOT_PATH . "/app/models/Product.php");
+
+use Models\Cart;
 use Models\CartItem;
+use Models\Product;
 use PDO;
 use PDOException;
 
 class CartController
 {
-    public function loadCart(): void
+    public function loadCart($vars): void
     {
         $pdo = new PDO(CONNECTION, USER, PASSWORD);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+        // cerco il carrello
         $carrello = array();
         if (isset($_SESSION['cart']))
         {
@@ -20,37 +26,25 @@ class CartController
         }
         else
         {
-            $stmt = "";
             if(isset($_SESSION["account_id"]))
             {
-                $sql = "SELECT product_id, quantity
-                        FROM cart
-                             INNER JOIN
-                             cart_item ci on cart.id = ci.cart_id
-                        WHERE account_id=?;";
-                $stmt = $pdo->prepare($sql);
-                $stmt->bindValue(1, $_SESSION["account_id"]);
-                $stmt->execute();
+                $cart= CartItem::findByAccountId($pdo, $_SESSION["account_id"]);
             }
             // altrimenti se il cookie è settato cerco con quello
             else if(isset($_COOKIE["cart_id"]))
             {
-                $sql = "SELECT product_id, quantity
-                        FROM cart_item
-                        WHERE cart_id=?;";
-                $stmt = $pdo->prepare($sql);
-                $stmt->bindValue(1, $_COOKIE["cart_id"]);
-                $stmt->execute();
+                $cart = CartItem::findByCartId($pdo, $_COOKIE["cart_id"]);
             }
-            if($stmt)
-                while($cart_item = $stmt->fetch(PDO::FETCH_ASSOC))
-                    $carrello[ $cart_item["product_id"]] = $cart_item["quantity"];
+            if(isset($cart))
+                foreach($cart as $cartItem)
+                    $carrello[ $cartItem["product_id"] ] = $cartItem["quantity"];
         }
 
-        $this->loadCartTemplate($pdo, $carrello);
+        // cerco il carrello
+        $this->loadCartJson($pdo, $carrello);
     }
 
-    public  function addProduct($vars) : void
+    public function addProduct($vars)
     {
         if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($vars["product"]))
         {
@@ -62,13 +56,9 @@ class CartController
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $pdo->beginTransaction();
 
-                $sql = "SELECT * FROM product WHERE name=?;";
-                $stmt = $pdo->prepare($sql);
-                $stmt->bindValue(1, $product_id);
-                $stmt->execute();
-
                 // se il prodotto esiste e ha quantità positiva lo aggiungo
-                $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                $row = Product::findByName($pdo, $product_id);
+
                 if($row && $row["quantity"] > 0)
                 {
                     // AGGIUNGO NEL DATABASE
@@ -76,30 +66,22 @@ class CartController
                     $cart_id = $this->findCarrello($pdo);
 
                     // cerco il prodotto nel carrello
-                    $stmt = $this->cercaProdottoInCarrello($pdo, $cart_id, $product_id);
+                    $cartItem = CartItem::findByCartIdAndProductId($pdo, $cart_id, $product_id);
 
                     // se esiste già il prodotto aumento la quantità
-                    if($stmt->fetch(PDO::FETCH_ASSOC))
+                    if($cartItem)
                     {
-                        $sql = "UPDATE cart_item
-                                SET quantity = quantity + 1
-                                WHERE cart_id=? AND product_id = ?;";
+                        CartItem::updateByOne($pdo, new CartItem($cart_id, $product_id));
                     }
                     // altrimenti aggiungo il prodotto
                     else
                     {
-                        $sql = "INSERT INTO cart_item (cart_id, product_id, quantity)
-                                VALUE (?,?,1);";
+                        CartItem::add($pdo, new CartItem($cart_id, $product_id));
                     }
-                    $stmt = $pdo->prepare($sql);
-                    $stmt->bindValue(1, $cart_id);
-                    $stmt->bindValue(2, $product_id);
-                    $result = $stmt->execute();
+                    $pdo->commit();
 
                     // AGGIORNO SESSION[cart]
                     $this->addToSession($product_id);
-
-                    $pdo->commit();
                 }
             }
             catch (PDOException $e)
@@ -126,15 +108,8 @@ class CartController
                 // se è un utente cerco il carrello con account_id
                 if(isset($_SESSION["account_id"]))
                 {
-                    $sql = "SELECT * 
-                            FROM cart
-                                 INNER JOIN
-                                 cart_item ci on cart.id = ci.cart_id
-                            WHERE account_id=?;";
-                    $stmt = $pdo->prepare($sql);
-                    $stmt->bindValue(1, $_SESSION["account_id"]);
-                    $stmt->execute();
-                    if($cart = $stmt->fetch(PDO::FETCH_ASSOC))
+                    $cart = Cart::findByAccountId($pdo, $_SESSION["account_id"]);
+                    if($cart)
                         $cart_id = $cart['id'];
                     else return;
                 }
@@ -145,14 +120,8 @@ class CartController
                 }
                 else return;
 
-                // elimino il prodotto
-                $sql = "DELETE
-                        FROM cart_item
-                        WHERE  cart_id = ? AND product_id = ?";
-                $stmt = $pdo->prepare($sql);
-                $stmt->bindValue(1, $cart_id);
-                $stmt->bindValue(2, $product_id);
-                $stmt->execute();
+                // elimino il prodotto dal carrello
+                CartItem::delete($pdo, new CartItem($cart_id, $product_id));
 
                 $this->removeFromSession($product_id);
             }
@@ -204,68 +173,33 @@ class CartController
         // se è un utente cerco il carrello con account_id
         if(isset($_SESSION["account_id"]))
         {
-            $sql = "SELECT * 
-                    FROM cart
-                    WHERE account_id=?;";
-            $stmt = $pdo->prepare($sql);
-            $stmt->bindValue(1, $_SESSION["account_id"]);
-            $stmt->execute();
-
-            if($cart = $stmt->fetch(PDO::FETCH_ASSOC))
+            $cart = Cart::findByAccountId($pdo, $_SESSION["account_id"]);
+            if($cart)
             {
                 return $cart["id"];
             }
-            return $this->createNewCart($pdo, $_SESSION["account_id"]);
+            return Cart::add($pdo, $_SESSION["account_id"]);
         }
         // altrimenti se il cookie è settato cerco con quello
         else if(isset($_COOKIE["cart_id"]))
         {
-            $sql = "SELECT * 
-                    FROM cart
-                    WHERE id=?;";
-            $stmt = $pdo->prepare($sql);
-            $stmt->bindValue(1, $_COOKIE["cart_id"]);
-            $stmt->execute();
-
-            if($cart = $stmt->fetch(PDO::FETCH_ASSOC))
+            $cart = Cart::findById($pdo, $_COOKIE["cart_id"]);
+            if($cart)
             {
                 return $cart["id"];
             }
-            return $this->createNewCart($pdo);
+            return Cart::add($pdo);
         }
         // altrimenti creo un nuovo carrello per il guest
         setcookie("cart_id", session_id(), time()+86400, '/'); // carrello dura 1g per i guest
-        return $this->createNewCart($pdo);
+        return Cart::add($pdo);
     }
 
-    private function createNewCart($pdo, $account = null) : string
+    private function loadCartJson($pdo, $carrello)
     {
-        $sql = "INSERT INTO cart (id, account_id)
-                VALUES (?,?)";
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindValue(1, session_id());
-        $stmt->bindValue(2, $account);
-        $stmt->execute();
-        return session_id();
-    }
-
-    private function cercaProdottoInCarrello($pdo, $cart_id, $product_id)
-    {
-        $sql = "SELECT * 
-                FROM cart_item
-                WHERE cart_id=? AND product_id = ?;";
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindValue(1, $cart_id);
-        $stmt->bindValue(2, $product_id);
-        $stmt->execute();
-        return $stmt;
-    }
-
-    private function loadCartTemplate($pdo, $carrello)
-    {
-        header('Content-Type: text/html; charset=utf-8');
         if ($carrello)
         {
+            $arrayProdotti = array();
             $array_to_question_marks = implode(',', array_fill(0, count($carrello), '?'));
             $stmt = $pdo->prepare('SELECT * 
                                    FROM product 
@@ -273,25 +207,14 @@ class CartController
             $stmt->execute(array_keys($carrello));
 
             // per ogni prodotto creo un elemento della lista
-            $totale = 0;
-            while($row = $stmt->fetch())
+            while($row = $stmt->fetch(\PDO::FETCH_ASSOC))
             {
-                $cartItem = new CartItem($row, $carrello[$row["name"]]);
-                $totale += $cartItem->getPrezzo() * $cartItem->getPezzi();
-                ?>
-                <li class="prodotto">
-                    <div>
-                        <img src="<?= $cartItem->getImgPath()?>" alt="<?= $cartItem->getNome()?>">
-                    </div>
-                    <div class="info-prodotto-carrello">
-                        <p class="nome-prodotto"><?= $cartItem->getNome()?></p>
-                        <p class="prezzo-prodotto"><?= $cartItem->getPezzi()?> &times; <?= $cartItem->getPrezzo()?>&euro;</p>
-                    </div>
-                    <button class="remove-prodotto">&times;</button>
-                </li>
-                <?php
+                $arrayProdotti[json_encode($row)] = $carrello[$row["name"]];
             }
-            echo '<p class="totale">Subtotale:&emsp;' . $totale . '&euro;</p>';
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode($arrayProdotti);
         }
+        else
+            echo '{}';
     }
 }

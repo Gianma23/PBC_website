@@ -245,9 +245,35 @@ header {
     gap: 1.5em;
 
     position: absolute;
-    top: var(--lineheight);
+    top: 1em;
     right: var(--margin);
 }
+
+
+
+@media screen and (max-width: 60em) {
+    .nav__right .button--tertiary {
+        background-image: url("../../images/icons/user.png");
+        background-size: cover;
+        aspect-ratio: 1;
+        width: 35px;
+        height: 35px;
+        outline: none;
+        border-radius: inherit;
+        padding: 0;
+    }
+    .nav__right .button--tertiary::before,
+    .nav__right .button--tertiary::after {
+        content: none;
+    }
+
+    .nav__right .button--tertiary span {
+        display: none;
+    }
+}
+
+/* CARRELLO */
+
 /*TODO: change this */
 .shopping-cart-slide {
     height: 100%; /* 100% Full-height */
