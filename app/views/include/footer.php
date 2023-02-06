@@ -78,7 +78,7 @@
 <!-- Javascript-->
 <script src="<?= WEB_PATH?>/javascript/global/main.js"></script>
 <script src="<?= WEB_PATH?>/javascript/global/form-validation.js"></script>
-<script src="<?= WEB_PATH?>/javascript/global/carrello.js"></script>
+<script src="<?= WEB_PATH?>/javascript/global/cart.js"></script>
 <?php
     $path =  explode( '/', parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH))[2];
     $jsUrl = "javascript/" . $path .".js";

@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="<?= WEB_PATH?>/css/global/main.css">
 <link rel="stylesheet" href="<?= WEB_PATH?>/css/global/header.css">
 <link rel="stylesheet" href="<?= WEB_PATH?>/css/global/footer.css">
-<link rel="stylesheet" href="<?= WEB_PATH?>/css/global/sgrid.css">
+<!--<link rel="stylesheet" href="<?= WEB_PATH?>/css/global/grid.css">-->
 <?php
     $path =  explode( '/', parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH))[2];
     $cssUrl = "css/" . $path .".css";
@@ -27,3 +27,4 @@
         echo '<link rel="stylesheet" href="' . WEB_PATH . '/' . $cssUrl .'">';
 ?>
 
+<title><?= $path?> - PBC</title>

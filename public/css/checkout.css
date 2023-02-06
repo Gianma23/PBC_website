@@ -48,10 +48,32 @@
     height: 100%;
 }
 
+/* Form Checkout */
+
+.form-3col,
+.form-2col {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.form-3col .form-elem {
+    width: 30%;
+}
+
+.form-2col .form-elem {
+    width: 48%;
+}
+
+#telefono-elem {
+    width: 48%;
+}
+
 /* Card Riepilogo */
 
 .riepilogo {
     width: 100%;
+    height: fit-content;
     border: 3px solid black;
     border-radius: 8px;
     background-color: var(--clr-neutral-100);
@@ -65,9 +87,23 @@
     border-bottom: 2px solid black;
 }
 
+#num-prodotti {
+    margin-left: 0;
+}
+
 .stima {
-    padding: var(--lineheight) 3em var(--lineheight) 16px;
+    padding: var(--lineheight) 16px;
     border-bottom: 2px solid black;
+}
+
+.opzione-stima {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.opzione-stima input {
+    width: auto;
 }
 
 .riga {
@@ -79,6 +115,19 @@
 
 .riga span {
    margin-left: auto;
+}
+
+.vai-avanti {
+    padding: 16px;
+}
+
+.vai-avanti .riga {
+    font-size: var(--fs-600);
+    font-weight: var(--fw-medium);
+}
+
+#successivo {
+    width: 100%;
 }
 
 @media screen and (min-width: 85em) {

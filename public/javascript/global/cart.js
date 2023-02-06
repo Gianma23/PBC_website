@@ -84,12 +84,14 @@ function creaCarrelloLaterale(data) {
     const listaProdotti = document.getElementById('prodotti-list');
     listaProdotti.innerHTML = '';
 
+    let numProdotti = 0;
     let totale = 0;
 
     for (const prodottoString in data) {
         const prodotto = JSON.parse(prodottoString);
 
         totale += prodotto['price'] * data[prodottoString];
+        numProdotti += data[prodottoString];
 
         const li = document.createElement('li');
         li.classList.add('prodotto');
@@ -124,6 +126,14 @@ function creaCarrelloLaterale(data) {
     }
     const prezzoTotale = document.getElementById('totale');
     prezzoTotale.textContent = `Subtotale:\xa0\xa0\xa0\xa0${String(totale)}\u20AC`;
+
+    if(numProdotti > 0) {
+        // metto il totale anche nel riepilogo
+        const totaleRiepilogo = document.getElementById('riepilogo-totale-carrello');
+        if (totaleRiepilogo) {
+            totaleRiepilogo.textContent = String(totale);
+        }
+    }
 }
 
 function creaCarrelloPagina(data) {
@@ -132,12 +142,14 @@ function creaCarrelloPagina(data) {
         return;
     tabellaProdotti.innerHTML = '';
 
+    let numProdotti = 0;
     let totale = 0;
 
     for (const prodottoString in data) {
         const prodotto = JSON.parse(prodottoString);
 
         let subtotale = prodotto['price'] * data[prodottoString];
+        numProdotti += data[prodottoString];
         totale += subtotale;
 
         const tr = document.createElement('tr');
@@ -182,13 +194,25 @@ function creaCarrelloPagina(data) {
         tr.appendChild(rimuoviCell);
         buttonRimuovi.addEventListener('click', rimuoviHandler);
     }
-    const prezzoTotale = document.getElementById('totale');
-    prezzoTotale.textContent = `Subtotale:\xa0\xa0\xa0\xa0${String(totale)}\u20AC`;
 
-    // metto il totale anche nel riepilogo
-    const totaleRiepilogo = document.getElementById('riepilogo-totale-carrello');
-    if(totaleRiepilogo) {
-        totaleRiepilogo.textContent = totale + '\u20AC';
+    if(numProdotti > 0) {
+        // metto il totale anche nel riepilogo
+        const totaleRiepilogo = document.getElementById('riepilogo-totale-carrello');
+        const textNumProdotti = document.getElementById('num-prodotti');
+        if (totaleRiepilogo) {
+            totaleRiepilogo.textContent = String(totale);
+            textNumProdotti.textContent = String(numProdotti);
+        }
     }
+    else {
+        const carrelloContainer = document.getElementById('carrello-container');
+        carrelloContainer.classList.add('secondary-heading');
+        rimuoviCarrello(carrelloContainer);
+    }
+}
+
+function rimuoviCarrello(carrelloContainer) {
+    carrelloContainer.innerHTML = '';
+    carrelloContainer.textContent = 'Il carrello è vuoto!';
 }
 

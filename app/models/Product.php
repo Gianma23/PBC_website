@@ -103,6 +103,17 @@ class Product implements JsonSerializable
         return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
 
+    public static function decrementQuantity($pdo, $name, $quantityToRemove)
+    {
+        $sql = "UPDATE product 
+                SET quantity = quantity - ?
+                WHERE name = ?;";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(1, $quantityToRemove);
+        $stmt->bindValue(2, $name);
+        return $stmt->execute();
+    }
+
     function createProductCard()
     {
         echo

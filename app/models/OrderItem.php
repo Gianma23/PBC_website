@@ -1,12 +1,11 @@
 <?php
 namespace Models;
-use JsonSerializable;
 
 include_once __DIR__ . "/Product.php";
 
-class CartItem
+class OrderItem
 {
-    private $cartId;
+    private $orderId;
     private $productId;
     private $pezzi;
 
@@ -17,14 +16,14 @@ class CartItem
         $this->pezzi = $pezzi;
     }
 
-    public function getCartId()
+    public function getOrderId()
     {
-        return $this->cartId;
+        return $this->orderId;
     }
 
-    public function setCartId($cartId)
+    public function setOrderId($orderId)
     {
-        $this->cartId = $cartId;
+        $this->orderId = $orderId;
     }
 
     public function getPezzi()
@@ -47,27 +46,16 @@ class CartItem
         $this->productId = $productId;
     }
 
-
     /* CRUD OPERATIONS */
 
-    public static function add($pdo, $cart)
+    public static function add($pdo, $orderId, $productId, $quantity)
     {
-        $sql = "INSERT INTO cart_item (cart_id, product_id, quantity)
-                VALUE (?,?,1);";
+        $sql = "INSERT INTO order_item (order_id, product_id, quantity)
+                VALUE (?,?,?);";
         $stmt = $pdo->prepare($sql);
-        $stmt->bindValue(1, $cart->getCartId());
-        $stmt->bindValue(2, $cart->getProductId());
-        return $stmt->execute();
-    }
-
-    public static function updateByOne($pdo, $cart)
-    {
-        $sql = "UPDATE cart_item
-                SET quantity = quantity + 1
-                WHERE cart_id=? AND product_id = ?;";
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindValue(1, $cart->getCartId());
-        $stmt->bindValue(2, $cart->getProductId());
+        $stmt->bindValue(1, $orderId);
+        $stmt->bindValue(2, $productId);
+        $stmt->bindValue(3, $quantity);
         return $stmt->execute();
     }
 
@@ -96,7 +84,7 @@ class CartItem
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
-    public static function findByCartId($pdo, $cartId)
+    public static function findByOrderId($pdo, $cartId)
     {
         $sql = "SELECT product_id, quantity
                         FROM cart_item
@@ -105,15 +93,5 @@ class CartItem
         $stmt->bindValue(1, $cartId);
         $stmt->execute();
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-    }
-
-    public static function delete($pdo, $cart)
-    {
-        $sql = "DELETE FROM cart_item
-                WHERE  cart_id = ? AND product_id = ?";
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindValue(1, $cart->getCartId());
-        $stmt->bindValue(2, $cart->getProductId());
-        return $stmt->execute();
     }
 }

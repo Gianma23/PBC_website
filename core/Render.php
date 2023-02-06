@@ -7,6 +7,7 @@ class Render {
         $file = ROOT_PATH. '/app/views/' . $view . '.php';
 
         extract($vars);
+
         // Check for view file
         if (is_readable($file)) {
             require_once $file;

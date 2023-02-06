@@ -3,7 +3,6 @@
 <head>
     <?php include __DIR__ . "/include/head.php"; ?>
     <link rel="stylesheet" href="<?= WEB_PATH?>/css/shop.css">
-    <title>Home - Piccolo Birrificio Clandestino</title>
 </head>
 <body>
 

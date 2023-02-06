@@ -52,19 +52,21 @@
             <button class="closebtn" id="close-cart">&times;</button>
             <h2 class="fs-600 fw-bold">Carrello</h2>
 
-            <ul class="prodotti-list" id="prodotti-list">
-            </ul>
+            <div id="carrello">
+                <ul class="prodotti-list" id="prodotti-list">
+                </ul>
 
-            <p class="totale" id="totale"></p>
-            <div class="pulsanti-carrello">
-                <a href="<?= URL_ROOT?>/carrello" class="button" role="button">VISUALIZZA CARRELLO</a>
-                <a href="<?= URL_ROOT?>/spedizione" class="button button--secondary" role="button">PROCEDI ALL'ORDINE</a>
+                <p class="totale" id="totale"></p>
+                <div class="pulsanti-carrello">
+                    <a href="<?= URL_ROOT?>/carrello" class="button" role="button">VISUALIZZA CARRELLO</a>
+                    <a href="<?= URL_ROOT?>/checkout" class="button button--secondary" role="button">PROCEDI ALL'ORDINE</a>
+                </div>
             </div>
         </aside>
     </div>
 </header>
 
 <div class="fab-button">
-    <a href="doc">Doc</a>
+    <a href="<?= URL_ROOT?>/doc">Doc</a>
 </div>
 

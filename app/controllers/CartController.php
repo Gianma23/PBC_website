@@ -39,6 +39,7 @@ class CartController
                 foreach($cart as $cartItem)
                     $carrello[ $cartItem["product_id"] ] = $cartItem["quantity"];
         }
+        $_SESSION['cart'] = $carrello;
 
         // cerco il carrello
         $this->loadCartJson($pdo, $carrello);
@@ -49,47 +50,48 @@ class CartController
         if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($vars["product"]))
         {
             $product_id = $vars["product"];
+        }
+        else return;
 
-            try
+        try
+        {
+            $pdo = new PDO(CONNECTION, USER, PASSWORD);
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $pdo->beginTransaction();
+
+            // se il prodotto esiste e ha quantità positiva lo aggiungo
+            $row = Product::findByName($pdo, $product_id);
+
+            if($row && $row["quantity"] > 0)
             {
-                $pdo = new PDO(CONNECTION, USER, PASSWORD);
-                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $pdo->beginTransaction();
+                // AGGIUNGO NEL DATABASE
+                // guardo se esiste già un carrello, altrimenti lo creo
+                $cart_id = $this->findCarrello($pdo);
 
-                // se il prodotto esiste e ha quantità positiva lo aggiungo
-                $row = Product::findByName($pdo, $product_id);
+                // cerco il prodotto nel carrello
+                $cartItem = CartItem::findByCartIdAndProductId($pdo, $cart_id, $product_id);
 
-                if($row && $row["quantity"] > 0)
+                // se esiste già il prodotto aumento la quantità
+                if($cartItem)
                 {
-                    // AGGIUNGO NEL DATABASE
-                    // guardo se esiste già un carrello, altrimenti lo creo
-                    $cart_id = $this->findCarrello($pdo);
-
-                    // cerco il prodotto nel carrello
-                    $cartItem = CartItem::findByCartIdAndProductId($pdo, $cart_id, $product_id);
-
-                    // se esiste già il prodotto aumento la quantità
-                    if($cartItem)
-                    {
-                        CartItem::updateByOne($pdo, new CartItem($cart_id, $product_id));
-                    }
-                    // altrimenti aggiungo il prodotto
-                    else
-                    {
-                        CartItem::add($pdo, new CartItem($cart_id, $product_id));
-                    }
-                    $pdo->commit();
-
-                    // AGGIORNO SESSION[cart]
-                    $this->addToSession($product_id);
+                    CartItem::updateByOne($pdo, new CartItem($cart_id, $product_id));
                 }
+                // altrimenti aggiungo il prodotto
+                else
+                {
+                    CartItem::add($pdo, new CartItem($cart_id, $product_id));
+                }
+                $pdo->commit();
+
+                // AGGIORNO SESSION[cart]
+                $this->addToSession($product_id);
             }
-            catch (PDOException $e)
-            {
-                if($pdo->inTransaction())
-                    $pdo->rollBack();
-                throw $e;
-            }
+        }
+        catch (PDOException $e)
+        {
+            if($pdo->inTransaction())
+                $pdo->rollBack();
+            throw $e;
         }
     }
 

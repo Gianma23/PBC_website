@@ -1,9 +1,5 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
     <?php include __DIR__ . "/include/head.php"; ?>
     <link rel="stylesheet" href="<?= WEB_PATH?>/css/checkout.css">
-    <title>Home - Piccolo Birrificio Clandestino</title>
 </head>
 <body>
 
@@ -12,7 +8,7 @@
     <main>
         <div class="container">
             <h1 class="primary-heading">Carrello</h1>
-            <div class="column-container">
+            <div class="column-container" id="carrello-container">
 
                 <div class="carrello">
                     <table class="prodotti-table">
@@ -33,11 +29,30 @@
                 <article class="riepilogo">
                     <h2>Riepilogo</h2>
                     <div class="stima">
-                        <p class="riga">Totale carrello <span id="riepilogo-totale-carrello"></span></p>
-                        <p class="riga">Stima spese di spedizione <span id="riepilogo-stima-spedizione"></span></p>
+                        <p class="riga">Totale carrello(<span id="num-prodotti"></span>&nbsp;prodotti) <span id="riepilogo-totale-carrello">0</span>&euro;</p>
+                        <p class="riga">Stima spese di spedizione <span id="riepilogo-stima-spedizione">9.50</span>&euro;</p>
+                        <div class="opzione-stima">
+                            <input type="radio" value="9.50" id="italia" name="stima-spese" checked>
+                            <label for="italia">9.50&euro; Tariffa Italia isole escluse</label>
+                        </div>
+                        <div class="opzione-stima">
+                            <input type="radio" value="12.50" id="sardegna" name="stima-spese">
+                            <label for="sardegna">12.50&euro; Tariffa Sardegna</label>
+                        </div>
+                        <div class="opzione-stima">
+                            <input type="radio" value="15.50" id="sicilia" name="stima-spese">
+                            <label for="sicilia">15.50&euro; Tariffa Sicilia</label>
+                        </div>
+                        <div class="opzione-stima">
+                            <input type="radio" value="0" id="livorno" name="stima-spese">
+                            <label for="livorno">0&euro; Comune di Livorno</label>
+                        </div>
                     </div>
-                    <div class="vai-avanti"></div>
-                    <p>Totale ordine <span></span></p>
+
+                    <div class="vai-avanti">
+                        <p class="riga">Totale ordine <span id="riepilogo-totale-ordine"></span></p>
+                        <a href="<?= URL_ROOT?>/checkout" role="button" class="button" id="successivo">SUCCESSIVO</a>
+                    </div>
                 </article>
             </div>
         </div>

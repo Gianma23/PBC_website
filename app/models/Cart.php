@@ -68,4 +68,22 @@ class Cart
         $stmt->execute();
         return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
+
+    public static function delete($pdo, $id)
+    {
+        $sql = "DELETE FROM cart
+                WHERE id = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(1, $id);
+        return $stmt->execute();
+    }
+
+    public static function deleteByAccountId($pdo, $accountId)
+    {
+        $sql = "DELETE FROM cart
+                WHERE account_id = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(1, $accountId);
+        return $stmt->execute();
+    }
 }

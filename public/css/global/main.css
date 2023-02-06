@@ -425,7 +425,8 @@ select {
     width: 100%;
 }
 
-input:not([type=checkbox]) {
+input:not([type=checkbox]),
+select {
     height: 2.5rem;
 }
 
@@ -454,6 +455,16 @@ input[type=checkbox] + label{
     display: flex;
     align-items: center;
     gap: 16px;
+}
+
+fieldset {
+    border: none;
+    margin-bottom: var(--lineheight);
+}
+
+legend {
+    font-size: var(--fs-600);
+    font-weight: var(--fw-semibold);
 }
 
 /* ============= FORM IN A CARD ============= */

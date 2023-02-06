@@ -24,6 +24,7 @@ $router->addRoute('scaffale/carrello/rimuovi/{product:.+}', ['controller' => 'Ca
 
 // Order Controller
 $router->addRoute('carrello', ['controller' => 'OrderController', 'action' => 'carrello']);
-$router->addRoute('spedizione', ['controller' => 'OrderController', 'action' => 'spedizione']);
+$router->addRoute('conferma-ordine', ['controller' => 'OrderController', 'action' => 'confermaOrdine']);
 $router->addRoute('checkout', ['controller' => 'OrderController', 'action' => 'checkout']);
-
+$router->addRoute('checkout/{errore:.+}', ['controller' => 'OrderController', 'action' => 'checkout']);
+$router->addRoute('ordine/aggiungi', ['controller' => 'OrderController', 'action' => 'addOrder']);

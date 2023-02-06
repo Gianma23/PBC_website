@@ -2,8 +2,6 @@
 <html lang="it">
 <head>
     <?php include __DIR__ . "/include/head.php"; ?>
-
-    <title>Home - Piccolo Birrificio Clandestino</title>
 </head>
 <body>
 

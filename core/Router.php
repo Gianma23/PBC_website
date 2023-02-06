@@ -5,7 +5,7 @@ use Controllers;
 require_once(ROOT_PATH . '/app/controllers/PageController.php');
 require_once(ROOT_PATH . '/app/controllers/CartController.php');
 require_once(ROOT_PATH . '/app/controllers/ShopController.php');
-require_once(ROOT_PATH . '/app/controllers/ORderController.php');
+require_once(ROOT_PATH . '/app/controllers/OrderController.php');
 
 class Router
 {
@@ -60,14 +60,15 @@ class Router
         }
     }
 
-    public function redirect($uri) : void {
+    public function redirect($uri) : void
+    {
         $this->setParams($uri);
 
-        $controller = $this->getNamespace() . $this->parameters['controller'];
-        $action = $this->capitalizeAction($this->parameters['action']);
+        $controller = 'Controllers\\' . $this->parameters['controller'];
+        $action = $this->parameters['action'];
 
-        if (class_exists($controller)) {
-
+        if (class_exists($controller))
+        {
             $controller = new $controller;
 
             unset($this->parameters['controller']);
@@ -76,37 +77,15 @@ class Router
                 unset($this->parameters['action']);
                 unset($this->parameters['namespace']);
             }
-            else {
+            else
+            {
                 die('Page not found.');
             }
         }
-        else {
-            header('location: ' . ROOT_PATH . '/');
+        else
+        {
+
         }
         call_user_func_array([$controller, $action], [$this->parameters]);
     }
-
-    private function getNamespace() : string
-    {
-        $namespace = 'Controllers\\';
-
-        if (array_key_exists('namespace', $this->parameters))
-        {
-            $namespace .= $this->parameters['namespace'];
-        }
-
-        return $namespace;
-    }
-
-    private function capitalizeAction(string $action) : string
-    {
-        $action = explode('-', $action);
-
-        for($i=1; $i < count($action); $i++){
-            $action[$i] = ucwords($action[$i]);
-        }
-
-        return implode($action);
-    }
-
 }

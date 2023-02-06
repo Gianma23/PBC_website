@@ -2,8 +2,6 @@
 <html lang="it">
 <head>
     <?php include __DIR__ . "/include/head.php"; ?>
-
-    <title>Home - Piccolo Birrificio Clandestino</title>
 </head>
 <body>
 
@@ -29,7 +27,7 @@
                 <a href="shop" class="button" role="button">SCOPRI LE BIRRE</a>
             </div>
             <div class="tile-section__img-container">
-                <img src="pages/home/Riappala.png" id="hero-image" alt="Birra Riappala 2.0">
+                <img src="<?= WEB_PATH?>/images/background/Riappala.png" id="hero-image" alt="Birra Riappala 2.0">
             </div>
         </div>
     </section>

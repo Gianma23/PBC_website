@@ -2,117 +2,109 @@
 namespace Models;
 use JsonSerializable;
 
-class Order implements JsonSerializable
+class Order
 {
+    protected $id;
+    protected $accountId;
+    protected $email;
+    protected $shippingAddressId;
+    protected $paymentType;
+    protected $status;
+    protected $shipmentTotal;
+    protected $total;
 
-    protected $nome;
-    protected $prezzo;
-    protected $descrizione;
-    protected $categoria;
-    protected $tagline;
-    protected $quantita;
-    protected $venduti;
-    protected $imgPath;
 
     public function __construct($record)
     {
-        $this->nome = $record['name'];
-        $this->prezzo = $record['price'];
-        $this->descrizione = $record['descr'];
-        $this->categoria = $record['category'];
-        $this->tagline = $record['tagline'];
-        $this->quantita = $record['quantity'];
-        $this->venduti = $record['sold'];
-        $this->imgPath = $record['img_path'];
+        $this->id = $record['id'];
+        $this->accountId = $record['account_id'];
+        $this->email = $record['email'];
+        $this->shippingAddressId = $record['shipping_address_id'];
+        $this->paymentType = $record['payment_type'];
+        $this->status = $record['status'];
+        $this->shipmentTotal = $record['shipment_total'];
+        $this->total = $record['total'];
     }
 
-    public function getNome() {
-        return $this->nome;
+    /* GETTERS & SETTERS */
+
+    public function getId(){
+        return $this->id;
     }
 
-    public function setNome($nome) {
-        $this->nome = $nome;
+    public function setId($id){
+        $this->id = $id;
     }
 
-    public function getPrezzo() {
-        return $this->prezzo;
+    public function getAccountId(){
+        return $this->accountId;
     }
 
-    public function setPrezzo($prezzo) {
-        $this->prezzo = $prezzo;
+    public function setAccountId($accountId){
+        $this->accountId = $accountId;
     }
 
-    public function getDescrizione() {
-        return $this->descrizione;
+    public function getEmail(){
+        return $this->email;
     }
 
-    public function setDescrizione($descrizione) {
-        $this->descrizione = $descrizione;
+    public function setEmail($email){
+        $this->email = $email;
     }
 
-    public function getCategoria() {
-        return $this->categoria;
+    public function getShippingAddressId(){
+        return $this->shippingAddressId;
     }
 
-    public function setCategoria($categoria) {
-        $this->categoria =$categoria;
+    public function setShippingAddressId($shippingAddressId){
+        $this->shippingAddressId = $shippingAddressId;
     }
 
-    public function getTagline() {
-        return $this->tagline;
+    public function getPaymentType(){
+        return $this->paymentType;
     }
 
-    public function setTagline($tagline) {
-        $this->tagline =$tagline;
+    public function setPaymentType($paymentType){
+        $this->paymentType = $paymentType;
     }
 
-    public function getQuantita() {
-        return $this->quantita;
+    public function getStatus(){
+        return $this->status;
     }
 
-    public function setQuantita($quantita) {
-        $this->quantita =$quantita;
+    public function setStatus($status){
+        $this->status = $status;
     }
 
-    public function getVenduti() {
-        return $this->venduti;
+    public function getShipmentTotal(){
+        return $this->shipmentTotal;
     }
 
-    public function setVenduti($venduti) {
-        $this->venduti =$venduti;
+    public function setShipmentTotal($shipmentTotal){
+        $this->shipmentTotal = $shipmentTotal;
     }
 
-    public function getImgPath() {
-        return $this->imgPath;
+    public function getTotal(){
+        return $this->total;
     }
 
-    public function setImgPath($imgPath) {
-        $this->imgPath =$imgPath;
+    public function setTotal($total){
+        $this->total = $total;
     }
 
-    function createProductCard()
+    public static function add($pdo, $accountId, $email, $shippingAddressId, $paymentType, $shipmentTotal, $total)
     {
-        echo
-        "<div class=\"product-card\">
-            <img src='$this->imgPath' alt='immagine prodotto'>
-            <h3 class=\"fw-medium fs-600\" id=\"nome-birra\">$this->nome</h3>
-            <p class=\"fw-medium fs-500\">Prezzo: $this->prezzo&euro;</p>
-            <small class=\"fw-medium fs-500\">Quantità: $this->quantita</small>
-            <div class='button-container'>
-                <button class=\"button button--edit\" id=\"modifica\">Modifica</button>
-                <button class=\"button button--remove elimina\">Elimina</button>
-            </div>
-        </div>";
-    }
+        $sql = "INSERT INTO `order` (account_id, email, shipping_address_id, payment_type, shipment_total, total)
+                VALUES (?,?,?,?,?,?)";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(1, $accountId);
+        $stmt->bindValue(2, $email);
+        $stmt->bindValue(3, $shippingAddressId);
+        $stmt->bindValue(4, $paymentType);
+        $stmt->bindValue(5, $shipmentTotal);
+        $stmt->bindValue(6, $total);
+        $stmt->execute();
 
-    public function jsonSerialize(): array
-    {
-        return ["nome" => $this->nome,
-            "prezzo" => $this->prezzo,
-            "descrizione" => $this->descrizione,
-            "categoria" => $this->categoria,
-            "tagline" => $this->tagline,
-            "imgPath" => $this->imgPath,
-            "disponibile" => $this->disponibile];
+        return $pdo->lastInsertId();
     }
 }

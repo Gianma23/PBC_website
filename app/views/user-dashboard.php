@@ -1,9 +1,5 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
     <?php include __DIR__ . "/include/head.php"; ?>
     <link rel="stylesheet" href="../../public/pages/dashboard/dashboard.css">
-    <title>Dashboard - Piccolo Birrificio Clandestino</title>
 </head>
 <body>
 
