@@ -24,7 +24,7 @@ try
         ?>
         <div class="product-card">
             <img src="<?= $prodotto->getImgPath() ?>" alt='immagine prodotto'>
-            <h3 class="fw-medium fs-600"><?= $prodotto->getNome()?></h3>
+            <h3 class="fw-medium fs-500"><?= $prodotto->getNome()?></h3>
             <p class="fw-medium fs-500"><?= $prodotto->getPrezzo()?>&euro;</p>
             <small class="<?= $disponibileText?>"><?= $disponibileText?></small>
             <form>

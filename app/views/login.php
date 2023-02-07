@@ -1,9 +1,16 @@
+<?php
+// pagina accessibile solo per chi non è loggato
+if(empty($_SESSION['account_id']))
+    header('Location:' . URL_ROOT . '/home');
+?>
+<!DOCTYPE html>
+<html lang="it">
+<head>
     <?php include __DIR__ . "/include/head.php"; ?>
 </head>
 <body>
 
     <?php include __DIR__ . "/include/header.php"; ?>
-    <?php include "pages/login/authentication.php"; ?>
 
     <main>
         <div class="container center">
@@ -12,7 +19,7 @@
                 <article class="card">
                     <h2>Già registrato?</h2>
                     <div class="form--card">
-                        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
+                        <form method="POST" id="login-form">
                             <input type='hidden' name='action' value='login'>
                             <p class="form-elem">
                                 <label for="email">Email:</label><br>
@@ -25,7 +32,7 @@
                                 <small class="error"></small>
                             </p>
                             <p class="form-elem">
-                                <?php echo $errorLogin; ?>
+                                <small class="error" id="error-login"></small>
                                 <button type="submit" class="button">ACCEDI</button>
                             </p>
                         </form>
@@ -35,7 +42,7 @@
                 <article class="card">
                     <h2>Sei nuovo?</h2>
                     <div class="form--card">
-                        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
+                        <form method="POST" id="register-form">
                             <input type='hidden' name='action' value='register'>
                             <p class="form-elem">
                                 <label for="sign-up-email">Email:</label><br>
@@ -52,12 +59,8 @@
                                 <input type="password" id="pass-conf" name="pass-conf">
                                 <small class="error"></small>
                             </p>
-                            <p class="form-elem form__privacy-policy">
-                                <input type="checkbox" id="privacy-policy" name="privacy-policy">
-                                <label for="privacy-policy">Accetto le condizioni sulla privacy</label>
-                            </p>
                             <p class="form-elem">
-                                <?php echo $errorRegister; ?>
+                                <small class="error" id="error-register"></small>
                                 <button type="submit" class="button">REGISTRATI</button>
                             </p>
                         </form>

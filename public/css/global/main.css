@@ -451,12 +451,6 @@ input[type=checkbox] + label{
     font-weight: var(--fw-medium);
 }
 
-.form__privacy-policy {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-}
-
 fieldset {
     border: none;
     margin-bottom: var(--lineheight);
@@ -491,13 +485,11 @@ legend {
 .valid input,
 .valid textarea{
     border-color: var(--clr-success);
-    background-color: var(--clr-bg-success);
 }
 
 .invalid input,
 .invalid textarea{
     border-color: var(--clr-warning);
-    background-color: var(--clr-bg-warning);
 }
 
 .error {

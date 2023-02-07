@@ -12,7 +12,7 @@
         <?php include __DIR__ . "/include/shop-nav.php"; ?>
 
         <section class="hero">
-            <div class="container">
+            <div class="container" id="contenitore-prodotto">
                 <div class="left">
                     <h1 class="secondary-heading" id="nome-birra">Nome birra</h1>
                     <p id="stile-birra">Stile</p>

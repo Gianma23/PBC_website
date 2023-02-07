@@ -29,7 +29,7 @@
                 <article class="riepilogo">
                     <h2>Riepilogo</h2>
                     <div class="stima">
-                        <p class="riga">Totale carrello(<span id="num-prodotti"></span>&nbsp;prodotti) <span id="riepilogo-totale-carrello">0</span>&euro;</p>
+                        <p class="riga">Totale carrello(<span id="num-prodotti"></span>&nbsp;prodotti) <span id="riepilogo-totale-carrello"></span>&euro;</p>
                         <p class="riga">Stima spese di spedizione <span id="riepilogo-stima-spedizione">9.50</span>&euro;</p>
                         <div class="opzione-stima">
                             <input type="radio" value="9.50" id="italia" name="stima-spese" checked>
@@ -50,7 +50,7 @@
                     </div>
 
                     <div class="vai-avanti">
-                        <p class="riga">Totale ordine <span id="riepilogo-totale-ordine"></span></p>
+                        <p class="riga">Totale ordine <span id="riepilogo-totale-ordine"></span>&euro;</p>
                         <a href="<?= URL_ROOT?>/checkout" role="button" class="button" id="successivo">SUCCESSIVO</a>
                     </div>
                 </article>

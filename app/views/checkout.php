@@ -1,9 +1,12 @@
 <?php
     // se il carrello è vuoto reindirizzo alla pagina del carrello
-    if(isset($_SESSION['cart']) && empty($_SESSION['cart']))
+    if(empty($_SESSION['cart']))
         header('Location:' . URL_ROOT . '/carrello');
 ?>
-<?php include __DIR__ . "/include/head.php"; ?>
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <?php include __DIR__ . "/include/head.php"; ?>
 </head>
 <body>
 
@@ -55,11 +58,17 @@
                             <p class="form-elem">
                                 <label for="provincia">Provincia:</label>
                                 <select id="provincia" name="provincia">
-                                    <option value="livorno">Livorno</option>
+                                    <option>Livorno</option>
+
                                 <?php
-
-
+                                    $provinceJson =  file_get_contents(ROOT_PATH . '/core/utils/province.json');
+                                    $province = json_decode($provinceJson, true);
+                                    foreach($province as $provincia)
+                                    {?>
+                                        <option><?= $provincia['nome']?></option>
+                                    <?php }
                                 ?>
+
                                 </select>
                                 <small class="error"></small>
                             </p>
@@ -70,7 +79,7 @@
                             </p>
                             <p class="form-elem">
                                 <label for="cap">CAP:</label>
-                                <input id="cap" name="cap">
+                                <input type="number" id="cap" name="cap">
                                 <small class="error"></small>
                             </p>
                         </div>
@@ -98,7 +107,7 @@
                     <article class="riepilogo">
                         <h2>Riepilogo</h2>
                         <div class="stima">
-                            <p class="riga">Totale carrello(<span id="num-prodotti"></span>&nbsp;prodotti) <span id="riepilogo-totale-carrello">0</span>&euro;</p>
+                            <p class="riga">Totale carrello(<span id="num-prodotti"></span>&nbsp;prodotti) <span id="riepilogo-totale-carrello"></span>&euro;</p>
                             <p class="riga">Stima spese di spedizione <span id="riepilogo-stima-spedizione">9.50</span>&euro;</p>
                             <input type="hidden" name="totale-spedizione" id="totale-spedizione" value="5">
                         </div>
@@ -109,7 +118,7 @@
                             <input type="hidden" name="totale" id="totale" value="20">
                         </div>
                     </article>
-                    <small><?php if(isset($errore)) echo $errore?></small>
+                    <small id="server-error"><?php if(isset($_GET['error'])) echo $_GET['error'] ?></small>
                 </div>
             </form>
         </div>

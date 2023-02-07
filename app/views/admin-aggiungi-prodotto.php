@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
     <?php include __DIR__ . "/include/head.php"; ?>
-    <link rel="stylesheet" href="../../public/pages/dashboard/admin-prodotti.css">
+    <link rel="stylesheet" href="../../public/css/admin-prodotti.css">
     <title>Dashboard - Piccolo Birrificio Clandestino</title>
 </head>
 <body>
@@ -88,6 +88,6 @@
     </main>
 
     <?php include __DIR__ . "/include/footer.php"; ?>
-    <script src="../../public/pages/dashboard/admin-prodotti.js"></script>
+    <script src="../../public/javascript/admin-prodotti.js"></script>
 </body>
 </html>

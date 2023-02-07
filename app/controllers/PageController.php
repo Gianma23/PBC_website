@@ -35,8 +35,37 @@ class PageController
         Render::view('shop');
     }
 
+    public function scaffale($vars) {
+        Render::view('scaffale');
+    }
+
     public function login()
     {
         Render::view('login');
+    }
+
+    public function carrello()
+    {
+        Render::view('carrello');
+    }
+
+    public function confermaOrdine()
+    {
+        Render::view('conferma-ordine');
+    }
+
+    public function checkout()
+    {
+        Render::view('checkout');
+    }
+
+    public function userDashboard()
+    {
+        Render::view('user-dashboard');
+    }
+
+    public function adminDashboard()
+    {
+        Render::view('admin-dashboard');
     }
 }

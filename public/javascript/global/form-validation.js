@@ -1,11 +1,10 @@
-/* ========================================== */
-/* =====        FORM VALIDATION         ===== */
-/* ========================================== */
+
+// validazione generica di tutti i form per:
+// email, nome-cognome, descrizione
 
 
 const formList = document.querySelectorAll("form");
 
-/* Listener for input in every form in the page */
 formList.forEach(form => {
 
     const emailEl = form.querySelector('[name = email]');
@@ -15,14 +14,14 @@ formList.forEach(form => {
     const confirmPasswordEl = form.querySelector('[name = pass-conf]');
 
     form.addEventListener('submit', e => {
+        let isFormValid = true;
 
-        const isEmailVal = validateEmail(emailEl);
-        const isNameSurnameVal = validateNameSurname(nameSurnameEl);
-        const isMessageVal = validateMessage(messageEl);
-        const isPasswordVal = validatePassword(passwordEl);
-        const isConfirmPasswordVal = validateConfirmPassword(passwordEl, confirmPasswordEl);
+        isFormValid &&= validateEmail(emailEl);
+        isFormValid &&= validateNameSurname(nameSurnameEl);
+        isFormValid &&= validateMessage(messageEl);
+        isFormValid &&= validatePassword(passwordEl);
+        isFormValid &&= validateConfirmPassword(passwordEl, confirmPasswordEl);
 
-        const isFormValid = isEmailVal && isNameSurnameVal && isMessageVal && isPasswordVal && isConfirmPasswordVal;
         if(!isFormValid) {
             e.preventDefault();
         }
@@ -51,7 +50,7 @@ formList.forEach(form => {
 });
 
 /* Validation functions for every input */
-const validateNameSurname = nameSurnameEl => {
+function validateNameSurname(nameSurnameEl) {
     if(nameSurnameEl == null)
         return true;
 
@@ -69,7 +68,7 @@ const validateNameSurname = nameSurnameEl => {
     return valid;
 }
 
-const validateEmail = emailEl => {
+function validateEmail(emailEl) {
     if(emailEl == null)
         return true;
 
@@ -79,7 +78,7 @@ const validateEmail = emailEl => {
     if (emailEl.validity.valueMissing) {
         showError(emailEl, 'Email richiesta.')
     } else if (!isEmailValid(email)) {
-        showError(emailEl, 'Il formato è esempio@email.com.');
+        showError(emailEl, 'Inserire una email valida.');
     } else {
         showSuccess(emailEl);
         valid = true;
@@ -115,7 +114,7 @@ const validatePassword = passwordEl => {
     if (passwordEl.validity.valueMissing) {
         showError(passwordEl, 'Inserire la password.');
     } else if (!isPasswordValid(password)) {
-        showError(passwordEl, 'Includere almeno 8 caratteri, di cui almeno: 1 minuscolo, 1 maiuscolo, 1 numero, 1 carattere speciale in (!@#$%^&*)');
+        showError(passwordEl, 'Includere almeno 8 caratteri, di cui almeno: 1 minuscolo, 1 maiuscolo, 1 numero');
     } else {
         showSuccess(passwordEl);
         valid = true;
@@ -154,7 +153,7 @@ const isEmailValid = email => {
 };
 
 const isPasswordValid = password => {
-    const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/;
+    const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/;
     return re.test(password);
 };
 

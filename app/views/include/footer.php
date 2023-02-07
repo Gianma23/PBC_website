@@ -5,14 +5,15 @@
             <h3 class="secondary-heading">Resta aggiornato</h3>
             <p class="fs-500">Iscriviti alla nostra Newsletter per ricevere promozioni,
                 consigli e novità sui prodotti! </p>
-            <form action="" novalidate>
+            <form id="newsletter-form" novalidate>
                 <p class="form-elem form__email">
                     <label for="news-email">Email:</label><br>
                     <input type="email" id="news-email" name="email" placeholder="esempio@gmail.com"><br>
-                    <small class="error"></small>
+                    <small class="error" id="error-newsletter"></small>
                 </p>
                 <p class="form-elem">
                     <button type="submit" class="button button--secondary">ISCRIVITI</button>
+                    <small class="success" id="success-newsletter"></small>
                 </p>
         </form>
         </div>

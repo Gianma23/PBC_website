@@ -4,7 +4,6 @@ use JsonSerializable;
 
 class Product implements JsonSerializable
 {
-
     protected $nome;
     protected $prezzo;
     protected $descrizione;
@@ -103,6 +102,17 @@ class Product implements JsonSerializable
         return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
 
+    public static function findByCategory($pdo, $category)
+    {
+        $sql = "SELECT * 
+                FROM product 
+                WHERE category = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(1, $category);
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
     public static function decrementQuantity($pdo, $name, $quantityToRemove)
     {
         $sql = "UPDATE product 
@@ -114,7 +124,7 @@ class Product implements JsonSerializable
         return $stmt->execute();
     }
 
-    function createProductCard()
+    public function createProductCard()
     {
         echo
         "<div class=\"product-card\">

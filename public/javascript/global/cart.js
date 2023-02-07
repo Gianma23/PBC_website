@@ -34,6 +34,7 @@ fetch('carica-carrello')
     .then((data) => {
         creaCarrelloLaterale(data);
         creaCarrelloPagina(data);
+        setRiepilogo(data);
     });
 
 /* =============================================== */
@@ -54,6 +55,7 @@ addButtons.forEach((button) => button.onclick = (e) => {
                 .then((data) => {
                     creaCarrelloLaterale(data);
                     creaCarrelloPagina(data);
+                    setRiepilogo(data);
                     cartSlide.classList.add('open');
                 });
         });
@@ -74,11 +76,12 @@ function rimuoviHandler(e) {
                 .then((data) => {
                     creaCarrelloLaterale(data);
                     creaCarrelloPagina(data);
+                    setRiepilogo(data);
                 });
         });
 }
 
-/* Caricamento carrello laterale */
+/* ========== Caricamento carrello laterale ==========  */
 
 function creaCarrelloLaterale(data) {
     const listaProdotti = document.getElementById('prodotti-list');
@@ -100,6 +103,7 @@ function creaCarrelloLaterale(data) {
         const div = document.createElement('div');
         const imgProdotto = document.createElement('img');
         imgProdotto.src = prodotto['img_path'];
+        imgProdotto.alt = prodotto['name'];
         div.appendChild(imgProdotto);
         li.appendChild(div);
 
@@ -136,8 +140,12 @@ function creaCarrelloLaterale(data) {
     }
 }
 
+/* ========== Caricamento carrello pagina ==========  */
+
 function creaCarrelloPagina(data) {
     const tabellaProdotti = document.getElementById('prodotti-table');
+
+    // controllo che esista la tabella del carrello
     if(!tabellaProdotti)
         return;
     tabellaProdotti.innerHTML = '';
@@ -195,16 +203,8 @@ function creaCarrelloPagina(data) {
         buttonRimuovi.addEventListener('click', rimuoviHandler);
     }
 
-    if(numProdotti > 0) {
-        // metto il totale anche nel riepilogo
-        const totaleRiepilogo = document.getElementById('riepilogo-totale-carrello');
-        const textNumProdotti = document.getElementById('num-prodotti');
-        if (totaleRiepilogo) {
-            totaleRiepilogo.textContent = String(totale);
-            textNumProdotti.textContent = String(numProdotti);
-        }
-    }
-    else {
+    // se non ci sono prodotti mostro un messaggio
+    if(numProdotti === 0) {
         const carrelloContainer = document.getElementById('carrello-container');
         carrelloContainer.classList.add('secondary-heading');
         rimuoviCarrello(carrelloContainer);
@@ -214,5 +214,26 @@ function creaCarrelloPagina(data) {
 function rimuoviCarrello(carrelloContainer) {
     carrelloContainer.innerHTML = '';
     carrelloContainer.textContent = 'Il carrello è vuoto!';
+}
+
+function setRiepilogo(data) {
+
+    let numProdotti = 0;
+    let totale = 0;
+
+    for (const prodottoString in data) {
+        // metto il totale del carrello
+        const totaleCarrello = document.getElementById('riepilogo-totale-carrello');
+        const totaleSpedizione = document.getElementById('riepilogo-stima-spedizione');
+        const totaleOrdine = document.getElementById('riepilogo-totale-ordine');
+        const textNumProdotti = document.getElementById('num-prodotti');
+
+        // guardo che esista la card riepilogo
+        if (totaleCarrello) {
+            totaleCarrello.textContent = String(totale);
+            textNumProdotti.textContent = String(numProdotti);
+            totaleOrdine.textContent = String(totale + Number(totaleSpedizione.textContent));
+        }
+    }
 }
 

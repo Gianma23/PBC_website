@@ -67,6 +67,6 @@
 </header>
 
 <div class="fab-button">
-    <a href="<?= URL_ROOT?>/doc">Doc</a>
+    <a target="_blank" href="<?= WEB_PATH?>/documentation.html">Doc</a>
 </div>
 

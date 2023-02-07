@@ -17,21 +17,6 @@ use PDOException;
 
 class OrderController
 {
-    public function carrello()
-    {
-        Render::view('carrello');
-    }
-
-    public function confermaOrdine()
-    {
-        Render::view('conferma-ordine');
-    }
-
-    public function checkout($vars)
-    {
-        Render::view('checkout', $vars);
-    }
-
     public function addOrder()
     {
         if (isset($_SESSION['account']))
@@ -46,7 +31,7 @@ class OrderController
         }
         else
         {
-            header('Location:' . URL_ROOT . '/checkout/Necessaria email o account.');
+            header('Location:' . URL_ROOT . '/checkout?error=Necessaria email o account.');
             return;
         }
 
@@ -55,7 +40,7 @@ class OrderController
             if ($this->validateInputs()/*TODO: validare*/)
                 $this->effettuaOrdine($account, $email);
             else
-                header('Location:' . URL_ROOT . '/checkout/inputs non validi.');
+                header('Location:' . URL_ROOT . '/checkout?error=inputs non validi.');
         }
     }
 
@@ -68,7 +53,7 @@ class OrderController
         }
         else
         {
-            header('Location:' . URL_ROOT . '/checkout/carrello vuoto.');
+            header('Location:' . URL_ROOT . '/checkout?error=carrello vuoto.');
             return;
         }
 
@@ -85,9 +70,8 @@ class OrderController
                 $prodotto = Product::findByName($pdo, $nomeProdotto);
                 if($prodotto['quantity'] < $pezzi)
                 {
-                    header('Content-Type: text/html; charset=utf-8');
-                    header('Location:' . URL_ROOT . '/checkout/' . $nomeProdotto . ' non è più disponibile purtroppo.');
                     $pdo->rollBack();
+                    header('Location:' . URL_ROOT . '/checkout?error=' . $nomeProdotto . ' non è più disponibile purtroppo.');
                     return;
                 }
                 Product::decrementQuantity($pdo, $nomeProdotto, $pezzi);
@@ -113,17 +97,18 @@ class OrderController
         {
             if($pdo->inTransaction())
                 $pdo->rollBack();
-            header('Location:' . URL_ROOT . '/checkout/Al momento il servizio non è disponibile.');
+            header('Location:' . URL_ROOT . '/checkout?error=Al momento il servizio non è disponibile.');
             throw $e;
         }
     }
 
-    private function rimuoviCarrello($pdo) {
+    private function rimuoviCarrello($pdo)
+    {
         if(isset($_SESSION["account_id"]))
         {
             Cart::deleteByAccountId($pdo, $_SESSION["account_id"]);
         }
-        else if(isset($_COOKIE["cart_id"]))
+        if(isset($_COOKIE["cart_id"]))
         {
             Cart::delete($pdo, $_COOKIE["cart_id"]);
         }

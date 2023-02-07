@@ -3,7 +3,6 @@ namespace Ecommerce;
 
 require_once(__DIR__ . '/../core/config/config.php');
 require_once(__DIR__ . '/../core/Router.php');
-require_once(__DIR__ . '/../core/autoload.php');
 
 session_start();
 

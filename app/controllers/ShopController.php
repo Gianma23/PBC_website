@@ -1,6 +1,5 @@
 <?php
 namespace Controllers;
-require_once(ROOT_PATH . '/core/Render.php');
 require_once(ROOT_PATH . '/app/models/Product.php');
 require_once(ROOT_PATH . '/app/models/Beer.php');
 
@@ -10,13 +9,8 @@ use Models\Beer;
 use PDO;
 use PDOException;
 
-class ShopController {
-
-    public function scaffale($vars) {
-        Render::view('scaffale');
-    }
-
-
+class ShopController
+{
     public function search($vars)
     {
         if(isset($vars['categoria']))
@@ -30,23 +24,22 @@ class ShopController {
         $pdo = new PDO(CONNECTION, USER, PASSWORD);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $sql = "SELECT * 
-            FROM product 
-                 INNER JOIN 
-                 beer b on product.name = b.product_id 
-            WHERE category = ?";
+        $prodotti = Product::findByCategory($pdo, $categoria);
 
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindValue(1, $categoria);
-        $stmt->execute();
-
-        while($row = $stmt->fetch()) {
-            $arrayProdotti[] = json_encode(new Beer($row));
+        foreach($prodotti as $prodotto) {
+            if($prodotto['category'] == 'birra')
+            {
+                $beer = Beer::findByName($pdo, $prodotto['name']);
+                $arrayProdotti[] = json_encode(new Beer($beer));
+            }
+            else
+            {
+                $arrayProdotti[] = json_encode(new Product($prodotto));
+            }
         }
         header('Content-Type: application/json; charset=utf-8');
         echo json_encode($arrayProdotti);
     }
-
 
     private function searchByName() : void
     {

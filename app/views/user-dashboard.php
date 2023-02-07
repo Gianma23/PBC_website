@@ -1,5 +1,8 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
     <?php include __DIR__ . "/include/head.php"; ?>
-    <link rel="stylesheet" href="../../public/pages/dashboard/dashboard.css">
+    <link rel="stylesheet" href="<?= WEB_PATH?>/css/dashboard.css">
 </head>
 <body>
 

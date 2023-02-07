@@ -17,9 +17,8 @@
     --clr-neutral-100: #FFFFFF;
 
     --clr-warning: #cc3300;
-    --clr-bg-warning: #cc330040;
     --clr-success: #339900;
-    --clr-bg-success: #33990040;
+
     /* Layout Styling */
     --columns: 6;
     --margin: 8.533333333%;
@@ -102,7 +101,6 @@
 /* =====         UTILITY CLASSES        ===== */
 /* ========================================== */
 
-.text-primary-300 {color: var(--clr-primary-300)}
 .text-neutral-100 {color: var(--clr-neutral-100)}
 
 .bg-primary-400 {background-color: var(--clr-primary-400)}

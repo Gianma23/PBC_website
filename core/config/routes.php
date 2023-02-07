@@ -9,9 +9,14 @@ $router->addRoute('contatti', ['controller' => 'PageController', 'action' => 'co
 $router->addRoute('shop', ['controller' => 'PageController', 'action' => 'shop']);
 $router->addRoute('doc', ['controller' => 'PageController', 'action' => 'documentation']);
 $router->addRoute('login', ['controller' => 'PageController', 'action' => 'login']);
+$router->addRoute('carrello', ['controller' => 'PageController', 'action' => 'carrello']);
+$router->addRoute('scaffale/{categoria:\w+}', ['controller' => 'PageController', 'action' => 'scaffale']);
+$router->addRoute('conferma-ordine', ['controller' => 'PageController', 'action' => 'confermaOrdine']);
+$router->addRoute('checkout', ['controller' => 'PageController', 'action' => 'checkout']);
+$router->addRoute('user-dashboard', ['controller' => 'PageController', 'action' => 'userDashboard']);
+$router->addRoute('admin-dashboard', ['controller' => 'PageController', 'action' => 'adminDashboard']);
 
 // Shop Controller
-$router->addRoute('scaffale/{categoria:\w+}', ['controller' => 'ShopController', 'action' => 'scaffale']);
 $router->addRoute('scaffale/search/{categoria:\w+}', ['controller' => 'ShopController', 'action' => 'search']);
 
 // Cart Controller
@@ -23,8 +28,11 @@ $router->addRoute('carrello/rimuovi/{product:.+}', ['controller' => 'CartControl
 $router->addRoute('scaffale/carrello/rimuovi/{product:.+}', ['controller' => 'CartController', 'action' => 'removeProduct']);
 
 // Order Controller
-$router->addRoute('carrello', ['controller' => 'OrderController', 'action' => 'carrello']);
-$router->addRoute('conferma-ordine', ['controller' => 'OrderController', 'action' => 'confermaOrdine']);
-$router->addRoute('checkout', ['controller' => 'OrderController', 'action' => 'checkout']);
-$router->addRoute('checkout/{errore:.+}', ['controller' => 'OrderController', 'action' => 'checkout']);
 $router->addRoute('ordine/aggiungi', ['controller' => 'OrderController', 'action' => 'addOrder']);
+
+// Auth Controller
+$router->addRoute('auth/login', ['controller' => 'AuthController', 'action' => 'login']);
+$router->addRoute('auth/register', ['controller' => 'AuthController', 'action' => 'register']);
+
+// Email Controller
+$router->addRoute('newsletter/add', ['controller' => 'AuthController', 'action' => 'addToNewsletter']);

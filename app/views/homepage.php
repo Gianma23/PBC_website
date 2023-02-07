@@ -12,7 +12,7 @@
         <div class="container">
             <h1 class="hero__title">LA BIRRA ARTIGIANALE <br><strong>CHE CERCAVI</strong></h1>
             <p>Produciamo una vasta gamma di birre per <strong class="fw-bold">qualsiasi gusto</strong> e per <strong class="fw-bold">qualsiasi situazione</strong>.</p>
-            <a href="/shop" class="button button--hero" role="button">VAI ALLO SHOP</a>
+            <a href="<?= URL_ROOT?>/shop" class="button button--hero" role="button">VAI ALLO SHOP</a>
         </div>
     </section>
 
@@ -24,7 +24,7 @@
                     <strong>continua ricerca ed innovazione</strong>, legate a doppio filo sia alla realtà territoriale labronica
                     che alle realtà esterne, che hanno permesso negli anni di collaborare anche con altre realtà
                     brassicole e ottenere premi e riconoscimenti a livello <strong>nazionale e internazionale</strong>.</p>
-                <a href="shop" class="button" role="button">SCOPRI LE BIRRE</a>
+                <a href="<?= URL_ROOT?>/scaffale/birra" class="button" role="button">SCOPRI LE BIRRE</a>
             </div>
             <div class="tile-section__img-container">
                 <img src="<?= WEB_PATH?>/images/background/Riappala.png" id="hero-image" alt="Birra Riappala 2.0">
@@ -53,18 +53,10 @@
     </section>
 
     <section class="shop">
-        <div class="container">
+        <div class="container center">
             <h2 class="secondary-heading">...o dove vuoi!</h2>
-            <div class="card-container">
-                <article class="card">
-
-                </article>
-                <article class="card">
-
-                </article>
-                <article class="card">
-
-                </article>
+            <div class="cards-container">
+                <?php include __DIR__ . "/utils/piu-vendute.php"; ?>
             </div>
         </div>
     </section>

@@ -6,16 +6,19 @@ body {
 }
 
 .hero .container {
-    display: grid;
-    grid-template-rows: 15% 30% 55%;
-    padding-top: var(--lineheight);
+
     height: calc(100vh - var(--lineheight-3));
+}
+
+#nome-birra {
+    padding-top: var(--lineheight);
 }
 
 #stile-birra {
     color: var(--clr-primary-300);
     font-size: var(--fs-700);
     font-weight: var(--fw-bold);
+    line-height: var(--lineheight-2);
 }
 
 #tagline-birra {
@@ -30,6 +33,7 @@ body {
 
 .left form {
     text-align: center;
+    margin-top: var(--lineheight);
 }
 
 .left .button--shop {
@@ -44,7 +48,7 @@ body {
     display: flex;
     justify-content: center;
     width: 100%;
-    margin-top: var(--lineheight-4);
+    margin-top: var(--lineheight-3);
     align-items: baseline;
     gap: var(--gutter);
     transition: all 0.5s;
@@ -87,47 +91,47 @@ body {
 }
 
 #slide-arrow-prev {
-    left: var(--column-width);
+    left: 10%;
 }
 
 #slide-arrow-next {
-    right: var(--column-width);
+    right: 10%;
 }
 
 @media screen and (min-width: 55em) {
     .hero .container {
+        display: grid;
+        align-content: space-between;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 33% auto;
         column-gap: var(--gutter);
-
-        padding-top: var(--lineheight);
+        padding-top: 0;
         height: calc(100vh - var(--lineheight-6));
     }
 
+    .scaffale-vuoto {
+        text-align: center;
+        grid-column: 1/3;
+    }
+
+    .left form {
+        text-align: left;
+    }
+
     #descrizione-birra {
-        margin-top: var(--lineheight-2);
+        margin-top: var(--lineheight-3);
     }
 
     .slide-wrapper {
         grid-column: 1 / 3;
     }
 
-    .left {
-        position: relative;
-    }
-
-    .left .button--shop {
-        position: absolute;
-        bottom: 0;
-        right: var(--column-width-2);
-    }
-
     #slide-arrow-prev {
-        left: var(--column-width-4);
+        left: 35%;
     }
 
     #slide-arrow-next {
-        right: var(--column-width-4);
+        right: 35%;
     }
 }
 
@@ -144,4 +148,10 @@ body {
     .active {
         transform: translateY(calc(var(--lineheight-3) * -1)) scale(1.25);
     }
+}
+
+/* ================ INFO BIRRA ================ */
+
+#info-birra {
+    display: none;
 }

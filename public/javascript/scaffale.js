@@ -23,28 +23,39 @@ const stileBirra = document.getElementById('stile-birra');
 const taglineBirra = document.getElementById('tagline-birra');
 const descBirra = document.getElementById('descrizione-birra');
 const sliderBirre = document.getElementById('slider');
-
 const prodottoId = document.getElementsByClassName('prodotto-id')[0];
 
-const arrayBirre = [];
+const arrayProdotti = [];
 let birraAttiva;
 let indice = 0;
 
-fetch('search/birra')
+const queryCategory = window.location.pathname.split('/').at(-1);
+
+fetch('search/' + queryCategory)
 .then((res) => res.json())
 .then((data) => {
 
-    for(const birraString of data) {
-        const birra = JSON.parse(birraString);
-        arrayBirre.push(new Birra(birra.nome, birra.prezzo, birra.descrizione, birra.categoria, birra.tagline,
-                                 birra.imgPath, birra.stile, birra.aroma, birra.gusto));
+    let vuoto = true;
+    for(const prodottoString of data) {
+        vuoto = false;
+        const prod = JSON.parse(prodottoString);
+        if(queryCategory === 'birra')
+            arrayProdotti.push(new Birra(prod.nome, prod.prezzo, prod.descrizione, prod.categoria, prod.tagline,
+                                      prod.imgPath, prod.stile, prod.aroma, prod.gusto));
+        else
+            arrayProdotti.push(new Prodotto(prod.nome, prod.prezzo, prod.descrizione, prod.categoria, prod.tagline, prod.imgPath));
     }
 
-    if(arrayBirre.length > 1)
-        indice = Math.trunc(arrayBirre.length / 2);
+    // guardo se non ci sono prodotti
+    if(vuoto) {
+        messaggioScaffaleVuoto();
+        return;
+    }
+
+    if(arrayProdotti.length > 1)
+        indice = Math.trunc(arrayProdotti.length / 2);
 
     creaPagina();
-    return true;
 });
 
 
@@ -53,14 +64,14 @@ function creaPagina() {
     riempiInfoProdotto();
 
     // creo slider immagini
-    for(let i = 0; i < arrayBirre.length; i++) {
+    for(let i = 0; i < arrayProdotti.length; i++) {
         const div = document.createElement('div');
         div.className = 'item';
         sliderBirre.appendChild(div);
 
         const img = document.createElement('img');
-        img.src = arrayBirre[i].image;
-        img.alt = arrayBirre[i].nome;
+        img.src = arrayProdotti[i].image;
+        img.alt = arrayProdotti[i].nome;
         div.appendChild(img);
 
         // attivo birra corrente
@@ -81,17 +92,17 @@ function riempiInfoBirra() {
 }
 
 function riempiInfoProdotto() {
-    nomeBirra.textContent = arrayBirre[indice].nome;
-    stileBirra.textContent = arrayBirre[indice].stile;
-    taglineBirra.textContent = arrayBirre[indice].tagline;
-    descBirra.textContent = arrayBirre[indice].descrizione;
-    prodottoId.value = arrayBirre[indice].nome;
+    nomeBirra.textContent = arrayProdotti[indice].nome;
+    stileBirra.textContent = arrayProdotti[indice].stile;
+    taglineBirra.textContent = arrayProdotti[indice].tagline;
+    descBirra.textContent = arrayProdotti[indice].descrizione;
+    prodottoId.value = arrayProdotti[indice].nome;
 }
 
 function toggleInfoBirra() {
     // nascondo le info della birra se non è una birra
     const infoBirra = document.getElementById('info-birra');
-    if(arrayBirre[indice].categoria === 'birra') {
+    if(arrayProdotti[indice].categoria === 'birra') {
         infoBirra.style.display = 'block';
         riempiInfoBirra();
 
@@ -102,6 +113,17 @@ function toggleInfoBirra() {
         infoBirra.style.display = 'none';
 }
 
+function messaggioScaffaleVuoto() {
+    const contenitore = document.getElementById('contenitore-prodotto');
+    contenitore.innerHTML = '';
+
+    const p = document.createElement('p');
+    p.textContent = 'Nessun prodotto trovato!';
+    p.classList.add('primary-heading');
+    p.classList.add('scaffale-vuoto');
+    contenitore.appendChild(p);
+}
+
 /* ================== SCORRIMENTO BIRRE ================== */
 
 const arrowNext = document.getElementById('slide-arrow-next');
@@ -109,7 +131,7 @@ const arrowPrev = document.getElementById('slide-arrow-prev');
 
 arrowNext.onclick = function() {
 
-    if(indice===arrayBirre.length-1)
+    if(indice===arrayProdotti.length-1)
         return;
     indice++;
 
