@@ -8,13 +8,15 @@ const emailRegEl = registerForm.querySelector('[name = email]');
 const passwordRegEl = registerForm.querySelector('[name = password]');
 const confirmPasswordEl = registerForm.querySelector('[name = pass-conf]');
 
-loginForm.addEventListener('submit', (e) => {
+/* =========== LOGIN FORM =========== */
+
+loginForm.addEventListener('submit', e => {
     e.preventDefault();
 
-    let isFormValid = true;
+    const validEmail = validateEmail(emailEl);
+    const validPass = validatePassword(passwordEl);
 
-    isFormValid &&= validateEmail(emailEl);
-    isFormValid &&= validatePassword(passwordEl);
+    const isFormValid = validEmail && validPass;
 
     if(isFormValid) {
         fetch('auth/login', {
@@ -34,14 +36,28 @@ loginForm.addEventListener('submit', (e) => {
     }
 });
 
+registerForm.addEventListener("blur", e => {
+
+    switch (e.target.name) {
+        case 'email':
+            validateEmail(emailEl);
+            break;
+        case 'password':
+            validatePassword(passwordEl);
+            break;
+    }
+}, true); // se metto false non va (boh) TODO
+
+/* =========== REGISTER FORM =========== */
+
 registerForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    let isFormValid = true;
+    const validEmail = validateEmail(emailEl);
+    const validPass = validatePassword(passwordEl);
+    const validConfPass = validateConfirmPassword(confirmPasswordEl);
 
-    isFormValid &&= validateEmail(emailRegEl);
-    isFormValid &&= validatePassword(passwordRegEl);
-    isFormValid &&= validateConfirmPassword(confirmPasswordEl);
+    const isFormValid = validEmail && validPass && validConfPass;
 
     if(isFormValid) {
         fetch('auth/register', {
@@ -60,3 +76,18 @@ registerForm.addEventListener('submit', (e) => {
             })
     }
 });
+
+registerForm.addEventListener("blur", e => {
+
+    switch (e.target.name) {
+        case 'email':
+            validateEmail(emailEl);
+            break;
+        case 'password':
+            validatePassword(passwordRegEl);
+            break;
+        case 'pass-conf':
+            validateConfirmPassword(passwordEl, confirmPasswordEl);
+            break;
+    }
+}, true); // se metto false non va (boh) TODO

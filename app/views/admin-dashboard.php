@@ -1,3 +1,8 @@
+<?php
+// se il carrello è vuoto reindirizzo alla pagina del carrello
+if(($_SESSION['role'] != 'admin'))
+    header('Location:' . URL_ROOT . '/home');
+?>
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -13,11 +18,11 @@
         <div class="container">
             <h1 class="primary-heading">Admin Panel</h1>
             <div class="cards-container">
-                <a href="<?= WEB_PATH?>/admin-ordini" class="card">
+                <a href="<?= URL_ROOT?>/admin-ordini" class="card">
                     <h2>Gestisci ordini</h2>
                     <p>Controlla e gestisci lo stato di tutti gli ordini presenti.</p>
                 </a>
-                <a href="<?= WEB_PATH?>/admin-prodotti" class="card">
+                <a href="<?= URL_ROOT?>/admin-prodotti" class="card">
                     <h2>Gestisci prodotti</h2>
                     <p>Aggiungi, elimina o modifica i prodotti presenti.</p>
                 </a>

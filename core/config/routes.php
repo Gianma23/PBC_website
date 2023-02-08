@@ -13,19 +13,19 @@ $router->addRoute('carrello', ['controller' => 'PageController', 'action' => 'ca
 $router->addRoute('scaffale/{categoria:\w+}', ['controller' => 'PageController', 'action' => 'scaffale']);
 $router->addRoute('conferma-ordine', ['controller' => 'PageController', 'action' => 'confermaOrdine']);
 $router->addRoute('checkout', ['controller' => 'PageController', 'action' => 'checkout']);
+
 $router->addRoute('user-dashboard', ['controller' => 'PageController', 'action' => 'userDashboard']);
 $router->addRoute('admin-dashboard', ['controller' => 'PageController', 'action' => 'adminDashboard']);
+$router->addRoute('admin-prodotti', ['controller' => 'PageController', 'action' => 'adminProdotti']);
+$router->addRoute('admin-ordini', ['controller' => 'PageController', 'action' => 'adminOrdini']);
 
 // Shop Controller
 $router->addRoute('scaffale/search/{categoria:\w+}', ['controller' => 'ShopController', 'action' => 'search']);
 
 // Cart Controller
 $router->addRoute('carica-carrello', ['controller' => 'CartController', 'action' => 'loadCart']);
-$router->addRoute('scaffale/carica-carrello', ['controller' => 'CartController', 'action' => 'loadCart']);
 $router->addRoute('carrello/aggiungi/{product:.+}', ['controller' => 'CartController', 'action' => 'addProduct']);
-$router->addRoute('scaffale/carrello/aggiungi/{product:.+}', ['controller' => 'CartController', 'action' => 'addProduct']);
 $router->addRoute('carrello/rimuovi/{product:.+}', ['controller' => 'CartController', 'action' => 'removeProduct']);
-$router->addRoute('scaffale/carrello/rimuovi/{product:.+}', ['controller' => 'CartController', 'action' => 'removeProduct']);
 
 // Order Controller
 $router->addRoute('ordine/aggiungi', ['controller' => 'OrderController', 'action' => 'addOrder']);

@@ -1,7 +1,7 @@
 <?php
     // la pagina carica solo se è stato effettuato un ordine
     if (!isset($_SESSION['confirmation']) || !$_SESSION['confirmation'])
-        header('Location:' . URL_ROOT . '/carrello');
+        header('Location:' . URL_ROOT . '/home');
     unset($_SESSION['confirmation']);
 ?>
 
@@ -36,7 +36,6 @@
                                 <small class="error"></small>
                             </p>
                             <p class="form-elem">
-                                <?php echo $errorLogin; ?>
                                 <button type="submit" class="button">ACCEDI</button>
                             </p>
                         </form>

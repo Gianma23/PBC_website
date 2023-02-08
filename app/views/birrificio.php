@@ -50,10 +50,13 @@
                                     Degustazione di 4 birre da 0.28 cL l’una, in abbinamento al nostro tagliere di formaggi
                                     e salumi selezionati – o in alternativa solo salumi/formaggi – in più una visita guidata
                                     completa del birrificio con spiegazione del processo produttivo. <strong>Durata: circa 45 minuti.</strong></p>
-                                <button class="button button--shop">
-                                    <span class="button-image"></span>
-                                    AGGIUNGI
-                                </button>
+                                <form class="form-add">
+                                    <input type="hidden" class="prodotto-id" value="degustazione e visita">
+                                    <button type="button" class="button button--shop button--hero">
+                                        <span class="button-image"></span>
+                                        AGGIUNGI
+                                    </button>
+                                </form>
                             </div>
                             <div class="tile-section__img-container">
                                 <img src="<?= WEB_PATH?>/images/birrificio/corso-768x513.jpg" alt="Due persone che spiegano ad un corso di degustazione">
@@ -68,10 +71,13 @@
                                 <p><strong class="prezzo">Prezzo: 20&euro;</strong><br>
                                     Degustazione di 4 birre da 0.28 cL l’una, in abbinamento al nostro tagliere di
                                     formaggi e salumi selezionati (in alternativa solo salumi oppure formaggi).</p>
-                                <button class="button button--shop">
-                                    <span class="button-image"></span>
-                                    AGGIUNGI
-                                </button>
+                                <form class="form-add">
+                                    <input type="hidden" class="prodotto-id" value="degustazione">
+                                    <button type="button" class="button button--shop button--hero">
+                                        <span class="button-image"></span>
+                                        AGGIUNGI
+                                    </button>
+                                </form>
                             </div>
                             <div class="tile-section__img-container">
                                 <img src="<?= WEB_PATH?>/images/birrificio/botti-mastro-600x401.png" alt="Botti contenenti la birra mastro ciliegia">

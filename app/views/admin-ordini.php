@@ -1,3 +1,8 @@
+<?php
+// se il carrello è vuoto reindirizzo alla pagina del carrello
+if(($_SESSION['role'] != 'admin'))
+    header('Location:' . URL_ROOT . '/home');
+?>
 <!DOCTYPE html>
 <html lang="it">
 <head>

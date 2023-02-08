@@ -25,11 +25,13 @@ closeCart.onclick = function() {
     cartSlide.classList.remove('open');
 }
 
+const baseUrl = window.location.pathname.split('/')[1];
+
 /* =============================================== */
 /* =====           CARICA CARRELLO           ===== */
 /* =============================================== */
 
-fetch('carica-carrello')
+fetch('/' + baseUrl + '/carica-carrello')
     .then((res) => res.json())
     .then((data) => {
         creaCarrelloLaterale(data);
@@ -48,11 +50,9 @@ addButtons.forEach((button) => button.onclick = (e) => {
     const form = button.parentElement;
     const nomeBirra = form.getElementsByClassName('prodotto-id')[0].value;
 
-    fetch('carrello/aggiungi/' + nomeBirra)
-        .then(res => res.text())
-        .then(text => console.log(text))
+    fetch('/' + baseUrl + '/carrello/aggiungi/' + nomeBirra)
         .then(() => {
-            fetch('carica-carrello')
+            fetch('/' + baseUrl + '/carica-carrello')
                 .then((res) => res.json())
                 .then((data) => {
                     creaCarrelloLaterale(data);
@@ -71,9 +71,9 @@ function rimuoviHandler(e) {
 
     const nomeBirra = e.currentTarget.id;
 
-    fetch('carrello/rimuovi/' + nomeBirra)
+    fetch('/' + baseUrl + '/carrello/rimuovi/' + nomeBirra)
         .then(() => {
-            fetch('carica-carrello')
+            fetch('/' + baseUrl + '/carica-carrello')
                 .then((res) => res.json())
                 .then((data) => {
                     creaCarrelloLaterale(data);

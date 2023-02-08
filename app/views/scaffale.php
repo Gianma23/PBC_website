@@ -14,10 +14,10 @@
         <section class="hero">
             <div class="container" id="contenitore-prodotto">
                 <div class="left">
-                    <h1 class="secondary-heading" id="nome-birra">Nome birra</h1>
-                    <p id="stile-birra">Stile</p>
-                    <p id="tagline-birra">Tagline</p>
-                    <form>
+                    <h1 class="secondary-heading" id="nome-birra"></h1>
+                    <p id="stile-birra"></p>
+                    <p id="tagline-birra"></p>
+                    <form class="form-add">
                         <input type="hidden" class="prodotto-id" value="">
                         <button type="button" class="button button--shop button--hero">
                             <span class="button-image"></span>
@@ -27,7 +27,7 @@
                 </div>
 
                 <div class="right">
-                    <p id="descrizione-birra">descrizione</p>
+                    <p id="descrizione-birra"></p>
                 </div>
 
                 <div class="slide-wrapper">

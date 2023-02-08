@@ -1,6 +1,6 @@
 <?php
 // pagina accessibile solo per chi non è loggato
-if(empty($_SESSION['account_id']))
+if(!empty($_SESSION['account_id']))
     header('Location:' . URL_ROOT . '/home');
 ?>
 <!DOCTYPE html>

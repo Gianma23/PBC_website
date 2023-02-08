@@ -17,7 +17,7 @@
         <div class="container">
             <h1 class="primary-heading">Checkout</h1>
 
-            <form action="<?= URL_ROOT?>/ordine/aggiungi" method="POST" class="column-container" id="carrello-container" novalidate>
+            <form class="column-container" id="checkout-form" novalidate>
 
                 <div class="info-checkout">
                     <fieldset>
@@ -46,7 +46,7 @@
 
                         <p class="form-elem" id="telefono-elem">
                             <label for="telefono">Telefono:</label>
-                            <input type="text" id="telefono" name="telefono">
+                            <input type="tel" id="telefono" name="telefono">
                             <small class="error"></small>
                         </p>
                         <p class="form-elem">
@@ -65,7 +65,7 @@
                                     $province = json_decode($provinceJson, true);
                                     foreach($province as $provincia)
                                     {?>
-                                        <option><?= $provincia['nome']?></option>
+                                        <option data-region="<?= $provincia['regione']?>"><?= $provincia['nome']?></option>
                                     <?php }
                                 ?>
 
@@ -79,7 +79,7 @@
                             </p>
                             <p class="form-elem">
                                 <label for="cap">CAP:</label>
-                                <input type="number" id="cap" name="cap">
+                                <input type="text" id="cap" name="cap">
                                 <small class="error"></small>
                             </p>
                         </div>
@@ -94,7 +94,7 @@
                         <legend>Metodo di pagamento</legend>
                         <div class="opzione-stima">
                             <input type="radio" value="carta" id="carta" name="pagamento" checked>
-                            <label for="carta">Carta di credito</label>
+                            <label for="carta">Carta di credito</label>w
                         </div>
                         <div class="opzione-stima">
                             <input type="radio" value="bonifico" id="bonifico" name="pagamento">
@@ -108,7 +108,7 @@
                         <h2>Riepilogo</h2>
                         <div class="stima">
                             <p class="riga">Totale carrello(<span id="num-prodotti"></span>&nbsp;prodotti) <span id="riepilogo-totale-carrello"></span>&euro;</p>
-                            <p class="riga">Stima spese di spedizione <span id="riepilogo-stima-spedizione">9.50</span>&euro;</p>
+                            <p class="riga">Stima spese di spedizione <span id="riepilogo-stima-spedizione">0</span>&euro;</p>
                             <input type="hidden" name="totale-spedizione" id="totale-spedizione" value="5">
                         </div>
 
@@ -118,7 +118,7 @@
                             <input type="hidden" name="totale" id="totale" value="20">
                         </div>
                     </article>
-                    <small id="server-error"><?php if(isset($_GET['error'])) echo $_GET['error'] ?></small>
+                    <small class="error fs-400" id="error-checkout"></small>
                 </div>
             </form>
         </div>

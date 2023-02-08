@@ -31,7 +31,7 @@ class OrderController
         }
         else
         {
-            header('Location:' . URL_ROOT . '/checkout?error=Necessaria email o account.');
+            echo json_encode(array('success' => false, 'text' => 'Necessaria email o account.'));
             return;
         }
 
@@ -40,7 +40,7 @@ class OrderController
             if ($this->validateInputs()/*TODO: validare*/)
                 $this->effettuaOrdine($account, $email);
             else
-                header('Location:' . URL_ROOT . '/checkout?error=inputs non validi.');
+                echo json_encode(array('success' => false, 'text' => 'inputs non validi.'));
         }
     }
 
@@ -53,10 +53,9 @@ class OrderController
         }
         else
         {
-            header('Location:' . URL_ROOT . '/checkout?error=carrello vuoto.');
+            echo json_encode(array('success' => false, 'text' => 'carrello vuoto.'));
             return;
         }
-
 
         try {
             $pdo = new PDO(CONNECTION, USER, PASSWORD);
@@ -71,7 +70,7 @@ class OrderController
                 if($prodotto['quantity'] < $pezzi)
                 {
                     $pdo->rollBack();
-                    header('Location:' . URL_ROOT . '/checkout?error=' . $nomeProdotto . ' non è più disponibile purtroppo.');
+                    echo json_encode(array('success' => false, 'text' => $nomeProdotto . ' non è più disponibile purtroppo.'));
                     return;
                 }
                 Product::decrementQuantity($pdo, $nomeProdotto, $pezzi);
@@ -91,13 +90,15 @@ class OrderController
             $this->rimuoviCarrello($pdo);
 
             $pdo->commit();
-            header('Location:' . URL_ROOT . '/conferma-ordine');
+
+            $_SESSION['confirmation'] = true;
+            echo json_encode(array('success' => true, 'text' => URL_ROOT . '/conferma-ordine'));
         }
         catch (PDOException $e)
         {
             if($pdo->inTransaction())
                 $pdo->rollBack();
-            header('Location:' . URL_ROOT . '/checkout?error=Al momento il servizio non è disponibile.');
+            echo json_encode(array('success' => true, 'text' => 'Al momento il servizio non è disponibile.'));
             throw $e;
         }
     }

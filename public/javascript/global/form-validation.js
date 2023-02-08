@@ -1,7 +1,5 @@
 
-// validazione generica di tutti i form per:
-// email, nome-cognome, descrizione
-
+// validazione generica di tutti i form
 
 const formList = document.querySelectorAll("form");
 
@@ -14,13 +12,12 @@ formList.forEach(form => {
     const confirmPasswordEl = form.querySelector('[name = pass-conf]');
 
     form.addEventListener('submit', e => {
-        let isFormValid = true;
 
-        isFormValid &&= validateEmail(emailEl);
-        isFormValid &&= validateNameSurname(nameSurnameEl);
-        isFormValid &&= validateMessage(messageEl);
-        isFormValid &&= validatePassword(passwordEl);
-        isFormValid &&= validateConfirmPassword(passwordEl, confirmPasswordEl);
+        const validEmail = validateEmail(emailEl);
+        const validNameSurname= validateText(nameSurnameEl);
+        const validMessage = validateMessage(messageEl);
+
+        const isFormValid = validMessage && validEmail && validNameSurname;
 
         if(!isFormValid) {
             e.preventDefault();
@@ -31,7 +28,7 @@ formList.forEach(form => {
 
         switch (e.target.name) {
             case 'nome-cognome':
-                validateNameSurname(nameSurnameEl);
+                validateText(nameSurnameEl);
                 break;
             case 'email':
                 validateEmail(emailEl);
@@ -46,23 +43,24 @@ formList.forEach(form => {
                 validateConfirmPassword(passwordEl, confirmPasswordEl);
                 break;
         }
-    }, true); // se metto false non va (boh)
+    }, true); // se metto false non va (boh) TODO
 });
 
-/* Validation functions for every input */
-function validateNameSurname(nameSurnameEl) {
-    if(nameSurnameEl == null)
+/* ======= Funzioni di validazione per tutti gli inputs ======= */
+
+function validateText(textEl) {
+    if(textEl == null)
         return true;
 
     let valid = false;
-    const nameSurname = nameSurnameEl.value;
+    const text = textEl.value;
 
-    if (nameSurnameEl.validity.valueMissing) {
-        showError(nameSurnameEl, 'Nome e cognome richiesti.')
-    } else if (!isNameSurnameValid(nameSurname)) {
-        showError(nameSurnameEl, 'Inserire un nome e uno o più cognomi.');
+    if (textEl.validity.valueMissing) {
+        showError(textEl, 'Campo richiesto.')
+    } else if (!isTextValid(text)) {
+        showError(textEl, 'Inserire un testo valido');
     } else {
-        showSuccess(nameSurnameEl);
+        showSuccess(textEl);
         valid = true;
     }
     return valid;
@@ -141,10 +139,47 @@ const validateConfirmPassword = (passwordEl, confirmPasswordEl) => {
     return valid;
 }
 
-/* Helping boolean function */
-const isNameSurnameValid = nameSurname => {
-    const re = /([a-z]+)(\s+)+[a-z]+/;
-    return re.test(nameSurname);
+const validateTelephone = (telephoneEl) => {
+    if(telephoneEl == null)
+        return true;
+
+    let valid = false;
+    const telephone = telephoneEl.value.trim();
+
+    if (telephoneEl.validity.valueMissing) {
+        showError(telephoneEl, 'Numero di telefono richiesto.');
+    } else if (!isTelephoneValid(telephone)) {
+        showError(telephoneEl, 'Numero di telefono non valido.');
+    } else {
+        showSuccess(telephoneEl);
+        valid = true;
+    }
+    return valid;
+}
+
+const validateCap = (capEl) => {
+    if(capEl == null)
+        return true;
+
+    let valid = false;
+    const cap = capEl.value.trim();
+
+    if (capEl.validity.valueMissing) {
+        showError(capEl, 'Codice postale richiesto.');
+    } else if (!isCapValid(cap)) {
+        showError(capEl, 'Codice postale non valido.');
+    } else {
+        showSuccess(capEl);
+        valid = true;
+    }
+    return valid;
+}
+
+/* Funzioni booleano di utilità */
+
+const isTextValid = text => {
+    const re = /([a-z]+)(\s*)+/;
+    return re.test(text);
 };
 
 const isEmailValid = email => {
@@ -157,7 +192,17 @@ const isPasswordValid = password => {
     return re.test(password);
 };
 
-/* Show error or success */
+const isTelephoneValid = telephone => {
+    const re = /^(\((00|\+)39\)|(00|\+)39)?(38[890]|34[4-90]|36[680]|33[13-90]|32[89]|35[01]|37[019])(\s?\d{3}\s?\d{3,4}|\d{6,7})$/;
+    return re.test(telephone);
+};
+
+const isCapValid = cap => {
+    const re = /^[0-9]{5}$/;
+    return re.test(cap);
+};
+/* Mostra messaggi */
+
 const showError = (input, message) => {
 
     const formField = input.parentElement;

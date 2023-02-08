@@ -68,4 +68,14 @@ class PageController
     {
         Render::view('admin-dashboard');
     }
+
+    public function adminProdotti()
+    {
+        Render::view('admin-prodotti');
+    }
+
+    public function adminOrdini()
+    {
+        Render::view('admin-ordini');
+    }
 }

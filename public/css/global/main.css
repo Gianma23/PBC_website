@@ -410,6 +410,10 @@ form .form-elem:not(.form-elem .button){
     margin-top: 1em;
 }
 
+.form-add {
+    width: fit-content;
+}
+
 label {
     font-size: var(--fs-400);
     font-weight: var(--fw-semibold);
