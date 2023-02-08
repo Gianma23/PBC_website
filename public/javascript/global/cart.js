@@ -46,9 +46,11 @@ const addButtons = document.querySelectorAll('.button--shop');
 addButtons.forEach((button) => button.onclick = (e) => {
 
     const form = button.parentElement;
-    const nomeBirra = form.getElementsByClassName('prodotto-id')[0].value.replaceAll(' ', '%20');
+    const nomeBirra = form.getElementsByClassName('prodotto-id')[0].value;
 
     fetch('carrello/aggiungi/' + nomeBirra)
+        .then(res => res.text())
+        .then(text => console.log(text))
         .then(() => {
             fetch('carica-carrello')
                 .then((res) => res.json())
@@ -222,18 +224,21 @@ function setRiepilogo(data) {
     let totale = 0;
 
     for (const prodottoString in data) {
-        // metto il totale del carrello
-        const totaleCarrello = document.getElementById('riepilogo-totale-carrello');
-        const totaleSpedizione = document.getElementById('riepilogo-stima-spedizione');
-        const totaleOrdine = document.getElementById('riepilogo-totale-ordine');
-        const textNumProdotti = document.getElementById('num-prodotti');
+        const prodotto = JSON.parse(prodottoString);
+        totale += prodotto['price'] * data[prodottoString];
+        numProdotti += Number(data[prodottoString]);
+    }
 
-        // guardo che esista la card riepilogo
-        if (totaleCarrello) {
-            totaleCarrello.textContent = String(totale);
-            textNumProdotti.textContent = String(numProdotti);
-            totaleOrdine.textContent = String(totale + Number(totaleSpedizione.textContent));
-        }
+    // metto il totale del carrello
+    const totaleCarrello = document.getElementById('riepilogo-totale-carrello');
+    const totaleSpedizione = document.getElementById('riepilogo-stima-spedizione');
+    const totaleOrdine = document.getElementById('riepilogo-totale-ordine');
+    const textNumProdotti = document.getElementById('num-prodotti');
+    // guardo che esista la card riepilogo
+    if (totaleCarrello) {
+        totaleCarrello.textContent = String(totale);
+        textNumProdotti.textContent = String(numProdotti);
+        totaleOrdine.textContent = String(totale + Number(totaleSpedizione.textContent));
     }
 }
 

@@ -113,7 +113,7 @@
                         </div>
 
                         <div class="vai-avanti">
-                            <p class="riga">Totale ordine <span id="riepilogo-totale-ordine"></span></p>
+                            <p class="riga">Totale ordine <span id="riepilogo-totale-ordine"></span>&euro;</p>
                             <button type="submit" class="button" id="effettua-ordine">EFFETTUA ORDINE</button>
                             <input type="hidden" name="totale" id="totale" value="20">
                         </div>

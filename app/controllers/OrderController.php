@@ -111,6 +111,7 @@ class OrderController
         if(isset($_COOKIE["cart_id"]))
         {
             Cart::delete($pdo, $_COOKIE["cart_id"]);
+            unset($_COOKIE["cart_id"]);
         }
 
         unset($_SESSION['cart']);

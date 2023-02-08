@@ -50,6 +50,7 @@ class CartController
         if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($vars["product"]))
         {
             $product_id = $vars["product"];
+            $product_id = str_replace('%20', ' ', $product_id);
         }
         else return;
 
@@ -61,10 +62,9 @@ class CartController
 
             // se il prodotto esiste e ha quantità positiva lo aggiungo
             $row = Product::findByName($pdo, $product_id);
-
+            echo $product_id;
             if($row && $row["quantity"] > 0)
             {
-                // AGGIUNGO NEL DATABASE
                 // guardo se esiste già un carrello, altrimenti lo creo
                 $cart_id = $this->findCarrello($pdo);
 
@@ -100,40 +100,33 @@ class CartController
         if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($vars["product"]))
         {
             $product_id = $vars["product"];
-
-            try
-            {
-                $pdo = new PDO(CONNECTION, USER, PASSWORD);
-                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $pdo->beginTransaction();
-
-                // se è un utente cerco il carrello con account_id
-                if(isset($_SESSION["account_id"]))
-                {
-                    $cart = Cart::findByAccountId($pdo, $_SESSION["account_id"]);
-                    if($cart)
-                        $cart_id = $cart['id'];
-                    else return;
-                }
-                // altrimenti se il cookie è settato cerco con quello
-                else if(isset($_COOKIE["cart_id"]))
-                {
-                    $cart_id = $_COOKIE["cart_id"];
-                }
-                else return;
-
-                // elimino il prodotto dal carrello
-                CartItem::delete($pdo, new CartItem($cart_id, $product_id));
-
-                $this->removeFromSession($product_id);
-            }
-            catch (PDOException $e)
-            {
-                if($pdo->inTransaction())
-                    $pdo->rollBack();
-                throw $e;
-            }
+            $product_id = str_replace('%20', ' ', $product_id);
         }
+        else return;
+
+        $pdo = new PDO(CONNECTION, USER, PASSWORD);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $pdo->beginTransaction();
+
+        // se è un utente cerco il carrello con account_id
+        if(isset($_SESSION["account_id"]))
+        {
+            $cart = Cart::findByAccountId($pdo, $_SESSION["account_id"]);
+            if($cart)
+                $cart_id = $cart['id'];
+            else return;
+        }
+        // altrimenti se il cookie è settato cerco con quello
+        else if(isset($_COOKIE["cart_id"]))
+        {
+            $cart_id = $_COOKIE["cart_id"];
+        }
+        else return;
+
+        // elimino il prodotto dal carrello
+        CartItem::delete($pdo, new CartItem($cart_id, $product_id));
+
+        $this->removeFromSession($product_id);
     }
 
     /* ========================= FUNZIONI DI UTILITA ========================= */
