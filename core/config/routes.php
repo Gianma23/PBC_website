@@ -1,7 +1,8 @@
 <?php
 namespace Ecommerce;
 
-// Page Controller
+/* ======== PAGE CONTROLLER ======== */
+
 $router->addRoute('home', ['controller' => 'PageController', 'action' => 'homepage']);
 $router->addRoute('birrificio', ['controller' => 'PageController', 'action' => 'birrificio']);
 $router->addRoute('taproom', ['controller' => 'PageController', 'action' => 'taproom']);
@@ -14,25 +15,40 @@ $router->addRoute('scaffale/{categoria:\w+}', ['controller' => 'PageController',
 $router->addRoute('conferma-ordine', ['controller' => 'PageController', 'action' => 'confermaOrdine']);
 $router->addRoute('checkout', ['controller' => 'PageController', 'action' => 'checkout']);
 
+// user routes
 $router->addRoute('user-dashboard', ['controller' => 'PageController', 'action' => 'userDashboard']);
+
+// admin routes
 $router->addRoute('admin-dashboard', ['controller' => 'PageController', 'action' => 'adminDashboard']);
 $router->addRoute('admin-prodotti', ['controller' => 'PageController', 'action' => 'adminProdotti']);
+$router->addRoute('admin-aggiungi-prodotto', ['controller' => 'PageController', 'action' => 'adminAggiungiProdotto']);
 $router->addRoute('admin-ordini', ['controller' => 'PageController', 'action' => 'adminOrdini']);
 
-// Shop Controller
+/* ======== SHOP CONTROLLER ======== */
+
 $router->addRoute('scaffale/search/{categoria:\w+}', ['controller' => 'ShopController', 'action' => 'search']);
 
-// Cart Controller
+/* ======== CART CONTROLLER ======== */
+
 $router->addRoute('carica-carrello', ['controller' => 'CartController', 'action' => 'loadCart']);
 $router->addRoute('carrello/aggiungi/{product:.+}', ['controller' => 'CartController', 'action' => 'addProduct']);
 $router->addRoute('carrello/rimuovi/{product:.+}', ['controller' => 'CartController', 'action' => 'removeProduct']);
 
-// Order Controller
-$router->addRoute('ordine/aggiungi', ['controller' => 'OrderController', 'action' => 'addOrder']);
+/* ======== ORDER CONTROLLER ======== */
 
-// Auth Controller
+$router->addRoute('ordine/aggiungi', ['controller' => 'OrderController', 'action' => 'addOrder']);
+$router->addRoute('ordine/carica-ordini', ['controller' => 'OrderController', 'action' => 'getOrders']);
+
+/* ======== AUTH CONTROLLER ======== */
+
 $router->addRoute('auth/login', ['controller' => 'AuthController', 'action' => 'login']);
 $router->addRoute('auth/register', ['controller' => 'AuthController', 'action' => 'register']);
 
-// Email Controller
+/* ======== EMAIL CONTROLLER ======== */
+
 $router->addRoute('newsletter/add', ['controller' => 'AuthController', 'action' => 'addToNewsletter']);
+
+/* ======== PRODUCT CONTROLLER ======== */
+
+$router->addRoute('admin/aggiungi-prodotto', ['controller' => 'ProductController', 'action' => 'addProduct']);
+$router->addRoute('admin/elimina-prodotto/{product:.+}', ['controller' => 'ProductController', 'action' => 'removeProduct']);

@@ -91,6 +91,21 @@ class Product implements JsonSerializable
 
     /* CRUD OPERATIONS */
 
+    public static function add($pdo, $name, $desc, $quantity, $tagline, $price, $category, $imgPath)
+    {
+        $sql = "INSERT INTO product (name, descr, quantity, tagline, price, category, img_path)
+                VALUES (?,?,?,?,?,?,?)";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(1, $name);
+        $stmt->bindValue(2, $desc);
+        $stmt->bindValue(3, $quantity);
+        $stmt->bindValue(4, $tagline);
+        $stmt->bindValue(5, $price);
+        $stmt->bindValue(6, $category);
+        $stmt->bindValue(7, $imgPath);
+        $stmt->execute();
+    }
+
     public static function findByName($pdo, $name)
     {
         $sql = "SELECT * 
@@ -124,14 +139,24 @@ class Product implements JsonSerializable
         return $stmt->execute();
     }
 
+    public static function delete($pdo, $name) {
+        $sql = "DELETE FROM product
+                WHERE name = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(1, $name);
+        return $stmt->execute();
+    }
+
+    /* Altre funzioni */
+
     public function createProductCard()
     {
         echo
         "<div class=\"product-card\">
             <img src='$this->imgPath' alt='immagine prodotto'>
-            <h3 class=\"fw-medium fs-600\" id=\"nome-birra\">$this->nome</h3>
-            <p class=\"fw-medium fs-500\">Prezzo: $this->prezzo&euro;</p>
-            <small class=\"fw-medium fs-500\">Quantità: $this->quantita</small>
+            <h3 class=\"fw-medium fs-500\" id=\"nome-prodotto\">$this->nome</h3>
+            <p class=\"fw-medium fs-400\">Prezzo: $this->prezzo&euro;</p>
+            <small class=\"fw-medium fs-400\">Quantità: $this->quantita</small>
             <div class='button-container'>
                 <button class=\"button button--edit\" id=\"modifica\">Modifica</button>
                 <button class=\"button button--remove elimina\">Elimina</button>
@@ -146,7 +171,6 @@ class Product implements JsonSerializable
             "descrizione" => $this->descrizione,
             "categoria" => $this->categoria,
             "tagline" => $this->tagline,
-            "imgPath" => $this->imgPath,
-            "disponibile" => $this->disponibile];
+            "imgPath" => $this->imgPath];
     }
 }

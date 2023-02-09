@@ -2,7 +2,7 @@
 
 use Models\Product;
 
-include_once "app/php/classes/Product.php";
+include_once(ROOT_PATH . "/app/models/Product.php");
 
 try {
     $pdo = new PDO(CONNECTION, USER, PASSWORD);
@@ -12,8 +12,8 @@ try {
     $result = $pdo->query($sql);
 
     while($row = $result->fetch()) {
-        $birra = new Product($row);
-        $birra->createProductCard();
+        $prodotto = new Product($row);
+        $prodotto->createProductCard();
     }
     $pdo = null;
 }

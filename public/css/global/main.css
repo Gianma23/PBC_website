@@ -434,12 +434,6 @@ select {
     height: 2.5rem;
 }
 
-input:-webkit-autofill,
-input:-webkit-autofill:focus {
-    -webkit-box-shadow: 0 0 0 1000px var(--clr-bg-success) inset;
-    transition: background-color 9999s ease-in-out;
-}
-
 textarea {
     height: var(--lineheight-7);
     resize: none;
@@ -463,6 +457,29 @@ fieldset {
 legend {
     font-size: var(--fs-600);
     font-weight: var(--fw-semibold);
+}
+
+/* Form rows */
+
+.form-3col,
+.form-2col {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.form-3col .form-elem {
+    width: 30%;
+}
+
+.form-2col .form-elem {
+    width: 100%;
+}
+
+@media screen and (min-width: 80em) {
+    .form-2col .form-elem {
+        width: 47%;
+    }
 }
 
 /* ============= FORM IN A CARD ============= */

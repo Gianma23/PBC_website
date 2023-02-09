@@ -129,6 +129,57 @@ const validateCap = (capEl) => {
     return valid;
 }
 
+const validateRequired = (element) => {
+    if(element == null)
+        return true;
+
+    let valid = false;
+
+    if (element.validity.valueMissing) {
+        showError(element, 'Campo richiesto.');
+    } else {
+        showSuccess(element);
+        valid = true;
+    }
+    return valid;
+}
+
+const validateNatural = (element) => {
+    if(element == null)
+        return true;
+
+    let valid = false;
+    const nat = element.value.trim();
+
+    if (element.validity.valueMissing) {
+        showError(element, 'Campo richiesto.');
+    } else if(nat < 0) {
+        showError(element, 'Inserire un numero positivo.');
+    } else {
+        showSuccess(element);
+        valid = true;
+    }
+    return valid;
+}
+
+const validateImage = (imageEl) => {
+    if(imageEl == null)
+        return true;
+
+    let valid = false;
+    const imgPath = imageEl.value.trim();
+
+    if (imageEl.validity.valueMissing) {
+        showError(imageEl, 'Immagine richiesta.');
+    } else if(!/(\.jpg|\.jpeg|\.png|\.gif)$/i.exec(imgPath)) {
+        showError(imageEl, 'Inserire il file di un\'immagine.');
+    } else {
+        showSuccess(imageEl);
+        valid = true;
+    }
+    return valid;
+}
+
 /* Funzioni booleano di utilità */
 
 const isTextValid = text => {

@@ -51,21 +51,6 @@
 
 /* Form Checkout */
 
-.form-3col,
-.form-2col {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.form-3col .form-elem {
-    width: 30%;
-}
-
-.form-2col .form-elem {
-    width: 48%;
-}
-
 #telefono-elem {
     width: 48%;
 }

@@ -246,7 +246,7 @@ header {
 
     position: absolute;
     top: 1em;
-    right: var(--margin);
+    right: calc(var(--margin) / 2);
 }
 
 .nav__right .button--tertiary {

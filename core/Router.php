@@ -8,6 +8,7 @@ require_once(ROOT_PATH . '/app/controllers/ShopController.php');
 require_once(ROOT_PATH . '/app/controllers/OrderController.php');
 require_once(ROOT_PATH . '/app/controllers/AuthController.php');
 require_once(ROOT_PATH . '/app/controllers/EmailController.php');
+require_once(ROOT_PATH . '/app/controllers/ProductController.php');
 
 class Router
 {

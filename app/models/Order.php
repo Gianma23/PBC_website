@@ -2,7 +2,7 @@
 namespace Models;
 use JsonSerializable;
 
-class Order
+class Order implements JsonSerializable
 {
     protected $id;
     protected $accountId;
@@ -106,5 +106,31 @@ class Order
         $stmt->execute();
 
         return $pdo->lastInsertId();
+    }
+
+    public static function findAll($pdo) {
+        $sql = "SELECT *
+                FROM `order`";
+        $result = $pdo->query($sql);
+        return $result->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    public static function findByAccountId($pdo, $accountId) {
+        $sql = "SELECT *
+                FROM `order`
+                WHERE account_id = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(1, $accountId);
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    public function jsonSerialize(): array
+    {
+        return [ "id" => $this->id,
+                 "account_id" => $this->accountId,
+                 "email" => $this->email,
+                 "status" => $this->status,
+                 "total" => $this->total];
     }
 }

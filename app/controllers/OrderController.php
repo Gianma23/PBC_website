@@ -9,6 +9,7 @@ include_once(ROOT_PATH . "/app/models/OrderItem.php");
 use Ecommerce\Render;
 use Models\Address;
 use Models\Cart;
+use Models\CartItem;
 use Models\Order;
 use Models\OrderItem;
 use Models\Product;
@@ -44,6 +45,27 @@ class OrderController
                 echo json_encode(array('success' => false, 'text' => 'inputs non validi.'));
         }
     }
+
+    public function getOrders()
+    {
+        $pdo = new PDO(CONNECTION, USER, PASSWORD);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $ordini = array();
+        if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_SESSION["role"]) && $_SESSION["role"] == 'admin')
+        {
+            $ordini = Order::findAll($pdo);
+        }
+        else if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_SESSION["role"]) && isset($_SESSION["account_id"]))
+        {
+            $ordini = Order::findByAccountId($pdo, $_SESSION["account_id"]);
+        }
+
+        // invio gli ordini in json
+        $this->loadOrdersJson($pdo, $ordini);
+    }
+
+    /* FUNZIONI DI UTILITA */
 
     private function effettuaOrdine($account, $email)
     {
@@ -99,7 +121,7 @@ class OrderController
         {
             if($pdo->inTransaction())
                 $pdo->rollBack();
-            echo json_encode(array('success' => true, 'text' => 'Al momento il servizio non è disponibile.'));
+            echo json_encode(array('success' => false, 'text' => 'Al momento il servizio non è disponibile.'));
             throw $e;
         }
     }
@@ -122,6 +144,24 @@ class OrderController
     private function validateInputs()
     {
         return true;
+    }
+
+    private function loadOrdersJson($pdo, $ordini)
+    {
+        if ($ordini)
+        {
+            $arrayOrdini = array();
+
+            foreach ($ordini as $ordine)
+            {
+                $arrayOrdini[] = json_encode(new Order($ordine));
+            }
+
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode($arrayOrdini);
+        }
+        else
+            echo '{}';
     }
 }
 

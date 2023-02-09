@@ -1,18 +1,17 @@
 <?php
-// se il carrello è vuoto reindirizzo alla pagina del carrello
+// pagina accessibile solo dagli admin
 if(($_SESSION['role'] != 'admin'))
     header('Location:' . URL_ROOT . '/home');
 ?>
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <?php include __DIR__ . "/include/head.php"; ?>
+    <?php include __DIR__ . "/../include/head.php"; ?>
     <link rel="stylesheet" href="<?= WEB_PATH?>/css/dashboard.css">
-    <title>Dashboard - Piccolo Birrificio Clandestino</title>
 </head>
 <body>
 
-    <?php include __DIR__ . "/include/header.php"; ?>
+    <?php include __DIR__ . "/../include/header.php"; ?>
 
     <main>
         <div class="container">
@@ -30,7 +29,7 @@ if(($_SESSION['role'] != 'admin'))
         </div>
     </main>
 
-    <?php include __DIR__ . "/include/footer.php"; ?>
+    <?php include __DIR__ . "/../include/footer.php"; ?>
 
 </body>
 </html>

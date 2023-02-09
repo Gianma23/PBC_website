@@ -61,21 +61,26 @@ class PageController
 
     public function userDashboard()
     {
-        Render::view('user-dashboard');
+        Render::view('user/user-dashboard');
     }
 
     public function adminDashboard()
     {
-        Render::view('admin-dashboard');
+        Render::view('admin/admin-dashboard');
     }
 
     public function adminProdotti()
     {
-        Render::view('admin-prodotti');
+        Render::view('admin/admin-prodotti');
+    }
+
+    public function adminAggiungiProdotto()
+    {
+        Render::view('admin/admin-aggiungi-prodotto');
     }
 
     public function adminOrdini()
     {
-        Render::view('admin-ordini');
+        Render::view('admin/admin-ordini');
     }
 }
