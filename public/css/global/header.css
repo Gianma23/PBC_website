@@ -249,7 +249,9 @@ header {
     right: var(--margin);
 }
 
-
+.nav__right .button--tertiary {
+    z-index: 0;
+}
 
 @media screen and (max-width: 60em) {
     .nav__right .button--tertiary {
@@ -316,8 +318,8 @@ header {
     top: var(--lineheight);
     right: var(--margin);
     font-size: 60px;
-    text-decoration: none;
-    color: inherit;
+    border: none;
+    background-color: transparent;
 }
 
 .shopping-cart-link {

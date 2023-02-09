@@ -15,7 +15,7 @@ if(!empty($_SESSION['account_id']))
     <main>
         <div class="container center">
             <h1 class="primary-heading">Account</h1>
-            <div class="cards-container">
+            <div class="auth-container">
                 <article class="card">
                     <h2>Già registrato?</h2>
                     <div class="form--card">

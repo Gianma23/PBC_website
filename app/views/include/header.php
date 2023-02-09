@@ -42,9 +42,9 @@
                           <span>Accedi</span></a>";
             ?>
 
-            <button id="cart-button" class="shopping-cart-link">
+            <a href="<?= URL_ROOT?>/carrello" id="cart-button" class="shopping-cart-link">
                 <img class="shopping-cart" src="<?= WEB_PATH?>/images/icons/shopping_cart.png" alt="Carrello">
-            </button>
+            </a>
         </div>
 
         <!-- Carrello shopping -->

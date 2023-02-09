@@ -51,6 +51,8 @@ addButtons.forEach((button) => button.onclick = (e) => {
     const nomeBirra = form.getElementsByClassName('prodotto-id')[0].value;
 
     fetch('/' + baseUrl + '/carrello/aggiungi/' + nomeBirra)
+        .then(res => res.text())
+        .then(text => console.log(text))
         .then(() => {
             fetch('/' + baseUrl + '/carica-carrello')
                 .then((res) => res.json())

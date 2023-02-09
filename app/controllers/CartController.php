@@ -41,7 +41,7 @@ class CartController
         }
         $_SESSION['cart'] = $carrello;
 
-        // cerco il carrello
+        // invio il carrello in json
         $this->loadCartJson($pdo, $carrello);
     }
 
@@ -62,7 +62,7 @@ class CartController
 
             // se il prodotto esiste e ha quantità positiva lo aggiungo
             $row = Product::findByName($pdo, $product_id);
-            echo $product_id;
+
             if($row && $row["quantity"] > 0)
             {
                 // guardo se esiste già un carrello, altrimenti lo creo

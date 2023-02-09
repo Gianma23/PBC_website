@@ -36,7 +36,7 @@ loginForm.addEventListener('submit', e => {
     }
 });
 
-registerForm.addEventListener("blur", e => {
+loginForm.addEventListener("blur", e => {
 
     switch (e.target.name) {
         case 'email':
@@ -53,8 +53,8 @@ registerForm.addEventListener("blur", e => {
 registerForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const validEmail = validateEmail(emailEl);
-    const validPass = validatePassword(passwordEl);
+    const validEmail = validateEmail(emailRegEl);
+    const validPass = validatePassword(passwordRegEl);
     const validConfPass = validateConfirmPassword(confirmPasswordEl);
 
     const isFormValid = validEmail && validPass && validConfPass;
@@ -81,13 +81,13 @@ registerForm.addEventListener("blur", e => {
 
     switch (e.target.name) {
         case 'email':
-            validateEmail(emailEl);
+            validateEmail(emailRegEl);
             break;
         case 'password':
             validatePassword(passwordRegEl);
             break;
         case 'pass-conf':
-            validateConfirmPassword(passwordEl, confirmPasswordEl);
+            validateConfirmPassword(passwordRegEl, confirmPasswordEl);
             break;
     }
 }, true); // se metto false non va (boh) TODO

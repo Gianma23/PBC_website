@@ -65,7 +65,7 @@ class AuthController
                 Account::add($pdo, $email, $password);
                 session_regenerate_id();
                 $_SESSION["role"] = "user";
-                $_SESSION["account_id"] = $account["email"];
+                $_SESSION["account_id"] = $email;
                 $this->redirectToDashboard("user");
             }
         }
@@ -86,6 +86,8 @@ class AuthController
 
     private function redirectToDashboard($account): void
     {
+        unset($_SESSION['cart']);
+
         if($account == "user")
             echo json_encode(array('success' => true, 'text' => URL_ROOT . '/user-dashboard'));
         else if($account == "admin")

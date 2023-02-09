@@ -19,9 +19,10 @@ class OrderController
 {
     public function addOrder()
     {
-        if (isset($_SESSION['account']))
+        header('Content-Type: application/json; charset=utf-8');
+        if (isset($_SESSION['account_id']))
         {
-            $account = $_SESSION['account'];
+            $account = $_SESSION['account_id'];
             $email = null;
         }
         else if (isset($_POST["email"]))
@@ -112,7 +113,7 @@ class OrderController
         if(isset($_COOKIE["cart_id"]))
         {
             Cart::delete($pdo, $_COOKIE["cart_id"]);
-            unset($_COOKIE["cart_id"]);
+            setcookie("cart_id", null, -1, '/');
         }
 
         unset($_SESSION['cart']);
