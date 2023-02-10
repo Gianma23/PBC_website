@@ -13,7 +13,7 @@ use PDOException;
 
 class CartController
 {
-    public function loadCart($vars): void
+    public function loadCart(): void
     {
         $pdo = new PDO(CONNECTION, USER, PASSWORD);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -28,7 +28,7 @@ class CartController
         {
             if(isset($_SESSION["account_id"]))
             {
-                $cart= CartItem::findByAccountId($pdo, $_SESSION["account_id"]);
+                $cart = CartItem::findByAccountId($pdo, $_SESSION["account_id"]);
             }
             // altrimenti se il cookie è settato cerco con quello
             else if(isset($_COOKIE["cart_id"]))

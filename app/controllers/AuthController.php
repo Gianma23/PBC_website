@@ -72,6 +72,8 @@ class AuthController
         else echo json_encode(array('success' => false, 'text' => 'Email e/o password non validi.'));
     }
 
+    /* ========================= FUNZIONI DI UTILITA ========================= */
+
     private function validateInputs()
     {
         if(isset($_POST["email"]) && isset($_POST["password"]))

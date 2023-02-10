@@ -1,4 +1,4 @@
-class Prodotto {
+ class Prodotto {
     constructor(nome, prezzo, descrizione, categoria, tagline, image) {
         this.nome = nome;
         this.prezzo = prezzo;

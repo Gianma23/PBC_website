@@ -9,7 +9,7 @@ try
     $pdo = new PDO(CONNECTION, USER, PASSWORD);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $sql = "CALL piu_vendute();";
+    $sql = "CALL quasi_esaurite();";
     $result = $pdo->query($sql);
 
     while($row = $result->fetch())

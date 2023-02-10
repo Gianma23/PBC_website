@@ -17,7 +17,7 @@ if(($_SESSION['role'] != 'admin'))
         <div class="container">
             <h1 class="primary-heading">Admin Panel</h1>
             <div class="cards-container">
-                <a href="<?= URL_ROOT?>/admin-ordini" class="card">
+                <a href="<?= URL_ROOT?>/admin-ordini?page=1&how-many=10" class="card">
                     <h2>Gestisci ordini</h2>
                     <p>Controlla e gestisci lo stato di tutti gli ordini presenti.</p>
                 </a>

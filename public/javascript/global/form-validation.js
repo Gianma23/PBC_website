@@ -1,5 +1,4 @@
 
-
 /* ======= Funzioni di validazione per tutti gli inputs ======= */
 
 function validateText(textEl) {
@@ -13,7 +12,7 @@ function validateText(textEl) {
         showError(textEl, 'Campo richiesto.')
     } else if (!isTextValid(text)) {
         showError(textEl, 'Inserire un testo valido');
-    } else {
+    }  else {
         showSuccess(textEl);
         valid = true;
     }
@@ -144,6 +143,22 @@ const validateRequired = (element) => {
     return valid;
 }
 
+const validateLength = (element, length = 1000) => {
+    if(element == null)
+        return true;
+
+    let valid = false;
+    const text = element.value.trim();
+
+    if (text.length > length) {
+        showError(element, 'Il campo deve essere al massimo ' + length + 'caratteri');
+    } else {
+        showSuccess(element);
+        valid = true;
+    }
+    return valid;
+}
+
 const validateNatural = (element) => {
     if(element == null)
         return true;
@@ -182,30 +197,31 @@ const validateImage = (imageEl) => {
 
 /* Funzioni booleano di utilità */
 
-const isTextValid = text => {
+function isTextValid(text) {
     const re = /([a-z]+)(\s*)+/;
     return re.test(text);
-};
+}
 
-const isEmailValid = email => {
+function isEmailValid(email) {
     const re = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
     return re.test(email);
-};
+}
 
-const isPasswordValid = password => {
+function isPasswordValid(password) {
     const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/;
     return re.test(password);
-};
+}
 
-const isTelephoneValid = telephone => {
+function isTelephoneValid(telephone) {
     const re = /^(\((00|\+)39\)|(00|\+)39)?(38[890]|34[4-90]|36[680]|33[13-90]|32[89]|35[01]|37[019])(\s?\d{3}\s?\d{3,4}|\d{6,7})$/;
     return re.test(telephone);
-};
+}
 
-const isCapValid = cap => {
+function isCapValid(cap) {
     const re = /^[0-9]{5}$/;
     return re.test(cap);
-};
+}
+
 /* Mostra messaggi */
 
 const showError = (input, message) => {

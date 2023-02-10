@@ -236,11 +236,20 @@ function setRiepilogo(data) {
     const totaleSpedizione = document.getElementById('riepilogo-stima-spedizione');
     const totaleOrdine = document.getElementById('riepilogo-totale-ordine');
     const textNumProdotti = document.getElementById('num-prodotti');
+    const totaleSpedizioneInput = document.getElementById('totale-spedizione');
+    const totaleInput = document.getElementById('totale-input');
+
     // guardo che esista la card riepilogo
     if (totaleCarrello) {
         totaleCarrello.textContent = String(totale);
         textNumProdotti.textContent = String(numProdotti);
         totaleOrdine.textContent = String(totale + Number(totaleSpedizione.textContent));
+
+        // aggiorno valori inputs totali
+        totaleSpedizioneInput.value = totaleSpedizione.textContent;
+        totaleInput.value = totaleOrdine.textContent;
     }
+
+
 }
 

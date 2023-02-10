@@ -17,6 +17,8 @@ class ShopController
             $this->searchByCategory($vars['categoria']);
     }
 
+    /* ========================= FUNZIONI DI UTILITA ========================= */
+
     private function searchByCategory($categoria) : void
     {
         $arrayProdotti = [];

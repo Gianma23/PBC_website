@@ -78,7 +78,7 @@ class Router
         }
         else
         {
-            header('Location:' . URL_ROOT . '/home');
+           header('Location:' . URL_ROOT . '/home');
         }
         call_user_func_array([$controller, $action], [self::$parameters]);
     }

@@ -10,7 +10,6 @@ class Product implements JsonSerializable
     protected $categoria;
     protected $tagline;
     protected $quantita;
-    protected $venduti;
     protected $imgPath;
 
     public function __construct($record)
@@ -21,7 +20,6 @@ class Product implements JsonSerializable
         $this->categoria = $record['category'];
         $this->tagline = $record['tagline'];
         $this->quantita = $record['quantity'];
-        $this->venduti = $record['sold'];
         $this->imgPath = $record['img_path'];
     }
 
@@ -71,14 +69,6 @@ class Product implements JsonSerializable
 
     public function setQuantita($quantita) {
         $this->quantita =$quantita;
-    }
-
-    public function getVenduti() {
-        return $this->venduti;
-    }
-
-    public function setVenduti($venduti) {
-        $this->venduti =$venduti;
     }
 
     public function getImgPath() {

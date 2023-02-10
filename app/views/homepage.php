@@ -56,7 +56,7 @@
         <div class="container center">
             <h2 class="secondary-heading">...o dove vuoi!</h2>
             <div class="cards-container">
-                <?php include __DIR__ . "/utils/piu-vendute.php"; ?>
+                <?php include __DIR__ . "/utils/quasi_esaurite.php"; ?>
             </div>
         </div>
     </section>

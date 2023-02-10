@@ -6,6 +6,12 @@
     margin-top: var(--lineheight-4);
 }
 
+.container a {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+}
+
 .card {
     width: 100%;
     display: block;
@@ -29,3 +35,80 @@
     }
 }
 
+/* ========== TABELLA ORDINI ========== */
+
+.ordini-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    background-color: var(--clr-neutral-100);
+}
+
+.ordini-table thead {
+    background-color: var(--clr-neutral-500);
+    font-weight: var(--fw-medium);
+}
+
+.ordini-table th,
+.ordini-table td{
+    padding: 1em;
+    overflow: hidden;
+    text-align: left;
+}
+
+.ordini-table th:first-child {
+    width: 80px;
+}
+
+.ordini-table th:nth-child(2) {
+    width: 50%;
+}
+
+.ordini-table th:nth-child(3) {
+    width: max-content;
+}
+
+.ordini-table th:last-child {
+    width: 80px;
+}
+
+.ordini-table td:first-child {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+}
+
+.ordini-table td:last-child a {
+    background-image: url("../images/icons/visualizza.png");
+    background-size: cover;
+    display: block;
+    width: 35px;
+    height: 35px;
+}
+
+.ordini-table td:not(:first-child) {
+
+}
+
+.ordini-table tbody tr {
+    border-bottom: 2px solid var(--clr-neutral-500);
+}
+
+.ordini-table img {
+    height: 100%;
+}
+
+/* ========== PAGINAZIONE ORDINI ========== */
+
+.lista-pagine {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--lineheight-2);
+}
+
+.lista-pagine .page-item {
+    border: 1px solid var(--clr-neutral-700);
+    padding: 10px 20px;
+    font-size: var(--fs-500);
+    text-align: center;
+}

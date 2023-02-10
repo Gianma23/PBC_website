@@ -9,9 +9,9 @@ class OrderItem
     private $productId;
     private $pezzi;
 
-    function __construct($cartId, $productId, $pezzi = 1)
+    function __construct($orderId, $productId, $pezzi = 1)
     {
-        $this->cartId = $cartId;
+        $this->orderId = $orderId;
         $this->productId = $productId;
         $this->pezzi = $pezzi;
     }
@@ -59,38 +59,13 @@ class OrderItem
         return $stmt->execute();
     }
 
-    public static function findByCartIdAndProductId($pdo, $cartId, $productId)
-    {
-        $sql = "SELECT * 
-                FROM cart_item
-                WHERE cart_id=? AND product_id = ?;";
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindValue(1, $cartId);
-        $stmt->bindValue(2, $productId);
-        $stmt->execute();
-        return $stmt->fetch(\PDO::FETCH_ASSOC);
-    }
-
-    public static function findByAccountId($pdo, $account)
+    public static function findByOrderId($pdo, $order_id)
     {
         $sql = "SELECT product_id, quantity
-                FROM cart
-                     INNER JOIN
-                     cart_item ci on cart.id = ci.cart_id
-                WHERE account_id=?;";
+                FROM order_item
+                WHERE order_id=?;";
         $stmt = $pdo->prepare($sql);
-        $stmt->bindValue(1, $account);
-        $stmt->execute();
-        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-    }
-
-    public static function findByOrderId($pdo, $cartId)
-    {
-        $sql = "SELECT product_id, quantity
-                        FROM cart_item
-                        WHERE cart_id=?;";
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindValue(1, $cartId);
+        $stmt->bindValue(1, $order_id);
         $stmt->execute();
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }

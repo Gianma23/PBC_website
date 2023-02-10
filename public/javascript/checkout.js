@@ -2,6 +2,8 @@ const totaleCarrello = document.getElementById('riepilogo-totale-carrello');
 const stimaSpedizione = document.getElementById('riepilogo-stima-spedizione');
 const totaleOrdine = document.getElementById('riepilogo-totale-ordine');
 const provinciaSelect = document.getElementById('provincia');
+const totaleInput = document.getElementById('totale-input');
+const totaleSpedizioneInput = document.getElementById('totale-spedizione');
 
 const checkoutForm = document.getElementById('checkout-form');
 const emailEl = checkoutForm.querySelector('[name = email]');
@@ -33,6 +35,10 @@ provinciaSelect.oninput = function(e) {
         stimaSpedizione.textContent = '9.50';
         totaleOrdine.textContent = String(Number(totaleCarrello.textContent) + 9.5);
     }
+
+    // aggiorno valori inputs totali
+    totaleSpedizioneInput.value =  stimaSpedizione.textContent;
+    totaleInput.value = totaleOrdine.textContent;
 }
 
 /* =========== CHECKOUT FORM =========== */

@@ -7,8 +7,7 @@ if(($_SESSION['role'] != 'admin'))
 <html lang="it">
 <head>
     <?php include __DIR__ . "/../include/head.php"; ?>
-    <link rel="stylesheet" href="<?= WEB_PATH?>/css/admin-prodotti.css">
-    <title>Dashboard - Piccolo Birrificio Clandestino</title>
+    <link rel="stylesheet" href="<?= WEB_PATH?>/css/dashboard.css">
 </head>
 <body>
 
@@ -16,21 +15,18 @@ if(($_SESSION['role'] != 'admin'))
 
     <main>
         <div class="container">
-            <a href="<?= URL_ROOT?>/admin-dashboard"><h1 class="primary-heading">Admin Panel</h1></a>
+            <h1 class="primary-heading"><a href="<?= URL_ROOT?>/admin-dashboard">Admin Panel</a></h1>
             <div class="gestisci-bar">
                 <h2 class="secondary-heading">Gestisci prodotti</h2>
                 <a href="<?= URL_ROOT?>/admin-aggiungi-prodotto" class="button button--primary">Aggiungi</a>
             </div>
-            <section>
-                <div class="cards-container">
-                    <?php include __DIR__ . "/../utils/carica-prodotti.php"; ?>
-                </div>
-            </section>
+            <div class="products cards-container">
+                <?php include __DIR__ . "/../utils/carica-prodotti.php"; ?>
+            </div>
         </div>
     </main>
 
     <?php include __DIR__ . "/../include/footer.php"; ?>
 
-    <script src="<?= WEB_PATH?>/javascript/admin-prodotti.js"></script>
 </body>
 </html>

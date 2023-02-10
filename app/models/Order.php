@@ -108,14 +108,29 @@ class Order implements JsonSerializable
         return $pdo->lastInsertId();
     }
 
-    public static function findAll($pdo) {
+    public static function findAll($pdo)
+    {
         $sql = "SELECT *
                 FROM `order`";
         $result = $pdo->query($sql);
         return $result->fetchAll(\PDO::FETCH_ASSOC);
     }
 
-    public static function findByAccountId($pdo, $accountId) {
+    public static function findById($pdo, $id)
+    {
+        $sql = "SELECT *
+                FROM `order` 
+                      INNER JOIN
+                      address a on `order`.shipping_address_id = a.id
+                WHERE `order`.id = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(1, $id);
+        $stmt->execute();
+        return $stmt->fetch(\PDO::FETCH_ASSOC);
+    }
+
+    public static function findByAccountId($pdo, $accountId)
+    {
         $sql = "SELECT *
                 FROM `order`
                 WHERE account_id = ?";
@@ -125,12 +140,43 @@ class Order implements JsonSerializable
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
+    public static function findFromTo($pdo, $start, $number)
+    {
+        $sql = "SELECT *
+                FROM `order`
+                LIMIT ?,?;";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(1, $start, \PDO::PARAM_INT);
+        $stmt->bindValue(2, $number, \PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    public static function getCount($pdo)
+    {
+        $sql = "SELECT COUNT(*)
+                FROM `order`";
+        $result = $pdo->query($sql);
+        return $result->fetchColumn();
+    }
+
+    public static function updateStatus($pdo, $orderId, $status)
+    {
+        $sql = "UPDATE `order`
+                SET status = ?
+                WHERE id = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(1, $status);
+        $stmt->bindValue(2, $orderId);
+        return $stmt->execute();
+    }
+
     public function jsonSerialize(): array
     {
         return [ "id" => $this->id,
-                 "account_id" => $this->accountId,
-                 "email" => $this->email,
-                 "status" => $this->status,
-                 "total" => $this->total];
+            "account_id" => $this->accountId,
+            "email" => $this->email,
+            "status" => $this->status,
+            "total" => $this->total];
     }
 }

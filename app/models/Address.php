@@ -14,7 +14,6 @@ class Address
     protected $telephone;
     protected $note;
 
-
     public function __construct($record)
     {
         $this->id = $record['id'];

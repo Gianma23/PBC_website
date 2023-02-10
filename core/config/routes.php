@@ -14,6 +14,7 @@ $router->addRoute('carrello', ['controller' => 'PageController', 'action' => 'ca
 $router->addRoute('scaffale/{categoria:\w+}', ['controller' => 'PageController', 'action' => 'scaffale']);
 $router->addRoute('conferma-ordine', ['controller' => 'PageController', 'action' => 'confermaOrdine']);
 $router->addRoute('checkout', ['controller' => 'PageController', 'action' => 'checkout']);
+$router->addRoute('dettagli-ordine/{order:\d+}', ['controller' => 'PageController', 'action' => 'dettagliOrdine']);
 
 // user routes
 $router->addRoute('user-dashboard', ['controller' => 'PageController', 'action' => 'userDashboard']);
@@ -38,6 +39,8 @@ $router->addRoute('carrello/rimuovi/{product:.+}', ['controller' => 'CartControl
 
 $router->addRoute('ordine/aggiungi', ['controller' => 'OrderController', 'action' => 'addOrder']);
 $router->addRoute('ordine/carica-ordini', ['controller' => 'OrderController', 'action' => 'getOrders']);
+$router->addRoute('ordine/carica-items-ordine/{order:\d+}', ['controller' => 'OrderController', 'action' => 'getOrderItems']);
+$router->addRoute('ordine/aggiorna-stato', ['controller' => 'OrderController', 'action' => 'updateStatus']);
 
 /* ======== AUTH CONTROLLER ======== */
 

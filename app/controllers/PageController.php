@@ -83,4 +83,9 @@ class PageController
     {
         Render::view('admin/admin-ordini');
     }
+
+    public function dettagliOrdine($vars)
+    {
+        Render::view('dettagli-ordine', $vars);
+    }
 }

@@ -46,7 +46,7 @@ loginForm.addEventListener("blur", e => {
             validatePassword(passwordEl);
             break;
     }
-}, true); // se metto false non va (boh) TODO
+}, true);
 
 /* =========== REGISTER FORM =========== */
 
@@ -90,4 +90,4 @@ registerForm.addEventListener("blur", e => {
             validateConfirmPassword(passwordRegEl, confirmPasswordEl);
             break;
     }
-}, true); // se metto false non va (boh) TODO
+}, true);

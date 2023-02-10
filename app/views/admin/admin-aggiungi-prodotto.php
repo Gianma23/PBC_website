@@ -7,19 +7,18 @@ if(($_SESSION['role'] != 'admin'))
 <html lang="it">
 <head>
     <?php include __DIR__ . "/../include/head.php"; ?>
-    <link rel="stylesheet" href="<?= WEB_PATH?>/css/admin-prodotti.css">
+    <link rel="stylesheet" href="<?= WEB_PATH?>/css/dashboard.css">
     <title>Dashboard - Piccolo Birrificio Clandestino</title>
 </head>
 <body>
 
     <?php include __DIR__ . "/../include/header.php"; ?>
-    <?php include "pages/admin-aggiungi-prodotto/aggiungi.php"; ?>
 
     <main>
         <div class="container">
-            <a href="<?= URL_ROOT?>/admin-dashboard"><h1 class="primary-heading">Admin Panel</h1></a>
-            <a href="<?= URL_ROOT?>/admin-prodotti"><h2 class="secondary-heading">Gestisci prodotti</h2></a>
-                <article class="card">
+            <h1 class="primary-heading"><a href="<?= URL_ROOT?>/admin-dashboard">Admin Panel</a></h1>
+            <h2 class="secondary-heading"><a href="<?= URL_ROOT?>/admin-prodotti">Gestisci prodotti</a></h2>
+                <article class="card-prodotto">
                     <h3>Aggiungi prodotto</h3>
                     <div class="form--card">
                         <form method="POST" enctype="multipart/form-data" id="aggiungi-form" novalidate>

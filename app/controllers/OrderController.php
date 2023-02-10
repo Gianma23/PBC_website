@@ -52,20 +52,67 @@ class OrderController
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $ordini = array();
-        if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_SESSION["role"]) && $_SESSION["role"] == 'admin')
+        if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_SESSION["role"]) && $_SESSION["role"] == 'admin'
+            && isset($_GET['page']) && isset($_GET['how-many']))
         {
-            $ordini = Order::findAll($pdo);
+            $page = $_GET['page'];
+            $howMany = $_GET['how-many'];
+            $start = ($page - 1) * $howMany;
+            $ordini = Order::findFromTo($pdo, $start, intval($howMany));
         }
         else if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_SESSION["role"]) && isset($_SESSION["account_id"]))
         {
             $ordini = Order::findByAccountId($pdo, $_SESSION["account_id"]);
         }
 
+        // conto gli ordini presenti
+        $count = Order::getCount($pdo);
+
         // invio gli ordini in json
-        $this->loadOrdersJson($pdo, $ordini);
+        $this->loadOrdersJson($ordini, $count);
     }
 
-    /* FUNZIONI DI UTILITA */
+    public function getOrderItems($vars)
+    {
+        if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($vars["order"]))
+        {
+            $order_id = $vars["order"];
+        }
+        else return;
+
+        $pdo = new PDO(CONNECTION, USER, PASSWORD);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $items = OrderItem::findByOrderId($pdo, $order_id);
+
+        if(isset($items))
+            foreach($items as $item)
+                $items[ $item["product_id"] ] = $item["quantity"];
+
+        //TODO: controllo account ordine e account richiedente
+
+        // invio gli ordini in json
+        $this->loadOrderItemsJson($pdo, $items);
+    }
+
+    public function updateStatus() {
+
+        if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['order']) && isset($_GET['status']))
+        {
+            $orderId = $_GET['order'];
+            $status = $_GET['status'];
+
+            if(!in_array($status, ['elaborazione', 'in transito', 'spedito', 'cancellato']))
+                exit();
+
+            $pdo = new PDO(CONNECTION, USER, PASSWORD);
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            Order::updateStatus($pdo, $orderId, $status);
+        }
+    }
+
+    /* ========================= FUNZIONI DI UTILITA ========================= */
 
     private function effettuaOrdine($account, $email)
     {
@@ -146,7 +193,7 @@ class OrderController
         return true;
     }
 
-    private function loadOrdersJson($pdo, $ordini)
+    private function loadOrdersJson($ordini, $count)
     {
         if ($ordini)
         {
@@ -156,9 +203,32 @@ class OrderController
             {
                 $arrayOrdini[] = json_encode(new Order($ordine));
             }
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode(['ordini' => $arrayOrdini, 'count' => $count]);
+        }
+        else
+            echo '{}';
+    }
+
+    private function loadOrderItemsJson($pdo, $items)
+    {
+        if ($items)
+        {
+            $arrayItems = array();
+            $array_to_question_marks = implode(',', array_fill(0, count($items), '?'));
+            $stmt = $pdo->prepare('SELECT * 
+                                   FROM product 
+                                   WHERE name IN (' . $array_to_question_marks . ')');
+            $stmt->execute(array_keys($items));
+
+            // per ogni prodotto creo un elemento della lista
+            while($row = $stmt->fetch(\PDO::FETCH_ASSOC))
+            {
+                $arrayItems[json_encode($row)] = $items[$row["name"]];
+            }
 
             header('Content-Type: application/json; charset=utf-8');
-            echo json_encode($arrayOrdini);
+            echo json_encode($arrayItems);
         }
         else
             echo '{}';

@@ -7,7 +7,7 @@ if(($_SESSION['role'] != 'admin'))
 <html lang="it">
 <head>
     <?php include __DIR__ . "/../include/head.php"; ?>
-    <link rel="stylesheet" href="<?= WEB_PATH?>/css/admin-dashboard.css">
+    <link rel="stylesheet" href="<?= WEB_PATH?>/css/dashboard.css">
 </head>
 <body>
 
@@ -15,21 +15,24 @@ if(($_SESSION['role'] != 'admin'))
 
     <main>
         <div class="container">
-            <a href="<?= URL_ROOT?>/admin-dashboard"><h1 class="primary-heading">Admin Panel</h1></a>
+            <h1 class="primary-heading"><a href="<?= URL_ROOT?>/admin-dashboard">Admin Panel</a></h1>
             <h2 class="secondary-heading">Gestisci ordini</h2>
 
             <table class="ordini-table">
                     <thead>
                         <tr>
-                            <td>ID</td>
-                            <td>Email</td>
-                            <td>Totale</td>
-                            <td>Stato</td>
+                            <th scope="col">ID</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Totale</th>
+                            <th scope="col">Stato</th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody id="ordini-table">
                     </tbody>
                 </table>
+            <ul class="lista-pagine" id="lista-pagine">
+            </ul>
         </div>
     </main>
 

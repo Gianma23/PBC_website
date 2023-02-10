@@ -12,7 +12,7 @@ use PDOException;
 
 class ProductController
 {
-    public function addProduct(): void
+    public function addProduct() : void
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST" && $_SESSION["role"] == "admin") {
 
@@ -50,38 +50,20 @@ class ProductController
         }
     }
 
-    public function removeProduct($vars)
+    public function removeProduct($vars) : void
     {
-        if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($vars["product"]))
+        if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($vars["product"]) && $_SESSION["role"] == "admin")
         {
             $product_id = $vars["product"];
             $product_id = str_replace('%20', ' ', $product_id);
+            echo $product_id;
         }
         else return;
 
         $pdo = new PDO(CONNECTION, USER, PASSWORD);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $pdo->beginTransaction();
 
-        // se è un utente cerco il carrello con account_id
-        if(isset($_SESSION["account_id"]))
-        {
-            $cart = Cart::findByAccountId($pdo, $_SESSION["account_id"]);
-            if($cart)
-                $cart_id = $cart['id'];
-            else return;
-        }
-        // altrimenti se il cookie è settato cerco con quello
-        else if(isset($_COOKIE["cart_id"]))
-        {
-            $cart_id = $_COOKIE["cart_id"];
-        }
-        else return;
-
-        // elimino il prodotto dal carrello
-        CartItem::delete($pdo, new CartItem($cart_id, $product_id));
-
-        $this->removeFromSession($product_id);
+        Product::delete($pdo, $product_id);
     }
 
     /* ========================= FUNZIONI DI UTILITA ========================= */

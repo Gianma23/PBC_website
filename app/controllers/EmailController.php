@@ -30,4 +30,6 @@ class EmailController
 
         }
     }
+
+    /* ========================= FUNZIONI DI UTILITA ========================= */
 }

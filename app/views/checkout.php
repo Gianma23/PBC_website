@@ -109,13 +109,13 @@
                         <div class="stima">
                             <p class="riga">Totale carrello(<span id="num-prodotti"></span>&nbsp;prodotti) <span id="riepilogo-totale-carrello"></span>&euro;</p>
                             <p class="riga">Stima spese di spedizione <span id="riepilogo-stima-spedizione">0</span>&euro;</p>
-                            <input type="hidden" name="totale-spedizione" id="totale-spedizione" value="5">
+                            <input type="hidden" name="totale-spedizione" id="totale-spedizione" value="">
                         </div>
 
                         <div class="vai-avanti">
                             <p class="riga">Totale ordine <span id="riepilogo-totale-ordine"></span>&euro;</p>
                             <button type="submit" class="button" id="effettua-ordine">EFFETTUA ORDINE</button>
-                            <input type="hidden" name="totale" id="totale" value="20">
+                            <input type="hidden" name="totale" id="totale-input" value="">
                         </div>
                     </article>
                     <small class="error fs-400" id="error-checkout"></small>
