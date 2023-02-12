@@ -12,7 +12,7 @@
 
         <div class="search-container">
             <label for="search-bar"></label>
-            <input type="search" id="search-bar" placeholder="Cerca nello shop">
+            <input type="search" id="search-bar" placeholder="Cerca nello shop" value="<?php if(isset($_GET['nome'])) echo $_GET['nome']?>">
         </div>
 
     </div>

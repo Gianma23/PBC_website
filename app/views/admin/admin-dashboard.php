@@ -26,10 +26,13 @@ if(($_SESSION['role'] != 'admin'))
                     <p>Aggiungi, elimina o modifica i prodotti presenti.</p>
                 </a>
             </div>
+            <div class="esci">
+                <button class="button button--remove" id="esci">Esci</button>
+            </div>
         </div>
     </main>
 
     <?php include __DIR__ . "/../include/footer.php"; ?>
-
+    <script src="<?= WEB_PATH?>/javascript/dashboard.js"></script>
 </body>
 </html>

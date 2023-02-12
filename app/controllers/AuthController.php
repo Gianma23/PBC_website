@@ -72,6 +72,20 @@ class AuthController
         else echo json_encode(array('success' => false, 'text' => 'Email e/o password non validi.'));
     }
 
+    public function logout()
+    {
+        header('Content-Type: application/json; charset=utf-8');
+        if(isset($_SESSION['account_id']))
+        {
+            unset($_SESSION['account_id']);
+            unset($_SESSION['role']);
+            unset($_SESSION['cart']);
+            echo json_encode(array('success' => true, 'text' => URL_ROOT . '/home'));
+            exit();
+        }
+        else echo json_encode(array('success' => false, 'text' => 'Nessun account loggato.'));
+    }
+
     /* ========================= FUNZIONI DI UTILITA ========================= */
 
     private function validateInputs()

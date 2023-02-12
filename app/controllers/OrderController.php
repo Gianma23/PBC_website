@@ -52,18 +52,24 @@ class OrderController
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $ordini = array();
-        if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_SESSION["role"]) && $_SESSION["role"] == 'admin'
-            && isset($_GET['page']) && isset($_GET['how-many']))
+
+        // guardo se è un admin o uno user
+        if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['page']) && isset($_GET['how-many']))
         {
             $page = $_GET['page'];
             $howMany = $_GET['how-many'];
             $start = ($page - 1) * $howMany;
-            $ordini = Order::findFromTo($pdo, $start, intval($howMany));
+
+            if (isset($_SESSION["role"]) && $_SESSION["role"] == 'admin')
+            {
+                $ordini = Order::findFromTo($pdo, $start, intval($howMany));
+            }
+            else if(isset($_SESSION["role"]) && $_SESSION["role"] == 'user')
+            {
+                $ordini = Order::findByAccountIdFromTo($pdo, $_SESSION["account_id"], $start, intval($howMany));
+            }
         }
-        else if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_SESSION["role"]) && isset($_SESSION["account_id"]))
-        {
-            $ordini = Order::findByAccountId($pdo, $_SESSION["account_id"]);
-        }
+        else exit();
 
         // conto gli ordini presenti
         $count = Order::getCount($pdo);

@@ -64,7 +64,7 @@ class CartItem
     {
         $sql = "UPDATE cart_item
                 SET quantity = quantity + 1
-                WHERE cart_id=? AND product_id = ?;";
+                WHERE cart_id=? AND product_id=?;";
         $stmt = $pdo->prepare($sql);
         $stmt->bindValue(1, $cart->getCartId());
         $stmt->bindValue(2, $cart->getProductId());
@@ -99,21 +99,19 @@ class CartItem
     public static function findByCartId($pdo, $cartId)
     {
         $sql = "SELECT product_id, quantity
-                        FROM cart_item
-                        WHERE cart_id=?;";
+                FROM cart_item
+                WHERE cart_id=?;";
         $stmt = $pdo->prepare($sql);
         $stmt->bindValue(1, $cartId);
         $stmt->execute();
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
-    public static function delete($pdo, $cart)
+    public static function delete($pdo, $cartId, $productId)
     {
         $sql = "DELETE FROM cart_item
-                WHERE  cart_id = ? AND product_id = ?";
+                WHERE cart_id = ? AND product_id = ?;";
         $stmt = $pdo->prepare($sql);
-        $stmt->bindValue(1, $cart->getCartId());
-        $stmt->bindValue(2, $cart->getProductId());
-        return $stmt->execute();
+        return $stmt->execute(array($cartId,  $productId));
     }
 }

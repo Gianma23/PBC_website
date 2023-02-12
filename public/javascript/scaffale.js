@@ -1,4 +1,4 @@
- class Prodotto {
+class Prodotto {
     constructor(nome, prezzo, descrizione, categoria, tagline, image) {
         this.nome = nome;
         this.prezzo = prezzo;
@@ -22,73 +22,135 @@ const nomeBirra = document.getElementById('nome-birra');
 const stileBirra = document.getElementById('stile-birra');
 const taglineBirra = document.getElementById('tagline-birra');
 const descBirra = document.getElementById('descrizione-birra');
-const sliderBirre = document.getElementById('slider');
+const sliderProdotti = document.getElementById('slider');
 const prodottoId = document.getElementsByClassName('prodotto-id')[0];
 
 const arrayProdotti = [];
-let birraAttiva;
+let activeProduct;
 let indice = 0;
 
-const queryCategory = window.location.pathname.split('/').at(-1);
+/* =========== RIEMPIMENTO SCAFFALE =========== */
+let query;
 
-fetch('search/' + queryCategory)
-.then((res) => res.json())
-.then((data) => {
+if (window.location.search === '')
+    query = '/search/' + window.location.pathname.split('/').at(-1);
+else
+    query = '/search' + window.location.search;
 
+fetch('/' + baseUrl + query)
+    .then((res) => res.json())
+    .then((data) => {
+        riempiScaffale(data);
+    });
+
+/* ================== SCORRIMENTO BIRRE ================== */
+
+const arrowNext = document.getElementById('slide-arrow-next');
+const arrowPrev = document.getElementById('slide-arrow-prev');
+
+arrowNext.onclick = function () {
+
+    if (indice === arrayProdotti.length - 1)
+        return;
+    indice++;
+    arrowNext.disabled = true;
+
+    const nextProduct = activeProduct.nextSibling;
+
+    scorriScaffale(nextProduct);
+
+    riempiInfoProdotto();
+    toggleInfoBirra();
+
+    setTimeout(() => arrowNext.disabled = false, 500);
+}
+
+arrowPrev.onclick = function () {
+
+    if (indice === 0)
+        return;
+    indice--;
+    arrowPrev.disabled = true;
+
+    const nextProduct = activeProduct.previousSibling;
+
+    scorriScaffale(nextProduct);
+
+    riempiInfoProdotto();
+    toggleInfoBirra();
+
+    setTimeout(() => arrowPrev.disabled = false, 500);
+}
+
+/* SCORRIMENTO VERTICALE BIRRA ATTIVA */
+
+function aggiornaAltezzaBirra() {
+    let top = window.scrollY;
+    activeProduct.style.transform = `translateY( calc(${top}px - 56px)) scale(1.2)`;
+}
+
+
+/* =========== FUNZIONI DI UTILITA =========== */
+
+function riempiScaffale(data) {
     let vuoto = true;
-    for(const prodottoString of data) {
+    for (const prodottoString of data) {
         vuoto = false;
         const prod = JSON.parse(prodottoString);
-        if(queryCategory === 'birra')
+        if (prod.categoria === 'birra')
             arrayProdotti.push(new Birra(prod.nome, prod.prezzo, prod.descrizione, prod.categoria, prod.tagline,
-                                      prod.imgPath, prod.stile, prod.aroma, prod.gusto));
+                prod.imgPath, prod.stile, prod.aroma, prod.gusto));
         else
             arrayProdotti.push(new Prodotto(prod.nome, prod.prezzo, prod.descrizione, prod.categoria, prod.tagline, prod.imgPath));
     }
 
     // guardo se non ci sono prodotti
-    if(vuoto) {
+    if (vuoto) {
         messaggioScaffaleVuoto();
         return;
     }
 
-    if(arrayProdotti.length > 1)
-        indice = Math.trunc(arrayProdotti.length / 2);
+    indice = Math.trunc(arrayProdotti.length / 2);
 
     creaPagina();
-});
-
+}
 
 function creaPagina() {
 
     riempiInfoProdotto();
+    toggleInfoBirra();
 
     // creo slider immagini
-    for(let i = 0; i < arrayProdotti.length; i++) {
+    for (let i = 0; i < arrayProdotti.length; i++) {
         const div = document.createElement('div');
         div.className = 'item';
-        sliderBirre.appendChild(div);
+        sliderProdotti.appendChild(div);
 
         const img = document.createElement('img');
-        img.src = arrayProdotti[i].image;
+        img.src = '/' + baseUrl + arrayProdotti[i].image;
         img.alt = arrayProdotti[i].nome;
         div.appendChild(img);
 
         // attivo birra corrente
-        if(i === indice) {
+        if (i === indice) {
             div.id = 'active';
-            birraAttiva = div;
+            activeProduct = div;
         }
-
-        sliderBirre.style.transform = '';
     }
 
+    // se ci sono prodotti in numero pari devo shiftare il centro a sinistra
+    if (arrayProdotti.length % 2 === 0){
+        const nextProduct = activeProduct.previousSibling;
+        // calcolo distanza tra nextProduct e activeProduct
+        const distanza = getXDistanceBetweenElements(activeProduct, nextProduct);
 
-    toggleInfoBirra();
+        // sposto a sinistra
+        sliderProdotti.style.transform = `translateX(-${distanza / 2}px)`;
+    }
 }
 
 function riempiInfoBirra() {
-
+    //TODO
 }
 
 function riempiInfoProdotto() {
@@ -102,14 +164,13 @@ function riempiInfoProdotto() {
 function toggleInfoBirra() {
     // nascondo le info della birra se non è una birra
     const infoBirra = document.getElementById('info-birra');
-    if(arrayProdotti[indice].categoria === 'birra') {
+    if (arrayProdotti[indice].categoria === 'birra') {
         infoBirra.style.display = 'block';
         riempiInfoBirra();
 
         // abilito lo scroll
         window.onscroll = aggiornaAltezzaBirra;
-    }
-    else
+    } else
         infoBirra.style.display = 'none';
 }
 
@@ -124,64 +185,23 @@ function messaggioScaffaleVuoto() {
     contenitore.appendChild(p);
 }
 
-/* ================== SCORRIMENTO BIRRE ================== */
+function scorriScaffale(nextProduct) {
+    // calcolo distanza tra nextProduct e activeProduct
+    const distanza = getXDistanceBetweenElements(activeProduct, nextProduct);
 
-const arrowNext = document.getElementById('slide-arrow-next');
-const arrowPrev = document.getElementById('slide-arrow-prev');
-
-arrowNext.onclick = function() {
-
-    if(indice===arrayProdotti.length-1)
-        return;
-    indice++;
-
-    // sposto a sinistra
-    const actualTranslate = getTranslateX(sliderBirre);
-    sliderBirre.style.transform = `translateX( calc( ${actualTranslate}px - var(--column-width-2) - var(--gutter)))`;
+    // sposto il prodotto
+    const actualTranslate = getTranslateX(sliderProdotti);
+    sliderProdotti.style.transform = `translateX( calc(${distanza}px + ${actualTranslate}px))`;
 
     // cambio la birra attiva
-    birraAttiva = document.getElementById('active');
-    birraAttiva.id = '';
-    birraAttiva.style.transform = '';
+    activeProduct = document.getElementById('active');
+    activeProduct.id = '';
+    activeProduct.style.transform = '';
 
-    birraAttiva = birraAttiva.nextSibling;
-    birraAttiva.id = 'active';
-    birraAttiva.style.transform = '';
-
-    riempiInfoProdotto();
-    toggleInfoBirra();
+    activeProduct = nextProduct;
+    activeProduct.id = 'active';
+    activeProduct.style.transform = '';
 }
-
-arrowPrev.onclick = function() {
-
-    if(indice===0)
-        return;
-    indice--;
-
-    // sposto a sinistra
-    const actualTranslate = getTranslateX(sliderBirre);
-    sliderBirre.style.transform = `translateX( calc( ${actualTranslate}px + var(--column-width-2) + var(--gutter)))`;
-
-    // cambio la birra attiva
-    birraAttiva = document.getElementById('active');
-    birraAttiva.id = '';
-    birraAttiva.style.transform = '';
-
-    birraAttiva = birraAttiva.previousSibling;
-    birraAttiva.id = 'active';
-    birraAttiva.style.transform = '';
-
-    riempiInfoProdotto();
-    toggleInfoBirra();
-}
-
-/* SCORRIMENTO VERTICALE BIRRA ATTIVA */
-
-function aggiornaAltezzaBirra() {
-    let top = window.scrollY;
-    birraAttiva.style.transform = `translateY( calc(${top}px - 56px)) scale(1.2)`;
-}
-
 
 function getTranslateX(elem) {
     const style = window.getComputedStyle(elem);
@@ -189,10 +209,13 @@ function getTranslateX(elem) {
     return matrix.m41;
 }
 
+function getXDistanceBetweenElements(elementA, elementB) {
+    const aPosition = getXPosition(elementA);
+    const bPosition = getXPosition(elementB);
+    return aPosition - bPosition;
+}
 
-
-
-
-
-
-
+function getXPosition(el) {
+    const {top, left, width, height} = el.getBoundingClientRect();
+    return left + width / 2;
+}

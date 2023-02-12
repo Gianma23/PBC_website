@@ -64,6 +64,11 @@ class PageController
         Render::view('user/user-dashboard');
     }
 
+    public function userOrdini()
+    {
+        Render::view('user/user-ordini');
+    }
+
     public function adminDashboard()
     {
         Render::view('admin/admin-dashboard');

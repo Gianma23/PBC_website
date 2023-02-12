@@ -26,7 +26,7 @@ class ProductController
                 $tagline = $_POST["tagline"];
                 $categoria = $_POST["categoria"];
 
-                $target_dir = ROOT_PATH . "/public/images/birre/";
+                $target_dir = ROOT_PATH . "/public/images/prodotti/";
                 $target_file = $target_dir.basename($_FILES["image"]["name"]);
 
                 if(!move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {

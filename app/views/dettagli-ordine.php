@@ -2,6 +2,11 @@
 include_once(ROOT_PATH . "/app/models/Order.php");
 use Models\Order;
 
+if(!isset($_SESSION['account_id']))
+    header('Location:' . URL_ROOT . '/home');
+
+$role = $_SESSION['role'];
+
 $pdo = new PDO(CONNECTION, USER, PASSWORD);
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -20,8 +25,8 @@ $orderInfo = Order::findById($pdo, $order);
 
     <main>
         <div class="container">
-            <h1 class="primary-heading"><a href="<?= URL_ROOT?>/admin-dashboard">Admin Panel</a></h1>
-            <h2 class="secondary-heading"><a href="<?= URL_ROOT?>/admin-ordini?page=">Gestisci ordini</a></h2>
+            <h1 class="primary-heading"><a href="<?= URL_ROOT . '/' . $role?>-dashboard">Admin Panel</a></h1>
+            <h2 class="secondary-heading"><a href="<?= URL_ROOT . '/' . $role?>-ordini?page=">Gestisci ordini</a></h2>
 
             <div class="info-ordine">
                 <div class="info-ordine__bar">

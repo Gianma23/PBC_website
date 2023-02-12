@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
     <?php include __DIR__ . "/include/head.php"; ?>
     <link rel="stylesheet" href="<?= WEB_PATH?>/css/checkout.css">
 </head>

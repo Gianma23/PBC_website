@@ -10,6 +10,7 @@ const emailEl = checkoutForm.querySelector('[name = email]');
 const nomeEl = checkoutForm.querySelector('[name = nome]');
 const cognomeEl = checkoutForm.querySelector('[name = cognome]');
 const telefonoEl = checkoutForm.querySelector('[name = telefono]');
+const indirizzoEl = checkoutForm.querySelector('[name = indirizzo]');
 const cittaEl = checkoutForm.querySelector('[name = citta]');
 const capEl = checkoutForm.querySelector('[name = cap]');
 
@@ -46,14 +47,15 @@ provinciaSelect.oninput = function(e) {
 checkoutForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const emailValid= validateEmail(emailEl);
-    const nomeValid= validateText(nomeEl);
-    const cognomeValid= validateText(cognomeEl);
+    const emailValid= validateEmail(emailEl) && validateLength(emailEl, 100);
+    const nomeValid= validateText(nomeEl) && validateLength(nomeEl, 50);
+    const cognomeValid= validateText(cognomeEl) && validateLength(cognomeEl, 50);
     const telValid= validateTelephone(telefonoEl);
-    const cittaValid= validateText(cittaEl);
+    const indirizzoValid= validateRequired(indirizzoEl);
+    const cittaValid= validateText(cittaEl) && validateLength(cittaEl, 50);
     const capValid= validateCap(capEl);
 
-    const isFormValid = emailValid && nomeValid && cognomeValid && telValid && cittaValid && capValid;
+    const isFormValid = emailValid && nomeValid && cognomeValid && telValid && indirizzoValid && cittaValid && capValid;
 
     if(isFormValid) {
         fetch('ordine/aggiungi', {
@@ -77,22 +79,25 @@ checkoutForm.addEventListener("blur", e => {
 
     switch (e.target.name) {
         case 'nome':
-            validateText(nomeEl);
+            validateText(nomeEl) && validateLength(nomeEl, 50);
             break;
         case 'cognome':
-            validateText(cognomeEl);
+            validateText(cognomeEl) && validateLength(cognomeEl, 50);
             break;
         case 'email':
-            validateEmail(emailEl);
+            validateEmail(emailEl) && validateLength(emailEl, 100);
             break;
         case 'telefono':
             validateTelephone(telefonoEl);
             break;
+        case 'indirizzo':
+            validateRequired(indirizzoEl);
+            break;
         case 'citta':
-            validateText(cittaEl);
+            validateText(cittaEl) && validateLength(cittaEl, 50);
             break;
         case 'cap':
             validateCap(capEl);
             break;
     }
-}, true); // se metto false non va (boh) TODO
+}, true);

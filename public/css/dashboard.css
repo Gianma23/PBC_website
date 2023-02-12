@@ -1,3 +1,5 @@
+/* ========== DASHBOARD ========== */
+
 .cards-container {
     justify-content: center;
 }
@@ -27,6 +29,12 @@
 .card h2 {
     font-size: var(--fs-500);
     font-weight: var(--fw-medium);
+}
+
+.esci {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--lineheight-2);
 }
 
 @media screen and (min-width: 55em) {

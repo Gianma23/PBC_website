@@ -23,7 +23,7 @@ try
             $disponibileText = "esaurito";
         ?>
         <div class="product-card">
-            <img src="<?= $prodotto->getImgPath() ?>" alt='immagine prodotto'>
+            <img src="<?= URL_ROOT . $prodotto->getImgPath() ?>" alt='immagine prodotto'>
             <h3 class="fw-medium fs-500"><?= $prodotto->getNome()?></h3>
             <p class="fw-medium fs-500"><?= $prodotto->getPrezzo()?>&euro;</p>
             <small class="<?= $disponibileText?>"><?= $disponibileText?></small>

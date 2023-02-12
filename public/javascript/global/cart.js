@@ -47,12 +47,10 @@ const addButtons = document.querySelectorAll('.button--shop');
 
 addButtons.forEach((button) => button.onclick = (e) => {
 
-    const form = button.parentElement;
-    const nomeBirra = form.getElementsByClassName('prodotto-id')[0].value;
+    const formContainer = e.currentTarget.parentElement;
+    const nomeBirra = formContainer.getElementsByClassName('prodotto-id')[0];
 
-    fetch('/' + baseUrl + '/carrello/aggiungi/' + nomeBirra)
-        .then(res => res.text())
-        .then(text => console.log(text))
+    fetch('/' + baseUrl + '/carrello/aggiungi/' + nomeBirra.value)
         .then(() => {
             fetch('/' + baseUrl + '/carica-carrello')
                 .then((res) => res.json())
@@ -74,7 +72,9 @@ function rimuoviHandler(e) {
     const nomeBirra = e.currentTarget.id;
 
     fetch('/' + baseUrl + '/carrello/rimuovi/' + nomeBirra)
-        .then(() => {
+        .then((dres) => dres.text())
+        .then((text) => {
+            console.log(text)
             fetch('/' + baseUrl + '/carica-carrello')
                 .then((res) => res.json())
                 .then((data) => {
@@ -133,7 +133,7 @@ function creaCarrelloLaterale(data) {
         buttonRimuovi.addEventListener('click', rimuoviHandler);
     }
     const prezzoTotale = document.getElementById('totale');
-    prezzoTotale.textContent = `Subtotale:\xa0\xa0\xa0\xa0${String(totale)}\u20AC`;
+    prezzoTotale.textContent = `Subtotale:\xa0\xa0\xa0\xa0${String(totale.toFixed(2))}\u20AC`;
 
     if(numProdotti > 0) {
         // metto il totale anche nel riepilogo
@@ -193,7 +193,7 @@ function creaCarrelloPagina(data) {
 
         // cella subtotale
         const subtotCell = document.createElement('td');
-        subtotCell.textContent = subtotale + '\u20AC';
+        subtotCell.textContent = subtotale.toFixed(2) + '\u20AC';
         tr.appendChild(subtotCell);
 
         // cella bottone per rimuovere
@@ -241,15 +241,15 @@ function setRiepilogo(data) {
 
     // guardo che esista la card riepilogo
     if (totaleCarrello) {
-        totaleCarrello.textContent = String(totale);
+        totaleCarrello.textContent = totale.toFixed(2);
         textNumProdotti.textContent = String(numProdotti);
-        totaleOrdine.textContent = String(totale + Number(totaleSpedizione.textContent));
+        totaleOrdine.textContent = (totale + Number(totaleSpedizione.textContent)).toFixed(2);
+    }
 
-        // aggiorno valori inputs totali
+    // aggiorno valori inputs totali
+    if(totaleSpedizioneInput) {
         totaleSpedizioneInput.value = totaleSpedizione.textContent;
         totaleInput.value = totaleOrdine.textContent;
     }
-
-
 }
 

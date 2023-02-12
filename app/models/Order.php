@@ -129,13 +129,16 @@ class Order implements JsonSerializable
         return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
 
-    public static function findByAccountId($pdo, $accountId)
+    public static function findByAccountIdFromTo($pdo, $accountId, $start, $number)
     {
         $sql = "SELECT *
                 FROM `order`
-                WHERE account_id = ?";
+                WHERE account_id = ?
+                LIMIT ?,?";
         $stmt = $pdo->prepare($sql);
         $stmt->bindValue(1, $accountId);
+        $stmt->bindValue(2, $start, \PDO::PARAM_INT);
+        $stmt->bindValue(3, $number, \PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }

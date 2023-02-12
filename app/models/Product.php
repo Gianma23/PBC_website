@@ -96,11 +96,22 @@ class Product implements JsonSerializable
         $stmt->execute();
     }
 
+    public static function findBySubstringName($pdo, $name)
+    {
+        $sql = "SELECT * 
+                FROM product 
+                WHERE name LIKE CONCAT('%', ?, '%');";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(1, $name);
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
     public static function findByName($pdo, $name)
     {
         $sql = "SELECT * 
                 FROM product 
-                WHERE name=?;";
+                WHERE name = ?;";
         $stmt = $pdo->prepare($sql);
         $stmt->bindValue(1, $name);
         $stmt->execute();
@@ -141,26 +152,27 @@ class Product implements JsonSerializable
 
     public function createProductCard()
     {
-        echo
-        "<div class=\"product-card\">
-            <img src='$this->imgPath' alt='immagine prodotto'>
-            <h3 class=\"fw-medium fs-500\" id=\"nome-prodotto\">$this->nome</h3>
-            <p class=\"fw-medium fs-400\">Prezzo: $this->prezzo&euro;</p>
-            <small class=\"fw-medium fs-400\">Quantità: $this->quantita</small>
-            <div class='button-container'>
-                <button class=\"button button--edit\" id=\"modifica\">Modifica</button>
-                <button class=\"button button--remove elimina\">Elimina</button>
+    ?>
+        <div class="product-card">
+            <img src="<?=URL_ROOT . $this->imgPath?>" alt="immagine prodotto">
+            <h3 class="fw-medium fs-500" id="nome-prodotto"><?= $this->nome?></h3>
+            <p class="fw-medium fs-400">Prezzo: <?= $this->prezzo?>&euro;</p>
+            <small class="fw-medium fs-400">Quantità: <?= $this->quantita?></small>
+            <div class="button-container">
+                <button class="button button--edit" id="modifica">Modifica</button>
+                <button class="button button--remove elimina">Elimina</button>
             </div>
-        </div>";
+        </div>
+    <?php
     }
 
     public function jsonSerialize(): array
     {
         return ["nome" => $this->nome,
-            "prezzo" => $this->prezzo,
-            "descrizione" => $this->descrizione,
-            "categoria" => $this->categoria,
-            "tagline" => $this->tagline,
-            "imgPath" => $this->imgPath];
+                "prezzo" => $this->prezzo,
+                "descrizione" => $this->descrizione,
+                "categoria" => $this->categoria,
+                "tagline" => $this->tagline,
+                "imgPath" => $this->imgPath];
     }
 }

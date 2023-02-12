@@ -7,9 +7,7 @@ const queryOrdine = window.location.pathname.split('/').at(-1);
 fetch('/' + baseUrl + '/ordine/carica-items-ordine/' + queryOrdine)
     .then((res) => res.json())
     .then((data) => {
-        console.log(data)
         creaTabellaOrdine(data);
-        setInfo(data);
     });
 
 function creaTabellaOrdine(data) {
@@ -48,14 +46,11 @@ function creaTabellaOrdine(data) {
         // cella subtotale
         let subtotale = prodotto['price'] * data[prodottoString];
         const subtotCell = document.createElement('td');
-        subtotCell.textContent = subtotale + '\u20AC';
+        subtotCell.textContent = subtotale.toFixed(2) + '\u20AC';
         tr.appendChild(subtotCell);
     }
 }
 
-function setInfo(data) {
-
-}
 
 
 

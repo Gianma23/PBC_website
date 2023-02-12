@@ -11,23 +11,39 @@ use PDOException;
 
 class ShopController
 {
-    public function search($vars)
+    public function search($vars = null): void
     {
         if(isset($vars['categoria']))
             $this->searchByCategory($vars['categoria']);
+        else if($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['nome']))
+            $this->searchByName($_GET['nome']);
     }
 
     /* ========================= FUNZIONI DI UTILITA ========================= */
 
     private function searchByCategory($categoria) : void
     {
-        $arrayProdotti = [];
-
         $pdo = new PDO(CONNECTION, USER, PASSWORD);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $prodotti = Product::findByCategory($pdo, $categoria);
 
+        $this->loadProductJson($pdo, $prodotti);
+    }
+
+    private function searchByName($nome) : void
+    {
+        $pdo = new PDO(CONNECTION, USER, PASSWORD);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $prodotti = Product::findBySubstringName($pdo, $nome);
+
+        $this->loadProductJson($pdo, $prodotti);
+    }
+
+    private function loadProductJson($pdo, $prodotti): void
+    {
+        $arrayProdotti = [];
         foreach($prodotti as $prodotto) {
             if($prodotto['category'] == 'birra')
             {
@@ -41,30 +57,5 @@ class ShopController
         }
         header('Content-Type: application/json; charset=utf-8');
         echo json_encode($arrayProdotti);
-    }
-
-    private function searchByName() : void
-    {
-        global $arrayProdotti;
-
-        try {
-            $pdo = new PDO(CONNECTION, USER, PASSWORD);
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-            $sql = "SELECT * FROM product WHERE category = ?;";
-            $stmt = $pdo->prepare($sql);
-            $stmt->bindValue(1, $_GET["categoria"]);
-            $stmt->execute();
-
-            $row = $stmt->fetch();
-            if(isset($row) && !empty($row)) {
-                $prodotto = new Product($row);
-                $arrayProdotti[] = $prodotto;
-            }
-            $pdo = null;
-        }
-        catch (PDOException $e) {
-            $pdo = null;
-        }
     }
 }

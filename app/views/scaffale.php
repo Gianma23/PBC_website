@@ -57,6 +57,6 @@
     </main>
 
     <?php include __DIR__ . "/include/footer.php"; ?>
-
+    <script src="<?= WEB_PATH?>/javascript/shop-nav.js"></script>
 </body>
 </html>

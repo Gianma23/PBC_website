@@ -33,6 +33,7 @@
 .disponibile {
     color: var(--clr-success);
 }
+
 .esaurito {
     color: var(--clr-warning);
 }

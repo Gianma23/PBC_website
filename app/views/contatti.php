@@ -50,54 +50,61 @@
                 </section>
 
                 <section class="forms">
+
                     <div class="container-form container-form--clienti left-bleed">
                         <h2>Serve una mano?</h2>
                         <p>Hai domande o dubbi? Hai problemi con la spedizione o ti serve qualche chiarimento? Scrivici per qualsiasi cosa!</p>
-                        <form name="form-clienti" action="">
+                        <form class="email-form" novalidate>
+                            <input type="hidden" value="cliente" name="tipo">
                             <p class="form-elem">
                                 <label for="nome-cognome-cliente">Nome e Cognome:</label><br>
-                                <input type="text" id="nome-cognome-cliente" name="nome-cognome">
+                                <input type="text" id="nome-cognome-cliente" name="nome-cognome" required>
                                 <small class="error"></small>
                             </p>
                             <p class="form-elem">
                                 <label for="email-cliente">Email:</label><br>
-                                <input type="email" id="email-cliente" name="email">
+                                <input type="email" id="email-cliente" name="email" required>
                                 <small class="error"></small>
                             </p>
                             <p class="form-elem">
                                 <label for="messaggio-cliente">Messaggio:</label><br>
-                                <textarea id="messaggio-cliente" name="messaggio"></textarea>
+                                <textarea id="messaggio-cliente" name="messaggio" required></textarea>
                                 <small class="error"></small>
                             </p>
                             <p class="form-elem">
+                                <small class="error" id="email-text"></small>
                                 <button type="submit" class="button button--secondary">INVIA EMAIL</button>
                             </p>
                         </form>
                     </div>
+
                     <div class="container-form container-form--rivenditori text-neutral-100 left-bleed">
                         <h2>Sei un rivenditore?</h2>
                         <p>Hai un locale o una distribuzione e sei interessato alle nostre birre?</p>
-                        <form name="form-rivenditori" action="">
+                        <form class="email-form" novalidate>
+                            <input type="hidden" value="rivenditore" name="tipo">
                             <p class="form-elem">
                                 <label for="nome-cognome-riv">Nome e Cognome:</label><br>
-                                <input type="text" id="nome-cognome-riv" name="nome-cognome">
+                                <input type="text" id="nome-cognome-riv" name="nome-cognome" required>
                                 <small class="error"></small>
                             </p>
                             <p class="form-elem">
                                 <label for="email-riv">Email:</label><br>
-                                <input type="email" id="email-riv" name="email">
+                                <input type="email" id="email-riv" name="email" required>
                                 <small class="error"></small>
                             </p>
                             <p class="form-elem">
                                 <label for="messaggio-riv">Messaggio:</label><br>
-                                <textarea id="messaggio-riv" name="messaggio"></textarea>
+                                <textarea id="messaggio-riv" name="messaggio" required></textarea>
                                 <small class="error"></small>
                             </p>
                             <p class="form-elem">
+                                <small class="error" id="email-text"></small>
                                 <button type="submit" class="button">INVIA EMAIL</button>
                             </p>
                         </form>
                     </div>
+
                 </section>
             </div>
         </div>

@@ -1,11 +1,11 @@
 const newsletterForm = document.getElementById('newsletter-form');
-const emailEl = newsletterForm.querySelector('[name = email]');
+const newsEmailEl = newsletterForm.querySelector('[name = email]');
 
 newsletterForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    if(validateEmail(emailEl)) {
-        fetch('newsletter/add', {
+    if(validateEmail(newsEmailEl)) {
+        fetch('/' + baseUrl + '/newsletter/add', {
             method: 'POST',
             body: new FormData(newsletterForm),
         })
@@ -22,3 +22,7 @@ newsletterForm.addEventListener('submit', (e) => {
         })
     }
 });
+
+newsletterForm.addEventListener("blur", () => {
+    validateEmail(newsEmailEl);
+}, true);

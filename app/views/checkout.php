@@ -23,41 +23,41 @@
                     <fieldset>
                         <legend>Dettagli spedizione</legend>
                         <?php
-                            if(!isset($_SESSION['account']))
+                            if(!isset($_SESSION['account_id']))
                             echo '
                             <p class="form-elem">
-                                <label for="email">Email:</label>
-                                <input type="text" id="email" name="email">
+                                <label for="email">Email*:</label>
+                                <input type="text" id="email" name="email" required>
                                 <small class="error"></small>
                             </p>';
                         ?>
                         <div class="form-2col">
                             <p class="form-elem">
-                                <label for="nome">Nome:</label>
-                                <input type="text" id="nome" name="nome">
+                                <label for="nome">Nome*:</label>
+                                <input type="text" id="nome" name="nome" required>
                                 <small class="error"></small>
                             </p>
                             <p class="form-elem">
-                                <label for="cognome">Cognome:</label>
-                                <input type="text" id="cognome" name="cognome">
+                                <label for="cognome">Cognome*:</label>
+                                <input type="text" id="cognome" name="cognome" required>
                                 <small class="error"></small>
                             </p>
                         </div>
 
                         <p class="form-elem" id="telefono-elem">
-                            <label for="telefono">Telefono:</label>
-                            <input type="tel" id="telefono" name="telefono">
+                            <label for="telefono">Telefono*:</label>
+                            <input type="tel" id="telefono" name="telefono" required>
                             <small class="error"></small>
                         </p>
                         <p class="form-elem">
-                            <label for="indirizzo">Indirizzo:</label>
-                            <input id="indirizzo" name="indirizzo">
+                            <label for="indirizzo">Indirizzo*:</label>
+                            <input id="indirizzo" name="indirizzo" required>
                             <small class="error"></small>
                         </p>
                         <div class="form-3col">
                             <p class="form-elem">
-                                <label for="provincia">Provincia:</label>
-                                <select id="provincia" name="provincia">
+                                <label for="provincia">Provincia*:</label>
+                                <select id="provincia" name="provincia" required>
                                     <option>Livorno</option>
 
                                 <?php
@@ -73,12 +73,12 @@
                                 <small class="error"></small>
                             </p>
                             <p class="form-elem">
-                                <label for="citta">Città:</label>
+                                <label for="citta">Città*:</label>
                                 <input id="citta" name="citta">
                                 <small class="error"></small>
                             </p>
                             <p class="form-elem">
-                                <label for="cap">CAP:</label>
+                                <label for="cap">CAP*:</label>
                                 <input type="text" id="cap" name="cap">
                                 <small class="error"></small>
                             </p>
@@ -94,7 +94,7 @@
                         <legend>Metodo di pagamento</legend>
                         <div class="opzione-stima">
                             <input type="radio" value="carta" id="carta" name="pagamento" checked>
-                            <label for="carta">Carta di credito</label>w
+                            <label for="carta">Carta di credito</label>
                         </div>
                         <div class="opzione-stima">
                             <input type="radio" value="bonifico" id="bonifico" name="pagamento">

@@ -106,7 +106,6 @@ class CartController
 
         $pdo = new PDO(CONNECTION, USER, PASSWORD);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $pdo->beginTransaction();
 
         // se è un utente cerco il carrello con account_id
         if(isset($_SESSION["account_id"]))
@@ -124,7 +123,7 @@ class CartController
         else return;
 
         // elimino il prodotto dal carrello
-        CartItem::delete($pdo, new CartItem($cart_id, $product_id));
+        CartItem::delete($pdo, $cart_id, $product_id);
 
         $this->removeFromSession($product_id);
     }

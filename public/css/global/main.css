@@ -226,7 +226,7 @@ h1 {
     transform: translate(-15%, -35%) scale(0.1);
     opacity: 0;
     z-index: -1;
-    transition: transform 0.3s, opacity 0.3s, background-color 0.3s;
+    transition: transform 0.2s, opacity 0.2s, background-color 0.2s;
 }
 
 .button:hover,
@@ -515,4 +515,8 @@ legend {
 
 .error {
     color: var(--clr-warning);
+}
+
+.success {
+    color: var(--clr-success);
 }
