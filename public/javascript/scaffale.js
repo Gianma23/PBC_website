@@ -18,10 +18,12 @@ class Birra extends Prodotto {
     }
 }
 
-const nomeBirra = document.getElementById('nome-birra');
+const nomeProdotto = document.getElementById('nome-prodotto');
 const stileBirra = document.getElementById('stile-birra');
-const taglineBirra = document.getElementById('tagline-birra');
-const descBirra = document.getElementById('descrizione-birra');
+const taglineProdotto = document.getElementById('tagline-prodotto');
+const descProdotto = document.getElementById('descrizione-prodotto');
+const aromaBirra = document.getElementById('aroma');
+const gustoBirra = document.getElementById('gusto');
 const sliderProdotti = document.getElementById('slider');
 const prodottoId = document.getElementsByClassName('prodotto-id')[0];
 
@@ -150,14 +152,15 @@ function creaPagina() {
 }
 
 function riempiInfoBirra() {
-    //TODO
+    aromaBirra.textContent = arrayProdotti[indice].aroma;
+    gustoBirra.textContent = arrayProdotti[indice].gusto;
 }
 
 function riempiInfoProdotto() {
-    nomeBirra.textContent = arrayProdotti[indice].nome;
+    nomeProdotto.textContent = arrayProdotti[indice].nome;
     stileBirra.textContent = arrayProdotti[indice].stile;
-    taglineBirra.textContent = arrayProdotti[indice].tagline;
-    descBirra.textContent = arrayProdotti[indice].descrizione;
+    taglineProdotto.textContent = arrayProdotti[indice].tagline;
+    descProdotto.textContent = arrayProdotti[indice].descrizione;
     prodottoId.value = arrayProdotti[indice].nome;
 }
 

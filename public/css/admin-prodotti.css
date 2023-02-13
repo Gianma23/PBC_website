@@ -15,3 +15,23 @@
     margin-top: var(--lineheight);
     gap: 5px;
 }
+
+.card-prodotto h3 {
+    font-size: var(--fs-700);
+    font-weight: var(--fw-semibold);
+    text-align: center;
+    margin-top: var(--lineheight-2);
+}
+
+@media screen and (min-width: 55em) {
+    .card-prodotto {
+        margin: 0 auto;
+        width: var(--column-width-8);
+    }
+}
+
+@media screen and (min-width: 80em) {
+    .card-prodotto {
+        width: var(--column-width-6);
+    }
+}

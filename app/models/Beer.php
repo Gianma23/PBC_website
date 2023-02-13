@@ -31,6 +31,19 @@ class Beer extends Product implements JsonSerializable
         return $stmt->execute();
     }
 
+    public static function updateBeer($pdo, $productId, $style, $aroma, $flavor)
+    {
+        $sql = "UPDATE beer
+                SET style = ?, aroma = ?, flavor = ?
+                WHERE product_id = ?;";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(1, $style);
+        $stmt->bindValue(2, $aroma);
+        $stmt->bindValue(3, $flavor);
+        $stmt->bindValue(4, $productId);
+        $stmt->execute();
+    }
+
     public static function findByName($pdo, $name)
     {
         $sql = "SELECT * 
@@ -48,6 +61,7 @@ class Beer extends Product implements JsonSerializable
     {
         return ["nome" => $this->nome,
                 "prezzo" => $this->prezzo,
+                "quantita" => $this->quantita,
                 "descrizione" => $this->descrizione,
                 "categoria" => $this->categoria,
                 "tagline" => $this->tagline,

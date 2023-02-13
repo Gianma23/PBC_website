@@ -26,7 +26,7 @@ $orderInfo = Order::findById($pdo, $order);
     <main>
         <div class="container">
             <h1 class="primary-heading"><a href="<?= URL_ROOT . '/' . $role?>-dashboard">Admin Panel</a></h1>
-            <h2 class="secondary-heading"><a href="<?= URL_ROOT . '/' . $role?>-ordini?page=">Gestisci ordini</a></h2>
+            <h2 class="secondary-heading"><a href="<?= URL_ROOT . '/' . $role?>-ordini?page=1&how-many=10">Gestisci ordini</a></h2>
 
             <div class="info-ordine">
                 <div class="info-ordine__bar">

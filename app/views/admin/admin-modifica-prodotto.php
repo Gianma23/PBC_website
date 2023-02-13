@@ -3,7 +3,7 @@
 if(($_SESSION['role'] != 'admin'))
     header('Location:' . URL_ROOT . '/home');
 
-$action = 'AGGIUNGI';
+$action = 'SALVA';
 ?>
 <!DOCTYPE html>
 <html lang="it">
@@ -22,7 +22,7 @@ $action = 'AGGIUNGI';
             <h1 class="primary-heading"><a href="<?= URL_ROOT?>/admin-dashboard">Admin Panel</a></h1>
             <h2 class="secondary-heading"><a href="<?= URL_ROOT?>/admin-prodotti">Gestisci prodotti</a></h2>
                 <article class="card-prodotto">
-                    <h3>Aggiungi prodotto</h3>
+                    <h3>Modifica prodotto</h3>
                     <div class="form--card">
                         <?php include __DIR__ . "/../utils/form-modifica-prodotto.php"; ?>
                     </div>

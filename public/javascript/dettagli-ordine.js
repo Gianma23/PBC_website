@@ -25,7 +25,7 @@ function creaTabellaOrdine(data) {
         divImg.classList.add('img-prodotto')
         const imgProdotto = document.createElement('img');
         imgProdotto.alt = prodotto['name'];
-        imgProdotto.src = prodotto['img_path'];
+        imgProdotto.src = '/' + baseUrl + prodotto['img_path'];
         const nomeProdotto = document.createElement('p');
         nomeProdotto.textContent = prodotto['name'];
         divImg.appendChild(imgProdotto)

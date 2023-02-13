@@ -37,7 +37,7 @@ function validateEmail(emailEl) {
     return valid;
 }
 
-const validateMessage = messageEl => {
+function validateMessage(messageEl) {
     if(messageEl == null)
         return true;
 
@@ -55,7 +55,7 @@ const validateMessage = messageEl => {
     return valid;
 }
 
-const validatePassword = passwordEl => {
+function validatePassword(passwordEl)  {
     if(passwordEl == null)
         return true;
 
@@ -73,7 +73,7 @@ const validatePassword = passwordEl => {
     return valid;
 }
 
-const validateConfirmPassword = (passwordEl, confirmPasswordEl) => {
+function validateConfirmPassword(passwordEl, confirmPasswordEl)  {
     if(passwordEl == null || confirmPasswordEl == null)
         return true;
 
@@ -92,7 +92,7 @@ const validateConfirmPassword = (passwordEl, confirmPasswordEl) => {
     return valid;
 }
 
-const validateTelephone = (telephoneEl) => {
+function validateTelephone(telephoneEl)  {
     if(telephoneEl == null)
         return true;
 
@@ -110,7 +110,7 @@ const validateTelephone = (telephoneEl) => {
     return valid;
 }
 
-const validateCap = (capEl) => {
+function validateCap(capEl)  {
     if(capEl == null)
         return true;
 
@@ -128,7 +128,7 @@ const validateCap = (capEl) => {
     return valid;
 }
 
-const validateRequired = (element) => {
+function validateRequired(element)  {
     if(element == null)
         return true;
 
@@ -143,7 +143,7 @@ const validateRequired = (element) => {
     return valid;
 }
 
-const validateLength = (element, length = 1000) => {
+function validateLength(element, length = 1000)  {
     if(element == null)
         return true;
 
@@ -159,7 +159,7 @@ const validateLength = (element, length = 1000) => {
     return valid;
 }
 
-const validateNatural = (element) => {
+function validateNatural(element)  {
     if(element == null)
         return true;
 
@@ -177,7 +177,7 @@ const validateNatural = (element) => {
     return valid;
 }
 
-const validateImage = (imageEl) => {
+function validateImage(imageEl) {
     if(imageEl == null)
         return true;
 
@@ -203,7 +203,7 @@ function isTextValid(text) {
 }
 
 function isEmailValid(email) {
-    const re = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    const re = /^((?!\.)[\w.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/;
     return re.test(email);
 }
 
@@ -224,7 +224,7 @@ function isCapValid(cap) {
 
 /* Mostra messaggi */
 
-const showError = (input, message) => {
+function showError(input, message)  {
 
     const formField = input.parentElement;
 
@@ -234,9 +234,9 @@ const showError = (input, message) => {
     // show the error
     const error = formField.querySelector('small');
     error.textContent = message;
-};
+}
 
-const showSuccess = (input) => {
+function showSuccess(input)  {
 
     const formField = input.parentElement;
 

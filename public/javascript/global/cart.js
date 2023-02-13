@@ -106,7 +106,7 @@ function creaCarrelloLaterale(data) {
 
         const div = document.createElement('div');
         const imgProdotto = document.createElement('img');
-        imgProdotto.src = prodotto['img_path'];
+        imgProdotto.src = '/' + baseUrl + prodotto['img_path'];
         imgProdotto.alt = prodotto['name'];
         div.appendChild(imgProdotto);
         li.appendChild(div);
@@ -173,7 +173,7 @@ function creaCarrelloPagina(data) {
         divImg.classList.add('img-prodotto')
         const imgProdotto = document.createElement('img');
         imgProdotto.alt = prodotto['name'];
-        imgProdotto.src = prodotto['img_path'];
+        imgProdotto.src = '/' + baseUrl + prodotto['img_path'];
         const nomeProdotto = document.createElement('p');
         nomeProdotto.textContent = prodotto['name'];
         divImg.appendChild(imgProdotto)

@@ -6,10 +6,11 @@ include_once(ROOT_PATH . "/app/models/Cart.php");
 include_once(ROOT_PATH . "/app/models/Product.php");
 include_once(ROOT_PATH . "/app/models/Order.php");
 include_once(ROOT_PATH . "/app/models/OrderItem.php");
-use Ecommerce\Render;
+include_once(ROOT_PATH . "/core/Validator.php");
+
+use Ecommerce\Validator;
 use Models\Address;
 use Models\Cart;
-use Models\CartItem;
 use Models\Order;
 use Models\OrderItem;
 use Models\Product;
@@ -39,10 +40,10 @@ class OrderController
 
         if ($_SERVER["REQUEST_METHOD"] == "POST")
         {
-            if ($this->validateInputs()/*TODO: validare*/)
+            if ($this->validateInputs($account, $email))
+            {
                 $this->effettuaOrdine($account, $email);
-            else
-                echo json_encode(array('success' => false, 'text' => 'inputs non validi.'));
+            }
         }
     }
 
@@ -95,7 +96,9 @@ class OrderController
             foreach($items as $item)
                 $items[ $item["product_id"] ] = $item["quantity"];
 
-        //TODO: controllo account ordine e account richiedente
+        // controllo che account ordine e account richiedente combacino
+        if (Order::findById($pdo, $order_id)['account_id'] != $_SESSION['account_id'] && $_SESSION['role'] != 'admin')
+            echo '{}';
 
         // invio gli ordini in json
         $this->loadOrderItemsJson($pdo, $items);
@@ -194,9 +197,48 @@ class OrderController
         unset($_SESSION['cart']);
     }
 
-    private function validateInputs()
+    private function validateInputs($account, $email)
     {
-        return true;
+        if (isset($_POST['nome']) && isset($_POST['cognome']) && isset($_POST['indirizzo']) && isset($_POST['provincia']) && isset($_POST['citta']) &&
+            isset($_POST['cap']) && isset($_POST['telefono']) && isset($_POST['note']) && isset($_POST['pagamento']) && isset($_POST['totale-spedizione']) && isset($_POST['totale']))
+        {
+            if($account != null)
+            {
+                $emailValid = Validator::validateEmail($account) && Validator::validateLength($account, 100);
+            }
+            else
+            {
+                $emailValid = Validator::validateEmail($email) && Validator::validateLength($email, 100);
+            }
+            $nomeValid = Validator::validateText($_POST['nome']) && Validator::validateLength($_POST['nome'], 50);
+            $cognomeValid = Validator::validateText($_POST['cognome']) && Validator::validateLength($_POST['cognome'], 50);
+            $telValid = Validator::validateTelephone($_POST['telefono']);
+            $cittaValid = Validator::validateText($_POST['citta']) && Validator::validateLength($_POST['citta'], 50);
+            $capValid = Validator::validateCap($_POST['cap']);
+            $pagamentoValid = in_array($_POST['pagamento'], ['carta', 'bonifico']);
+            $spedizioneValid =  Validator::validateNatural($_POST['totale-spedizione']);
+            $totaleValid = Validator::validateNatural($_POST['totale']);
+
+            // controllo provincia
+            $provinceJson =  file_get_contents(ROOT_PATH . '/core/utils/province.json');
+            $province = json_decode($provinceJson, true);
+            $provinceValid = false;
+            foreach($province as $provincia)
+            {
+                if($provincia['nome'] == $_POST['provincia'])
+                {
+                    $provinceValid = true;
+                    break;
+                }
+            }
+
+            if($emailValid && $nomeValid && $cognomeValid && $telValid && $cittaValid &&
+                $capValid && $pagamentoValid && $totaleValid && $spedizioneValid && $provinceValid)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     private function loadOrdersJson($ordini, $count)

@@ -96,6 +96,22 @@ class Product implements JsonSerializable
         $stmt->execute();
     }
 
+    public static function update($pdo, $name, $desc, $quantity, $tagline, $price, $category, $imgPath)
+    {
+        $sql = "UPDATE product 
+                SET descr = ?, quantity = ?, tagline = ?, price = ?, category = ?, img_path = ?
+                WHERE name = ?;";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(1, $desc);
+        $stmt->bindValue(2, $quantity);
+        $stmt->bindValue(3, $tagline);
+        $stmt->bindValue(4, $price);
+        $stmt->bindValue(5, $category);
+        $stmt->bindValue(6, $imgPath);
+        $stmt->bindValue(7, $name);
+        $stmt->execute();
+    }
+
     public static function findBySubstringName($pdo, $name)
     {
         $sql = "SELECT * 
@@ -141,11 +157,21 @@ class Product implements JsonSerializable
     }
 
     public static function delete($pdo, $name) {
+        $sql = "SELECT * 
+                FROM product 
+                WHERE name = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(1, $name);
+        $stmt->execute();
+        $res = $stmt->fetch(\PDO::FETCH_ASSOC);
+
         $sql = "DELETE FROM product
                 WHERE name = ?";
         $stmt = $pdo->prepare($sql);
         $stmt->bindValue(1, $name);
-        return $stmt->execute();
+        $stmt->execute();
+
+        return $res;
     }
 
     /* Altre funzioni */
@@ -159,7 +185,7 @@ class Product implements JsonSerializable
             <p class="fw-medium fs-400">Prezzo: <?= $this->prezzo?>&euro;</p>
             <small class="fw-medium fs-400">Quantità: <?= $this->quantita?></small>
             <div class="button-container">
-                <button class="button button--edit" id="modifica">Modifica</button>
+                <a href="<?= URL_ROOT?>/admin-modifica-prodotto/<?= $this->nome?>" class="button button--edit" id="modifica">Modifica</a>
                 <button class="button button--remove elimina">Elimina</button>
             </div>
         </div>

@@ -1,15 +1,11 @@
 <?php
 namespace Controllers;
-require_once(ROOT_PATH . '/core/Router.php');
 include_once(ROOT_PATH . "/app/models/Account.php");
+include_once(ROOT_PATH . "/core/Validator.php");
 
-use Ecommerce\Render;
-use Ecommerce\Router;
+use Ecommerce\Validator;
 use Models\Account;
-use Models\Product;
-use Models\Beer;
 use PDO;
-use PDOException;
 
 class AuthController
 {
@@ -40,7 +36,6 @@ class AuthController
                 echo json_encode(array('success' => false, 'text' => 'Nessun account esistente con questa email!'));
             }
         }
-        else echo json_encode(array('success' => false, 'text' => 'Email e/o password non validi.'));
     }
 
     public function register()
@@ -69,7 +64,6 @@ class AuthController
                 $this->redirectToDashboard("user");
             }
         }
-        else echo json_encode(array('success' => false, 'text' => 'Email e/o password non validi.'));
     }
 
     public function logout()
@@ -92,8 +86,9 @@ class AuthController
     {
         if(isset($_POST["email"]) && isset($_POST["password"]))
         {
-            $isEmailValid = filter_var($_POST["email"], FILTER_VALIDATE_EMAIL);
-            $isPassValid =  preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/', $_POST["password"]);
+            $isEmailValid = Validator::validateEmail($_POST["email"]);
+            $isPassValid = Validator::validatePassword($_POST["password"]);
+
             if($isEmailValid && $isPassValid)
                 return true;
         }

@@ -257,7 +257,6 @@ header {
     .nav__right .button--tertiary {
         background-image: url("../../images/icons/user.png");
         background-size: cover;
-        aspect-ratio: 1;
         width: 35px;
         height: 35px;
         outline: none;

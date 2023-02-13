@@ -25,6 +25,7 @@ $router->addRoute('user-ordini', ['controller' => 'PageController', 'action' => 
 $router->addRoute('admin-dashboard', ['controller' => 'PageController', 'action' => 'adminDashboard']);
 $router->addRoute('admin-prodotti', ['controller' => 'PageController', 'action' => 'adminProdotti']);
 $router->addRoute('admin-aggiungi-prodotto', ['controller' => 'PageController', 'action' => 'adminAggiungiProdotto']);
+$router->addRoute('admin-modifica-prodotto/{nome:.+}', ['controller' => 'PageController', 'action' => 'adminModificaProdotto']);
 $router->addRoute('admin-ordini', ['controller' => 'PageController', 'action' => 'adminOrdini']);
 
 /* ======== SHOP CONTROLLER ======== */
@@ -58,5 +59,6 @@ $router->addRoute('invia-email', ['controller' => 'EmailController', 'action' =>
 
 /* ======== PRODUCT CONTROLLER ======== */
 
+$router->addRoute('admin/carica-prodotto/{nome:.+}', ['controller' => 'ProductController', 'action' => 'getProduct']);
 $router->addRoute('admin/aggiungi-prodotto', ['controller' => 'ProductController', 'action' => 'addProduct']);
 $router->addRoute('admin/elimina-prodotto/{product:.+}', ['controller' => 'ProductController', 'action' => 'removeProduct']);

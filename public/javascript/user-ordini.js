@@ -6,8 +6,11 @@ const currentPage = Number(new URLSearchParams(window.location.search).get('page
 fetch('ordine/carica-ordini' + window.location.search)
     .then((res) => res.json())
     .then((data) => {
-        creaTabellaOrdiniUser(data);
-        creaPaginazione(data);
+        if(JSON.stringify(data) !== JSON.stringify({})) {
+            console.log(data)
+            creaTabellaOrdiniUser(data);
+            creaPaginazione(data);
+        }
     });
 
 /* FUNZIONI DI UTILITA */

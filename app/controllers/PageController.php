@@ -84,6 +84,11 @@ class PageController
         Render::view('admin/admin-aggiungi-prodotto');
     }
 
+    public function adminModificaProdotto()
+    {
+        Render::view('admin/admin-modifica-prodotto');
+    }
+
     public function adminOrdini()
     {
         Render::view('admin/admin-ordini');

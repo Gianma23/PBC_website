@@ -1,11 +1,9 @@
 <?php
 namespace Controllers;
+include_once(ROOT_PATH . "/core/Validator.php");
 
-use Ecommerce\Render;
-use Models\Product;
-use Models\Beer;
+use Ecommerce\Validator;
 use PDO;
-use PDOException;
 
 class EmailController
 {
@@ -20,7 +18,11 @@ class EmailController
             return;
         }
 
-        $this->validateInputs();
+        if(!Validator::validateEmail($email))
+        {
+            echo json_encode(array('success' => false, 'text' => 'Email non valida.'));
+            return;
+        }
 
         $pdo = new PDO(CONNECTION, USER, PASSWORD);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -75,6 +77,14 @@ class EmailController
     //TODO validazione
     private function validateInputs()
     {
+        if(isset($_POST['messaggio']) && isset($_POST['nome-cognome']))
+        {
+            $messaggioValid = Validator::validateMessage($_POST['messaggio']) && Validator::validateLength($_POST['messaggio'], 200);
+            $nomeCognomeValid = Validator::validateText($_POST['nome-cognome']);
 
+            if($messaggioValid && $nomeCognomeValid)
+                return true;
+        }
+        return false;
     }
 }

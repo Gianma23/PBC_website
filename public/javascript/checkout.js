@@ -13,6 +13,7 @@ const telefonoEl = checkoutForm.querySelector('[name = telefono]');
 const indirizzoEl = checkoutForm.querySelector('[name = indirizzo]');
 const cittaEl = checkoutForm.querySelector('[name = citta]');
 const capEl = checkoutForm.querySelector('[name = cap]');
+const noteEl = checkoutForm.querySelector('[name = note]');
 
 /* Aggiornamento totale ordine */
 provinciaSelect.oninput = function(e) {
@@ -54,8 +55,9 @@ checkoutForm.addEventListener('submit', (e) => {
     const indirizzoValid= validateRequired(indirizzoEl);
     const cittaValid= validateText(cittaEl) && validateLength(cittaEl, 50);
     const capValid= validateCap(capEl);
+    const noteValid= validateRequired(noteEl);
 
-    const isFormValid = emailValid && nomeValid && cognomeValid && telValid && indirizzoValid && cittaValid && capValid;
+    const isFormValid = emailValid && nomeValid && cognomeValid && telValid && indirizzoValid && cittaValid && capValid && noteValid;
 
     if(isFormValid) {
         fetch('ordine/aggiungi', {
@@ -98,6 +100,9 @@ checkoutForm.addEventListener("blur", e => {
             break;
         case 'cap':
             validateCap(capEl);
+            break;
+        case 'note':
+            validateRequired(noteEl);
             break;
     }
 }, true);
