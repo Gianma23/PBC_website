@@ -135,7 +135,7 @@ for(let elimina of eliminaButtons) {
     elimina.onclick = function() {
 
         const prodottoCard = elimina.parentNode.parentNode;
-        const nomeProdotto = prodottoCard.querySelector('#nome-prodotto').textContent;
+        const nomeProdotto = prodottoCard.querySelector('.nome-prodotto')[0].textContent;
 
         fetch('admin/elimina-prodotto/' + nomeProdotto)
             .then((res) => res.text())

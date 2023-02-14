@@ -181,11 +181,11 @@ class Product implements JsonSerializable
     ?>
         <div class="product-card">
             <img src="<?=URL_ROOT . $this->imgPath?>" alt="immagine prodotto">
-            <h3 class="fw-medium fs-500" id="nome-prodotto"><?= $this->nome?></h3>
+            <h3 class="fw-medium fs-500 nome-prodotto"><?= $this->nome?></h3>
             <p class="fw-medium fs-400">Prezzo: <?= $this->prezzo?>&euro;</p>
             <small class="fw-medium fs-400">Quantità: <?= $this->quantita?></small>
             <div class="button-container">
-                <a href="<?= URL_ROOT?>/admin-modifica-prodotto/<?= $this->nome?>" class="button button--edit" id="modifica">Modifica</a>
+                <a href="<?= URL_ROOT?>/admin-modifica-prodotto/<?= str_replace(' ', '%20', $this->nome)?>" class="button button--edit">Modifica</a>
                 <button class="button button--remove elimina">Elimina</button>
             </div>
         </div>

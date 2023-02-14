@@ -29,7 +29,7 @@
         </p>
         <p class="form-elem">
             <label for="categoria">Categoria:</label><br>
-            <select id="categoria" name="categoria" required>
+            <select id="categoria" name="categoria">
                 <option value="birra">Birra</option>
                 <option value="merchandising">Merchandising</option>
                 <option value="altro">Altro</option>

@@ -48,7 +48,6 @@ body {
     display: flex;
     justify-content: center;
     width: 100%;
-    margin-top: var(--lineheight-3);
     align-items: baseline;
     gap: var(--gutter);
     transition: all 0.5s;
@@ -105,7 +104,7 @@ body {
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 33% auto;
         column-gap: var(--gutter);
-        padding-top: 0;
+        padding-top: var(--lineheight);
         height: calc(100vh - var(--lineheight-6));
     }
 

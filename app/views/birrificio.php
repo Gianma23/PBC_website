@@ -51,7 +51,7 @@
                                     e salumi selezionati – o in alternativa solo salumi/formaggi – in più una visita guidata
                                     completa del birrificio con spiegazione del processo produttivo. <strong>Durata: circa 45 minuti.</strong></p>
                                 <form class="form-add">
-                                    <input type="hidden" class="prodotto-id" value="degustazione e visita">
+                                    <input type="hidden" class="prodotto-id" value="Degustazione e Visita">
                                     <button type="button" class="button button--shop button--hero">
                                         <span class="button-image"></span>
                                         AGGIUNGI
@@ -72,7 +72,7 @@
                                     Degustazione di 4 birre da 0.28 cL l’una, in abbinamento al nostro tagliere di
                                     formaggi e salumi selezionati (in alternativa solo salumi oppure formaggi).</p>
                                 <form class="form-add">
-                                    <input type="hidden" class="prodotto-id" value="degustazione">
+                                    <input type="hidden" class="prodotto-id" value="Degustazione">
                                     <button type="button" class="button button--shop button--hero">
                                         <span class="button-image"></span>
                                         AGGIUNGI

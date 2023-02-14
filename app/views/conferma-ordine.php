@@ -19,29 +19,7 @@
     <main>
         <div class="container center">
             <h1 class="primary-heading">Grazie per il tuo ordine!</h1>
-            <div class="cards-container">
-                <article class="card">
-                    <h2>Già registrato?</h2>
-                    <div class="form--card">
-                        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
-                            <input type='hidden' name='action' value='login'>
-                            <p class="form-elem">
-                                <label for="email">Email:</label><br>
-                                <input type="email" id="email" placeholder="esempio@email.com" name="email">
-                                <small class="error"></small>
-                            </p>
-                            <p class="form-elem">
-                                <label for="password">Password:</label><br>
-                                <input type="password" id="password" name="password">
-                                <small class="error"></small>
-                            </p>
-                            <p class="form-elem">
-                                <button type="submit" class="button">ACCEDI</button>
-                            </p>
-                        </form>
-                    </div>
-                </article>
-            </div>
+            <p class="fw-medium fs-600">Riceverai una email di conferma del tuo ordine a breve.</p>
         </div>
     </main>
 

@@ -57,15 +57,14 @@
                         <div class="form-3col">
                             <p class="form-elem">
                                 <label for="provincia">Provincia*:</label>
-                                <select id="provincia" name="provincia" required>
-                                    <option>Livorno</option>
-
+                                <select id="provincia" name="provincia">
                                 <?php
                                     $provinceJson =  file_get_contents(ROOT_PATH . '/core/utils/province.json');
                                     $province = json_decode($provinceJson, true);
                                     foreach($province as $provincia)
                                     {?>
-                                        <option data-region="<?= $provincia['regione']?>"><?= $provincia['nome']?></option>
+                                        <option data-region="<?= $provincia['regione']?>" <?php if($provincia['nome'] == 'Livorno') echo 'selected'?>>
+                                            <?= $provincia['nome']?></option>
                                     <?php }
                                 ?>
 

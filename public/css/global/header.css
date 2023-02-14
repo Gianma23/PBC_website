@@ -277,15 +277,15 @@ header {
 
 /*TODO: change this */
 .shopping-cart-slide {
-    height: 100%; /* 100% Full-height */
-    width: calc(var(--column-width-4) + var(--margin));
+    height: 100%;
+    width: fit-content;
     max-width: 550px;
     min-width: 390px;
     position: fixed;
     top: 0;
     right: -2000px;
-    background-color: var(--clr-neutral-100); /* Black*/
-    overflow-x: hidden; /* Disable horizontal scroll */
+    background-color: var(--clr-neutral-100);
+    overflow-x: hidden;
     padding: 2em;
     transition: all 0.5s;
     z-index: 100;
@@ -311,7 +311,6 @@ header {
     min-width: 250px;
 }
 
-/* Position and style the close button (top right corner) */
 .shopping-cart-slide .closebtn {
     position: absolute;
     top: var(--lineheight);
@@ -334,7 +333,6 @@ header {
 
 @media screen and (min-width: 60em) {
     .shopping-cart-slide {
-        width: calc(var(--column-width-3) + var(--margin));
         padding: 2em 5em 2em 3em;
     }
 
@@ -376,8 +374,14 @@ header {
     margin-top: var(--lineheight);
 }
 
-.prodotto *:first-child {
+.prodotto div:first-child {
+    width: 96px;
+    height: 96px;
+}
+
+.prodotto div:first-child img {
     height: 100%;
+    margin: 0 auto;
 }
 
 .remove-prodotto {

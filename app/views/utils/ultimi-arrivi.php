@@ -29,7 +29,7 @@ try
             <small class="<?= $disponibileText?>"><?= $disponibileText?></small>
             <form>
                 <input type="hidden" class="prodotto-id" value="<?= $prodotto->getNome()?>">
-                <button type="button" class="button button--shop" id="<?= $prodotto->getNome()?>" <?php if($disponibileText == 'esaurito') echo 'disabled'?>>
+                <button type="button" class="button button--shop" <?php if($disponibileText == 'esaurito') echo 'disabled'?>>
                     <span class="button-image"></span>
                     AGGIUNGI
                 </button>

@@ -7,7 +7,6 @@ fetch('ordine/carica-ordini' + window.location.search)
     .then((res) => res.json())
     .then((data) => {
         if(JSON.stringify(data) !== JSON.stringify({})) {
-            console.log(data)
             creaTabellaOrdiniUser(data);
             creaPaginazione(data);
         }

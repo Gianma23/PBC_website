@@ -220,6 +220,7 @@ h1 {
     top: 0;
     left: 0;
     width: 150%;
+    aspect-ratio: 1 / 1;
     background-color: var(--clr-neutral-800);
     border-radius: 50%;
     transform: translate(-15%, -35%) scale(0.1);

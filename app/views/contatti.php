@@ -72,7 +72,7 @@
                                 <small class="error"></small>
                             </p>
                             <p class="form-elem">
-                                <small class="error" id="email-text"></small>
+                                <small class="error email-text"></small>
                                 <button type="submit" class="button button--secondary">INVIA EMAIL</button>
                             </p>
                         </form>
@@ -99,7 +99,7 @@
                                 <small class="error"></small>
                             </p>
                             <p class="form-elem">
-                                <small class="error" id="email-text"></small>
+                                <small class="error email-text"></small>
                                 <button type="submit" class="button">INVIA EMAIL</button>
                             </p>
                         </form>

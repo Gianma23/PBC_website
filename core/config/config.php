@@ -8,6 +8,6 @@ const WEB_PATH = '/' . ROOT_DIR . '/public';
 const URL_ROOT = 'http://localhost/' . ROOT_DIR;
 
 // Database
-const CONNECTION = "mysql:host=localhost:3307;dbname=saggini_615710";
+const CONNECTION = "mysql:host=localhost:3306;dbname=saggini_615710";
 const USER = "root";
 const PASSWORD = "";

@@ -11,7 +11,6 @@ $action = 'AGGIUNGI';
     <?php include __DIR__ . "/../include/head.php"; ?>
     <link rel="stylesheet" href="<?= WEB_PATH?>/css/admin-prodotti.css">
     <link rel="stylesheet" href="<?= WEB_PATH?>/css/dashboard.css">
-    <title>Dashboard - Piccolo Birrificio Clandestino</title>
 </head>
 <body>
 

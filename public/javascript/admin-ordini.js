@@ -50,7 +50,6 @@ function creaTabellaOrdiniAdmin(data) {
         // cella stato
         const statoCell = document.createElement('td');
         const select = document.createElement('select');
-        console.log(ordine['status'])
         statoCell.appendChild(select);
 
         const optionElaborazione = document.createElement('option');

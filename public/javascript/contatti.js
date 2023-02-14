@@ -23,7 +23,7 @@ for(let emailForm of emailForms) {
             })
                 .then(res => res.json())
                 .then(data => {
-                    const text = emailForm.querySelector('#email-text');
+                    const text = emailForm.querySelector('.email-text');
                     text.textContent = data['text'];
                     if(data['success']) {
                         text.classList.remove('error');
