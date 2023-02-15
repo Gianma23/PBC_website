@@ -55,7 +55,7 @@
                         <ul>
                             <li class="footer-nav__list__item"><a href="<?= URL_ROOT?>/login">Accedi o Registrati</a></li>
                             <li class="footer-nav__list__item"><a href="<?= URL_ROOT?>/user-dashboard">Dettagli Account</a></li>
-                            <li class="footer-nav__list__item"><a href="<?= URL_ROOT?>/user-ordini">I tuoi ordini</a></li>
+                            <li class="footer-nav__list__item"><a href="<?= URL_ROOT?>/user-ordini?page=1&how-many=10">I tuoi ordini</a></li>
                         </ul>
                     </li>
                     <li class="footer-nav__list">Contatti

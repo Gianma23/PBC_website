@@ -275,10 +275,8 @@ header {
 
 /* CARRELLO */
 
-/*TODO: change this */
 .shopping-cart-slide {
     height: 100%;
-    width: fit-content;
     max-width: 550px;
     min-width: 390px;
     position: fixed;

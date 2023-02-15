@@ -411,7 +411,7 @@ form .form-elem:not(.form-elem .button){
 }
 
 .form-add {
-    width: fit-content;
+    max-width: max-content;
 }
 
 label {

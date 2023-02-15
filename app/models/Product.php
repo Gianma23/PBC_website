@@ -196,6 +196,7 @@ class Product implements JsonSerializable
     {
         return ["nome" => $this->nome,
                 "prezzo" => $this->prezzo,
+                "quantita" => $this->quantita,
                 "descrizione" => $this->descrizione,
                 "categoria" => $this->categoria,
                 "tagline" => $this->tagline,

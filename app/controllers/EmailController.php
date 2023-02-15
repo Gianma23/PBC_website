@@ -77,12 +77,13 @@ class EmailController
     //TODO validazione
     private function validateInputs()
     {
-        if(isset($_POST['messaggio']) && isset($_POST['nome-cognome']))
+        if(isset($_POST['messaggio']) && isset($_POST['nome-cognome']) && isset($_POST['email']))
         {
             $messaggioValid = Validator::validateMessage($_POST['messaggio']) && Validator::validateLength($_POST['messaggio'], 200);
             $nomeCognomeValid = Validator::validateText($_POST['nome-cognome']);
+            $emailValid = Validator::validateEmail($_POST['email']);
 
-            if($messaggioValid && $nomeCognomeValid)
+            if($messaggioValid && $nomeCognomeValid && $emailValid)
                 return true;
         }
         return false;

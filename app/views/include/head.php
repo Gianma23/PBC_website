@@ -1,13 +1,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="lorem ipsum">
+<meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'">
+
 <!-- lista favicon con RealFaviconGenerator.net -->
 <link rel="apple-touch-icon" sizes="180x180" href="<?= WEB_PATH?>/images/favicon/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="<?= WEB_PATH?>/images/favicon/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="<?= WEB_PATH?>/images/favicon/favicon-16x16.png">
-<link rel="mask-icon" href="<?= WEB_PATH?>/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
-<meta name="msapplication-config" content="<?= WEB_PATH?>/images/favicon/browserconfig.xml">
-<meta name="theme-color" content="#ffffff">
 
 <!-- Google APIS per fonts-->
 <link rel="preconnect" href="https://fonts.googleapis.com">

@@ -67,14 +67,16 @@ class ProductController
                 }
                 else if($action == 'SALVA')
                 {
+                    // rimuovo vecchia foto
+                    $updatingProduct = Product::findByName($pdo, $nome);
+                    unlink(ROOT_PATH . $updatingProduct['img_path']);
+
+                    // aggiungo nuova foto
                     if(!move_uploaded_file($_FILES["image"]["tmp_name"], $target_file))
                     {
                         echo json_encode(array('success' => false, 'text' => 'Errore nel caricamento dell\'immagine.'));
                         return;
                     }
-                    // rimuovo vecchia foto
-                    $updatingProduct = Product::findByName($pdo, $nome);
-                    unlink(ROOT_PATH . $updatingProduct['img_path']);
 
                     // aggiorno il prodotto
                     Product::update($pdo, $nome, $desc, $quantita, $tagline, $prezzo, $categoria, $imgPath);

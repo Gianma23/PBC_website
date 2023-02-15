@@ -1,7 +1,8 @@
 class Prodotto {
-    constructor(nome, prezzo, descrizione, categoria, tagline, image) {
+    constructor(nome, prezzo, descrizione, categoria, quantita, tagline, image) {
         this.nome = nome;
         this.prezzo = prezzo;
+        this.quantita = quantita;
         this.descrizione = descrizione;
         this.categoria = categoria;
         this.tagline = tagline;
@@ -10,8 +11,8 @@ class Prodotto {
 }
 
 class Birra extends Prodotto {
-    constructor(nome, prezzo, descrizione, categoria, tagline, image, stile, aroma, gusto) {
-        super(nome, prezzo, descrizione, categoria, tagline, image);
+    constructor(nome, prezzo, descrizione, categoria, quantita, tagline, image, stile, aroma, gusto) {
+        super(nome, prezzo, descrizione, categoria, quantita, tagline, image);
         this.stile = stile;
         this.aroma = aroma;
         this.gusto = gusto;
@@ -100,10 +101,10 @@ function riempiScaffale(data) {
         vuoto = false;
         const prod = JSON.parse(prodottoString);
         if (prod.categoria === 'birra')
-            arrayProdotti.push(new Birra(prod.nome, prod.prezzo, prod.descrizione, prod.categoria, prod.tagline,
+            arrayProdotti.push(new Birra(prod.nome, prod.prezzo, prod.descrizione, prod.categoria, prod.quantita, prod.tagline,
                 prod.imgPath, prod.stile, prod.aroma, prod.gusto));
         else
-            arrayProdotti.push(new Prodotto(prod.nome, prod.prezzo, prod.descrizione, prod.categoria, prod.tagline, prod.imgPath));
+            arrayProdotti.push(new Prodotto(prod.nome, prod.prezzo, prod.descrizione, prod.categoria, prod.quantita, prod.tagline, prod.imgPath));
     }
 
     // guardo se non ci sono prodotti
@@ -111,9 +112,7 @@ function riempiScaffale(data) {
         messaggioScaffaleVuoto();
         return;
     }
-
     indice = Math.trunc(arrayProdotti.length / 2);
-
     creaPagina();
 }
 
@@ -162,6 +161,8 @@ function riempiInfoProdotto() {
     taglineProdotto.textContent = arrayProdotti[indice].tagline;
     descProdotto.textContent = arrayProdotti[indice].descrizione;
     prodottoId.value = arrayProdotti[indice].nome;
+
+    prodottoId.nextElementSibling.disabled = Number(arrayProdotti[indice].quantita) === 0;
 }
 
 function toggleInfoBirra() {

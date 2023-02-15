@@ -42,7 +42,7 @@ if(prodottoForm) {
             })
     }
 
-    /* ======= PULSANTE AGGIUNTA PRODOTTO ======= */
+    /* ======= PULSANTE AGGIUNTA/MODIFICA PRODOTTO ======= */
 
     prodottoForm.addEventListener('submit', e => {
         e.preventDefault();
@@ -64,7 +64,7 @@ if(prodottoForm) {
         }
 
         if(isFormValid) {
-            fetch('admin/aggiungi-prodotto', {
+            fetch('/' + baseUrl + '/admin/aggiungi-prodotto', {
                 method: 'POST',
                 body: new FormData(prodottoForm),
             })

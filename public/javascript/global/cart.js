@@ -72,9 +72,7 @@ function rimuoviHandler(e) {
     const nomeBirra = e.currentTarget.id;
 
     fetch('/' + baseUrl + '/carrello/rimuovi/' + nomeBirra)
-        .then((dres) => dres.text())
-        .then((text) => {
-            console.log(text)
+        .then(() => {
             fetch('/' + baseUrl + '/carica-carrello')
                 .then((res) => res.json())
                 .then((data) => {

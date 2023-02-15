@@ -24,7 +24,7 @@
 
 .cards-ordine .card {
     width: 100%;
-    height: fit-content;
+    max-height: min-content;
 }
 
 .cards-ordine .card h4{

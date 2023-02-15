@@ -43,7 +43,7 @@
                         <li class="contatti__item">
                             <h2>Dove siamo</h2>
                             <img src="<?= WEB_PATH?>/images/icons/dove_siamo.svg" alt="">
-                            <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2892.0692301506583!2d10.333298951611132!3d43.542598767490134!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12d5ebedea14991d%3A0x5143657c42abe11e!2sPiccolo%20Birrificio%20Clandestino!5e0!3m2!1sit!2sit!4v1664006135201!5m2!1sit!2sit"
+                            <iframe class="map" src="https://maps.googleapis.com/maps/embed?pb=!1m18!1m12!1m3!1d2892.0692301506583!2d10.333298951611132!3d43.542598767490134!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12d5ebedea14991d%3A0x5143657c42abe11e!2sPiccolo%20Birrificio%20Clandestino!5e0!3m2!1sit!2sit!4v1664006135201!5m2!1sit!2sit"
                                     allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </li>
                     </ul>
