@@ -22,8 +22,10 @@ class AuthController
 
             $account = Account::findByEmail($pdo, $email);
 
-            if ($account) {
-                if (password_verify($password, $account["password"])) {
+            if ($account)
+            {
+                if (password_verify($password, $account["password"]))
+                {
                     session_regenerate_id();
                     $_SESSION["role"] = $account["role"];
                     $_SESSION["account_id"] = $account["email"];

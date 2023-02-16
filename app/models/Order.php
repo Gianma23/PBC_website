@@ -92,6 +92,8 @@ class Order implements JsonSerializable
         $this->total = $total;
     }
 
+    /* ============= CRUD OPERATIONS ============= */
+
     public static function add($pdo, $accountId, $email, $shippingAddressId, $paymentType, $shipmentTotal, $total)
     {
         $sql = "INSERT INTO `order` (account_id, email, shipping_address_id, payment_type, shipment_total, total)
@@ -106,14 +108,6 @@ class Order implements JsonSerializable
         $stmt->execute();
 
         return $pdo->lastInsertId();
-    }
-
-    public static function findAll($pdo)
-    {
-        $sql = "SELECT *
-                FROM `order`";
-        $result = $pdo->query($sql);
-        return $result->fetchAll(\PDO::FETCH_ASSOC);
     }
 
     public static function findById($pdo, $id)

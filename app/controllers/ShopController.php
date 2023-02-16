@@ -3,11 +3,9 @@ namespace Controllers;
 require_once(ROOT_PATH . '/app/models/Product.php');
 require_once(ROOT_PATH . '/app/models/Beer.php');
 
-use Ecommerce\Render;
 use Models\Product;
 use Models\Beer;
 use PDO;
-use PDOException;
 
 class ShopController
 {
@@ -44,7 +42,8 @@ class ShopController
     private function loadProductJson($pdo, $prodotti): void
     {
         $arrayProdotti = [];
-        foreach($prodotti as $prodotto) {
+        foreach($prodotti as $prodotto)
+        {
             if($prodotto['category'] == 'birra')
             {
                 $beer = Beer::findByName($pdo, $prodotto['name']);

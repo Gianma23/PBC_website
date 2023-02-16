@@ -19,6 +19,8 @@ class Beer extends Product implements JsonSerializable
         $this->gusto = $record['flavor'];
     }
 
+    /* ============= CRUD OPERATIONS ============= */
+
     public static function addBeer($pdo, $productId, $style, $aroma, $flavor)
     {
         $sql = "INSERT INTO beer (product_id, style, aroma, flavor)

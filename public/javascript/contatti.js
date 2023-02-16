@@ -1,5 +1,5 @@
-const emailForms = document.getElementsByClassName('email-form');
 
+const emailForms = document.getElementsByClassName('email-form');
 
 for(let emailForm of emailForms) {
 

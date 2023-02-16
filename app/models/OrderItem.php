@@ -16,37 +16,31 @@ class OrderItem
         $this->pezzi = $pezzi;
     }
 
-    public function getOrderId()
-    {
+    public function getOrderId(){
         return $this->orderId;
     }
 
-    public function setOrderId($orderId)
-    {
+    public function setOrderId($orderId){
         $this->orderId = $orderId;
     }
 
-    public function getPezzi()
-    {
+    public function getPezzi(){
         return $this->pezzi;
     }
 
-    public function setPezzi($pezzi)
-    {
+    public function setPezzi($pezzi){
         $this->pezzi = $pezzi;
     }
 
-    public function getProductId()
-    {
+    public function getProductId(){
         return $this->productId;
     }
 
-    public function setProductId($productId)
-    {
+    public function setProductId($productId){
         $this->productId = $productId;
     }
 
-    /* CRUD OPERATIONS */
+    /* ============= CRUD OPERATIONS ============= */
 
     public static function add($pdo, $orderId, $productId, $quantity)
     {

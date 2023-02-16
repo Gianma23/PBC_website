@@ -1,6 +1,5 @@
 <?php
 namespace Models;
-use JsonSerializable;
 
 include_once __DIR__ . "/Product.php";
 
@@ -17,38 +16,31 @@ class CartItem
         $this->pezzi = $pezzi;
     }
 
-    public function getCartId()
-    {
+    public function getCartId(){
         return $this->cartId;
     }
 
-    public function setCartId($cartId)
-    {
+    public function setCartId($cartId){
         $this->cartId = $cartId;
     }
 
-    public function getPezzi()
-    {
+    public function getPezzi(){
         return $this->pezzi;
     }
 
-    public function setPezzi($pezzi)
-    {
+    public function setPezzi($pezzi){
         $this->pezzi = $pezzi;
     }
 
-    public function getProductId()
-    {
+    public function getProductId(){
         return $this->productId;
     }
 
-    public function setProductId($productId)
-    {
+    public function setProductId($productId){
         $this->productId = $productId;
     }
 
-
-    /* CRUD OPERATIONS */
+    /* ============= CRUD OPERATIONS ============= */
 
     public static function add($pdo, $cart)
     {

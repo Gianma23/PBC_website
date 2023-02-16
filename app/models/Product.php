@@ -79,7 +79,7 @@ class Product implements JsonSerializable
         $this->imgPath =$imgPath;
     }
 
-    /* CRUD OPERATIONS */
+    /* ============= CRUD OPERATIONS ============= */
 
     public static function add($pdo, $name, $desc, $quantity, $tagline, $price, $category, $imgPath)
     {

@@ -1,6 +1,5 @@
 <?php
 
-
 define('ROOT_PATH', dirname(__FILE__,3));
 define('ROOT_DIR', explode( '/', parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH))[1]);
 

@@ -82,7 +82,8 @@ class Validator
         }
     }
 
-    public static function validateNatural($number)  {
+    public static function validateNatural($number)
+    {
         if($number < 0)
         {
             self::showError('Inserire un numero positivo.');
@@ -92,12 +93,14 @@ class Validator
         }
     }
 
-    public static function validateImage($image)  {
+    public static function validateImage($image)
+    {
         $allowed = array('gif', 'png', 'jpg');
         $filename = $image['name'];
         $ext = pathinfo($filename, PATHINFO_EXTENSION);
 
-        if(!in_array($ext, $allowed)) {
+        if(!in_array($ext, $allowed))
+        {
             self::showError('Inserire il file di un\'immagine.');
             exit();
         } else {
@@ -107,34 +110,40 @@ class Validator
 
     /* Funzioni booleane di utilità */
 
-    private static function isTextValid($text) {
+    private static function isTextValid($text)
+    {
         $re = '/([a-z]+)(\s*)+/';
         return preg_match($re, $text);
     }
 
-    private static function isEmailValid($email) {
+    private static function isEmailValid($email)
+    {
         $re = '/^((?!\.)[\w.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/';
         return preg_match($re, $email);
     }
 
-    private static function isPasswordValid($password) {
+    private static function isPasswordValid($password)
+    {
         $re = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/';
         return preg_match($re, $password);
     }
 
-    private static function isTelephoneValid($telephone) {
+    private static function isTelephoneValid($telephone)
+    {
         $re = '/^(\((00|\+)39\)|(00|\+)39)?(38[890]|34[4-90]|36[680]|33[13-90]|32[89]|35[01]|37[019])(\s?\d{3}\s?\d{3,4}|\d{6,7})$/';
         return preg_match($re, $telephone);
     }
 
-    private static function isCapValid($cap) {
+    private static function isCapValid($cap)
+    {
         $re = '/^[0-9]{5}$/';
         return preg_match($re, $cap);
     }
 
     /* Mostra messaggio di errore */
 
-    private static function showError($message)  {
+    private static function showError($message)
+    {
         echo json_encode(array('success' => false, 'text' => $message));
     }
 }

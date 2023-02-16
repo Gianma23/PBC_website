@@ -180,7 +180,10 @@ function toggleInfoBirra() {
 
 function messaggioScaffaleVuoto() {
     const contenitore = document.getElementById('contenitore-prodotto');
-    contenitore.innerHTML = '';
+    // svuoto pagina
+    while (contenitore.firstChild) {
+        contenitore.firstChild.remove()
+    }
 
     const p = document.createElement('p');
     p.textContent = 'Nessun prodotto trovato!';

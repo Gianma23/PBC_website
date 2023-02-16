@@ -74,7 +74,6 @@ class EmailController
 
     /* ========================= FUNZIONI DI UTILITA ========================= */
 
-    //TODO validazione
     private function validateInputs()
     {
         if(isset($_POST['messaggio']) && isset($_POST['nome-cognome']) && isset($_POST['email']))

@@ -17,16 +17,12 @@ class Router
 
     public static function addRoute(string $route, array $params = []) : void
     {
-        // Escape forward slashes
         $route = preg_replace('/\//', '\\/', $route);
 
-        // Convert variables e.g. {controller}
-        $route = preg_replace('/\{([a-z0-9]+)\}/', '(?P<\1>[a-z0-9-]+)', $route);
-
-        // Convert variables with custom regular expressions e.g. {id:\d+} for numbers
+        // Converto le variabili {var:.+} in RegExp
         $route = preg_replace('/\{([a-z0-9]+):([^\}]+)\}/', '(?P<\1>\2)', $route);
 
-        // Add start and end delimeter
+        // aggiungo / /
         $route = '/^' . $route . '$/i';
 
         self::$routes[$route] = $params;
@@ -34,21 +30,22 @@ class Router
 
     private static function setParams(string $uri) : void
     {
-        // Store parameters for current 'controller' and 'action'
-        foreach (self::$routes as $route => $params) {
-
-            if (preg_match($route, $uri, $matches)) {
-
-                foreach ($matches as $key => $match) {
-
-                    if (is_string($key)) {
-                        if ($key === 'controller') {
+        // Metto in $parameters controller e azione
+        foreach (self::$routes as $route => $params)
+        {
+            if (preg_match($route, $uri, $matches))
+            {
+                foreach ($matches as $key => $match)
+                {
+                    if (is_string($key))
+                    {
+                        if ($key === 'controller')
+                        {
                             $match = ucwords($match);
                         }
                         $params[$key] = $match;
                     }
                 }
-
                 self::$parameters = $params;
             }
         }
@@ -67,19 +64,21 @@ class Router
 
             unset(self::$parameters['controller']);
 
-            if (is_callable([$controller, $action])) {
+            if (is_callable([$controller, $action]))
+            {
                 unset(self::$parameters['action']);
                 unset(self::$parameters['namespace']);
             }
             else
             {
-                die('Page not found.');
+                die('404 Page not found.');
             }
         }
         else
         {
            header('Location:' . URL_ROOT . '/home');
         }
+
         call_user_func_array([$controller, $action], [self::$parameters]);
     }
 }

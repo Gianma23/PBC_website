@@ -29,6 +29,8 @@ class Account
         $this->password = $password;
     }
 
+    /* ============= CRUD OPERATIONS ============= */
+
     public static function findByEmail($pdo, $email)
     {
         $sql = "SELECT * FROM account WHERE email=?;";

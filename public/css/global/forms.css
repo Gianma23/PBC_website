@@ -1,0 +1,106 @@
+
+/* ========================================== */
+/* =====              FORMS             ===== */
+/* ========================================== */
+
+form {
+    text-align: left;
+    font-size: var(--fs-300);
+}
+
+form .button {
+    width: 100%;
+}
+
+form .form-elem:not(.form-elem .button){
+    margin-top: 1em;
+}
+
+.form-add {
+    max-width: max-content;
+}
+
+label {
+    font-size: var(--fs-400);
+    font-weight: var(--fw-semibold);
+}
+
+input,
+textarea,
+select {
+    font-weight: var(--fw-regular);
+    border: 2px solid var(--clr-neutral-800);
+    border-radius: 6px;
+    background-color: var(--clr-neutral-100);
+    width: 100%;
+}
+
+input:not([type=checkbox]),
+select {
+    height: 2.5rem;
+}
+
+textarea {
+    height: var(--lineheight-7);
+    resize: none;
+}
+
+input[type=checkbox] {
+    width: 20px;
+    height: 100%;
+}
+
+input[type=checkbox] + label{
+    font-size: var(--fs-300);
+    font-weight: var(--fw-medium);
+}
+
+fieldset {
+    border: none;
+    margin-bottom: var(--lineheight);
+}
+
+legend {
+    font-size: var(--fs-600);
+    font-weight: var(--fw-semibold);
+}
+
+/* Form rows */
+
+.form-3col,
+.form-2col {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.form-3col .form-elem {
+    width: 30%;
+}
+
+.form-2col .form-elem {
+    width: 100%;
+}
+
+@media screen and (min-width: 80em) {
+    .form-2col .form-elem {
+        width: 47%;
+    }
+}
+
+/* ============= FORM IN A CARD ============= */
+
+.form--card {
+    background-color: var(--clr-neutral-500);
+    border: 3px solid var(--clr-neutral-800);
+    border-radius: 10px;
+    margin-top: var(--lineheight);
+}
+
+.form--card form {
+    padding: 0 3.18em 2em;
+}
+
+.form--card button {
+    margin-top: var(--lineheight);
+}

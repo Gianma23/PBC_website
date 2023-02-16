@@ -99,6 +99,8 @@ class Address
         $this->note = $note;
     }
 
+    /* ============= CRUD OPERATIONS ============= */
+
     public static function add($pdo, $name, $surname, $street, $province, $city, $cap, $telehpone, $note)
     {
         $sql = "INSERT INTO address (name, surname, street, province, city, cap, telephone, note)

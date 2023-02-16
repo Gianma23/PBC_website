@@ -231,7 +231,6 @@ function showError(input, message)  {
     formField.classList.remove('valid');
     formField.classList.add('invalid');
 
-    // show the error
     const error = formField.querySelector('small');
     error.textContent = message;
 }
@@ -243,7 +242,6 @@ function showSuccess(input)  {
     formField.classList.remove('invalid');
     formField.classList.add('valid');
 
-    // hide the error
     const error = formField.querySelector('small');
     error.textContent = '';
 }

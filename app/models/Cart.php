@@ -14,27 +14,23 @@ class Cart
         $this->pezzi = $pezzi;
     }
 
-    public function getId()
-    {
+    public function getId(){
         return $this->id;
     }
 
-    public function setId($id)
-    {
+    public function setId($id){
         $this->id = $id;
     }
 
-    public function getAccountId()
-    {
+    public function getAccountId(){
         return $this->accountId;
     }
 
-    public function setAccountId($accountId)
-    {
+    public function setAccountId($accountId){
         $this->accountId = $accountId;
     }
 
-    /* CRUD OPERATIONS */
+    /* ============= CRUD OPERATIONS ============= */
 
     public static function add($pdo, $account = null)
     {
