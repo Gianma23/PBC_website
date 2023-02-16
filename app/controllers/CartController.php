@@ -185,7 +185,12 @@ class CartController
             return Cart::add($pdo);
         }
         // altrimenti creo un nuovo carrello per il guest
-        setcookie("cart_id", session_id(), time()+86400, '/'); // carrello dura 1g per i guest
+        setcookie("cart_id", session_id(), [
+            'expires' => time()+86400, // carrello dura 1g per i guest
+            'path' => '/',
+            'httponly' => true,
+            'samesite' => 'Strict'
+        ]);
         return Cart::add($pdo);
     }
 

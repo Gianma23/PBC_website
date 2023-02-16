@@ -9,7 +9,13 @@ try
     $pdo = new PDO(CONNECTION, USER, PASSWORD);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $sql = "CALL quasi_esaurite();";
+    $sql = "SELECT *
+            FROM beer B
+                 INNER JOIN
+                 product P ON B.product_id = P.name
+            WHERE P.quantity > 3
+            ORDER BY P.quantity
+            LIMIT 4;";
     $result = $pdo->query($sql);
 
     while($row = $result->fetch())

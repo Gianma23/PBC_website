@@ -9,7 +9,10 @@ try
     $pdo = new PDO(CONNECTION, USER, PASSWORD);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $sql = "CALL novita();";
+    $sql = "SELECT *
+            FROM product
+            ORDER BY modified_at DESC
+            LIMIT 3;";
     $result = $pdo->query($sql);
 
     while($row = $result->fetch())

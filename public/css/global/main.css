@@ -133,6 +133,8 @@ h1 {
 }
 
 .product-card {
+    display: flex;
+    flex-direction: column;
     margin-top: var(--lineheight);
     border: 2px solid var(--clr-neutral-800);
     border-radius: 10px;
@@ -147,6 +149,11 @@ h1 {
 .product-card img {
     height: var(--lineheight-6);
     margin: 0 auto;
+}
+
+.product-card form,
+.product-card .button-container {
+    margin-top: auto;
 }
 
 @media screen and (min-width: 40em) {
