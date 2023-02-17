@@ -191,7 +191,12 @@ class OrderController
         if(isset($_COOKIE["cart_id"]))
         {
             Cart::delete($pdo, $_COOKIE["cart_id"]);
-            setcookie("cart_id", null, -1, '/');
+            setcookie("cart_id", null, [
+                'expires' => time()+1,
+                'path' => '/',
+                'httponly' => true,
+                'samesite' => 'Strict'
+            ]);
         }
 
         unset($_SESSION['cart']);

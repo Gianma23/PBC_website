@@ -52,7 +52,7 @@
                                     completa del birrificio con spiegazione del processo produttivo. <strong>Durata: circa 45 minuti.</strong></p>
                                 <form class="form-add">
                                     <input type="hidden" class="prodotto-id" value="Degustazione e Visita">
-                                    <button type="button" class="button button--shop button--hero">
+                                    <button type="button" class="button button--shop">
                                         <span class="button-image"></span>
                                         AGGIUNGI
                                     </button>
@@ -73,7 +73,7 @@
                                     formaggi e salumi selezionati (in alternativa solo salumi oppure formaggi).</p>
                                 <form class="form-add">
                                     <input type="hidden" class="prodotto-id" value="Degustazione">
-                                    <button type="button" class="button button--shop button--hero">
+                                    <button type="button" class="button button--shop">
                                         <span class="button-image"></span>
                                         AGGIUNGI
                                     </button>

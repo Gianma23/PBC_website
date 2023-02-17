@@ -50,7 +50,7 @@
         <!-- Carrello shopping -->
         <aside id="shopping-cart-slide" class="shopping-cart-slide" tabindex="-1">
             <button class="closebtn" id="close-cart">&times;</button>
-            <h2 class="fs-600 fw-bold">Carrello</h2>
+            <p class="shopping-cart-slide--title">Carrello</p>
 
             <div id="carrello">
                 <ul class="prodotti-list" id="prodotti-list">

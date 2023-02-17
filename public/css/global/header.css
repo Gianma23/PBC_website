@@ -289,8 +289,10 @@ header {
     z-index: 100;
 }
 
-.shopping-cart-slide h2 {
+.shopping-cart-slide--title {
     margin-bottom: var(--lineheight);
+    font-size: var(--fs-600);
+    font-weight: var(--fw-bold);
 }
 
 .shopping-cart-slide.open {
