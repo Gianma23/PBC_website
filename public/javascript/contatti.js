@@ -53,4 +53,3 @@ for(let emailForm of emailForms) {
         }
     }, true);
 }
-

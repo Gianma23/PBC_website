@@ -20,3 +20,21 @@ navToggle.onclick = function() {
 window.addEventListener('scroll', () => {
     document.documentElement.style.setProperty('--scroll-y', `${window.scrollY}px`);
 });
+
+/* ===============  MAPPA GOOGLE =============== */
+
+function initMap() {
+
+    const pbc = {lat: 43.54279735579751, lng: 10.335472798648};
+    const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 15,
+        center: pbc,
+    });
+
+    const marker = new google.maps.Marker({
+        position: pbc,
+        map: map,
+    });
+}
+
+window.initMap = initMap;

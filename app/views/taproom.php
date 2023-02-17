@@ -13,8 +13,9 @@
             <div class="wrapper">
                 <h1 class="hero__title"><img src="<?= WEB_PATH?>/images/loghi/loghi_pbc/taproom_scritta_bianca.png" alt="Cimarosa 37, Taproom Livorno"></h1>
                 <p class="fs-600 fw-bold">Aperto tutti i giorni dalle 18 alle 1:30</p>
-                <iframe class="map" src="https://maps.googleapis.com/maps/embed?pb=!1m18!1m12!1m3!1d2892.0692301506583!2d10.333298951611132!3d43.542598767490134!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12d5ebedea14991d%3A0x5143657c42abe11e!2sPiccolo%20Birrificio%20Clandestino!5e0!3m2!1sit!2sit!4v1664006135201!5m2!1sit!2sit"
-                        style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="map" id="map"></div>
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdpoSpwBgLMn-Cag6mdnUBXjn2gWuNvnY&callback=initMap&v=weekly"
+                        defer></script>
             </div>
         </div>
     </section>
