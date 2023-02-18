@@ -36,7 +36,9 @@ if(($_SESSION['role'] != 'admin'))
         </div>
     </main>
 
+
     <?php include __DIR__ . "/../include/footer.php"; ?>
+    <script src="<?= WEB_PATH?>/javascript/ordini.js"></script>
 
 </body>
 </html>

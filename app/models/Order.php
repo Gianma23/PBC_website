@@ -157,6 +157,17 @@ class Order implements JsonSerializable
         return $result->fetchColumn();
     }
 
+    public static function getCountByAccountId($pdo, $accountId)
+    {
+        $sql = "SELECT COUNT(*)
+                FROM `order`
+                WHERE account_id=?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(1, $accountId);
+        $stmt->execute();
+        return $stmt->fetchColumn();
+    }
+
     public static function updateStatus($pdo, $orderId, $status)
     {
         $sql = "UPDATE `order`

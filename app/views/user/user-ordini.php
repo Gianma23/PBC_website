@@ -35,6 +35,7 @@ if(!isset($_SESSION['account_id']))
         </div>
     </main>
 
+    <script src="<?= WEB_PATH?>/javascript/ordini.js"></script>
     <?php include __DIR__ . "/../include/footer.php"; ?>
 
 </body>

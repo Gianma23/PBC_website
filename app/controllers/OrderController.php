@@ -53,27 +53,27 @@ class OrderController
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $ordini = array();
+        $count = 0;
 
-        // guardo se è un admin o uno user
         if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['page']) && isset($_GET['how-many']))
         {
             $page = $_GET['page'];
             $howMany = $_GET['how-many'];
             $start = ($page - 1) * $howMany;
 
+            // guardo se è un admin o uno user
             if (isset($_SESSION["role"]) && $_SESSION["role"] == 'admin')
             {
                 $ordini = Order::findFromTo($pdo, $start, intval($howMany));
+                $count = Order::getCount($pdo);
             }
             else if(isset($_SESSION["role"]) && $_SESSION["role"] == 'user')
             {
                 $ordini = Order::findByAccountIdFromTo($pdo, $_SESSION["account_id"], $start, intval($howMany));
+                $count = Order::getCountByAccountId($pdo, $_SESSION["account_id"]);
             }
         }
         else exit();
-
-        // conto gli ordini presenti
-        $count = Order::getCount($pdo);
 
         // invio gli ordini in json
         $this->loadOrdersJson($ordini, $count);
